@@ -1,7 +1,10 @@
+"""This module provides Zawgyi to Unicode conversion utilities."""
+
 # CREDIT: rabbit-converter/rabbit-python (https://github.com/Rabbit-Converter/Rabbit-Python)
 # NOTE: Used in this project for Myanmar text normalization
 
 import re
+
 
 class Rabbit:
     @staticmethod

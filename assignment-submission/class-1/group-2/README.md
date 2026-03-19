@@ -15,11 +15,12 @@ Our custom dataset comprises Facebook comments, synthetic data generated via gen
 ```
 group-2/
 ├── data/
-│   ├── raw_ungrouped/              # Original team contributions
-│   ├── annotated_ungrouped/        # Cleaned individual datasets
-│   ├── final_grouped/              # Consolidated master directory
-│   │   ├── main_data.csv           # Merged source dataset
-│   │   └── processed_main_data.csv # Preprocessed version (Tokenized/Segmented)
+│   ├── raw_ungrouped/              # Original team contributions (not merged)
+│   ├── annotated_ungrouped/        # Cleaned team contributions (not merged)
+│   ├── merged/                     # merged spreadsheets before final export
+│   ├── merged_preprocessed/        # final merged CSVs used for training
+│   │   ├── data_before_downsampling.csv
+│   │   └── data_after_downsampling.csv
 │   └── stopwords.txt               # Burmese stopword list
 ├── models/                         # Saved model weights and tokenizer artifacts
 ├── notebooks/                      # Experimental analysis and EDA
@@ -28,7 +29,10 @@ group-2/
 │   ├── eval.py                     # Evaluation metrics and performance analysis
 │   └── chat.py                     # Live inference/testing script
 ├── src/
-│   ├── preprocessing.py            # Burmese NLP cleaning and tokenization logic
+│   ├── preprocessing.py            # Burmese text normalization, tokenization, stopword removal
+│   ├── rabbit.py                   # Zawgyi to Unicode conversion utilities (see Sources)
+│   ├── vocab_builder.py            # vocab/token-id and label-id helpers
+│   ├── prep_data.py                # shared preprocessing helpers for train/eval/chat
 │   └── model.py                    # LSTM architecture and layer definitions
 ├── README.md                       # Project documentation and class labels
 ├── environment.yaml                # Environment configuration

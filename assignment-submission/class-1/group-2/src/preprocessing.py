@@ -1,9 +1,13 @@
-#!/usr/bin/env python3
+"""This module provides Burmese text normalization, tokenization, and stopword removal.
+
+This module depends on:
+- src/rabbit.py
+"""
 
 import re
 import myanmartools
-from rabbit import Rabbit
 from mmdt_tokenizer import MyanmarTokenizer
+from src.rabbit import Rabbit
 
 
 # function to load stopwords from file
