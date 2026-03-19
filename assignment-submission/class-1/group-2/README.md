@@ -15,8 +15,8 @@ Our custom dataset comprises Facebook comments, synthetic data generated via gen
 ```
 group-2/
 ├── data/
-│   ├── raw_ungrouped/              # Original team contributions (10 files)
-│   ├── annotated_ungrouped/        # Cleaned individual datasets (10 files)
+│   ├── raw_ungrouped/              # Original team contributions
+│   ├── annotated_ungrouped/        # Cleaned individual datasets
 │   ├── final_grouped/              # Consolidated master directory
 │   │   ├── main_data.csv           # Merged source dataset
 │   │   └── processed_main_data.csv # Preprocessed version (Tokenized/Segmented)
