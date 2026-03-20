@@ -1,0 +1,5 @@
+python hybrid-eliza-mm.py --lang en --mode train --data .\data\emotions.csv --model_path .\data\eliza-en.pkl
+
+ python hybrid-eliza-mm-lstm.py --lang mm --mode train --data .\data\merged\Combined.csv         
+
+python hybrid-eliza-mm-lstm.py --lang mm --mode chat  
