@@ -1,2 +1,30 @@
 __pycache__/
 *.ipynb_checkpoints/
+
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Logs / outputs
+*.log
+
+# Model checkpoints (optional - decide!)
+*.pth
+
+# Jupyter
+.ipynb_checkpoints/
+
+pyproject.toml
+uv.lock

@@ -17,12 +17,15 @@ from typing import Any
 
 
 BASE_DIR = Path(__file__).resolve().parent
-MODULE_PATH = BASE_DIR / "hybrid-eliza-mm-lstm.py"
+print(BASE_DIR)
+PREFERRED_MODULE_PATH = BASE_DIR / "hybrid-eliza-improve-ver1.py"
+FALLBACK_MODULE_PATH = BASE_DIR / "hybrid-eliza-mm-lstm.py"
+MODULE_PATH = PREFERRED_MODULE_PATH if PREFERRED_MODULE_PATH.exists() else FALLBACK_MODULE_PATH
 MYANMAR_TOKEN_RE = re.compile(r"[\u1000-\u109F\uAA60-\uAA7F]+|[a-zA-Z0-9]+")
 
 
 def load_hybrid_module():
-    spec = importlib.util.spec_from_file_location("hybrid_eliza_mm_lstm", MODULE_PATH)
+    spec = importlib.util.spec_from_file_location("hybrid_eliza_runtime", MODULE_PATH)
     if spec is None or spec.loader is None:
         raise RuntimeError(f"Unable to load chatbot module from {MODULE_PATH}")
     module = importlib.util.module_from_spec(spec)
@@ -461,12 +464,23 @@ def render_page() -> str:
       messages.scrollTop = messages.scrollHeight;
     }
 
+    function appendEmotionMeta(bubble, payload = {}) {
+      if (!payload.emotion) {
+        return;
+      }
+
+      const meta = document.createElement("div");
+      meta.className = "meta";
+      meta.textContent = `Emotion score: ${payload.emotion} (${formatScore(payload.score)})`;
+      bubble.appendChild(meta);
+    }
+
     function appendMessage(role, text, payload = {}) {
       const bubble = document.createElement("article");
       bubble.className = `message ${role}`;
       bubble.textContent = text;
 
-      if (role === "bot" && payload.emotion) {
+      if (false && role === "bot" && payload.emotion) {
         const meta = document.createElement("div");
         meta.className = "meta";
         meta.textContent = `စိတ်ခံစားမှု ခန့်မှန်းချက်: ${payload.emotion} (${formatScore(payload.score)})`;
@@ -475,6 +489,7 @@ def render_page() -> str:
 
       messages.appendChild(bubble);
       scrollToBottom();
+      return bubble;
     }
 
     async function requestJson(url, options = {}) {
@@ -511,7 +526,7 @@ def render_page() -> str:
         return;
       }
 
-      appendMessage("user", text);
+      const userBubble = appendMessage("user", text);
       input.value = "";
 
       const payload = await requestJson("/api/chat", {
@@ -521,6 +536,7 @@ def render_page() -> str:
       });
 
       statusText.textContent = payload.status_text;
+      appendEmotionMeta(userBubble, payload);
       appendMessage("bot", payload.reply, payload);
 
       if (payload.quit) {
