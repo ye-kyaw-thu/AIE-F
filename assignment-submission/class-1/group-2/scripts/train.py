@@ -19,47 +19,43 @@ from src.model import EmotionalBiLSTM
 from src.prep_data import prepare_train_val_data
 
 
-# main
-def main():
-    DATA_PATH = "../data/merged/Combined.csv" ## CHANGE HERE
-    TOKENIZED_OUTPUT = "../data/merged/Combined_tokenized.csv" ## CHANGE HERE
-    MODEL_PATH = "../models/BiLSTM_model.pth" ## CHANGE HERE
-    STOPWORDS_PATH = "../data/stopwords.txt"
-    TEXT_COL = "text"
-    LABEL_COL = "label"
-
-    SEED = 42
-
-    ## CHANGE HERE: tune training parameters
-    EPOCHS = 10
-    BATCH_SIZE = 32
-    LR = 0.001
-    VAL_SPLIT = 0.1
-    MAX_LEN = 50
-
-    # set True only if enough RAM; False if dataset is large
-    MATERIALIZE_SPLITS_FOR_SHAPE_CHECK = False ## CHANGE HERE
+# function to run model training
+def run_train(
+    data_path,          # passable from arguments in CLI
+    checkpoint_path,    # passable from arguments in CLI
+    epochs,             # passable from arguments in CLI
+    batch_size,         # passable from arguments in CLI
+    val_split,          # passable from arguments in CLI
+    max_len,            # passable from arguments in CLI
+    tokenized_output_path=None,
+    stopwords_path="../data/stopwords.txt",
+    text_col="text",
+    label_col="label",
+    seed=42,
+    lr=0.001,
+    show_shape_checks=False,
+):
 
     # set seed for reproducibility
-    random.seed(SEED)
-    torch.manual_seed(SEED)
+    random.seed(seed)
+    torch.manual_seed(seed)
     if torch.cuda.is_available():
-        torch.cuda.manual_seed_all(SEED)
+        torch.cuda.manual_seed_all(seed)
     torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
 
     # prepare loaders and artifacts so train.py stays minimal
     train_loader, val_loader, train_ds, val_ds, word2id, id2label, label2id, class_weights = (
         prepare_train_val_data(
-            data_path=DATA_PATH,
-            text_col=TEXT_COL,
-            label_col=LABEL_COL,
-            stopwords_path=STOPWORDS_PATH,
-            seed=SEED,
-            val_split=VAL_SPLIT,
-            max_len=MAX_LEN,
-            batch_size=BATCH_SIZE,
-            tokenized_output_path=TOKENIZED_OUTPUT,
+            data_path=data_path,
+            text_col=text_col,
+            label_col=label_col,
+            stopwords_path=stopwords_path,
+            seed=seed,
+            val_split=val_split,
+            max_len=max_len,
+            batch_size=batch_size,
+            tokenized_output_path=tokenized_output_path,
         )
     )
 
@@ -70,7 +66,7 @@ def main():
     print(f"[shapes] val batch: x {tuple(xvb.shape)}, y {tuple(yvb.shape)}")
 
     # check full shapes of stacked train and val; high ram cost
-    if MATERIALIZE_SPLITS_FOR_SHAPE_CHECK:
+    if show_shape_checks:
         train_X, train_y = zip(*[(x, y) for x, y in train_ds])
         train_X = torch.stack(train_X)
         train_y = torch.stack(train_y)
@@ -86,20 +82,21 @@ def main():
     if device.type == "cuda":
         print(f"GPU device name: {torch.cuda.get_device_name(0)}, count: {torch.cuda.device_count()}")
 
-    # initialize model (load from src/model.py)
+    # initialize model (from src/model.py)
     model = EmotionalBiLSTM(vocab_size=len(word2id)).to(device)
 
     # initialize optimizer
-    optimizer = optim.Adam(model.parameters(), lr=LR)
+    optimizer = optim.Adam(model.parameters(), lr=lr)
 
     # compute class weights
     criterion = nn.CrossEntropyLoss(weight=class_weights.to(device))
 
     # training loop
-    for epoch in range(EPOCHS):
+    for epoch in range(epochs):
         model.train()
         total_loss = 0
 
+        # train model in batches
         for x, y in train_loader:
             x, y = x.to(device), y.to(device)
 
@@ -116,6 +113,7 @@ def main():
         correct = 0
         total = 0
 
+        # validate model in batches
         with torch.no_grad():
             for x, y in val_loader:
                 x, y = x.to(device), y.to(device)
@@ -125,25 +123,43 @@ def main():
                 total += y.size(0)
                 correct += (predicted == y).sum().item()
 
-        acc = correct / total
+        # calculate accuracy
+        acc = correct / total if total else 0.0
 
-        print(f"Epoch {epoch+1}/{EPOCHS} | Loss: {total_loss:.4f} | Val Acc: {acc:.2%}")
+        # print epoch results
+        print(f"Epoch {epoch+1}/{epochs} | Loss: {total_loss:.4f} | Val Acc: {acc:.2%}")
 
     # save model & vocab
-    os.makedirs("models", exist_ok=True)
+    os.makedirs("checkpoints", exist_ok=True)
 
-    torch.save({
+    torch.save(
+        {
         "state": model.state_dict(),
         "vocab": word2id,
         "label2id": label2id,
         "id2label": id2label,
-        "text_col": TEXT_COL,
-        "label_col": LABEL_COL,
-        "max_len": MAX_LEN,
-    }, MODEL_PATH)
+        "text_col": text_col,
+        "label_col": label_col,
+        "max_len": max_len,
+        },
+        checkpoint_path,
+    )
 
-    print(f"[+] Model saved to {MODEL_PATH}")
+    print(f"[+] Checkpoint saved to {checkpoint_path}")
 
 
+# function to run training with default values
+def main():
+    run_train(
+        ## CHANGE HERE: change default values
+        data_path="../data/merged/Combined.csv",
+        checkpoint_path="../checkpoints/BiLSTM_model.pth",
+        epochs=10,
+        batch_size=32,
+        val_split=0.1,
+        max_len=50,
+    )
+
+# run the script
 if __name__ == "__main__":
     main()

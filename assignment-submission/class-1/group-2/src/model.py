@@ -15,9 +15,13 @@ class EmotionalBiLSTM(nn.Module):
         num_layers=1,
         dropout=0.2,
         pad_idx=0,
+        use_attention=False,
     ):
         super().__init__()
 
+        self.use_attention = use_attention
+
+        # embedding layer
         self.embedding = nn.Embedding(
             num_embeddings=vocab_size,
             embedding_dim=embed_dim,
@@ -26,6 +30,8 @@ class EmotionalBiLSTM(nn.Module):
 
         # dropout in LSTM only applies when num_layers > 1
         lstm_dropout = dropout if num_layers > 1 else 0.0
+
+        # LSTM layer
         self.lstm = nn.LSTM(
             input_size=embed_dim,
             hidden_size=hidden_dim,
@@ -35,17 +41,36 @@ class EmotionalBiLSTM(nn.Module):
             dropout=lstm_dropout,
         )
 
+        # attention layer: maps LSTM outputs to a single context vector
+        if self.use_attention:
+            self.attention = nn.Linear(hidden_dim * 2, 1)
+
+        # dropout layer
         self.dropout = nn.Dropout(dropout)
+
+        # fully connected layer
         self.fc = nn.Linear(hidden_dim * 2, output_dim)
 
+
+    # forward pass
     def forward(self, x):
+        # embed input tokens
         embedded = self.embedding(x)
-        _, (h_n, _) = self.lstm(embedded)
 
-        # concatenate last forward and backward hidden states
-        h_forward = h_n[-2, :, :]
-        h_backward = h_n[-1, :, :]
-        h_cat = torch.cat((h_forward, h_backward), dim=1)
+        # pass through LSTM
+        lstm_out, (h_n, _) = self.lstm(embedded)
 
-        logits = self.fc(self.dropout(h_cat))
+        # apply attention if enabled
+        if self.use_attention:
+            attention_weights = torch.softmax(self.attention(lstm_out), dim=1)
+            context = (lstm_out * attention_weights).sum(dim=1)
+        else:
+            # concatenate last forward and backward hidden states
+            h_forward = h_n[-2, :, :]
+            h_backward = h_n[-1, :, :]
+            context = torch.cat((h_forward, h_backward), dim=1)
+
+        # pass through fully connected layer
+        logits = self.fc(self.dropout(context))
+
         return logits
