@@ -1,3 +1,7 @@
-pandas
+pandas[excel]
+myanmartools
+mmdt-tokenizer
 torch
 scikit-learn
+seaborn
+matplotlib
