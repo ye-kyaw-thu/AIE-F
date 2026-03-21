@@ -10,7 +10,7 @@ TOTAL=$(wc -l < "$INPUT")
 DATA_ROWS=$((TOTAL - 1))  # Exclude header
 
 # Calculate split
-TRAIN_ROWS=$((DATA_ROWS * 2 / 3))
+TRAIN_ROWS=$((DATA_ROWS * 5 / 6))
 TEST_ROWS=$((DATA_ROWS - TRAIN_ROWS))
 
 echo "[*] Total rows: $DATA_ROWS"
