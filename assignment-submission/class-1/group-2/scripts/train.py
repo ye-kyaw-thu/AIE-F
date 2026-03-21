@@ -34,6 +34,9 @@ def run_train(
     seed=42,
     lr=0.001,
     show_shape_checks=False,
+    use_char_ngrams: bool = False,
+    ngram_min: int = 2,
+    ngram_max: int = 3,
 ):
 
     # set seed for reproducibility
@@ -56,6 +59,9 @@ def run_train(
             max_len=max_len,
             batch_size=batch_size,
             tokenized_output_path=tokenized_output_path,
+            use_char_ngrams=use_char_ngrams,
+            ngram_min=ngram_min,
+            ngram_max=ngram_max,
         )
     )
 
@@ -141,6 +147,9 @@ def run_train(
         "text_col": text_col,
         "label_col": label_col,
         "max_len": max_len,
+        "use_char_ngrams": use_char_ngrams,
+        "ngram_min": ngram_min,
+        "ngram_max": ngram_max,
         },
         checkpoint_path,
     )

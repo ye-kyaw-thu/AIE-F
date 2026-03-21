@@ -30,10 +30,12 @@ group-2/
 │   ├── eval.py                     # model evaluation/prediction
 │   └── chat.py                     # interactive inference; reuses eval helpers
 ├── src/
-│   ├── preprocessing.py            # Burmese text normalization, tokenization (see Sources), stopword removal
+│   ├── preprocessing.py            # Unicode normalization, lowercase, tokenization (see Sources), char n-grams, stopwords
 │   ├── rabbit.py                   # Zawgyi to Unicode conversion utilities (see Sources)
 │   ├── vocab_builder.py            # vocab/token-id and label-id helpers
 │   ├── prep_data.py                # shared preprocessing helpers for train/eval/chat
+│   ├── eliza_rules.py              # ELIZA rule data
+│   ├── eliza.py                    # ELIZA engine
 │   └── model.py                    # LSTM architecture and layer definitions
 ├── README.md                       # documentation
 ├── environment.yaml                # conda environment configuration
@@ -46,21 +48,25 @@ The code is organized so a single wrapper script controls the high-level mode, w
 
 - `group2-hybrid-eliza.py` (primary entry point): the top-level CLI wrapper/dispatcher. It selects one of the modes and starts the corresponding script in `scripts/`.
 
-- `scripts/train.py`: training orchestration. It uses `src/prep_data.py` to build train/validation tensors and class weights, uses `src/model.py` to define the model, and saves a checkpoint that includes model weights plus vocabulary/label mappings.
+- `scripts/train.py`: training orchestration. It uses `src/prep_data.py` and `src/model.py`, and writes a checkpoint that bundles the trained weights with the same vocabulary and label setup used for later runs.
 
-- `scripts/eval.py`: evaluation/prediction on a labeled dataset. It loads the saved checkpoint, uses `src/prep_data.py` to convert raw texts into padded token-id tensors using the same preprocessing pipeline, then runs `src/model.py` to produce predictions and confidence scores.
+- `scripts/eval.py`: evaluation on a labeled dataset. It loads a checkpoint from training, uses `src/prep_data.py` and `src/model.py` with that checkpoint, and reports how well the saved setup predicts labels.
 
-- `scripts/chat.py`: interactive inference. It loads the saved checkpoint and reuses the same preprocessing + model inference path as `scripts/eval.py` for user-entered text, then prints the predicted emotion and confidence.
+- `scripts/chat.py`: interactive inference. It follows the same emotion path as `scripts/eval.py`, and pairs that with dialogue from `src/eliza.py`.
 
-- `src/prep_data.py`: shared data preparation pipeline used by both training and inference. It connects dataset reading, text preprocessing, token/id encoding, padding/truncation, train/val splitting (for training), and class-weight computation; it relies on `src/preprocessing.py` (TextProcessor) and `src/vocab_builder.py` (vocabulary + label mapping utilities).
+- `src/eliza_rules.py`: rule data only, paired with `src/eliza.py`.
 
-- `src/preprocessing.py`: text preprocessing pipeline. It performs Zawgyi-to-Unicode normalization when needed, regex punctuation cleanup, tokenization with the MMDT tokenizer, and stopword removal; it relies on `src/rabbit.py` for Zawgyi conversion and on the Myanmar detection/tokenization libraries.
+- `src/eliza.py`: ELIZA dialogue behavior; it consumes `src/eliza_rules.py` and shares text-pattern handling with `src/preprocessing.py` where the two modules meet.
 
-- `src/vocab_builder.py`: vocabulary and label mapping utilities. It builds the `word -> id` vocabulary from training tokenized text and defines the fixed `label -> id` order for the six emotion classes.
+- `src/prep_data.py`: shared data preparation for training and inference. It sits between the datasets/checkpoints and the emotion pipeline, and depends on `src/preprocessing.py` plus `src/vocab_builder.py`.
 
-- `src/model.py`: model definition. It embeds token ids, runs a bidirectional LSTM, then pools sequence information (either attention pooling or final-state pooling) and applies a linear classifier to get logits.
+- `src/preprocessing.py`: preprocessing for the **emotion model**. It depends on `src/rabbit.py` for script conversion and on external Myanmar tokenization libraries as noted under Sources. ELIZA-specific text handling is in `src/eliza.py` instead of here.
 
-- `src/rabbit.py`: Zawgyi-to-Unicode conversion rules used by the preprocessing pipeline.
+- `src/vocab_builder.py`: builds the vocabulary and fixed label order for the six emotion classes; used from `src/prep_data.py`.
+
+- `src/model.py`: defines the neural emotion classifier; used from `scripts/train.py` and `scripts/eval.py`.
+
+- `src/rabbit.py`: Zawgyi-to-Unicode conversion support; used from `src/preprocessing.py`.
 
 In short: `group2-hybrid-eliza.py` starts the run; `scripts/*.py` control train/eval/chat; `src/*.py` implements the reusable preprocessing/model utilities.
 

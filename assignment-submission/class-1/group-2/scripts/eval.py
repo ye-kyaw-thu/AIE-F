@@ -21,17 +21,38 @@ def load_inference_bundle(checkpoint_path):
     state_dict = checkpoint["state"]
     id2label = checkpoint["id2label"]
     max_len = checkpoint.get("max_len", 50)
+    use_char_ngrams = checkpoint.get("use_char_ngrams", False)
+    ngram_min = checkpoint.get("ngram_min", 2)
+    ngram_max = checkpoint.get("ngram_max", 3)
 
     model = EmotionalBiLSTM(vocab_size=len(word2id))
     model.load_state_dict(state_dict)
     model.eval()
 
-    return model, word2id, id2label, max_len
+    return model, word2id, id2label, max_len, use_char_ngrams, ngram_min, ngram_max
 
 
 # function to predict labels and confidences for one or many texts
-def predict_texts(model, word2id, id2label, max_len, texts, stopwords_path):
-    x = encode_texts(texts, word2id, max_len=max_len, stopwords_path=stopwords_path)
+def predict_texts(
+    model,
+    word2id,
+    id2label,
+    max_len,
+    texts,
+    stopwords_path,
+    use_char_ngrams: bool = False,
+    ngram_min: int = 2,
+    ngram_max: int = 3,
+):
+    x = encode_texts(
+        texts,
+        word2id,
+        max_len=max_len,
+        stopwords_path=stopwords_path,
+        use_char_ngrams=use_char_ngrams,
+        ngram_min=ngram_min,
+        ngram_max=ngram_max,
+    )
     with torch.no_grad():
         logits = model(x)
         probs = torch.softmax(logits, dim=1)
@@ -52,7 +73,9 @@ def run_eval(
     label_col="label",
 ):
     # load model and preprocessing artifacts from checkpoint
-    model, word2id, id2label, max_len = load_inference_bundle(checkpoint_path)
+    model, word2id, id2label, max_len, use_char_ngrams, ngram_min, ngram_max = (
+        load_inference_bundle(checkpoint_path)
+    )
 
     # load data
     df = pd.read_csv(data_csv)
@@ -78,6 +101,9 @@ def run_eval(
                 max_len=max_len,
                 texts=batch_texts,
                 stopwords_path=stopwords_path,
+                use_char_ngrams=use_char_ngrams,
+                ngram_min=ngram_min,
+                ngram_max=ngram_max,
             )
             pred = torch.tensor(pred_ids, dtype=torch.long)
 

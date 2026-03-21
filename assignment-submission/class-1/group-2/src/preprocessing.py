@@ -10,6 +10,24 @@ from mmdt_tokenizer import MyanmarTokenizer
 from src.rabbit import Rabbit
 
 
+# splits mixed Burmese + Latin/alphanumeric text into spans before Burmese tokenization
+## u1000-u109F: Myanmar unicode block
+## uAA60-uAA7F: Myanmar extended unicode block
+MYANMAR_TOKEN_RE = re.compile(r"[\u1000-\u109F\uAA60-\uAA7F]+|[a-zA-Z0-9]+")
+
+
+# function to build character n-gram tokens
+def build_char_ngrams(text: str, min_n: int = 2, max_n: int = 3):
+    compact = text.replace(" ", "")
+    ngrams = []
+    for n in range(min_n, max_n + 1):
+        if len(compact) < n:
+            continue
+        for i in range(len(compact) - n + 1):
+            ngrams.append(compact[i : i + n])
+    return ngrams
+
+
 # function to load stopwords from file
 def load_stopwords(file_path: str):
     """
@@ -38,14 +56,25 @@ class TextProcessor:
     """
     Handles:
     - Zawgyi to Unicode conversion
+    - Lowercasing (for consistent Latin digits/letters in mixed text)
     - Sentence tokenization
     - Word tokenization
+    - Char n-grams appended to word tokens
     - Stopword removal
     """
 
     # function to initialize processor components
-    def __init__(self, stopwords=None):
+    def __init__(
+        self,
+        stopwords=None,
+        use_char_ngrams: bool = False,
+        ngram_min: int = 2,
+        ngram_max: int = 3,
+    ):
         self.stopwords = stopwords if stopwords else set()
+        self.use_char_ngrams = use_char_ngrams
+        self.ngram_min = ngram_min
+        self.ngram_max = ngram_max
 
         # initialize tokenizer once
         self.word_tokenizer = MyanmarTokenizer()
@@ -64,9 +93,31 @@ class TextProcessor:
         return text
 
 
-    # function to tokenize text into words
+    # function to tell if a regex chunk is Burmese or Latin/alphanumeric
+    def _is_myanmar_chunk(self, chunk: str) -> bool:
+        if not chunk:
+            return False
+        o = ord(chunk[0])
+        return (0x1000 <= o <= 0x109F) or (0xAA60 <= o <= 0xAA7F)
+
+
+    # function to tokenize Burmese text into words
     def tokenize(self, text: str):
-        return self.word_tokenizer.word_tokenize(text)[0]
+        chunks = MYANMAR_TOKEN_RE.findall(text)
+        if not chunks and text.strip():
+            return self.word_tokenizer.word_tokenize(text)[0]
+
+        tokens = []
+        for chunk in chunks:
+            chunk = chunk.strip()
+            if not chunk:
+                continue
+            if self._is_myanmar_chunk(chunk):
+                tokens.extend(self.word_tokenizer.word_tokenize(chunk)[0])
+            else:
+                tokens.append(chunk.lower())
+
+        return tokens
 
 
     # function to remove stopwords from tokens
@@ -82,20 +133,31 @@ class TextProcessor:
         """
         Full preprocessing pipeline:
         1. Normalize encoding
-        2. Clean punctuation
-        3. Tokenize
-        4. Remove stopwords
+        2. Lowercase
+        3. Clean punctuation
+        4. Tokenize
+        5. Char n-grams appended to token list (optional)
+        6. Remove stopwords (optional)
         """
         # step 1: normalize
         text = self.normalize_text(text)
 
-        # step 2: clean punctuation
+        # step 2: lowercase
+        text = text.strip().lower()
+
+        # step 3: clean punctuation
         text = clean_punctuation(text)
 
-        # step 3: tokenize
+        # step 4: tokenize
         tokens = self.tokenize(text)
 
-        # step 4: stopword removal (optional)
+        # step 5: char n-grams (optional)
+        if self.use_char_ngrams:
+            tokens = tokens + build_char_ngrams(
+                text, min_n=self.ngram_min, max_n=self.ngram_max
+            )
+
+        # step 6: stopword removal (optional)
         if remove_stopwords_flag:
             tokens = self.remove_stopwords(tokens)
 

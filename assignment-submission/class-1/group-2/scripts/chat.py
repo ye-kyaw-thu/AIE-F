@@ -6,9 +6,13 @@ This module depends on:
 - scripts/eval.py
 """
 
+import random
+
 from scripts.eval import load_inference_bundle, predict_texts
 from src.eliza import Eliza
 from typing import Literal  
+
+
 # function to run interactive chat inference
 def run_chat(
     checkpoint_path,  # passable from wrapper CLI
@@ -16,10 +20,17 @@ def run_chat(
     language: Literal["mm", "en"] = "mm",
 ):
     # load model and preprocessing artifacts from checkpoint
-    model, word2id, id2label, max_len = load_inference_bundle(checkpoint_path)
+    (
+        model,
+        word2id,
+        id2label,
+        max_len,
+        use_char_ngrams,
+        ngram_min,
+        ngram_max,
+    ) = load_inference_bundle(checkpoint_path)
     eliza = Eliza(language=language)
-    
-    quits = {"bye", "quit", "exit", "q"}
+
     while True:
         try:
             text = input("You: ").strip()
@@ -30,9 +41,9 @@ def run_chat(
         if not text:
             continue
 
-        # quit on quit commands
-        if text.lower() in quits:
-            print(f"Eliza: {eliza.respond(text)}")
+        # quit on quit commands (same normalization as eliza rules)
+        if eliza.is_quit(text):
+            print(f"Eliza: {random.choice(eliza.script['finals'])}")
             break
 
         # predict emotion for input text
@@ -43,6 +54,9 @@ def run_chat(
             max_len=max_len,
             texts=[text],
             stopwords_path=stopwords_path,
+            use_char_ngrams=use_char_ngrams,
+            ngram_min=ngram_min,
+            ngram_max=ngram_max,
         )
 
         # get predicted emotion and confidence

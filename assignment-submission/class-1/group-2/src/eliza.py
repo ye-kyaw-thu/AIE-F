@@ -1,83 +1,71 @@
+"""ELIZA-style rule engine: normalization, reflection, and keyword responses."""
+
+import copy
+import random
 import re
 
-MYANMAR_CHAR_RE = re.compile(r"[\u1000-\u109F\uAA60-\uAA7F]")
-MYANMAR_TOKEN_RE = re.compile(r"[\u1000-\u109F\uAA60-\uAA7F]+|[a-zA-Z0-9]+")
-
-SCRIPTS = {
-    "en": {
-        "initials": ["How do you do. Please tell me your problem.", "Is something troubling you?"],
-        "finals": ["Goodbye. It was nice talking to you.", "Take care."],
-        "quits": ["bye", "quit", "exit"],
-        "pres": {"don't": "dont", "i'm": "i am", "recollect": "remember", "machine": "computer"},
-        "posts": {"am": "are", "i": "you", "my": "your", "me": "you", "your": "my"},
-        "keywords": [
-            [r"(.*) die (.*)", ["Please don't talk like that. Tell me more about your feelings."], 10],
-            [r"i need (.*)", ["Why do you need {0}?", "Would it help you to get {0}?"], 5],
-            [r"i am (.*)", ["Is it because you are {0} that you came to me?", "How long have you been {0}?"], 5],
-            [r"(.*) problem (.*)", ["Tell me more about this problem.", "How does it make you feel?"], 8],
-            [r"(.*)", ["Please tell me more.", "I see.", "Can you elaborate?"], 0],
-        ],
-    },
-    "mm": {
-        "initials": [
-            "မင်္ဂလာပါ။ သင့်စိတ်ထဲမှာရှိတာကို ပြောပြပါ။",
-            "ဘာက သင့်ကို စိတ်အနှောင့်အယှက်ဖြစ်စေတာလဲ။",
-        ],
-        "finals": [
-            "နှုတ်ဆက်ပါတယ်။ ပြောပြပေးတာ ကျေးဇူးတင်ပါတယ်။",
-            "ဒီနေ့အတွက် ဒီလောက်နဲ့ရပ်မယ်နော်။",
-        ],
-        "quits": ["တာ့တာ", "ထွက်မယ်", "ပြီးပြီ", "bye", "quit", "exit"],
-        "pres": {
-            "ကျွန်တော်": "ကျွန်တော်",
-            "ကျွန်မ": "ကျွန်မ",
-            "ငါ": "ငါ",
-            "မသိဘူး": "မသိ",
-            "မပျော်ဘူး": "မပျော်",
-        },
-        "posts": {
-            "ကျွန်တော်": "သင်",
-            "ကျွန်မ": "သင်",
-            "ကျွန်ုပ်": "သင်",
-            "ငါ": "သင်",
-            "ကျွန်တော့်": "သင့်",
-            "ကျွန်မရဲ့": "သင့်",
-            "ငါ့": "သင့်",
-            "ငါ့ရဲ့": "သင့်",
-            "သင်": "ကျွန်တော်",
-            "သင့်": "ကျွန်တော့်",
-        },
-        "keywords": [
-            [r"(.*)(သေချင်|မနေချင်တော့|ကိုယ့်ကိုယ်ကို သတ်ချင်)(.*)", ["အဲဒီလို ခံစားနေရတာကို ပိုပြောပြပါ။ အခု ဘာဖြစ်နေတယ်လို့ ထင်သလဲ။"], 10],
-            [r"(?:ကျွန်တော်|ကျွန်မ|ငါ)\s?(.*)လိုအပ်(?:တယ်|ပါတယ်)", ["ဘာကြောင့် {0} လိုအပ်တာလဲ။", "{0} ရရင် သက်သာမယ်လို့ ထင်သလား။"], 6],
-            [r"(?:ကျွန်တော်|ကျွန်မ|ငါ)\s?(.*)ခံစားရ(?:တယ်|ပါတယ်)", ["{0} လို့ ခံစားရတာ ဘယ်အချိန်က စတာလဲ။", "{0} လို့ ခံစားရတာကို ပိုရှင်းပြပါ။"], 6],
-            [r"(?:ကျွန်တော်|ကျွန်မ|ငါ)\s?(.*)ဖြစ်နေ(?:တယ်|ပါတယ်)", ["{0} ဖြစ်နေတာ ဘာကြောင့်လို့ ထင်သလဲ။", "{0} ဖြစ်နေတာကို ပိုပြောပြပါ။"], 5],
-            [r"(.*)(ပြဿနာ|အခက်အခဲ)(.*)", ["ဒီပြဿနာအကြောင်း ပိုပြောပြပါ။", "ဒီအရာက သင့်ကို ဘယ်လို ခံစားရစေလဲ။"], 8],
-            [r"(.*)", ["ဆက်ပြောပြပါ။", "နားလည်ပါတယ်။", "အဲဒါကို နည်းနည်းပိုရှင်းပြပါ။"], 0],
-        ],
-    },
-}
-
+from src.eliza_rules import SCRIPTS
+from src.preprocessing import MYANMAR_TOKEN_RE
 
 
 class Eliza:
+    # function to initialize script and sort keyword rules by priority (highest first)
     def __init__(self, language="mm"):
         if language not in SCRIPTS:
             raise ValueError(f"Unsupported language: {language}")
-        self.script = SCRIPTS[language]
+        self.script = copy.deepcopy(SCRIPTS[language])
         self.language = language
+        self.script["keywords"] = sorted(
+            self.script["keywords"], key=lambda x: x[2], reverse=True
+        )
 
+    # function to normalize text for rule matching (lowercase + punctuation cleanup)
     def normalize_text(self, text):
         text = str(text).strip().lower()
         text = re.sub(r"[၊။!?,;:\"'()\[\]{}]", " ", text)
         text = re.sub(r"\s+", " ", text)
         return text.strip()
 
-    def respond(self, text):
+    # function to tokenize for reflection only (no char n-grams; base tokens for posts lookup)
+    def tokenize_for_rules(self, text: str):
         text = self.normalize_text(text)
-        for pattern, responses, priority in self.script["keywords"]:
-            match = re.match(pattern, text)
+        if not text:
+            return []
+
+        if self.language == "mm":
+            if " " in text:
+                return [tok for tok in text.split() if tok]
+            return MYANMAR_TOKEN_RE.findall(text)
+
+        return text.split()
+
+    # function to apply posts substitutions for captured fragments
+    def reflect(self, fragment):
+        tokens = self.tokenize_for_rules(fragment)
+        reflected = [self.script["posts"].get(tok, tok) for tok in tokens]
+        return " ".join(reflected).strip()
+
+    # function to match keywords, apply pres, and return a response
+    def rule_respond(self, text):
+        text = self.normalize_text(text)
+        for src, dst in self.script["pres"].items():
+            text = text.replace(src, dst)
+
+        for pattern, responses, _rank in self.script["keywords"]:
+            match = re.search(pattern, text)
             if match:
-                response = responses[0].format(*match.groups())
-                return response
-        return "I'm not sure how to respond to that."
+                response = random.choice(responses)
+                fragments = [
+                    self.reflect(group) for group in match.groups() if group and group.strip()
+                ]
+                return response.format(*fragments) if fragments else response
+
+        return "ဆက်ပြောပြပါ။" if self.language == "mm" else "Please continue."
+
+    # function to run rule-based reply (alias for chat UIs)
+    def respond(self, text):
+        return self.rule_respond(text)
+
+    # function to detect quit phrases after normalization
+    def is_quit(self, text: str) -> bool:
+        return self.normalize_text(text) in self.script["quits"]

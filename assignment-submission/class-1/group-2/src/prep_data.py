@@ -13,22 +13,34 @@ from src.preprocessing import TextProcessor, load_stopwords
 from src.vocab_builder import build_vocab, build_label_map
 
 
-# cache TextProcessor instances per stopwords file (eval/chat may call encoding repeatedly)
+# cache TextProcessor instances (eval/chat may call encoding repeatedly)
 _processor_cache = {}
 
-# function to fetch a TextProcessor from cache for stopwords file
-def _get_processor(stopwords_path: str) -> TextProcessor:
+
+# function to fetch a TextProcessor from cache
+def _get_processor(
+    stopwords_path: str,
+    use_char_ngrams: bool = False,
+    ngram_min: int = 2,
+    ngram_max: int = 3,
+) -> TextProcessor:
     """
-    Build a TextProcessor using stopwords_path, then cache it to avoid re-reading stopwords and re-creating the tokenizer/detector objects.
+    Build a TextProcessor, then cache it to avoid re-initializing.
 
     This logic is shared by:
     - `encode_texts()` (online encoding for eval.py and chat.py)
     - `prepare_train_val_data()` (offline precomputation of training tensors)
     """
-    if stopwords_path not in _processor_cache:
+    key = (stopwords_path, use_char_ngrams, ngram_min, ngram_max)
+    if key not in _processor_cache:
         stopwords = load_stopwords(stopwords_path)
-        _processor_cache[stopwords_path] = TextProcessor(stopwords)
-    return _processor_cache[stopwords_path]
+        _processor_cache[key] = TextProcessor(
+            stopwords,
+            use_char_ngrams=use_char_ngrams,
+            ngram_min=ngram_min,
+            ngram_max=ngram_max,
+        )
+    return _processor_cache[key]
 
 
 # function to convert tokens to ids and pad/truncate
@@ -42,7 +54,16 @@ def _tokens_to_ids(tokens, word2id, max_len: int, pad_id: int = 0, unk_id: int =
 
 
 # function to convert text inputs into model-ready tensors
-def encode_texts(texts, word2id, max_len: int, stopwords_path: str, device=None):
+def encode_texts(
+    texts,
+    word2id,
+    max_len: int,
+    stopwords_path: str,
+    device=None,
+    use_char_ngrams: bool = False,
+    ngram_min: int = 2,
+    ngram_max: int = 3,
+):
     """
     Used by eval.py and chat.py to encode text inputs into model-ready tensors.
     If device is specified, the tensor will be moved to the device.
@@ -50,7 +71,12 @@ def encode_texts(texts, word2id, max_len: int, stopwords_path: str, device=None)
     Input: texts (str or list[str]) -> normalize/tokenize/stopwords -> token ids -> truncate/pad -> tensor
     Output: tensor of shape (batch, max_len) of token ids
     """
-    processor = _get_processor(stopwords_path)
+    processor = _get_processor(
+        stopwords_path,
+        use_char_ngrams=use_char_ngrams,
+        ngram_min=ngram_min,
+        ngram_max=ngram_max,
+    )
 
     # ensure texts is a list to support both single string (used in chat.py) and list of strings (used in eval.py)
     if isinstance(texts, str):
@@ -86,6 +112,9 @@ def prepare_train_val_data(
     max_vocab: int = 5000,  ## CHANGE HERE: vocab size cap
     tokenized_output_path: str | None = None,
     num_classes: int = 6,
+    use_char_ngrams: bool = False,
+    ngram_min: int = 2,
+    ngram_max: int = 3,
 ):
     """
     Used by train.py to prepare all offline training artifacts:
@@ -115,7 +144,12 @@ def prepare_train_val_data(
         )
 
     # get the TextProcessor and tokenize
-    processor = _get_processor(stopwords_path)
+    processor = _get_processor(
+        stopwords_path,
+        use_char_ngrams=use_char_ngrams,
+        ngram_min=ngram_min,
+        ngram_max=ngram_max,
+    )
     tokenized_texts = df[text_col].apply(lambda x: processor.process(str(x)))
 
     ## CHANGE HERE: set tokenized_output_path=None to skip writing tokenized output
