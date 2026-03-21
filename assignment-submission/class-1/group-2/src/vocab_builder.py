@@ -22,8 +22,10 @@ def build_vocab(tokenized_texts, max_vocab=5000):
     return word2id
 
 
+# display Burmese names for class ids
+DEFAULT_LABEL_ORDER = ("ဝမ်းနည်းမှု", "ပျော်ရွှင်မှု", "ချစ်ခင်မှု", "ဒေါသ", "ကြောက်ရွံ့မှု", "အံ့အားသင့်မှု")
+
 # function to build label map from labels
-DEFAULT_LABEL_ORDER = ("Sadness", "Joy", "Love", "Anger", "Fear", "Surprise")
 def build_label_map(fixed_unique_labels=None):
     """
     EXAMPLE: IF LABELS ARE STORED AS STRING, THEN:

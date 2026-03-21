@@ -64,8 +64,8 @@ def run_chat(
         label = pred_labels[0]
         score = float(pred_scores[0])
 
+        print(f"Predicted emotion: {label} ({score:.2%})")
         print(f"Eliza: {eliza.respond(text)}")
-        print(f"Emotion: {label} ({score:.2%})")
 
 
 # function to run chat with default values

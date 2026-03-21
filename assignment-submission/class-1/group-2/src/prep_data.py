@@ -5,9 +5,11 @@ This module depends on:
 - src/vocab_builder.py
 """
 
+import random
+
 import pandas as pd
 import torch
-from torch.utils.data import DataLoader, TensorDataset, random_split
+from torch.utils.data import DataLoader, TensorDataset
 
 from src.preprocessing import TextProcessor, load_stopwords
 from src.vocab_builder import build_vocab, build_label_map
@@ -108,6 +110,38 @@ def encode_texts(
     return x, lengths
 
 
+# function to perform stratified train/val split
+def _stratified_train_val_indices(labels: list[int], val_split: float, seed: int):
+    """
+    Per-class holdout so val contains every label when possible.
+    Each label contributes to val when n>1.
+    """
+    grouped: dict[int, list[int]] = {}
+    for idx, lab in enumerate(labels):
+        grouped.setdefault(int(lab), []).append(idx)
+
+    rng = random.Random(seed)
+    train_idx: list[int] = []
+    val_idx: list[int] = []
+
+    for _label, idxs in grouped.items():
+        rng.shuffle(idxs)
+        n = len(idxs)
+        if n == 1:
+            split_at = 1
+        else:
+            val_count = max(1, int(round(n * val_split)))
+            val_count = min(val_count, n - 1)
+            split_at = n - val_count
+
+        train_idx.extend(idxs[:split_at])
+        val_idx.extend(idxs[split_at:])
+
+    rng.shuffle(train_idx)
+    rng.shuffle(val_idx)
+    return train_idx, val_idx
+
+
 # function to prepare all offline training artifacts
 def prepare_train_val_data(
     data_path: str,
@@ -126,14 +160,16 @@ def prepare_train_val_data(
     ngram_max: int = 3,
 ):
     """
-    Used by train.py to prepare all offline training artifacts:
-    - tokenize texts
-    - build a vocabulary
-    - build padded X and label tensor y
-    - seed and create train/val split
-    - create train/val loaders
-    - compute class weights from the training split
-    - build dictionaries: id2label and label2id
+    Used by train.py to prepare offline training artifacts:
+    - load csv or excel; require text_col and label_col
+    - tokenize with TextProcessor (zawgyi handling, optional char n-grams, stopwords)
+    - optionally write tokenized csv when tokenized_output_path is set
+    - build word2id vocabulary (max_vocab cap)
+    - encode texts to padded id sequences and per-row lengths (for pack_padded_sequence)
+    - stratified train/val split (per-class holdout; shuffles use seed)
+    - build TensorDatasets and DataLoaders (batched for training/validation)
+    - class weights from training-label counts (num_classes; handles imbalanced classes)
+    - label2id / id2label via build_label_map (fixed emotion order)
     """
     ## CHANGE HERE: add/remove supported input file extensions
     # read input file and validate required columns
@@ -185,23 +221,19 @@ def prepare_train_val_data(
     lengths = torch.tensor(lengths_list, dtype=torch.long)
     y = torch.tensor(encoded_labels, dtype=torch.long)
 
-    # create tensor dataset
-    full_ds = TensorDataset(X, y, lengths)
-
-    # train/val sizes
-    val_size = int(len(full_ds) * val_split)
-    train_size = len(full_ds) - val_size
-
-    # train/val split with seed for reproducibility
-    generator = torch.Generator().manual_seed(seed)
-    train_ds, val_ds = random_split(full_ds, [train_size, val_size], generator=generator)
+    # stratified train/val split
+    train_idx, val_idx = _stratified_train_val_indices(encoded_labels, val_split, seed)
+    ti = torch.tensor(train_idx, dtype=torch.long)
+    vi = torch.tensor(val_idx, dtype=torch.long)
+    train_ds = TensorDataset(X[ti], y[ti], lengths[ti])
+    val_ds = TensorDataset(X[vi], y[vi], lengths[vi])
 
     # create data loaders
     train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False)
 
     # compute class weights
-    train_labels = y[train_ds.indices].tolist()
+    train_labels = y[ti].tolist()
     counts = torch.bincount(torch.tensor(train_labels, dtype=torch.long), minlength=num_classes)
     eps = 1e-8
     class_weights = (counts.sum().float() / (counts.float() + eps))

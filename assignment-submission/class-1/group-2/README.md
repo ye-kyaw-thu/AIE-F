@@ -3,12 +3,12 @@
 ## Dataset
 
 Our custom dataset comprises Facebook comments, synthetic data generated via generative models, and manually authored entries. It is categorized into the following six emotional classes:
-- 0: Sadness
-- 1: Joy
-- 2: Love
-- 3: Anger
-- 4: Fear
-- 5: Surprise
+- 0: ဝမ်းနည်းမှု (sadness)
+- 1: ပျော်ရွှင်မှု (joy)
+- 2: ချစ်ခင်မှု (love)
+- 3: ဒေါသ (anger)
+- 4: ကြောက်ရွံ့မှု (fear)
+- 5: အံ့အားသင့်မှု (surprise)
 
 ## Project Structure
 
