@@ -23,7 +23,13 @@ import burmese_chat_ui as _burmese_ui  # noqa: E402
 
 render_page = _burmese_ui.render_page
 
-from scripts.chat import chat_turn, load_chat_context  # noqa: E402
+from scripts.chat import (  # noqa: E402
+    DEFAULT_CHECKPOINT_PATH,
+    DEFAULT_STOPWORDS_PATH,
+    chat_turn,
+    load_chat_context,
+    resolve_project_path,
+)
 
 
 class ModularWebBackend:
@@ -162,16 +168,16 @@ def parse_args():
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8765)
     parser.add_argument("--lang", default="mm", choices=["en", "mm"])
-    parser.add_argument("--checkpoint_path", default="./checkpoints/bilstm_smaller_params.pth")
-    parser.add_argument("--stopwords_path", default="./data/stopwords.txt")
+    parser.add_argument("--checkpoint_path", default=DEFAULT_CHECKPOINT_PATH)
+    parser.add_argument("--stopwords_path", default=DEFAULT_STOPWORDS_PATH)
     return parser.parse_args()
 
 
 def main():
     args = parse_args()
     backend = ModularWebBackend(
-        checkpoint_path=args.checkpoint_path,
-        stopwords_path=args.stopwords_path,
+        checkpoint_path=resolve_project_path(args.checkpoint_path),
+        stopwords_path=resolve_project_path(args.stopwords_path),
         lang=args.lang,
     )
     ChatHandler.backend = backend

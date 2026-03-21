@@ -10,7 +10,13 @@ This module depends on:
 
 import argparse
 
-from scripts.chat import launch_custom_ui, launch_streamlit_ui, run_chat
+from scripts.chat import (
+    DEFAULT_CHECKPOINT_PATH,
+    DEFAULT_STOPWORDS_PATH,
+    launch_custom_ui,
+    launch_streamlit_ui,
+    run_chat,
+)
 from scripts.eval import run_eval
 from scripts.train import run_train
 
@@ -34,7 +40,7 @@ def main():
     )
     parser.add_argument(
         "--checkpoint_path",
-        default="./checkpoints/bilstm_smaller_params.pth",
+        default=DEFAULT_CHECKPOINT_PATH,
         help="checkpoint path for train save / eval load / chat load",
     )
 
@@ -50,7 +56,7 @@ def main():
     parser.add_argument("--max_grad_norm", type=float, default=1.0)
 
     # data / preprocessing
-    parser.add_argument("--stopwords_path", default="./data/stopwords.txt")
+    parser.add_argument("--stopwords_path", default=DEFAULT_STOPWORDS_PATH)
     parser.add_argument("--text_col", default="text")
     parser.add_argument("--label_col", default="label")
     parser.add_argument("--max_vocab", type=int, default=5000)

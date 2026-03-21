@@ -19,6 +19,20 @@ from scripts.eval import load_inference_bundle, predict_texts
 from src.eliza import Eliza
 
 
+# single defaults for train/eval/chat entry points (project root = parent of scripts/)
+DEFAULT_CHECKPOINT_PATH = "./checkpoints/bilstm_smaller_params.pth"
+DEFAULT_STOPWORDS_PATH = "./data/stopwords.txt"
+
+
+# function to resolve a path relative to project root so terminal/streamlit/custom_ui load the same files
+def resolve_project_path(path: str) -> str:
+    p = Path(path)
+    if p.is_absolute():
+        return str(p.resolve())
+    root = Path(__file__).resolve().parent.parent
+    return str((root / p).resolve())
+
+
 # condensed palette/fonts from eliza_experiments/burmese_chat_ui.py for streamlit injection
 STREAMLIT_CHAT_CSS = """
 <style>
@@ -126,9 +140,11 @@ def chat_turn(
 # function to run interactive chat inference (see group2-hybrid-eliza.py --mode chat)
 def run_chat(
     checkpoint_path: str,
-    stopwords_path: str = "../data/stopwords.txt",
+    stopwords_path: str = DEFAULT_STOPWORDS_PATH,
     language: str = "mm",
 ):
+    checkpoint_path = resolve_project_path(checkpoint_path)
+    stopwords_path = resolve_project_path(stopwords_path)
     ctx = load_chat_context(checkpoint_path, language=language)
 
     while True:
@@ -151,14 +167,14 @@ def run_chat(
 # function to start streamlit app with env pointing at checkpoint (blocks until streamlit exits)
 def launch_streamlit_ui(
     checkpoint_path: str,
-    stopwords_path: str = "../data/stopwords.txt",
+    stopwords_path: str = DEFAULT_STOPWORDS_PATH,
     language: str = "mm",
 ) -> None:
     root = Path(__file__).resolve().parent.parent
     app = root / "scripts" / "streamlit_chatter.py"
     env = os.environ.copy()
-    env["CHAT_CHECKPOINT"] = str(checkpoint_path)
-    env["CHAT_STOPWORDS"] = str(stopwords_path)
+    env["CHAT_CHECKPOINT"] = resolve_project_path(checkpoint_path)
+    env["CHAT_STOPWORDS"] = resolve_project_path(stopwords_path)
     env["CHAT_LANGUAGE"] = language
     subprocess.run(
         [sys.executable, "-m", "streamlit", "run", str(app), "--server.address", "localhost"],
@@ -171,7 +187,7 @@ def launch_streamlit_ui(
 # function to start custom html/http ui (eliza_experiments/burmese_chat_ui.py page + modular backend)
 def launch_custom_ui(
     checkpoint_path: str,
-    stopwords_path: str = "../data/stopwords.txt",
+    stopwords_path: str = DEFAULT_STOPWORDS_PATH,
     language: str = "mm",
     host: str = "127.0.0.1",
     port: int = 8765,
@@ -189,9 +205,9 @@ def launch_custom_ui(
             "--lang",
             language,
             "--checkpoint_path",
-            str(checkpoint_path),
+            resolve_project_path(checkpoint_path),
             "--stopwords_path",
-            str(stopwords_path),
+            resolve_project_path(stopwords_path),
         ],
         cwd=str(root),
         check=False,
@@ -200,7 +216,7 @@ def launch_custom_ui(
 
 # function to run chat with default values
 def main():
-    run_chat(checkpoint_path="./checkpoints/bilstm_smaller_params.pth", language="mm")
+    run_chat(checkpoint_path=DEFAULT_CHECKPOINT_PATH, language="mm")
 
 # run the script
 if __name__ == "__main__":

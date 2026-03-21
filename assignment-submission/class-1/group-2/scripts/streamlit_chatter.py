@@ -4,7 +4,14 @@ import os
 import random
 import sys
 import streamlit as st
-from scripts.chat import STREAMLIT_CHAT_CSS, chat_turn, load_chat_context
+from scripts.chat import (
+    DEFAULT_CHECKPOINT_PATH,
+    DEFAULT_STOPWORDS_PATH,
+    STREAMLIT_CHAT_CSS,
+    chat_turn,
+    load_chat_context,
+    resolve_project_path,
+)
 
 
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -16,8 +23,8 @@ def _env(name: str, default: str) -> str:
     return os.environ.get(name, default)
 
 
-CHECKPOINT = _env("CHAT_CHECKPOINT", "./checkpoints/bilstm_smaller_params.pth")
-STOPWORDS = _env("CHAT_STOPWORDS", "./data/stopwords.txt")
+CHECKPOINT = resolve_project_path(_env("CHAT_CHECKPOINT", DEFAULT_CHECKPOINT_PATH))
+STOPWORDS = resolve_project_path(_env("CHAT_STOPWORDS", DEFAULT_STOPWORDS_PATH))
 LANGUAGE = _env("CHAT_LANGUAGE", "mm")
 
 
