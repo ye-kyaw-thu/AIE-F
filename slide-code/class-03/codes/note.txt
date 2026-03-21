@@ -1,0 +1,22 @@
+
+## Simple LR
+
+ye@lst-hpc3090:~/aif/lect/3.supervised/codes$ ye@lst-hpc3090:~/aif/lect/3.supervised/codes$ python ./simple_lr.py
+Intercept (phi0): 0.7359741799634063
+Slope (phi1): 0.702711819361961
+ye@lst-hpc3090:~/aif/lect/3.supervised/codes$
+
+## Multiple LR
+
+ye@lst-hpc3090:~/aif/lect/3.supervised/codes$ python ./multiple_lr.py
+Intercept (phi0): 47.5
+Weights (phi1, phi2): [1.86111111 7.22222222]
+Predicted price: 229.44444444444446
+ye@lst-hpc3090:~/aif/lect/3.supervised/codes$
+
+## SGD LR
+
+ye@lst-hpc3090:~/aif/lect/3.supervised/codes$ ye@lst-hpc3090:~/aif/lect/3.supervised/codes$ python ./sgd_lr.py
+Intercept (phi0): 0.7750409307214262
+Slope (phi1): 0.5725701707074317
+ye@lst-hpc3090:~/aif/lect/3.supervised/codes$
