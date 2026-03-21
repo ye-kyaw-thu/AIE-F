@@ -39,13 +39,13 @@ def main():
     )
 
     # training loop
-    parser.add_argument("--epochs", type=int, default=20)
+    parser.add_argument("--epochs", type=int, default=100)
     parser.add_argument("--batch_size", type=int, default=32)
     parser.add_argument("--val_split", type=float, default=0.2)
     parser.add_argument("--max_len", type=int, default=50)
     parser.add_argument("--lr", type=float, default=0.001)
     parser.add_argument("--seed", type=int, default=42)
-    parser.add_argument("--weight_decay", type=float, default=1e-4)
+    parser.add_argument("--weight_decay", type=float, default=1e-5)
     parser.add_argument("--patience", type=int, default=4)
     parser.add_argument("--max_grad_norm", type=float, default=1.0)
 
@@ -70,9 +70,9 @@ def main():
         default=True,
         help="masked attention pooling after lstm (default: on)",
     )
-    parser.add_argument("--embed_dim", type=int, default=128)
-    parser.add_argument("--hidden_dim", type=int, default=64)
-    parser.add_argument("--num_layers", type=int, default=1)
+    parser.add_argument("--embed_dim", type=int, default=512)
+    parser.add_argument("--hidden_dim", type=int, default=256)
+    parser.add_argument("--num_layers", type=int, default=2)
     parser.add_argument("--dropout", type=float, default=0.2)
     parser.add_argument("--pad_idx", type=int, default=0)
 
@@ -86,7 +86,7 @@ def main():
     parser.add_argument(
         "--chat_ui",
         choices=["terminal", "streamlit", "custom_ui"],
-        default="terminal",
+        default="custom_ui",
         help="chat mode: terminal | streamlit | custom_ui",
     )
     parser.add_argument(

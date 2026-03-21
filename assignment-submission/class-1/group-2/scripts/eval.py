@@ -14,11 +14,22 @@ from src.model import EmotionalBiLSTM
 from src.prep_data import drop_invalid_supervised_rows, encode_texts
 
 
+# function to load checkpoint
+def _torch_load_checkpoint(path: str):
+    """
+    Pytorch 2.6+ defaults weights_only=True; full training checkpoints need False (trusted local files).
+    """
+    try:
+        return torch.load(path, map_location="cpu", weights_only=False)
+    except TypeError:
+        return torch.load(path, map_location="cpu")
+
+
 # function to load model and preprocessing artifacts from checkpoint
 def load_inference_bundle(checkpoint_path):
 
     # load details from checkpoint
-    checkpoint = torch.load(checkpoint_path, map_location="cpu")
+    checkpoint = _torch_load_checkpoint(checkpoint_path)
     word2id = checkpoint["vocab"]
     state_dict = checkpoint["state"]
     id2label = checkpoint["id2label"]

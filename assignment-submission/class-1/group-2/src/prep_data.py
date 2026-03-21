@@ -253,6 +253,13 @@ def prepare_train_val_data(
     train_loader = DataLoader(train_ds, batch_size=batch_size, shuffle=True)
     val_loader = DataLoader(val_ds, batch_size=batch_size, shuffle=False)
 
+    n_train = len(train_ds)
+    n_val = len(val_ds)
+    print(
+        f"data: {n_in} rows in file, {len(df)} after cleaning, "
+        f"train={n_train} val={n_val} (val_split={val_split}, batch_size={batch_size})"
+    )
+
     # compute class weights
     train_labels = y[ti].tolist()
     counts = torch.bincount(torch.tensor(train_labels, dtype=torch.long), minlength=num_classes)

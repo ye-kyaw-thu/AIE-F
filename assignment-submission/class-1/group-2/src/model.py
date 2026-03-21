@@ -32,10 +32,10 @@ class EmotionalBiLSTM(nn.Module):
     def __init__(
         self,
         vocab_size,
-        embed_dim=128,
-        hidden_dim=64,
+        embed_dim=512,
+        hidden_dim=256,
         output_dim=6,
-        num_layers=1,
+        num_layers=2,
         dropout=0.2,
         pad_idx=0,
         use_attention=True,
@@ -74,7 +74,7 @@ class EmotionalBiLSTM(nn.Module):
             self.attention = Attention(hidden_dim)
 
         # dropout layer
-        self.dropout = nn.Dropout(dropout)
+        self.dropout_layer = nn.Dropout(dropout)
 
         # fully connected layer
         self.fc = nn.Linear(hidden_dim * 2, output_dim)
@@ -116,6 +116,6 @@ class EmotionalBiLSTM(nn.Module):
             context = torch.cat((h_forward, h_backward), dim=1)
 
         # pass through fully connected layer
-        logits = self.fc(self.dropout(context))
+        logits = self.fc(self.dropout_layer(context))
 
         return logits
