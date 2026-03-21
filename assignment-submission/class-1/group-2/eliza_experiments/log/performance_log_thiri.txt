@@ -1,0 +1,129 @@
+Thiri Experiment 1
+Command:
+uv run python "./eliza/hybrid-eliza-mm-bilstm-attention.py" --lang mm --mode train --data "./data/merged_preprocessed/data_after_downsampling.csv" --model_path "./eliza/eliza_eq_mm_thiri.pth" --epochs 20 --batch_size 32 --val_split 0.1 --seed 42 --lr 0.0007 --embed_dim 128 --hidden_dim 96 --num_layers 2 --dropout 0.35 --weight_decay 0.0001 --patience 4
+
+Script:
+hybrid-eliza-mm-bilstm-attention.py
+
+Dataset:
+data_after_downsampling.csv
+
+Result:
+[*] Training EmotionalBiLSTM on cpu (6 classes)...
+Epoch 1/20 | Loss: 1.7907 | Val Acc: 21.57%
+Epoch 2/20 | Loss: 1.7641 | Val Acc: 31.37%
+Epoch 3/20 | Loss: 1.6502 | Val Acc: 26.47%
+Epoch 4/20 | Loss: 1.4561 | Val Acc: 36.27%
+Epoch 5/20 | Loss: 1.2503 | Val Acc: 35.29%
+Epoch 6/20 | Loss: 1.1059 | Val Acc: 36.27%
+Epoch 7/20 | Loss: 1.0002 | Val Acc: 42.16%
+Epoch 8/20 | Loss: 0.9349 | Val Acc: 40.20%
+Epoch 9/20 | Loss: 0.8324 | Val Acc: 49.02%
+Epoch 10/20 | Loss: 0.7305 | Val Acc: 44.12%
+Epoch 11/20 | Loss: 0.7195 | Val Acc: 41.18%
+Epoch 12/20 | Loss: 0.6535 | Val Acc: 43.14%
+Epoch 13/20 | Loss: 0.5913 | Val Acc: 47.06%
+[*] Early stopping at epoch 13. Best Val Acc: 49.02%
+
+ELIZA: ဘာက သင့်ကို စိတ်အနှောင့်အယှက်ဖြစ်စေတာလဲ။
+You: ကျွန်တော် ဝမ်းနည်းနေတယ်
+ELIZA: အဲဒါကို နည်းနည်းပိုရှင်းပြပါ။
+[EQ Analysis]: Predicted Emotion: အံ့အားသင့်မှု (41.27%)
+You: အရမ်းပျော်တယ်
+ELIZA: ဆက်ပြောပြပါ။
+[EQ Analysis]: Predicted Emotion: ပျော်ရွှင်မှု (92.98%)
+You: စိတ်ဆိုးနေတယ်
+ELIZA: ဆက်ပြောပြပါ။
+[EQ Analysis]: Predicted Emotion: ဝမ်းနည်းမှု (41.26%)
+You: ကြောက်နေတယ်
+ELIZA: အဲဒါကို နည်းနည်းပိုရှင်းပြပါ။
+[EQ Analysis]: Predicted Emotion: ကြောက်ရွံ့မှု (99.76%)
+You: ချစ်တယ်
+ELIZA: နားလည်ပါတယ်။
+[EQ Analysis]: Predicted Emotion: ချစ်ခင်မှု (99.79%)
+You: လီးလိုယဲ
+ELIZA: နားလည်ပါတယ်။
+[EQ Analysis]: Predicted Emotion: ဒေါသ (41.93%)
+You: ကျွန်တော် အနားယူလိုအပ်တယ်
+ELIZA: ဘာကြောင့် အနားယူ အန နာ ား းယ ယူ အနာ နား ားယ းယူ လိုအပ်တာလဲ။
+[EQ Analysis]: Predicted Emotion: ကြောက်ရွံ့မှု (37.03%)
+You: ကျွန်မ အကူအညီလိုအပ်ပါတယ်
+ELIZA: ဘာကြောင့် အကူအညီ အက ကူ ူအ အည ညီ အကူ ကူအ ူအည အညီ လိုအပ်တာလဲ။
+[EQ Analysis]: Predicted Emotion: ပျော်ရွှင်မှု (75.83%)
+You: ငါ စိတ်ဆိုးလို ခံစားရတယ်
+ELIZA: စိတ်ဆိုးလို စိ ိတ တ် ်ဆ ဆိ ို ုး းလ လိ ို စိတ ိတ် တ်ဆ ်ဆိ ဆို ိုး ုးလ းလိ လို လို့ ခံစားရတာ ဘယ်အချိန်က စတာလဲ။
+[EQ Analysis]: Predicted Emotion: ကြောက်ရွံ့မှု (44.09%)
+You: ကျွန်တော် ဝမ်းနည်းလို ခံစားရတယ်
+ELIZA: ဝမ်းနည်းလို ဝမ မ် ်း းန နည ည် ်း းလ လိ ို ဝမ် မ်း ်းန းနည နည် ည်း ်းလ းလိ လို လို့ ခံစားရတာကို ပိုရှင်းပြပါ။
+[EQ Analysis]: Predicted Emotion: ဝမ်းနည်းမှု (53.37%)
+
+======================================================================================================
+
+Thiri Experiment 2
+Command:
+uv run python ".\eliza\hybrid-eliza-mm-improved-v1.0.py" --lang mm --mode train --data ".\data\merged_preprocessed\data_after_downsampling.csv" --model_path ".\eliza\eliza_eq_mm_thiri_improve_v1.pth" --epochs 20 --batch_size 32 --val_split 0.1 --seed 42 --lr 0.0007 --embed_dim 128 --hidden_dim 96 --num_layers 2 --dropout 0.35 --weight_decay 0.0001 --patience 4
+
+Script:
+hybrid-eliza-mm-improved-v1.0.py
+
+Dataset:
+data_after_downsampling.csv
+
+Goal:
+Improve rule-based ELIZA responses and fix Myanmar text corruption issue.
+
+Key Changes:
+- Separated rule-based tokenization from model tokenization
+- Fixed reflect() function to avoid character n-gram usage
+- Added new Myanmar emotion detection regex rules
+- Expanded pattern coverage for natural Myanmar expressions
+- Improved response templates for better conversational quality
+
+Result:
+Training result is same since I just fix for rule based eliza part
+Epoch 1/20 | Loss: 1.7907 | Val Acc: 21.57%
+Epoch 2/20 | Loss: 1.7641 | Val Acc: 31.37%
+Epoch 3/20 | Loss: 1.6502 | Val Acc: 26.47%
+Epoch 4/20 | Loss: 1.4561 | Val Acc: 36.27%
+Epoch 5/20 | Loss: 1.2503 | Val Acc: 35.29%
+Epoch 6/20 | Loss: 1.1059 | Val Acc: 36.27%
+Epoch 7/20 | Loss: 1.0002 | Val Acc: 42.16%
+Epoch 8/20 | Loss: 0.9349 | Val Acc: 40.20%
+Epoch 9/20 | Loss: 0.8324 | Val Acc: 49.02%
+Epoch 10/20 | Loss: 0.7305 | Val Acc: 44.12%
+Epoch 11/20 | Loss: 0.7195 | Val Acc: 41.18%
+Epoch 12/20 | Loss: 0.6535 | Val Acc: 43.14%
+Epoch 13/20 | Loss: 0.5913 | Val Acc: 47.06%
+[*] Early stopping at epoch 13. Best Val Acc: 49.02%
+
+
+ELIZA: မင်္ဂလာပါ။ သင့်စိတ်ထဲမှာရှိတာကို ပြောပြပါ။
+You: ကျွန်တော် အနားယူလိုအပ်တယ်
+ELIZA: အနားယူ ရရင် သက်သာမယ်လို့ ထင်သလား။
+[EQ Analysis]: Predicted Emotion: ကြောက်ရွံ့မှု (37.03%)
+You: ကျွန်တော် ဝမ်းနည်းလို ခံစားရတယ်
+ELIZA: ဘာတွေကြောင့် အခုလို ခံစားနေရတာလဲ။
+[EQ Analysis]: Predicted Emotion: ဝမ်းနည်းမှု (53.37%)
+You: ကျွန်မ အကူအညီလိုအပ်ပါတယ်
+ELIZA: အကူအညီ ရရင် သက်သာမယ်လို့ ထင်သလား။
+[EQ Analysis]: Predicted Emotion: ပျော်ရွှင်မှု (75.83%)
+You: ဒေါသထွက်နေတယ်
+ELIZA: ဘာကြောင့် စိတ်ဆိုးနေရတာလဲ။
+[EQ Analysis]: Predicted Emotion: ပျော်ရွှင်မှု (90.91%)
+You: ဒေါသထွက်နေတယ်
+ELIZA: ဒီအရာက သင့်ကို ဘယ်လို ထိခိုက်စေတာလဲ။
+[EQ Analysis]: Predicted Emotion: ပျော်ရွှင်မှု (90.91%)
+You: ကြောက်နေတယ်
+ELIZA: ဘာကို အများဆုံး စိုးရိမ်နေတာလဲ။
+[EQ Analysis]: Predicted Emotion: ကြောက်ရွံ့မှု (99.76%)
+You: စိတ်မကောင်းဘူး
+ELIZA: အဲဒီလို ခံစားနေရတာကို ပိုပြောပြပါ။
+[EQ Analysis]: Predicted Emotion: ဝမ်းနည်းမှု (79.96%)
+You: မိသားစုကိစ္စနဲ့ စိတ်မကောင်းဘူး
+ELIZA: ဘာတွေကြောင့် အခုလို ခံစားနေရတာလဲ။
+[EQ Analysis]: Predicted Emotion: ဒေါသ (73.23%)
+You: သူငယ်ချင်းနဲ့ အဆင်မပြေဘူး
+ELIZA: အဲဒါကို နည်းနည်းပိုရှင်းပြပါ။
+[EQ Analysis]: Predicted Emotion: ဝမ်းနည်းမှု (36.55%)
+
+======================================================================================================
