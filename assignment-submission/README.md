@@ -2,5 +2,24 @@
 
 ## Assignment No.1
 
+Build a small emotional dataset in the Myanmar language, design several regular expression rules for Myanmar words, and experiment with the provided demo code (*Hybrid-ELIZA.py*).  
+
+The main purpose of this assignment is to understand traditional rule-based chatbots and how they can be combined with deep learning approaches such as bi-LSTM. This is a group project aimed at developing experience in group discussion and brainstorming.  
+
 ## Assignment No.2  
+
+Watch the lecture:  
+"Four Ways of Thinking: Statistical, Interactive, Chaotic and Complex" by David Sumpter:  
+[https://www.youtube.com/watch?v=PPCfDe8TfJQ](https://www.youtube.com/watch?v=PPCfDe8TfJQ)   
+
+Then, write a one-page report on your understanding of the lecture.  
+The main purpose of this assignment is to introduce high-level concepts of applying mathematics in different ways.  
+
+## Assignment No. 3
+
+Python code will be provided for collecting Myanmar handwriting syllable data, including stroke information. Based on the collected data, develop a Myanmar syllable handwriting recognition system.  
+
+The total number of classes (syllables) exceeds 4,400, making this a challenging task.  
+
+The main purpose of this individual assignment is to provide hands-on experience with the full pipeline: data collection, model building, experimentation, and evaluation and to understand the effort involved in each stage.  
 
