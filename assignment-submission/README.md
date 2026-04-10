@@ -19,7 +19,7 @@ The main purpose of this assignment is to introduce high-level concepts of apply
 
 Python code will be provided for collecting Myanmar handwriting syllable data, including stroke information. Based on the collected data, develop a Myanmar syllable handwriting recognition system.  
 
-The total number of classes (syllables) exceeds 4,400, making this a challenging task.  
+The total number of classes (syllables) exceeds 4,300, making this a challenging task.  
 
 The main purpose of this individual assignment is to provide hands-on experience with the full pipeline: data collection, model building, experimentation, and evaluation and to understand the effort involved in each stage.  
 
