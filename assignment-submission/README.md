@@ -1,12 +1,13 @@
 # Assignments
 
-## Assignment No.1
-
+## Assignment No.1  
+### (@Class-1)
 Build a small emotional dataset in the Myanmar language, design several regular expression rules for Myanmar words, and experiment with the provided demo code (*Hybrid-ELIZA.py*).  
 
 The main purpose of this assignment is to understand traditional rule-based chatbots and how they can be combined with deep learning approaches such as bi-LSTM. This is a group project aimed at developing experience in group discussion and brainstorming.  
 
 ## Assignment No.2  
+### (@Class-4)  
 
 Watch the lecture:  
 "Four Ways of Thinking: Statistical, Interactive, Chaotic and Complex" by David Sumpter:  
