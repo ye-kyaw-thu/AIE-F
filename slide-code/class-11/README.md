@@ -4,3 +4,7 @@
 - Code: []()  
 
 ## Invited Speaker-2: Thura Aung (KMITL, Thailand)
+
+- Conference Presentations: [https://github.com/ye-kyaw-thu/AIE-F/tree/main/slide-code/class-11/thura-aung/Conference-Presentations](https://github.com/ye-kyaw-thu/AIE-F/tree/main/slide-code/class-11/thura-aung/Conference-Presentations)    
+- Our Burmese KAN Papers: [https://github.com/ye-kyaw-thu/AIE-F/tree/main/slide-code/class-11/thura-aung/Our-Burmese-KAN-Papers](https://github.com/ye-kyaw-thu/AIE-F/tree/main/slide-code/class-11/thura-aung/Our-Burmese-KAN-Papers)  
+- Slides: [https://github.com/ye-kyaw-thu/AIE-F/tree/main/slide-code/class-11/thura-aung/Slides](https://github.com/ye-kyaw-thu/AIE-F/tree/main/slide-code/class-11/thura-aung/Slides)  
