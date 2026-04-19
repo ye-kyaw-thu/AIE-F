@@ -17,6 +17,7 @@ Then, write a one-page report on your understanding of the lecture.
 The main purpose of this assignment is to introduce high-level concepts of applying mathematics in different ways.  
 
 ## Assignment No.3
+### (@Class-6)  
 
 Python code will be provided for collecting Myanmar handwriting syllable data, including stroke information. Based on the collected data, develop a Myanmar syllable handwriting recognition system.  
 
@@ -25,6 +26,7 @@ The total number of classes (syllables) exceeds 4,300, making this a challenging
 The main purpose of this individual assignment is to provide hands-on experience with the full pipeline: data collection, model building, experimentation, and evaluation and to understand the effort involved in each stage.  
 
 ## Assignment No.4
+### (@Class-10)  
 
 For Assignment 4, I would like you to brainstorm with your group members to identify a real-world problem near you, or another interesting problem that can be solved using Ripple-Down Rules (RDR). Then, prepare simulation data (e.g., in CSV or Excel format) and build an RDR tree or set of rules using the demo Python code [scrdr_interactive.py](https://github.com/ye-kyaw-thu/SCRDR_tutorial/blob/main/inter/scrdr_interactive.py).  
 
