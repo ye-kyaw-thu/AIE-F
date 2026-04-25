@@ -1,0 +1,240 @@
+{
+  "condition": null,
+  "conclusion": "Unknown",
+  "if_true": {
+    "condition": {
+      "col": "Social_Interaction_Score",
+      "op": "<",
+      "val": "3"
+    },
+    "conclusion": "1",
+    "if_true": {
+      "condition": {
+        "col": "Stress_Level",
+        "op": "<",
+        "val": "2"
+      },
+      "conclusion": "0",
+      "if_true": null,
+      "if_false": {
+        "condition": {
+          "col": "Burnout",
+          "op": "==",
+          "val": "0"
+        },
+        "conclusion": "0",
+        "if_true": {
+          "condition": {
+            "col": "Stress_Level",
+            "op": ">",
+            "val": "8"
+          },
+          "conclusion": "1",
+          "if_true": null,
+          "if_false": null
+        },
+        "if_false": {
+          "condition": {
+            "col": "Anxiety",
+            "op": "==",
+            "val": "0"
+          },
+          "conclusion": "0",
+          "if_true": {
+            "condition": {
+              "col": "Burnout",
+              "op": "==",
+              "val": "1"
+            },
+            "conclusion": "1",
+            "if_true": null,
+            "if_false": null
+          },
+          "if_false": {
+            "condition": {
+              "col": "Work_Study_Hours",
+              "op": "<",
+              "val": "4"
+            },
+            "conclusion": "0",
+            "if_true": null,
+            "if_false": null
+          }
+        }
+      }
+    },
+    "if_false": {
+      "condition": {
+        "col": "Burnout",
+        "op": "==",
+        "val": "0"
+      },
+      "conclusion": "0",
+      "if_true": {
+        "condition": {
+          "col": "Sleep_Hours",
+          "op": "<",
+          "val": "5"
+        },
+        "conclusion": "1",
+        "if_true": {
+          "condition": {
+            "col": "Stress_Level",
+            "op": "<",
+            "val": "3"
+          },
+          "conclusion": "0",
+          "if_true": null,
+          "if_false": null
+        },
+        "if_false": {
+          "condition": {
+            "col": "Stress_Level",
+            "op": ">",
+            "val": "8"
+          },
+          "conclusion": "1",
+          "if_true": null,
+          "if_false": {
+            "condition": {
+              "col": "Work_Study_Hours",
+              "op": ">",
+              "val": "10"
+            },
+            "conclusion": "1",
+            "if_true": {
+              "condition": {
+                "col": "Stress_Level",
+                "op": "<",
+                "val": "5"
+              },
+              "conclusion": "0",
+              "if_true": null,
+              "if_false": null
+            },
+            "if_false": {
+              "condition": {
+                "col": "Work_Study_Hours",
+                "op": "<",
+                "val": "3"
+              },
+              "conclusion": "1",
+              "if_true": null,
+              "if_false": null
+            }
+          }
+        }
+      },
+      "if_false": {
+        "condition": {
+          "col": "Sleep_Hours",
+          "op": "<",
+          "val": "5"
+        },
+        "conclusion": "1",
+        "if_true": {
+          "condition": {
+            "col": "Anxiety",
+            "op": "==",
+            "val": "0"
+          },
+          "conclusion": "0",
+          "if_true": null,
+          "if_false": {
+            "condition": {
+              "col": "Stress_Level",
+              "op": "<",
+              "val": "4"
+            },
+            "conclusion": "0",
+            "if_true": null,
+            "if_false": null
+          }
+        },
+        "if_false": {
+          "condition": {
+            "col": "Stress_Level",
+            "op": "<",
+            "val": "2"
+          },
+          "conclusion": "0",
+          "if_true": null,
+          "if_false": {
+            "condition": {
+              "col": "Burnout",
+              "op": "==",
+              "val": "1"
+            },
+            "conclusion": "1",
+            "if_true": {
+              "condition": {
+                "col": "Anxiety",
+                "op": "==",
+                "val": "0"
+              },
+              "conclusion": "0",
+              "if_true": {
+                "condition": {
+                  "col": "Stress_Level",
+                  "op": ">",
+                  "val": "8"
+                },
+                "conclusion": "1",
+                "if_true": {
+                  "condition": {
+                    "col": "Sleep_Hours",
+                    "op": ">",
+                    "val": "8"
+                  },
+                  "conclusion": "0",
+                  "if_true": null,
+                  "if_false": null
+                },
+                "if_false": {
+                  "condition": {
+                    "col": "Work_Study_Hours",
+                    "op": ">",
+                    "val": "9"
+                  },
+                  "conclusion": "1",
+                  "if_true": {
+                    "condition": {
+                      "col": "Stress_Level",
+                      "op": "<",
+                      "val": "7"
+                    },
+                    "conclusion": "0",
+                    "if_true": null,
+                    "if_false": null
+                  },
+                  "if_false": null
+                }
+              },
+              "if_false": {
+                "condition": {
+                  "col": "Sleep_Hours",
+                  "op": ">",
+                  "val": "5"
+                },
+                "conclusion": "0",
+                "if_true": {
+                  "condition": {
+                    "col": "Stress_Level",
+                    "op": ">",
+                    "val": "8"
+                  },
+                  "conclusion": "1",
+                  "if_true": null,
+                  "if_false": null
+                },
+                "if_false": null
+              }
+            },
+            "if_false": null
+          }
+        }
+      }
+    }
+  },
+  "if_false": null
+}
