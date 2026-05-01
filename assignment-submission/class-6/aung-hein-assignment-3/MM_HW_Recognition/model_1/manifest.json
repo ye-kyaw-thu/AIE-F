@@ -1,0 +1,4 @@
+{
+  "artifact_file": "frozen_decoder.pkl",
+  "notes": "Production baseline decoder: syllable global expert + unit same-base specialist"
+}

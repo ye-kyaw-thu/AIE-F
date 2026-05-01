@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no"
+    />
+    <title>Myanmar HW Collector</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Noto+Sans+Myanmar&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #0e0f11;
+        --surface: #16181c;
+        --border: #2a2d35;
+        --accent: #f5c518;
+        --accent2: #e05a2b;
+        --text: #e8e8e8;
+        --muted: #6b7280;
+        --canvas-bg: #1a1c21;
+        --radius: 10px;
+        --mono: "IBM Plex Mono", monospace;
+      }
+
+      html,
+      body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--mono);
+        overscroll-behavior: none;
+        touch-action: none;
+      }
+
+      #app {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh;
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 0;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 16px 8px;
+        border-bottom: 1px solid var(--border);
+        flex-shrink: 0;
+      }
+      .logo {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+      .user-badge {
+        font-size: 11px;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 4px 8px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        transition: border-color 0.2s;
+      }
+      .user-badge:hover {
+        border-color: var(--accent);
+      }
+      .user-badge span {
+        color: var(--text);
+        margin-left: 4px;
+      }
+
+      #progress-wrap {
+        padding: 8px 16px 0;
+        flex-shrink: 0;
+      }
+      .prog-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .prog-bar-bg {
+        height: 4px;
+        background: var(--border);
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .prog-bar-fill {
+        height: 100%;
+        background: var(--accent);
+        border-radius: 2px;
+        transition: width 0.4s ease;
+        width: 0%;
+      }
+
+      #syllable-box {
+        flex-shrink: 0;
+        text-align: center;
+        padding: 14px 16px 10px;
+        border-bottom: 1px solid var(--border);
+      }
+      #line-counter {
+        font-size: 10px;
+        color: var(--muted);
+        letter-spacing: 0.08em;
+        margin-bottom: 6px;
+      }
+      #syllable-text {
+        font-family: "Noto Sans Myanmar", serif;
+        font-size: 42px;
+        line-height: 1.3;
+        color: var(--text);
+        letter-spacing: 0.05em;
+        min-height: 56px;
+      }
+
+      #canvas-wrap {
+        flex: 1;
+        position: relative;
+        padding: 12px 16px;
+        min-height: 0;
+      }
+      #draw-canvas {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: var(--canvas-bg);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        cursor: crosshair;
+        touch-action: none;
+      }
+      #stroke-count {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        font-size: 10px;
+        color: var(--muted);
+        pointer-events: none;
+      }
+
+      #controls {
+        flex-shrink: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 8px;
+        padding: 10px 16px 16px;
+        border-top: 1px solid var(--border);
+      }
+      .btn {
+        font-family: var(--mono);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 12px 4px;
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--surface);
+        color: var(--text);
+        cursor: pointer;
+        transition: all 0.15s;
+        -webkit-tap-highlight-color: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+      }
+      .btn:active {
+        transform: scale(0.95);
+      }
+      .btn svg {
+        flex-shrink: 0;
+      }
+      .btn.accent {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .btn.danger {
+        border-color: #ef4444;
+        color: #ef4444;
+      }
+      .btn.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #000;
+      }
+      .btn.primary:active {
+        background: #d4ab12;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.75);
+        z-index: 100;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .overlay.open {
+        display: flex;
+      }
+      .sheet {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 18px 18px 0 0;
+        width: 100%;
+        max-width: 640px;
+        padding: 24px 20px 36px;
+        animation: slideUp 0.25s ease;
+      }
+      @keyframes slideUp {
+        from {
+          transform: translateY(100%);
+        }
+        to {
+          transform: translateY(0);
+        }
+      }
+      .sheet h2 {
+        font-size: 14px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin-bottom: 16px;
+      }
+
+      #user-list {
+        max-height: 220px;
+        overflow-y: auto;
+        margin-bottom: 16px;
+      }
+      .user-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        margin-bottom: 6px;
+        cursor: pointer;
+        transition: border-color 0.2s;
+      }
+      .user-item:hover,
+      .user-item.active {
+        border-color: var(--accent);
+      }
+      .user-item .uname {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .user-item .uprog {
+        font-size: 10px;
+        color: var(--muted);
+      }
+
+      .form-group {
+        margin-bottom: 12px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 4px;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 10px 12px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text);
+        font-family: var(--mono);
+        font-size: 14px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .form-group input:focus {
+        border-color: var(--accent);
+      }
+
+      #toast {
+        position: fixed;
+        bottom: 160px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        background: var(--accent);
+        color: #000;
+        font-family: var(--mono);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        padding: 8px 20px;
+        border-radius: 20px;
+        opacity: 0;
+        transition:
+          opacity 0.2s,
+          transform 0.2s;
+        pointer-events: none;
+        white-space: nowrap;
+        z-index: 200;
+      }
+      #toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      #toast.error {
+        background: var(--accent2);
+        color: #fff;
+      }
+
+      .sheet-close {
+        float: right;
+        font-size: 20px;
+        color: var(--muted);
+        cursor: pointer;
+        line-height: 1;
+        margin-top: -4px;
+      }
+      .sheet-btns {
+        display: flex;
+        gap: 8px;
+        margin-top: 4px;
+      }
+      .sheet-btns .btn {
+        flex: 1;
+        justify-content: center;
+      }
+
+      #jump-bar {
+        flex-shrink: 0;
+        display: flex;
+        gap: 8px;
+        padding: 0 16px 12px;
+      }
+      #jump-input {
+        flex: 1;
+        padding: 10px 12px;
+        background: var(--surface);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text);
+        font-family: var(--mono);
+        font-size: 13px;
+        outline: none;
+        transition: border-color 0.2s;
+        min-width: 0;
+      }
+      #jump-input:focus {
+        border-color: var(--accent);
+      }
+      #jump-bar .btn {
+        flex-shrink: 0;
+        padding: 10px 16px;
+        flex-direction: row;
+        gap: 6px;
+      }
+
+      #browser-overlay .sheet {
+        display: flex;
+        flex-direction: column;
+        max-height: 92dvh;
+        padding-bottom: 20px;
+      }
+      .browser-user-sel select {
+        width: 100%;
+        padding: 7px 10px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text);
+        font-family: var(--mono);
+        font-size: 12px;
+        outline: none;
+        margin-bottom: 10px;
+      }
+      .color-tabs {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 6px;
+      }
+      .color-tab {
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: none;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .color-tab.active {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      #gallery-grid {
+        flex: 1;
+        overflow-y: auto;
+        overflow-x: hidden;
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        scrollbar-gutter: stable;
+        padding-right: 10px;
+      }
+      .gallery-card {
+        background: var(--canvas-bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        display: flex;
+        flex-direction: column;
+        transition: border-color 0.15s;
+      }
+      .gallery-card:hover {
+        border-color: var(--accent);
+      }
+      .gallery-card img {
+        width: 100%;
+        height: 100px;
+        object-fit: contain;
+        background: #fff;
+        display: block;
+        image-rendering: pixelated;
+        border-radius: var(--radius) var(--radius) 0 0;
+      }
+      .gallery-card .card-meta {
+        padding: 6px 6px 5px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .card-label {
+        font-family: "Noto Sans Myanmar", serif;
+        font-size: 20px;
+        line-height: 1.6;
+        color: var(--text);
+        white-space: nowrap;
+        overflow: visible;
+        min-height: 32px;
+      }
+      .card-fname {
+        font-size: 9px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .card-del {
+        margin-top: 4px;
+        width: 100%;
+        font-family: var(--mono);
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: 4px 0;
+        border: 1px solid #ef444440;
+        border-radius: 5px;
+        background: none;
+        color: #ef4444;
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .card-del:hover {
+        background: #ef444420;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <div class="logo">Myanmar HW Collector</div>
+        <div style="display: flex; gap: 8px; align-items: center">
+          <div
+            class="user-badge"
+            onclick="openBrowser()"
+            title="Browse saved samples"
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              style="vertical-align: middle"
+            >
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+            </svg>
+            <span>Browse</span>
+          </div>
+          <div class="user-badge" onclick="openUserSheet()">
+            User: <span id="hdr-user">— select —</span>
+          </div>
+        </div>
+      </header>
+
+      <div id="progress-wrap">
+        <div class="prog-row">
+          <span>Progress</span>
+          <span id="prog-label">0 / 0</span>
+        </div>
+        <div class="prog-bar-bg">
+          <div class="prog-bar-fill" id="prog-fill"></div>
+        </div>
+      </div>
+
+      <div id="syllable-box">
+        <div id="line-counter">LINE 1</div>
+        <div id="syllable-text">—</div>
+      </div>
+
+      <div id="canvas-wrap">
+        <canvas id="draw-canvas"></canvas>
+        <div id="stroke-count">0 strokes</div>
+      </div>
+
+      <div id="controls">
+        <button class="btn accent" onclick="prevLine()">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Prev
+        </button>
+        <button class="btn accent" onclick="nextLine()">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+          Next
+        </button>
+        <button class="btn" onclick="undoStroke()">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 14 4 9 9 4" />
+            <path d="M20 20v-7a4 4 0 0 0-4-4H4" />
+          </svg>
+          Undo
+        </button>
+        <button class="btn danger" onclick="clearCanvas()">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="3 6 5 6 21 6" />
+            <path d="M19 6l-1 14H6L5 6" />
+            <path d="M10 11v6M14 11v6" />
+          </svg>
+          Clear
+        </button>
+        <button class="btn primary" onclick="saveSample()">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <path
+              d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+            />
+            <polyline points="17 21 17 13 7 13 7 21" />
+            <polyline points="7 3 7 8 15 8" />
+          </svg>
+          Save
+        </button>
+      </div>
+      <div id="jump-bar">
+        <input
+          id="jump-input"
+          type="number"
+          inputmode="numeric"
+          min="1"
+          placeholder="Line no…"
+          onkeydown="if (event.key === 'Enter') jumpLine();"
+        />
+        <button class="btn accent" onclick="jumpLine()">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="13 6 19 12 13 18" />
+          </svg>
+          Jump
+        </button>
+      </div>
+    </div>
+
+    <div id="toast"></div>
+
+    <div
+      class="overlay"
+      id="user-overlay"
+      onclick="closeSheet(event, 'user-overlay')"
+    >
+      <div class="sheet">
+        <h2>
+          Users
+          <span class="sheet-close" onclick="closeOverlay('user-overlay')"
+            >×</span
+          >
+        </h2>
+        <div id="user-list"></div>
+        <div class="sheet-btns">
+          <button class="btn accent" onclick="openNewUserSheet()">
+            + New User
+          </button>
+          <button class="btn" onclick="closeOverlay('user-overlay')">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay"
+      id="newuser-overlay"
+      onclick="closeSheet(event, 'newuser-overlay')"
+    >
+      <div class="sheet">
+        <h2>
+          New User
+          <span class="sheet-close" onclick="closeOverlay('newuser-overlay')"
+            >×</span
+          >
+        </h2>
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="f-name" placeholder="e.g. Kyaw Zin" />
+        </div>
+        <div class="form-group">
+          <label>Age</label>
+          <input
+            type="number"
+            id="f-age"
+            placeholder="e.g. 25"
+            inputmode="numeric"
+          />
+        </div>
+        <div class="form-group">
+          <label>Sex</label>
+          <select id="f-sex">
+            <option value="">— select —</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Highest Education</label>
+          <input type="text" id="f-edu" placeholder="e.g. Bachelor" />
+        </div>
+        <div class="sheet-btns" style="margin-top: 16px">
+          <button class="btn primary" onclick="createUser()">Create</button>
+          <button class="btn" onclick="closeOverlay('newuser-overlay')">
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="overlay"
+      id="browser-overlay"
+      onclick="closeSheet(event, 'browser-overlay')"
+    >
+      <div class="sheet" id="browser-sheet">
+        <h2>
+          Gallery
+          <span class="sheet-close" onclick="closeOverlay('browser-overlay')"
+            >×</span
+          >
+        </h2>
+        <div class="browser-user-sel">
+          <select id="browser-user-sel" onchange="browserLoadGallery()">
+            <option value="">— select user —</option>
+          </select>
+        </div>
+        <div class="color-tabs">
+          <button
+            class="color-tab active"
+            data-mode="single"
+            onclick="switchGalleryTab('single', this)"
+          >
+            Single
+          </button>
+          <button
+            class="color-tab"
+            data-mode="stroke"
+            onclick="switchGalleryTab('stroke', this)"
+          >
+            Stroke
+          </button>
+          <button
+            class="color-tab"
+            data-mode="time"
+            onclick="switchGalleryTab('time', this)"
+          >
+            Time
+          </button>
+        </div>
+        <div
+          id="gallery-status"
+          style="
+            font-size: 10px;
+            color: var(--muted);
+            margin-bottom: 8px;
+            min-height: 14px;
+          "
+        ></div>
+        <div id="gallery-grid"></div>
+      </div>
+    </div>
+
+    <script>
+      let lines = [];
+      let currentIndex = 0;
+      let currentUser = null;
+      let strokes = [];
+      let currentStroke = null;
+      let totalSaved = 0;
+      let isDrawing = false;
+      let saveCountForLine = 0; 
+      const SAVES_TO_ADVANCE = 3; 
+
+      const canvas = document.getElementById("draw-canvas");
+      const ctx = canvas.getContext("2d");
+
+      function resizeCanvas() {
+        const wrap = document.getElementById("canvas-wrap");
+        const dpr = window.devicePixelRatio || 1;
+        const w = wrap.clientWidth - 32;
+        const h = wrap.clientHeight - 24;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+        ctx.scale(dpr, dpr);
+        redraw();
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+
+      function getPos(e) {
+        const r = canvas.getBoundingClientRect();
+        const src = e.touches ? e.touches[0] : e;
+        return {
+          x: Math.round(src.clientX - r.left),
+          y: Math.round(src.clientY - r.top),
+          t: parseFloat((Date.now() / 1000).toFixed(6)),
+        };
+      }
+
+      function startDraw(e) {
+        e.preventDefault();
+        const p = getPos(e);
+        currentStroke = [p];
+        isDrawing = true;
+      }
+
+      function moveDraw(e) {
+        if (!isDrawing || !currentStroke) return;
+        e.preventDefault();
+        const p = getPos(e);
+        currentStroke.push(p);
+        redraw();
+      }
+
+      function endDraw(e) {
+        if (!isDrawing) return;
+        e.preventDefault();
+        if (currentStroke && currentStroke.length > 1) {
+          strokes.push(currentStroke);
+        }
+        currentStroke = null;
+        isDrawing = false;
+        updateStrokeCount();
+        redraw();
+      }
+
+      canvas.addEventListener("mousedown", startDraw);
+      canvas.addEventListener("mousemove", moveDraw);
+      canvas.addEventListener("mouseup", endDraw);
+      canvas.addEventListener("touchstart", startDraw, { passive: false });
+      canvas.addEventListener("touchmove", moveDraw, { passive: false });
+      canvas.addEventListener("touchend", endDraw, { passive: false });
+
+      function redraw() {
+        const dpr = window.devicePixelRatio || 1;
+        const w = canvas.width / dpr;
+        const h = canvas.height / dpr;
+
+        ctx.clearRect(0, 0, w, h);
+
+        ctx.strokeStyle = "rgba(255,255,255,0.03)";
+        ctx.lineWidth = 1;
+        const step = 30;
+        for (let x = 0; x <= w; x += step) {
+          ctx.beginPath();
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, h);
+          ctx.stroke();
+        }
+        for (let y = 0; y <= h; y += step) {
+          ctx.beginPath();
+          ctx.moveTo(0, y);
+          ctx.lineTo(w, y);
+          ctx.stroke();
+        }
+
+        if (strokes.length === 0 && !currentStroke) {
+          ctx.strokeStyle = "rgba(255,255,255,0.05)";
+          ctx.lineWidth = 1;
+          ctx.setLineDash([4, 6]);
+          ctx.beginPath();
+          ctx.moveTo(w / 2, h / 2 - 20);
+          ctx.lineTo(w / 2, h / 2 + 20);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(w / 2 - 20, h / 2);
+          ctx.lineTo(w / 2 + 20, h / 2);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+
+        ctx.strokeStyle = "#f5c518";
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = "round";
+        ctx.lineJoin = "round";
+
+        const drawStroke = (s) => {
+          if (s.length < 2) return;
+          ctx.beginPath();
+          ctx.moveTo(s[0].x, s[0].y);
+          for (let i = 1; i < s.length; i++) {
+            ctx.lineTo(s[i].x, s[i].y);
+          }
+          ctx.stroke();
+        };
+
+        strokes.forEach(drawStroke);
+        if (currentStroke) drawStroke(currentStroke);
+      }
+
+      function updateStrokeCount() {
+        document.getElementById("stroke-count").textContent =
+          strokes.length === 1 ? "1 stroke" : `${strokes.length} strokes`;
+      }
+
+      function clearCanvas() {
+        strokes = [];
+        currentStroke = null;
+        isDrawing = false;
+        updateStrokeCount();
+        redraw();
+      }
+
+      function undoStroke() {
+        if (strokes.length > 0) {
+          strokes.pop();
+          updateStrokeCount();
+          redraw();
+        }
+      }
+
+      function updateDisplay() {
+        if (!lines.length) return;
+        document.getElementById("syllable-text").textContent =
+          lines[currentIndex];
+        document.getElementById("line-counter").textContent =
+          `LINE ${currentIndex + 1} / ${lines.length}`;
+      }
+
+      function prevLine() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          saveCountForLine = 0;
+          updateDisplay();
+        }
+      }
+
+      function nextLine() {
+        if (currentIndex < lines.length - 1) {
+          currentIndex++;
+          saveCountForLine = 0;
+          updateDisplay();
+        }
+      }
+
+      function jumpLine() {
+        const val = parseInt(document.getElementById("jump-input").value);
+        if (!isNaN(val) && val >= 1 && val <= lines.length) {
+          currentIndex = val - 1;
+          saveCountForLine = 0;
+          updateDisplay();
+          clearCanvas();
+          document.getElementById("jump-input").value = "";
+          toast(`Jumped to line ${val}`);
+        } else {
+          toast(`Enter 1 – ${lines.length}`, true);
+        }
+      }
+
+      function updateProgress(saved) {
+        totalSaved = saved;
+        const pct = lines.length ? (saved / lines.length) * 100 : 0;
+        document.getElementById("prog-fill").style.width = pct + "%";
+        document.getElementById("prog-label").textContent =
+          `${saved} / ${lines.length}`;
+      }
+
+      async function saveSample() {
+        if (!currentUser) {
+          toast("Select a user first", true);
+          return;
+        }
+        if (strokes.length === 0) {
+          toast("Draw something first", true);
+          return;
+        }
+
+        const payload = {
+          user: currentUser,
+          index: currentIndex,
+          strokes: strokes,
+        };
+
+        try {
+          const r = await fetch("/api/save", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const d = await r.json();
+          if (d.ok) {
+            saveCountForLine++;
+            const remaining = SAVES_TO_ADVANCE - saveCountForLine;
+            if (remaining > 0) {
+              toast(
+                `Saved → ${d.file}  (${saveCountForLine}/${SAVES_TO_ADVANCE})`,
+              );
+            } else {
+              toast(`Saved → ${d.file}  ✓ moving to next line`);
+            }
+            updateProgress(d.progress);
+            clearCanvas();
+            // advance only after SAVES_TO_ADVANCE saves on this line
+            if (saveCountForLine >= SAVES_TO_ADVANCE) {
+              saveCountForLine = 0;
+              if (currentIndex < lines.length - 1) {
+                setTimeout(() => {
+                  currentIndex++;
+                  updateDisplay();
+                }, 400);
+              }
+            }
+          } else {
+            toast(d.error || "Save failed", true);
+          }
+        } catch (err) {
+          toast("Network error", true);
+        }
+      }
+
+      async function loadUsers() {
+        const r = await fetch("/api/users");
+        const d = await r.json();
+        const list = document.getElementById("user-list");
+        list.innerHTML = "";
+        d.users.forEach((u) => {
+          const pct = d.total ? Math.round((u.progress / d.total) * 100) : 0;
+          const el = document.createElement("div");
+          el.className =
+            "user-item" + (u.name === currentUser ? " active" : "");
+          el.innerHTML = `
+      <div>
+        <div class="uname">${u.name}</div>
+        <div class="uprog">${u.progress}/${d.total} samples (${pct}%)</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    `;
+          el.onclick = () => selectUser(u.name, u.progress);
+          list.appendChild(el);
+        });
+      }
+
+      function selectUser(name, progress) {
+        currentUser = name;
+        saveCountForLine = 0;
+        document.getElementById("hdr-user").textContent = name;
+        updateProgress(progress);
+        currentIndex = Math.min(progress, lines.length - 1);
+        updateDisplay();
+        clearCanvas();
+        closeOverlay("user-overlay");
+        toast(`User: ${name} — line ${currentIndex + 1}`);
+      }
+
+      async function createUser() {
+        const name = document.getElementById("f-name").value.trim();
+        const age = document.getElementById("f-age").value.trim();
+        const sex = document.getElementById("f-sex").value;
+        const edu = document.getElementById("f-edu").value.trim();
+
+        if (!name) {
+          toast("Name required", true);
+          return;
+        }
+
+        const r = await fetch("/api/users", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, age, sex, education: edu }),
+        });
+        const d = await r.json();
+        if (d.ok) {
+          closeOverlay("newuser-overlay");
+          selectUser(d.name, 0);
+          ["f-name", "f-age", "f-edu"].forEach(
+            (id) => (document.getElementById(id).value = ""),
+          );
+          document.getElementById("f-sex").value = "";
+          loadUsers();
+        } else {
+          toast(d.error || "Error", true);
+        }
+      }
+
+      function openUserSheet() {
+        loadUsers();
+        document.getElementById("user-overlay").classList.add("open");
+      }
+
+      function openNewUserSheet() {
+        closeOverlay("user-overlay");
+        document.getElementById("newuser-overlay").classList.add("open");
+      }
+
+      function closeOverlay(id) {
+        document.getElementById(id).classList.remove("open");
+      }
+
+      function closeSheet(e, id) {
+        if (e.target.id === id) closeOverlay(id);
+      }
+
+      let toastTimer;
+      function toast(msg, isError = false) {
+        const el = document.getElementById("toast");
+        el.textContent = msg;
+        el.className = "show" + (isError ? " error" : "");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => (el.className = ""), 2200);
+      }
+
+      let galleryMode = "single";
+      let galleryUser = null;
+
+      const galleryCache = {};
+
+      function galleryCacheKey(user, mode) {
+        return `${user}|${mode}`;
+      }
+
+      async function openBrowser() {
+        const r = await fetch("/api/users");
+        const d = await r.json();
+        const sel = document.getElementById("browser-user-sel");
+        sel.innerHTML = '<option value="">— select user —</option>';
+        d.users.forEach((u) => {
+          const o = document.createElement("option");
+          o.value = u.name;
+          o.textContent = `${u.name} (${u.progress} samples)`;
+          if (u.name === currentUser) o.selected = true;
+          sel.appendChild(o);
+        });
+        galleryMode = "single";
+        document.querySelectorAll(".color-tab").forEach((b) => {
+          b.classList.toggle("active", b.dataset.mode === "single");
+        });
+        document.getElementById("gallery-grid").innerHTML = "";
+        document.getElementById("gallery-status").textContent = "";
+        document.getElementById("browser-overlay").classList.add("open");
+        if (currentUser) {
+          sel.value = currentUser;
+          browserLoadGallery();
+        }
+      }
+
+      function switchGalleryTab(mode, btn) {
+        if (mode === galleryMode) return;
+        galleryMode = mode;
+        document
+          .querySelectorAll(".color-tab")
+          .forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        browserLoadGallery();
+      }
+
+      async function browserLoadGallery() {
+        const user = document.getElementById("browser-user-sel").value;
+        const grid = document.getElementById("gallery-grid");
+        const status = document.getElementById("gallery-status");
+        grid.innerHTML = "";
+        if (!user) {
+          status.textContent = "";
+          return;
+        }
+        galleryUser = user;
+
+        const key = galleryCacheKey(user, galleryMode);
+        const entry = galleryCache[key]; 
+
+        if (entry && entry.items.length > 0) {
+          entry.items.forEach((item) => grid.appendChild(item._card));
+          status.textContent = `${entry.items.length} sample${entry.items.length !== 1 ? "s" : ""} — ${galleryMode} mode (checking for new…)`;
+        } else {
+          status.textContent = `Generating ${galleryMode} images…`;
+        }
+
+        const knownTxts = entry ? entry.items.map((i) => i.txt) : [];
+
+        let d;
+        try {
+          const r = await fetch(
+            `/api/gallery/${encodeURIComponent(user)}/${galleryMode}`,
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ known: knownTxts }),
+            },
+          );
+          d = await r.json();
+        } catch (e) {
+          status.textContent = "Network error.";
+          return;
+        }
+        if (d.error) {
+          status.textContent = d.error;
+          return;
+        }
+
+        const newItems = d.items;
+
+        if (!galleryCache[key]) galleryCache[key] = { items: [] };
+        const cacheEntry = galleryCache[key];
+
+        if (newItems.length > 0) {
+          newItems.forEach((item) => {
+            item._card = makeCard(item, user); 
+            cacheEntry.items.push(item);
+            grid.appendChild(item._card);
+          });
+        } else if (cacheEntry.items.length === 0) {
+          grid.innerHTML =
+            '<div style="color:var(--muted);font-size:12px;grid-column:1/-1;padding:8px">No samples yet.</div>';
+        }
+
+        const total = cacheEntry.items.length;
+        status.textContent = `${total} sample${total !== 1 ? "s" : ""} — ${galleryMode} mode`;
+      }
+
+      function makeCard(item, user) {
+        const card = document.createElement("div");
+        card.className = "gallery-card";
+        card.dataset.txt = item.txt;
+        card.innerHTML = `
+    <img src="${item.img}" alt="${item.txt}" loading="lazy">
+    <div class="card-meta">
+      <div class="card-label">${item.label || "—"}</div>
+      <div class="card-fname">${item.txt}</div>
+      <button class="card-del" onclick="galleryDelete('${user}','${item.txt}',this)">Delete</button>
+    </div>
+  `;
+        return card;
+      }
+
+      async function galleryDelete(user, fname, btn) {
+        if (!confirm(`Delete ${fname} and all its images?`)) return;
+        const r = await fetch(
+          `/api/delete/${encodeURIComponent(user)}/${encodeURIComponent(fname)}`,
+          { method: "DELETE" },
+        );
+        const d = await r.json();
+        if (d.ok) {
+          ["single", "stroke", "time"].forEach((mode) => {
+            const key = galleryCacheKey(user, mode);
+            if (galleryCache[key]) {
+              galleryCache[key].items = galleryCache[key].items.filter(
+                (i) => i.txt !== fname,
+              );
+            }
+          });
+          btn.closest(".gallery-card").remove();
+          const remaining = document.querySelectorAll(
+            "#gallery-grid .gallery-card",
+          ).length;
+          document.getElementById("gallery-status").textContent =
+            `${remaining} sample${remaining !== 1 ? "s" : ""} — ${galleryMode} mode`;
+          if (user === currentUser) updateProgress(d.progress);
+          toast(`Deleted ${fname}`);
+        } else {
+          toast(d.error || "Delete failed", true);
+        }
+      }
+
+      async function init() {
+        const r = await fetch("/api/lines");
+        const d = await r.json();
+        lines = d.lines;
+        updateDisplay();
+        updateProgress(0);
+        resizeCanvas();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
