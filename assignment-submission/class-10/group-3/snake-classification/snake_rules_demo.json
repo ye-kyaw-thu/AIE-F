@@ -1,0 +1,177 @@
+{
+  "condition": null,
+  "conclusion": "Unknown",
+  "if_true": {
+    "condition": {
+      "col": "head_shape",
+      "op": "==",
+      "val": "Oval"
+    },
+    "conclusion": "Monocled Cobra",
+    "if_true": {
+      "condition": {
+        "col": "is_venomous",
+        "op": "==",
+        "val": "True"
+      },
+      "conclusion": "Monocled Cobra",
+      "if_true": {
+        "condition": {
+          "col": "body_pattern",
+          "op": "==",
+          "val": "Banded"
+        },
+        "conclusion": "King Cobra",
+        "if_true": {
+          "condition": {
+            "col": "habitat",
+            "op": "==",
+            "val": "Water"
+          },
+          "conclusion": "Red-necked Keelback",
+          "if_true": null,
+          "if_false": null
+        },
+        "if_false": {
+          "condition": {
+            "col": "body_pattern",
+            "op": "==",
+            "val": "Striped"
+          },
+          "conclusion": "Small-spotted Coral Snake",
+          "if_true": null,
+          "if_false": null
+        }
+      },
+      "if_false": {
+        "condition": {
+          "col": "is_venomous",
+          "op": "==",
+          "val": "False"
+        },
+        "conclusion": "Oriental Rat Snake",
+        "if_true": {
+          "condition": {
+            "col": "eye_pupil",
+            "op": "==",
+            "val": "Vertical"
+          },
+          "conclusion": "Reticulated Python",
+          "if_true": {
+            "condition": {
+              "col": "body_pattern",
+              "op": "==",
+              "val": "Blotched"
+            },
+            "conclusion": "Burmese Python",
+            "if_true": null,
+            "if_false": null
+          },
+          "if_false": {
+            "condition": {
+              "col": "body_pattern",
+              "op": "==",
+              "val": "Banded"
+            },
+            "conclusion": "Golden Tree Snake",
+            "if_true": {
+              "condition": {
+                "col": "habitat",
+                "op": "==",
+                "val": "Urban"
+              },
+              "conclusion": "Common Wolf Snake",
+              "if_true": null,
+              "if_false": {
+                "condition": {
+                  "col": "habitat",
+                  "op": "==",
+                  "val": "Ground"
+                },
+                "conclusion": "Laotian Wolf Snake",
+                "if_true": null,
+                "if_false": null
+              }
+            },
+            "if_false": {
+              "condition": {
+                "col": "body_pattern",
+                "op": "==",
+                "val": "Striped"
+              },
+              "conclusion": "Indo-Chinese Sand Snake",
+              "if_true": null,
+              "if_false": {
+                "condition": {
+                  "col": "body_pattern",
+                  "op": "==",
+                  "val": "Blotched"
+                },
+                "conclusion": "Checkered Keelback",
+                "if_true": null,
+                "if_false": null
+              }
+            }
+          }
+        },
+        "if_false": null
+      }
+    },
+    "if_false": {
+      "condition": {
+        "col": "head_shape",
+        "op": "==",
+        "val": "Triangular"
+      },
+      "conclusion": "Malayan Pit Viper",
+      "if_true": {
+        "condition": {
+          "col": "is_venomous",
+          "op": "==",
+          "val": "False"
+        },
+        "conclusion": "Mock Viper",
+        "if_true": {
+          "condition": {
+            "col": "habitat",
+            "op": "==",
+            "val": "Trees"
+          },
+          "conclusion": "Many-spotted Cat Snake",
+          "if_true": {
+            "condition": {
+              "col": "body_pattern",
+              "op": "==",
+              "val": "Solid"
+            },
+            "conclusion": "Green Cat Snake",
+            "if_true": null,
+            "if_false": null
+          },
+          "if_false": {
+            "condition": {
+              "col": "body_pattern",
+              "op": "==",
+              "val": "Solid"
+            },
+            "conclusion": "Green Cat Snake",
+            "if_true": null,
+            "if_false": null
+          }
+        },
+        "if_false": {
+          "condition": {
+            "col": "body_pattern",
+            "op": "==",
+            "val": "Solid"
+          },
+          "conclusion": "White-lipped Pit Viper",
+          "if_true": null,
+          "if_false": null
+        }
+      },
+      "if_false": null
+    }
+  },
+  "if_false": null
+}
