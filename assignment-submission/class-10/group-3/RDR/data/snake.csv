@@ -1,0 +1,19 @@
+species_name,is_venomous,head_shape,eye_pupil,body_pattern,habitat
+Monocled Cobra,True,Oval,Round,Solid,Ground
+King Cobra,True,Oval,Round,Banded,Ground
+Malayan Pit Viper,True,Triangular,Vertical,Blotched,Ground
+White-lipped Pit Viper,True,Triangular,Vertical,Solid,Trees
+Reticulated Python,False,Oval,Vertical,Reticulated,Ground
+Golden Tree Snake,False,Oval,Round,Banded,Trees
+Oriental Rat Snake,False,Oval,Round,Solid,Ground
+Common Wolf Snake,False,Oval,Round,Banded,Urban
+Indo-Chinese Sand Snake,False,Oval,Round,Striped,Ground
+Red-necked Keelback,True,Oval,Round,Banded,Water
+Green Cat Snake,False,Triangular,Vertical,Solid,Trees
+Small-spotted Coral Snake,True,Oval,Round,Striped,Ground
+Checkered Keelback,False,Oval,Round,Blotched,Water
+Burmese Python,False,Oval,Vertical,Blotched,Ground
+Many-spotted Cat Snake,False,Triangular,Vertical,Blotched,Trees
+Sunbeam Snake,False,Oval,Round,Solid,Ground
+Mock Viper,False,Triangular,Vertical,Blotched,Ground
+Laotian Wolf Snake,False,Oval,Round,Banded,Ground
