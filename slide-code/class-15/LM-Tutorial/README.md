@@ -105,7 +105,7 @@ The notebook includes step-by-step installation notes for both SRILM and KenLM, 
 
 ```bash
 git clone https://github.com/ye-kyaw-thu/AIE-F
-cd LM-Tutorial
+cd slide-code/class-15/LM-Tutorial
 # Install Python dependencies, then launch:
 jupyter notebook LM-Tutorial.ipynb
 ```
