@@ -1,0 +1,41 @@
+I love speech recognition .
+	p( I | <s> ) 	= [2gram] 0.05405402 [ -1.267172 ]
+	p( love | I ...) 	= [3gram] 0.6666666 [ -0.1760913 ]
+	p( <unk> | love ...) 	= [OOV] 0 [ -inf ]
+	p( recognition | <unk> ...) 	= [1gram] 0.007407405 [ -2.130334 ]
+	p( . | recognition ...) 	= [1gram] 0.03731341 [ -1.428135 ]
+	p( </s> | . ...) 	= [2gram] 0.95 [ -0.02227639 ]
+1 sentences, 5 words, 1 OOVs
+0 zeroprobs, logprob= -5.024009 ppl= 10.11118 ppl1= 18.03027
+
+Perplexity is a common metric for evaluating language models .
+	p( <unk> | <s> ) 	= [OOV] 0 [ -inf ]
+	p( is | <unk> ...) 	= [1gram] 0.01481481 [ -1.829304 ]
+	p( a | is ...) 	= [2gram] 0.1666667 [ -0.7781513 ]
+	p( <unk> | a ...) 	= [OOV] 0 [ -inf ]
+	p( <unk> | <unk> ...) 	= [OOV] 0 [ -inf ]
+	p( for | <unk> ...) 	= [1gram] 0.01111112 [ -1.954242 ]
+	p( <unk> | for ...) 	= [OOV] 0 [ -inf ]
+	p( language | <unk> ...) 	= [1gram] 0.03333335 [ -1.477121 ]
+	p( models | language ...) 	= [2gram] 0.5454546 [ -0.2632414 ]
+	p( . | models ...) 	= [3gram] 0.4444445 [ -0.3521825 ]
+	p( </s> | . ...) 	= [3gram] 0.8333333 [ -0.07918125 ]
+1 sentences, 10 words, 4 OOVs
+0 zeroprobs, logprob= -6.733423 ppl= 9.160467 ppl1= 13.25065
+
+Language models assign probabilities to sequences of words .
+	p( Language | <s> ) 	= [2gram] 0.02702701 [ -1.568202 ]
+	p( models | Language ...) 	= [2gram] 0.5 [ -0.30103 ]
+	p( <unk> | models ...) 	= [OOV] 0 [ -inf ]
+	p( <unk> | <unk> ...) 	= [OOV] 0 [ -inf ]
+	p( to | <unk> ...) 	= [1gram] 0.007407405 [ -2.130334 ]
+	p( <unk> | to ...) 	= [OOV] 0 [ -inf ]
+	p( of | <unk> ...) 	= [1gram] 0.01481481 [ -1.829304 ]
+	p( words | of ...) 	= [2gram] 0.1666667 [ -0.7781513 ]
+	p( . | words ...) 	= [2gram] 0.25 [ -0.60206 ]
+	p( </s> | . ...) 	= [2gram] 0.95 [ -0.02227639 ]
+1 sentences, 9 words, 3 OOVs
+0 zeroprobs, logprob= -7.231358 ppl= 10.79074 ppl1= 16.04081
+
+file lm_toy.test.txt: 3 sentences, 24 words, 8 OOVs
+0 zeroprobs, logprob= -18.98879 ppl= 9.986423 ppl1= 15.37444

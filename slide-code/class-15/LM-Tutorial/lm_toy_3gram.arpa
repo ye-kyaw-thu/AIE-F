@@ -1,0 +1,397 @@
+\data\
+ngram 1=102
+ngram 2=140
+ngram 3=143
+
+\1-grams:
+-2.14211	<unk>	0
+0	<s>	-0.30103
+-2.100283	</s>	0
+-2.100283	Cross	-0.30103
+-2.100283	entropy	-0.30103
+-2.100283	measures	-0.30103
+-1.6676633	the	-0.30103
+-2.100283	difference	-0.30103
+-1.7268959	between	-0.30103
+-2.100283	two	-0.30103
+-2.100283	probability	-0.30103
+-2.100283	distributions	-0.30103
+-1.0318743	.	-1
+-2.100283	I	-0.30103
+-2.100283	love	-0.30103
+-2.14211	NLP	-0.30103
+-2.100283	Kneser	-0.30103
+-2.100283	Ney	-0.30103
+-2.100283	smoothing	-0.30103
+-2.14211	is	-0.30103
+-2.100283	state	-0.30103
+-2.14211	of	-0.30103
+-2.100283	art	-0.30103
+-1.7268959	for	-0.30103
+-2.100283	statistical	-0.30103
+-1.3673046	language	-0.50514996
+-1.6676633	models	-0.30103
+-2.100283	Transformers	-0.30103
+-2.100283	changed	-0.30103
+-2.100283	deep	-0.30103
+-1.7268959	learning	-0.30103
+-2.100283	forever	-0.30103
+-2.100283	Deep	-0.30103
+-2.100283	improved	-0.30103
+-2.100283	significantly	-0.30103
+-2.100283	Retrieval	-0.30103
+-2.100283	augmented	-0.30103
+-2.100283	generation	-0.30103
+-2.100283	helps	-0.30103
+-2.100283	reduce	-0.30103
+-2.100283	hallucinations	-0.30103
+-2.100283	Large	-0.30103
+-2.100283	require	-0.30103
+-2.100283	massive	-0.30103
+-2.100283	amounts	-0.30103
+-2.100283	training	-0.30103
+-2.100283	data	-0.30103
+-2.100283	Fine	-0.30103
+-2.100283	tuning	-0.30103
+-2.100283	adapts	-0.30103
+-2.100283	pretrained	-0.30103
+-2.100283	to	-0.30103
+-2.100283	specific	-0.30103
+-2.100283	downstream	-0.30103
+-2.100283	tasks	-0.30103
+-2.100283	Attention	-0.30103
+-2.100283	all	-0.30103
+-2.100283	you	-0.30103
+-2.100283	need	-0.30103
+-2.100283	Speech	-0.30103
+-2.100283	recognition	-0.30103
+-2.100283	needs	-0.30103
+-2.100283	BERT	-0.30103
+-2.100283	a	-0.30103
+-2.100283	masked	-0.30103
+-1.7268959	model	-0.30103
+-2.100283	Language	-0.30103
+-2.100283	are	-0.30103
+-2.100283	fun	-0.30103
+-2.100283	GPT	-0.30103
+-2.100283	autoregressive	-0.30103
+-2.100283	stands	-0.30103
+-2.100283	natural	-0.30103
+-2.100283	processing	-0.30103
+-2.100283	Neural	-0.30103
+-2.100283	use	-0.30103
+-2.100283	continuous	-0.30103
+-2.100283	representations	-0.30103
+-1.7268959	words	-0.30103
+-2.100283	Long	-0.30103
+-2.100283	short	-0.30103
+-2.100283	term	-0.30103
+-2.100283	memory	-0.30103
+-2.100283	networks	-0.30103
+-2.100283	solved	-0.30103
+-2.100283	vanishing	-0.30103
+-2.100283	gradient	-0.30103
+-2.100283	problem	-0.30103
+-2.100283	Scaling	-0.30103
+-2.100283	laws	-0.30103
+-2.100283	dictate	-0.30103
+-2.100283	relationship	-0.30103
+-2.100283	size	-0.30103
+-2.100283	and	-0.30103
+-2.100283	performance	-0.30103
+-2.100283	Smoothing	-0.30103
+-2.100283	techniques	-0.30103
+-2.100283	help	-0.30103
+-2.100283	handle	-0.30103
+-2.100283	unseen	-0.30103
+-2.100283	in	-0.30103
+-2.100283	n-gram	-0.30103
+
+\2-grams:
+-0.045374617	. </s>	0
+-1.5187746	<s> Cross	-0.30103
+-0.29759613	Cross entropy	-0.30103
+-0.29759613	entropy measures	-0.30103
+-0.29179376	measures the	-0.30103
+-0.7510117	is the	-0.30103
+-0.7510117	of the	-0.30103
+-0.29179376	solved the	-0.30103
+-0.29179376	dictate the	-0.30103
+-0.9830959	the difference	-0.30103
+-0.29296046	difference between	-0.30103
+-0.29296046	relationship between	-0.30103
+-0.59521925	between two	-0.30103
+-0.29759613	two probability	-0.30103
+-0.29759613	probability distributions	-0.30103
+-0.26244023	distributions .	-0.30103
+-0.6713586	NLP .	-0.30103
+-0.722806	models .	-0.42596874
+-0.26244023	forever .	-0.30103
+-0.26244023	significantly .	-0.30103
+-0.26244023	hallucinations .	-0.30103
+-0.26244023	data .	-0.30103
+-0.26244023	tasks .	-0.30103
+-0.26244023	need .	-0.30103
+-0.52803135	model .	-0.30103
+-0.26244023	fun .	-0.30103
+-0.26244023	processing .	-0.30103
+-0.52803135	words .	-0.30103
+-0.26244023	problem .	-0.30103
+-0.26244023	performance .	-0.30103
+-1.2471787	<s> I	-0.30103
+-0.29759613	I love	-0.30103
+-1.5240324	<s> NLP	-0.30103
+-0.59584284	love NLP	-0.30103
+-0.29791027	improved NLP	-0.30103
+-1.5187746	<s> Kneser	-0.30103
+-0.29759613	Kneser Ney	-0.30103
+-0.29759613	Ney smoothing	-0.30103
+-0.29791027	smoothing is	-0.30103
+-0.29791027	Attention is	-0.30103
+-0.29791027	BERT is	-0.30103
+-0.9830959	the state	-0.30103
+-0.29791027	state of	-0.30103
+-0.29791027	amounts of	-0.30103
+-0.29791027	representations of	-0.30103
+-0.9830959	the art	-0.30103
+-0.29296046	art for	-0.30103
+-0.29296046	stands for	-0.30103
+-0.59521925	for statistical	-0.30103
+-0.5662914	love language	-0.30103
+-0.28277752	statistical language	-0.30103
+-0.28277752	Large language	-0.30103
+-0.28277752	needs language	-0.30103
+-0.28277752	masked language	-0.30103
+-0.28277752	autoregressive language	-0.30103
+-0.28277752	natural language	-0.30103
+-0.28277752	Neural language	-0.30103
+-0.244722	language models	-0.38021123
+-0.29179376	pretrained models	-0.30103
+-0.29179376	Language models	-0.30103
+-0.29179376	GPT models	-0.30103
+-0.29179376	n-gram models	-0.30103
+-1.5187746	<s> Transformers	-0.30103
+-0.29759613	Transformers changed	-0.30103
+-0.29759613	changed deep	-0.30103
+-0.29296046	deep learning	-0.30103
+-0.29296046	Deep learning	-0.30103
+-0.59521925	learning forever	-0.30103
+-1.5187746	<s> Deep	-0.30103
+-0.59521925	learning improved	-0.30103
+-0.76793003	NLP significantly	-0.30103
+-1.5187746	<s> Retrieval	-0.30103
+-0.29759613	Retrieval augmented	-0.30103
+-0.29759613	augmented generation	-0.30103
+-0.29759613	generation helps	-0.30103
+-0.29759613	helps reduce	-0.30103
+-0.29759613	reduce hallucinations	-0.30103
+-1.5187746	<s> Large	-0.30103
+-1.1226423	models require	-0.30103
+-0.29759613	require massive	-0.30103
+-0.29759613	massive amounts	-0.30103
+-0.76793003	of training	-0.30103
+-0.29759613	training data	-0.30103
+-1.5187746	<s> Fine	-0.30103
+-0.29759613	Fine tuning	-0.30103
+-0.29759613	tuning adapts	-0.30103
+-0.29759613	adapts pretrained	-0.30103
+-1.1226423	models to	-0.30103
+-0.29759613	to specific	-0.30103
+-0.29759613	specific downstream	-0.30103
+-0.29759613	downstream tasks	-0.30103
+-1.5187746	<s> Attention	-0.30103
+-0.76793003	is all	-0.30103
+-0.29759613	all you	-0.30103
+-0.29759613	you need	-0.30103
+-1.5187746	<s> Speech	-0.30103
+-0.29759613	Speech recognition	-0.30103
+-0.29759613	recognition needs	-0.30103
+-1.5187746	<s> BERT	-0.30103
+-0.76793003	is a	-0.30103
+-0.29759613	a masked	-0.30103
+-0.5860682	between model	-0.30103
+-1.1651931	language model	-0.30103
+-1.5187746	<s> Language	-0.30103
+-0.8331964	models are	-0.30103
+-0.59521925	are fun	-0.30103
+-1.5187746	<s> GPT	-0.30103
+-0.59521925	are autoregressive	-0.30103
+-0.76793003	NLP stands	-0.30103
+-0.59521925	for natural	-0.30103
+-1.1872159	language processing	-0.30103
+-1.5187746	<s> Neural	-0.30103
+-1.1226423	models use	-0.30103
+-0.29759613	use continuous	-0.30103
+-0.29759613	continuous representations	-0.30103
+-0.75437903	of words	-0.30103
+-0.29296046	unseen words	-0.30103
+-1.5187746	<s> Long	-0.30103
+-0.29759613	Long short	-0.30103
+-0.29759613	short term	-0.30103
+-0.29759613	term memory	-0.30103
+-0.29759613	memory networks	-0.30103
+-0.29759613	networks solved	-0.30103
+-0.9830959	the vanishing	-0.30103
+-0.29759613	vanishing gradient	-0.30103
+-0.29759613	gradient problem	-0.30103
+-1.5187746	<s> Scaling	-0.30103
+-0.29759613	Scaling laws	-0.30103
+-0.29759613	laws dictate	-0.30103
+-0.9830959	the relationship	-0.30103
+-0.59521925	model size	-0.30103
+-0.29759613	size and	-0.30103
+-0.29759613	and performance	-0.30103
+-1.5187746	<s> Smoothing	-0.30103
+-0.29759613	Smoothing techniques	-0.30103
+-0.29759613	techniques help	-0.30103
+-0.29759613	help handle	-0.30103
+-0.29759613	handle unseen	-0.30103
+-0.59521925	words in	-0.30103
+-0.29759613	in n-gram	-0.30103
+
+\3-grams:
+-0.022094991	distributions . </s>
+-0.022094991	NLP . </s>
+-0.016464982	models . </s>
+-0.022094991	forever . </s>
+-0.022094991	significantly . </s>
+-0.022094991	hallucinations . </s>
+-0.022094991	data . </s>
+-0.022094991	tasks . </s>
+-0.022094991	need . </s>
+-0.022094991	model . </s>
+-0.022094991	fun . </s>
+-0.022094991	processing . </s>
+-0.022094991	words . </s>
+-0.022094991	problem . </s>
+-0.022094991	performance . </s>
+-0.12379109	<s> Cross entropy
+-0.12379109	Cross entropy measures
+-0.12183814	entropy measures the
+-0.23010074	smoothing is the
+-0.23010074	state of the
+-0.12183814	networks solved the
+-0.12183814	laws dictate the
+-0.2580731	measures the difference
+-0.1222322	the difference between
+-0.1222322	the relationship between
+-0.20274317	difference between two
+-0.12379109	between two probability
+-0.12379109	two probability distributions
+-0.1116908	probability distributions .
+-0.21712321	love NLP .
+-0.30491292	language models .
+-0.22573169	n-gram models .
+-0.1116908	learning forever .
+-0.1116908	NLP significantly .
+-0.1116908	reduce hallucinations .
+-0.1116908	training data .
+-0.1116908	downstream tasks .
+-0.1116908	you need .
+-0.18827027	language model .
+-0.1116908	are fun .
+-0.1116908	language processing .
+-0.18827027	of words .
+-0.1116908	gradient problem .
+-0.1116908	and performance .
+-0.12379109	<s> I love
+-0.42388642	I love NLP
+-0.123896345	learning improved NLP
+-0.12379109	<s> Kneser Ney
+-0.12379109	Kneser Ney smoothing
+-0.123896345	Ney smoothing is
+-0.123896345	<s> Attention is
+-0.123896345	<s> BERT is
+-0.2580731	is the state
+-0.123896345	the state of
+-0.123896345	massive amounts of
+-0.123896345	continuous representations of
+-0.2580731	of the art
+-0.1222322	the art for
+-0.1222322	NLP stands for
+-0.20274317	art for statistical
+-0.4137156	I love language
+-0.11876897	for statistical language
+-0.11876897	<s> Large language
+-0.11876897	recognition needs language
+-0.11876897	a masked language
+-0.11876897	are autoregressive language
+-0.11876897	for natural language
+-0.11876897	<s> Neural language
+-0.10534694	love language models
+-0.10534694	statistical language models
+-0.10534694	Large language models
+-0.10534694	needs language models
+-0.10534694	autoregressive language models
+-0.10534694	Neural language models
+-0.12183814	adapts pretrained models
+-0.12183814	<s> Language models
+-0.12183814	<s> GPT models
+-0.12183814	in n-gram models
+-0.12379109	<s> Transformers changed
+-0.12379109	Transformers changed deep
+-0.1222322	changed deep learning
+-0.1222322	<s> Deep learning
+-0.20274317	deep learning forever
+-0.20274317	Deep learning improved
+-0.23260823	improved NLP significantly
+-0.12379109	<s> Retrieval augmented
+-0.12379109	Retrieval augmented generation
+-0.12379109	augmented generation helps
+-0.12379109	generation helps reduce
+-0.12379109	helps reduce hallucinations
+-0.94025105	language models require
+-0.12379109	models require massive
+-0.12379109	require massive amounts
+-0.23260823	amounts of training
+-0.12379109	of training data
+-0.12379109	<s> Fine tuning
+-0.12379109	Fine tuning adapts
+-0.12379109	tuning adapts pretrained
+-0.26946092	pretrained models to
+-0.12379109	models to specific
+-0.12379109	to specific downstream
+-0.12379109	specific downstream tasks
+-0.23260823	Attention is all
+-0.12379109	is all you
+-0.12379109	all you need
+-0.12379109	<s> Speech recognition
+-0.12379109	Speech recognition needs
+-0.23260823	BERT is a
+-0.12379109	is a masked
+-0.20087416	relationship between model
+-0.27231205	masked language model
+-0.24153237	Language models are
+-0.24153237	GPT models are
+-0.42367646	models are fun
+-0.42367646	models are autoregressive
+-0.23260823	<s> NLP stands
+-0.20274317	stands for natural
+-0.2736883	natural language processing
+-0.94025105	language models use
+-0.12379109	models use continuous
+-0.12379109	use continuous representations
+-0.23060648	representations of words
+-0.1222322	handle unseen words
+-0.12379109	<s> Long short
+-0.12379109	Long short term
+-0.12379109	short term memory
+-0.12379109	term memory networks
+-0.12379109	memory networks solved
+-0.2580731	solved the vanishing
+-0.12379109	the vanishing gradient
+-0.12379109	vanishing gradient problem
+-0.12379109	<s> Scaling laws
+-0.12379109	Scaling laws dictate
+-0.2580731	dictate the relationship
+-0.20274317	between model size
+-0.12379109	model size and
+-0.12379109	size and performance
+-0.12379109	<s> Smoothing techniques
+-0.12379109	Smoothing techniques help
+-0.12379109	techniques help handle
+-0.12379109	help handle unseen
+-0.20274317	unseen words in
+-0.12379109	words in n-gram
+
+\end\

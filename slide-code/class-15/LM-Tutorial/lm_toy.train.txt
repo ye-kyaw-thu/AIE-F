@@ -1,0 +1,19 @@
+Cross entropy measures the difference between two probability distributions .
+I love NLP .
+Kneser Ney smoothing is the state of the art for statistical language models .
+Transformers changed deep learning forever .
+Deep learning improved NLP significantly .
+Retrieval augmented generation helps reduce hallucinations .
+Large language models require massive amounts of training data .
+Fine tuning adapts pretrained models to specific downstream tasks .
+Attention is all you need .
+Speech recognition needs language models .
+I love language models .
+BERT is a masked language model .
+Language models are fun .
+GPT models are autoregressive language models .
+NLP stands for natural language processing .
+Neural language models use continuous representations of words .
+Long short term memory networks solved the vanishing gradient problem .
+Scaling laws dictate the relationship between model size and performance .
+Smoothing techniques help handle unseen words in n-gram models .

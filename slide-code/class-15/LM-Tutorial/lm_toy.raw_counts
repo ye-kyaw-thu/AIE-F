@@ -1,0 +1,384 @@
+stands	1
+stands for	1
+stands for natural	1
+<s>	19
+<s> Neural	1
+<s> Neural language	1
+<s> Cross	1
+<s> Cross entropy	1
+<s> Large	1
+<s> Large language	1
+<s> Long	1
+<s> Long short	1
+<s> Fine	1
+<s> Fine tuning	1
+<s> I	2
+<s> I love	2
+<s> NLP	1
+<s> NLP stands	1
+<s> Kneser	1
+<s> Kneser Ney	1
+<s> Scaling	1
+<s> Scaling laws	1
+<s> Attention	1
+<s> Attention is	1
+<s> Speech	1
+<s> Speech recognition	1
+<s> Smoothing	1
+<s> Smoothing techniques	1
+<s> BERT	1
+<s> BERT is	1
+<s> Transformers	1
+<s> Transformers changed	1
+<s> Language	1
+<s> Language models	1
+<s> Deep	1
+<s> Deep learning	1
+<s> GPT	1
+<s> GPT models	1
+<s> Retrieval	1
+<s> Retrieval augmented	1
+augmented	1
+augmented generation	1
+augmented generation helps	1
+natural	1
+natural language	1
+natural language processing	1
+generation	1
+generation helps	1
+generation helps reduce	1
+</s>	19
+processing	1
+processing .	1
+processing . </s>	1
+helps	1
+helps reduce	1
+helps reduce hallucinations	1
+Neural	1
+Neural language	1
+Neural language models	1
+reduce	1
+reduce hallucinations	1
+reduce hallucinations .	1
+Cross	1
+Cross entropy	1
+Cross entropy measures	1
+use	1
+use continuous	1
+use continuous representations	1
+entropy	1
+entropy measures	1
+entropy measures the	1
+hallucinations	1
+hallucinations .	1
+hallucinations . </s>	1
+continuous	1
+continuous representations	1
+continuous representations of	1
+representations	1
+representations of	1
+representations of words	1
+measures	1
+measures the	1
+measures the difference	1
+Large	1
+Large language	1
+Large language models	1
+the	5
+the difference	1
+the difference between	1
+the vanishing	1
+the vanishing gradient	1
+the state	1
+the state of	1
+the art	1
+the art for	1
+the relationship	1
+the relationship between	1
+require	1
+require massive	1
+require massive amounts	1
+words	2
+words .	1
+words . </s>	1
+words in	1
+words in n-gram	1
+Long	1
+Long short	1
+Long short term	1
+difference	1
+difference between	1
+difference between two	1
+massive	1
+massive amounts	1
+massive amounts of	1
+between	2
+between two	1
+between two probability	1
+between model	1
+between model size	1
+amounts	1
+amounts of	1
+amounts of training	1
+short	1
+short term	1
+short term memory	1
+two	1
+two probability	1
+two probability distributions	1
+training	1
+training data	1
+training data .	1
+term	1
+term memory	1
+term memory networks	1
+data	1
+data .	1
+data . </s>	1
+probability	1
+probability distributions	1
+probability distributions .	1
+memory	1
+memory networks	1
+memory networks solved	1
+distributions	1
+distributions .	1
+distributions . </s>	1
+Fine	1
+Fine tuning	1
+Fine tuning adapts	1
+networks	1
+networks solved	1
+networks solved the	1
+tuning	1
+tuning adapts	1
+tuning adapts pretrained	1
+.	19
+. </s>	19
+solved	1
+solved the	1
+solved the vanishing	1
+I	2
+I love	2
+I love NLP	1
+I love language	1
+adapts	1
+adapts pretrained	1
+adapts pretrained models	1
+vanishing	1
+vanishing gradient	1
+vanishing gradient problem	1
+gradient	1
+gradient problem	1
+gradient problem .	1
+love	2
+love NLP	1
+love NLP .	1
+love language	1
+love language models	1
+pretrained	1
+pretrained models	1
+pretrained models to	1
+NLP	3
+NLP .	1
+NLP . </s>	1
+NLP significantly	1
+NLP significantly .	1
+NLP stands	1
+NLP stands for	1
+to	1
+to specific	1
+to specific downstream	1
+problem	1
+problem .	1
+problem . </s>	1
+Scaling	1
+Scaling laws	1
+Scaling laws dictate	1
+Kneser	1
+Kneser Ney	1
+Kneser Ney smoothing	1
+specific	1
+specific downstream	1
+specific downstream tasks	1
+Ney	1
+Ney smoothing	1
+Ney smoothing is	1
+downstream	1
+downstream tasks	1
+downstream tasks .	1
+laws	1
+laws dictate	1
+laws dictate the	1
+dictate	1
+dictate the	1
+dictate the relationship	1
+smoothing	1
+smoothing is	1
+smoothing is the	1
+tasks	1
+tasks .	1
+tasks . </s>	1
+is	3
+is the	1
+is the state	1
+is all	1
+is all you	1
+is a	1
+is a masked	1
+Attention	1
+Attention is	1
+Attention is all	1
+relationship	1
+relationship between	1
+relationship between model	1
+state	1
+state of	1
+state of the	1
+all	1
+all you	1
+all you need	1
+size	1
+size and	1
+size and performance	1
+you	1
+you need	1
+you need .	1
+of	3
+of the	1
+of the art	1
+of training	1
+of training data	1
+of words	1
+of words .	1
+and	1
+and performance	1
+and performance .	1
+art	1
+art for	1
+art for statistical	1
+need	1
+need .	1
+need . </s>	1
+performance	1
+performance .	1
+performance . </s>	1
+Speech	1
+Speech recognition	1
+Speech recognition needs	1
+for	2
+for statistical	1
+for statistical language	1
+for natural	1
+for natural language	1
+Smoothing	1
+Smoothing techniques	1
+Smoothing techniques help	1
+statistical	1
+statistical language	1
+statistical language models	1
+recognition	1
+recognition needs	1
+recognition needs language	1
+techniques	1
+techniques help	1
+techniques help handle	1
+help	1
+help handle	1
+help handle unseen	1
+language	8
+language models	6
+language models .	4
+language models require	1
+language models use	1
+language model	1
+language model .	1
+language processing	1
+language processing .	1
+needs	1
+needs language	1
+needs language models	1
+models	10
+models use	1
+models use continuous	1
+models require	1
+models require massive	1
+models .	5
+models . </s>	5
+models to	1
+models to specific	1
+models are	2
+models are fun	1
+models are autoregressive	1
+BERT	1
+BERT is	1
+BERT is a	1
+handle	1
+handle unseen	1
+handle unseen words	1
+unseen	1
+unseen words	1
+unseen words in	1
+Transformers	1
+Transformers changed	1
+Transformers changed deep	1
+a	1
+a masked	1
+a masked language	1
+changed	1
+changed deep	1
+changed deep learning	1
+masked	1
+masked language	1
+masked language model	1
+in	1
+in n-gram	1
+in n-gram models	1
+deep	1
+deep learning	1
+deep learning forever	1
+model	2
+model .	1
+model . </s>	1
+model size	1
+model size and	1
+n-gram	1
+n-gram models	1
+n-gram models .	1
+Language	1
+Language models	1
+Language models are	1
+learning	2
+learning forever	1
+learning forever .	1
+learning improved	1
+learning improved NLP	1
+forever	1
+forever .	1
+forever . </s>	1
+are	2
+are fun	1
+are fun .	1
+are autoregressive	1
+are autoregressive language	1
+fun	1
+fun .	1
+fun . </s>	1
+Deep	1
+Deep learning	1
+Deep learning improved	1
+improved	1
+improved NLP	1
+improved NLP significantly	1
+GPT	1
+GPT models	1
+GPT models are	1
+autoregressive	1
+autoregressive language	1
+autoregressive language models	1
+significantly	1
+significantly .	1
+significantly . </s>	1
+Retrieval	1
+Retrieval augmented	1
+Retrieval augmented generation	1

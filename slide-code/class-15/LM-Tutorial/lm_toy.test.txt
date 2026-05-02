@@ -1,0 +1,3 @@
+I love speech recognition .
+Perplexity is a common metric for evaluating language models .
+Language models assign probabilities to sequences of words .

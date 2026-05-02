@@ -1,0 +1,34 @@
+
+\data\
+ngram 1=11
+ngram 2=10
+ngram 3=0
+
+\1-grams:
+-1	.	-0.2552725
+-1	</s>
+-99	<s>	-0.2552725
+-1	This	-0.2552725
+-1	a	-0.2552725
+-1	about	-0.2552725
+-1	general	-0.2552725
+-1	is	-0.2552725
+-1	sentence	-0.2552725
+-1	the	-0.2552725
+-1	world	-0.2552725
+
+\2-grams:
+-0.30103	. </s>
+-0.30103	<s> This
+-0.30103	This is
+-0.30103	a general
+-0.30103	about the
+-0.30103	general sentence
+-0.30103	is a
+-0.30103	sentence about
+-0.30103	the world
+-0.30103	world .
+
+\3-grams:
+
+\end\
