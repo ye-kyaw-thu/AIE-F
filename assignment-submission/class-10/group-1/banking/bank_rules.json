@@ -1,0 +1,249 @@
+{
+  "condition": null,
+  "conclusion": "Unknown",
+  "if_true": {
+    "condition": {
+      "col": "poutcome",
+      "op": "==",
+      "val": "3"
+    },
+    "conclusion": "0",
+    "if_true": {
+      "condition": {
+        "col": "balance",
+        "op": ">",
+        "val": "1000"
+      },
+      "conclusion": "1",
+      "if_true": {
+        "condition": {
+          "col": "housing",
+          "op": "==",
+          "val": "1"
+        },
+        "conclusion": "0",
+        "if_true": {
+          "condition": {
+            "col": "balance",
+            "op": ">",
+            "val": "1000"
+          },
+          "conclusion": "1",
+          "if_true": {
+            "condition": {
+              "col": "poutcome",
+              "op": "==",
+              "val": "3"
+            },
+            "conclusion": "0",
+            "if_true": null,
+            "if_false": null
+          },
+          "if_false": null
+        },
+        "if_false": {
+          "condition": {
+            "col": "previous",
+            "op": "==",
+            "val": "0"
+          },
+          "conclusion": "0",
+          "if_true": {
+            "condition": {
+              "col": "campaign",
+              "op": ">",
+              "val": "2"
+            },
+            "conclusion": "1",
+            "if_true": {
+              "condition": {
+                "col": "campaign",
+                "op": ">",
+                "val": "3"
+              },
+              "conclusion": "0",
+              "if_true": null,
+              "if_false": null
+            },
+            "if_false": {
+              "condition": {
+                "col": "balance",
+                "op": ">",
+                "val": "5000"
+              },
+              "conclusion": "1",
+              "if_true": null,
+              "if_false": {
+                "condition": {
+                  "col": "campaign",
+                  "op": "==",
+                  "val": "1"
+                },
+                "conclusion": "1",
+                "if_true": null,
+                "if_false": null
+              }
+            }
+          },
+          "if_false": null
+        }
+      },
+      "if_false": {
+        "condition": {
+          "col": "campaign",
+          "op": "==",
+          "val": "1"
+        },
+        "conclusion": "1",
+        "if_true": {
+          "condition": {
+            "col": "housing",
+            "op": "==",
+            "val": "1"
+          },
+          "conclusion": "0",
+          "if_true": {
+            "condition": {
+              "col": "campaign",
+              "op": "==",
+              "val": "1"
+            },
+            "conclusion": "1",
+            "if_true": null,
+            "if_false": null
+          },
+          "if_false": {
+            "condition": {
+              "col": "loan",
+              "op": "==",
+              "val": "1"
+            },
+            "conclusion": "0",
+            "if_true": null,
+            "if_false": null
+          }
+        },
+        "if_false": {
+          "condition": {
+            "col": "campaign",
+            "op": "<",
+            "val": "3"
+          },
+          "conclusion": "1",
+          "if_true": null,
+          "if_false": {
+            "condition": {
+              "col": "campaign",
+              "op": ">",
+              "val": "3"
+            },
+            "conclusion": "1",
+            "if_true": null,
+            "if_false": null
+          }
+        }
+      }
+    },
+    "if_false": {
+      "condition": {
+        "col": "balance",
+        "op": ">",
+        "val": "2000"
+      },
+      "conclusion": "1",
+      "if_true": {
+        "condition": {
+          "col": "campaign",
+          "op": ">",
+          "val": "2"
+        },
+        "conclusion": "0",
+        "if_true": {
+          "condition": {
+            "col": "poutcome",
+            "op": "==",
+            "val": "1"
+          },
+          "conclusion": "1",
+          "if_true": null,
+          "if_false": null
+        },
+        "if_false": {
+          "condition": {
+            "col": "previous",
+            "op": "==",
+            "val": "1"
+          },
+          "conclusion": "0",
+          "if_true": null,
+          "if_false": null
+        }
+      },
+      "if_false": {
+        "condition": {
+          "col": "previous",
+          "op": ">",
+          "val": "1"
+        },
+        "conclusion": "1",
+        "if_true": {
+          "condition": {
+            "col": "loan",
+            "op": "==",
+            "val": "1"
+          },
+          "conclusion": "0",
+          "if_true": null,
+          "if_false": {
+            "condition": {
+              "col": "previous",
+              "op": ">",
+              "val": "1"
+            },
+            "conclusion": "0",
+            "if_true": {
+              "condition": {
+                "col": "campaign",
+                "op": "==",
+                "val": "1"
+              },
+              "conclusion": "1",
+              "if_true": {
+                "condition": {
+                  "col": "balance",
+                  "op": "<",
+                  "val": "0"
+                },
+                "conclusion": "0",
+                "if_true": null,
+                "if_false": null
+              },
+              "if_false": null
+            },
+            "if_false": null
+          }
+        },
+        "if_false": {
+          "condition": {
+            "col": "housing",
+            "op": "==",
+            "val": "1"
+          },
+          "conclusion": "0",
+          "if_true": null,
+          "if_false": {
+            "condition": {
+              "col": "previous",
+              "op": ">",
+              "val": "0"
+            },
+            "conclusion": "1",
+            "if_true": null,
+            "if_false": null
+          }
+        }
+      }
+    }
+  },
+  "if_false": null
+}
