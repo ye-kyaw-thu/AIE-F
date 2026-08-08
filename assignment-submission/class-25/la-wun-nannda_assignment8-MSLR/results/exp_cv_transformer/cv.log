@@ -1,0 +1,383 @@
+2026-06-22 08:50:53.187822: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1782118253.211635     236 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1782118253.219551     236 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1782118253.239980     236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1782118253.240007     236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1782118253.240010     236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1782118253.240012     236 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-06-22 08:50:56 | INFO     | cross_validate | ============================================================
+2026-06-22 08:50:56 | INFO     | cross_validate | Cross-Validation | model=transformer | folds=5
+2026-06-22 08:50:56 | INFO     | cross_validate | Folding over augmented training pool (all-class design)
+2026-06-22 08:50:56 | INFO     | cross_validate |   Aug train pool : 10602 samples
+2026-06-22 08:50:56 | INFO     | cross_validate |   Test set       : 558 originals (fixed, all folds)
+2026-06-22 08:50:56 | INFO     | cross_validate | ============================================================
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:424: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+2026-06-22 08:50:57 | INFO     | cross_validate | Fold 0 | train=8481, val=2121, test=558
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /root/.netrc.
+wandb: Currently logged in as: lawun330 (lawun330-) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_085059-5dfk6k6m
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_transformer_fold00
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/5dfk6k6m
+2026-06-22 08:51:04 | INFO     | cross_validate | Fold 0: Weights & Biases logging enabled
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:432: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+2026-06-22 08:51:15 | INFO     | cross_validate |   Fold 0 | Epoch   1 | train=0.8% | val=2.29%  ★ | 11s
+2026-06-22 08:51:24 | INFO     | cross_validate |   Fold 0 | Epoch   2 | train=7.1% | val=16.60%  ★ | 10s
+2026-06-22 08:51:34 | INFO     | cross_validate |   Fold 0 | Epoch   3 | train=33.5% | val=51.54%  ★ | 10s
+2026-06-22 08:51:44 | INFO     | cross_validate |   Fold 0 | Epoch   4 | train=66.6% | val=75.95%  ★ | 10s
+2026-06-22 08:51:54 | INFO     | cross_validate |   Fold 0 | Epoch   5 | train=84.1% | val=86.77%  ★ | 10s
+2026-06-22 08:52:04 | INFO     | cross_validate |   Fold 0 | Epoch   6 | train=90.2% | val=89.83%  ★ | 10s
+2026-06-22 08:52:14 | INFO     | cross_validate |   Fold 0 | Epoch   7 | train=92.6% | val=91.46%  ★ | 10s
+2026-06-22 08:52:35 | INFO     | cross_validate |   Fold 0 | Epoch   9 | train=95.0% | val=92.63%  ★ | 10s
+2026-06-22 08:52:45 | INFO     | cross_validate |   Fold 0 | Epoch  10 | train=95.7% | val=93.33%  ★ | 10s
+2026-06-22 08:53:06 | INFO     | cross_validate |   Fold 0 | Epoch  12 | train=96.3% | val=94.42%  ★ | 11s
+2026-06-22 08:53:48 | INFO     | cross_validate |   Fold 0 | Epoch  16 | train=97.9% | val=94.82%  ★ | 10s
+2026-06-22 08:54:30 | INFO     | cross_validate |   Fold 0 | Epoch  20 | train=98.6% | val=94.96%  ★ | 11s
+2026-06-22 08:54:51 | INFO     | cross_validate |   Fold 0 | Epoch  22 | train=98.7% | val=95.34%  ★ | 10s
+2026-06-22 08:56:14 | INFO     | cross_validate |   Fold 0 | Epoch  30 | train=99.4% | val=94.92% | 10s
+2026-06-22 08:56:45 | INFO     | cross_validate |   Fold 0 | Epoch  33 | train=99.5% | val=95.76%  ★ | 10s
+2026-06-22 08:56:56 | INFO     | cross_validate |   Fold 0 | Epoch  34 | train=99.6% | val=95.80%  ★ | 11s
+2026-06-22 08:57:06 | INFO     | cross_validate |   Fold 0 | Epoch  35 | train=99.6% | val=95.99%  ★ | 11s
+2026-06-22 08:57:59 | INFO     | cross_validate |   Fold 0 | Epoch  40 | train=99.8% | val=95.85% | 10s
+2026-06-22 08:59:23 | INFO     | cross_validate |   Fold 0 | Epoch  48 | train=99.7% | val=96.08%  ★ | 11s
+2026-06-22 08:59:43 | INFO     | cross_validate |   Fold 0 | Epoch  50 | train=99.9% | val=96.22%  ★ | 10s
+2026-06-22 09:01:28 | INFO     | cross_validate |   Fold 0 | Epoch  60 | train=99.9% | val=96.22% | 10s
+2026-06-22 09:01:38 | INFO     | cross_validate |   Fold 0 | Epoch  61 | train=99.9% | val=96.36%  ★ | 10s
+2026-06-22 09:01:49 | INFO     | cross_validate |   Fold 0 | Epoch  62 | train=100.0% | val=96.46%  ★ | 10s
+2026-06-22 09:03:12 | INFO     | cross_validate |   Fold 0 | Epoch  70 | train=99.9% | val=96.08% | 10s
+2026-06-22 09:04:57 | INFO     | cross_validate |   Fold 0 | Epoch  80 | train=100.0% | val=96.13% | 11s
+2026-06-22 09:06:10 | INFO     | cross_validate |   Fold 0: early stopping at epoch 87
+2026-06-22 09:06:11 | INFO     | cross_validate |   Fold 0 FINAL | best_val=96.46% | test=99.83%
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▁▆▇▇███████████████████████████████████
+wandb:   Acc/val_top1 ▁▂▆█████████████████████████████████████
+wandb:   Acc/val_top5 ▁▆▇█████████████████████████████████████
+wandb:             LR ███████████▇▇▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▃▃▂▂▂▂▁▁
+wandb:     Loss/train █▇▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▆▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▁▁▃▃▅█▇▆▇▇▆▇▇▇▇▇▇▇▆▇▇▇▇▇▇▇▆▇▆▇▇▇▇▇▇▇▇▇▇▇
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 99.91745
+wandb:   Acc/val_top1 96.22201
+wandb:   Acc/val_top5 97.57463
+wandb:             LR 0.00019
+wandb:     Loss/train 1.00803
+wandb:       Loss/val 1.12878
+wandb:  best_val_top1 96.45522
+wandb:   epoch_time_s 10.46355
+wandb:      test_top1 99.82639
+wandb: 
+wandb: 🚀 View run exp_cv_transformer_fold00 at: https://wandb.ai/lawun330-/msl-recognition/runs/5dfk6k6m
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_085059-5dfk6k6m/logs
+2026-06-22 09:06:11 | INFO     | cross_validate | Fold 0 done | val=96.46% | test=99.83%
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:424: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+2026-06-22 09:06:11 | INFO     | cross_validate | Fold 1 | train=8481, val=2121, test=558
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_090612-om78388w
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_transformer_fold01
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/om78388w
+2026-06-22 09:06:13 | INFO     | cross_validate | Fold 1: Weights & Biases logging enabled
+2026-06-22 09:06:23 | INFO     | cross_validate |   Fold 1 | Epoch   1 | train=0.5% | val=3.38%  ★ | 11s
+2026-06-22 09:06:34 | INFO     | cross_validate |   Fold 1 | Epoch   2 | train=11.1% | val=30.51%  ★ | 10s
+2026-06-22 09:06:44 | INFO     | cross_validate |   Fold 1 | Epoch   3 | train=50.2% | val=73.36%  ★ | 11s
+2026-06-22 09:06:55 | INFO     | cross_validate |   Fold 1 | Epoch   4 | train=80.2% | val=87.56%  ★ | 11s
+2026-06-22 09:07:05 | INFO     | cross_validate |   Fold 1 | Epoch   5 | train=89.0% | val=90.73%  ★ | 10s
+2026-06-22 09:07:16 | INFO     | cross_validate |   Fold 1 | Epoch   6 | train=92.3% | val=91.90%  ★ | 10s
+2026-06-22 09:07:26 | INFO     | cross_validate |   Fold 1 | Epoch   7 | train=93.7% | val=92.39%  ★ | 11s
+2026-06-22 09:07:37 | INFO     | cross_validate |   Fold 1 | Epoch   8 | train=94.7% | val=93.19%  ★ | 10s
+2026-06-22 09:07:47 | INFO     | cross_validate |   Fold 1 | Epoch   9 | train=95.6% | val=93.70%  ★ | 11s
+2026-06-22 09:07:58 | INFO     | cross_validate |   Fold 1 | Epoch  10 | train=96.0% | val=93.86%  ★ | 10s
+2026-06-22 09:08:08 | INFO     | cross_validate |   Fold 1 | Epoch  11 | train=96.6% | val=94.28%  ★ | 10s
+2026-06-22 09:08:39 | INFO     | cross_validate |   Fold 1 | Epoch  14 | train=97.5% | val=94.94%  ★ | 10s
+2026-06-22 09:09:42 | INFO     | cross_validate |   Fold 1 | Epoch  20 | train=98.9% | val=94.77% | 10s
+2026-06-22 09:09:53 | INFO     | cross_validate |   Fold 1 | Epoch  21 | train=98.7% | val=95.10%  ★ | 11s
+2026-06-22 09:10:55 | INFO     | cross_validate |   Fold 1 | Epoch  27 | train=99.5% | val=95.22%  ★ | 11s
+2026-06-22 09:11:06 | INFO     | cross_validate |   Fold 1 | Epoch  28 | train=99.4% | val=95.26%  ★ | 10s
+2026-06-22 09:11:27 | INFO     | cross_validate |   Fold 1 | Epoch  30 | train=99.4% | val=95.05% | 10s
+2026-06-22 09:11:37 | INFO     | cross_validate |   Fold 1 | Epoch  31 | train=99.6% | val=95.36%  ★ | 11s
+2026-06-22 09:12:40 | INFO     | cross_validate |   Fold 1 | Epoch  37 | train=99.6% | val=95.40%  ★ | 11s
+2026-06-22 09:13:12 | INFO     | cross_validate |   Fold 1 | Epoch  40 | train=99.7% | val=95.26% | 10s
+2026-06-22 09:13:22 | INFO     | cross_validate |   Fold 1 | Epoch  41 | train=99.8% | val=95.68%  ★ | 10s
+2026-06-22 09:14:56 | INFO     | cross_validate |   Fold 1 | Epoch  50 | train=99.8% | val=95.45% | 11s
+2026-06-22 09:15:28 | INFO     | cross_validate |   Fold 1 | Epoch  53 | train=99.9% | val=95.73%  ★ | 11s
+2026-06-22 09:15:38 | INFO     | cross_validate |   Fold 1 | Epoch  54 | train=99.9% | val=95.82%  ★ | 11s
+2026-06-22 09:15:59 | INFO     | cross_validate |   Fold 1 | Epoch  56 | train=99.7% | val=95.92%  ★ | 10s
+2026-06-22 09:16:41 | INFO     | cross_validate |   Fold 1 | Epoch  60 | train=99.9% | val=95.96%  ★ | 11s
+2026-06-22 09:18:26 | INFO     | cross_validate |   Fold 1 | Epoch  70 | train=99.9% | val=95.96% | 10s
+2026-06-22 09:19:18 | INFO     | cross_validate |   Fold 1 | Epoch  75 | train=99.9% | val=96.01%  ★ | 10s
+2026-06-22 09:20:10 | INFO     | cross_validate |   Fold 1 | Epoch  80 | train=100.0% | val=96.01% | 10s
+2026-06-22 09:21:13 | INFO     | cross_validate |   Fold 1 | Epoch  86 | train=100.0% | val=96.10%  ★ | 10s
+2026-06-22 09:21:54 | INFO     | cross_validate |   Fold 1 | Epoch  90 | train=99.9% | val=96.01% | 10s
+2026-06-22 09:23:39 | INFO     | cross_validate |   Fold 1 | Epoch 100 | train=100.0% | val=95.96% | 10s
+2026-06-22 09:25:23 | INFO     | cross_validate |   Fold 1 | Epoch 110 | train=100.0% | val=95.92% | 10s
+2026-06-22 09:25:33 | INFO     | cross_validate |   Fold 1: early stopping at epoch 111
+2026-06-22 09:25:34 | INFO     | cross_validate |   Fold 1 FINAL | best_val=96.10% | test=100.00%
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▄▆▇████████████████████████████████████
+wandb:   Acc/val_top1 ▁▆▇█████████████████████████████████████
+wandb:   Acc/val_top5 ▁▇██████████████████████████████████████
+wandb:             LR █████████▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▄▄▃▃▃▃▃▃▃▂▂▂▂▁▁
+wandb:     Loss/train █▅▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▄▄▃▁▃▇▅▅▆▆▃▅▅▅▄█▃▆▆▆▅▅▅▆█▂▄▄▄▃▄▃▄▃▄▄▄▃▂▃
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 100
+wandb:   Acc/val_top1 95.91625
+wandb:   Acc/val_top5 97.0823
+wandb:             LR 8e-05
+wandb:     Loss/train 0.99604
+wandb:       Loss/val 1.14908
+wandb:  best_val_top1 96.10282
+wandb:   epoch_time_s 10.40524
+wandb:      test_top1 100
+wandb: 
+wandb: 🚀 View run exp_cv_transformer_fold01 at: https://wandb.ai/lawun330-/msl-recognition/runs/om78388w
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_090612-om78388w/logs
+2026-06-22 09:25:35 | INFO     | cross_validate | Fold 1 done | val=96.10% | test=100.00%
+2026-06-22 09:25:35 | INFO     | cross_validate | Fold 2 | train=8482, val=2120, test=558
+wandb: setting up run 16hfr730
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_092535-16hfr730
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_transformer_fold02
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/16hfr730
+2026-06-22 09:25:36 | INFO     | cross_validate | Fold 2: Weights & Biases logging enabled
+2026-06-22 09:25:47 | INFO     | cross_validate |   Fold 2 | Epoch   1 | train=1.2% | val=5.13%  ★ | 11s
+2026-06-22 09:25:57 | INFO     | cross_validate |   Fold 2 | Epoch   2 | train=14.6% | val=31.25%  ★ | 11s
+2026-06-22 09:26:08 | INFO     | cross_validate |   Fold 2 | Epoch   3 | train=51.4% | val=69.03%  ★ | 11s
+2026-06-22 09:26:18 | INFO     | cross_validate |   Fold 2 | Epoch   4 | train=80.0% | val=83.68%  ★ | 10s
+2026-06-22 09:26:29 | INFO     | cross_validate |   Fold 2 | Epoch   5 | train=88.5% | val=86.66%  ★ | 10s
+2026-06-22 09:26:39 | INFO     | cross_validate |   Fold 2 | Epoch   6 | train=91.9% | val=90.58%  ★ | 10s
+2026-06-22 09:26:49 | INFO     | cross_validate |   Fold 2 | Epoch   7 | train=93.2% | val=90.81%  ★ | 10s
+2026-06-22 09:27:00 | INFO     | cross_validate |   Fold 2 | Epoch   8 | train=94.6% | val=92.02%  ★ | 10s
+2026-06-22 09:27:10 | INFO     | cross_validate |   Fold 2 | Epoch   9 | train=95.2% | val=92.16%  ★ | 10s
+2026-06-22 09:27:21 | INFO     | cross_validate |   Fold 2 | Epoch  10 | train=95.5% | val=93.28%  ★ | 10s
+2026-06-22 09:27:42 | INFO     | cross_validate |   Fold 2 | Epoch  12 | train=96.3% | val=93.66%  ★ | 10s
+2026-06-22 09:28:03 | INFO     | cross_validate |   Fold 2 | Epoch  14 | train=97.1% | val=93.70%  ★ | 10s
+2026-06-22 09:29:05 | INFO     | cross_validate |   Fold 2 | Epoch  20 | train=98.3% | val=94.59%  ★ | 10s
+2026-06-22 09:29:36 | INFO     | cross_validate |   Fold 2 | Epoch  23 | train=98.9% | val=94.64%  ★ | 10s
+2026-06-22 09:30:08 | INFO     | cross_validate |   Fold 2 | Epoch  26 | train=99.3% | val=94.82%  ★ | 11s
+2026-06-22 09:30:18 | INFO     | cross_validate |   Fold 2 | Epoch  27 | train=99.3% | val=94.92%  ★ | 10s
+2026-06-22 09:30:29 | INFO     | cross_validate |   Fold 2 | Epoch  28 | train=99.2% | val=95.52%  ★ | 10s
+2026-06-22 09:30:49 | INFO     | cross_validate |   Fold 2 | Epoch  30 | train=99.5% | val=94.96% | 10s
+2026-06-22 09:32:34 | INFO     | cross_validate |   Fold 2 | Epoch  40 | train=99.6% | val=95.57%  ★ | 10s
+2026-06-22 09:33:05 | INFO     | cross_validate |   Fold 2 | Epoch  43 | train=99.9% | val=95.85%  ★ | 10s
+2026-06-22 09:33:36 | INFO     | cross_validate |   Fold 2 | Epoch  46 | train=99.9% | val=96.18%  ★ | 10s
+2026-06-22 09:34:18 | INFO     | cross_validate |   Fold 2 | Epoch  50 | train=99.8% | val=95.80% | 10s
+2026-06-22 09:36:02 | INFO     | cross_validate |   Fold 2 | Epoch  60 | train=99.7% | val=95.57% | 10s
+2026-06-22 09:37:47 | INFO     | cross_validate |   Fold 2 | Epoch  70 | train=100.0% | val=96.32%  ★ | 11s
+2026-06-22 09:39:10 | INFO     | cross_validate |   Fold 2 | Epoch  78 | train=100.0% | val=96.46%  ★ | 10s
+2026-06-22 09:39:31 | INFO     | cross_validate |   Fold 2 | Epoch  80 | train=100.0% | val=95.85% | 10s
+2026-06-22 09:41:15 | INFO     | cross_validate |   Fold 2 | Epoch  90 | train=100.0% | val=96.32% | 10s
+2026-06-22 09:43:00 | INFO     | cross_validate |   Fold 2 | Epoch 100 | train=100.0% | val=96.13% | 10s
+2026-06-22 09:43:31 | INFO     | cross_validate |   Fold 2: early stopping at epoch 103
+2026-06-22 09:43:32 | INFO     | cross_validate |   Fold 2 FINAL | best_val=96.46% | test=100.00%
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▅▇▇▇███████████████████████████████████
+wandb:   Acc/val_top1 ▁▄▄▆▅▆▆▆▇▇▇▇▇▇▇▇█▇████▇█▇█▇████▇█▇██████
+wandb:   Acc/val_top5 ▁▆▇▇▇▇▇▇▇██▇█▇█▇██▇█████████████████████
+wandb:             LR ██████▇▇▇▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▅▅▄▄▄▃▃▃▃▂▂▂▂▁▁▁
+wandb:     Loss/train █▆▆▄▄▃▃▃▂▂▂▂▂▂▂▂▂▂▁▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▆▆▆▅▄▄▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▂▁▁▂▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s █▃▃▂▂▃▇▅▄▂▂▄▁▄▃▅▄▃▅▅▃▄▄▄▁▄▅▁▄▅▄▄▃▇▅▂▂▂▄▂
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 99.98821
+wandb:   Acc/val_top1 96.26866
+wandb:   Acc/val_top5 97.9944
+wandb:             LR 0.00012
+wandb:     Loss/train 0.99619
+wandb:       Loss/val 1.12718
+wandb:  best_val_top1 96.45522
+wandb:   epoch_time_s 10.45753
+wandb:      test_top1 100
+wandb: 
+wandb: 🚀 View run exp_cv_transformer_fold02 at: https://wandb.ai/lawun330-/msl-recognition/runs/16hfr730
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_092535-16hfr730/logs
+2026-06-22 09:43:32 | INFO     | cross_validate | Fold 2 done | val=96.46% | test=100.00%
+2026-06-22 09:43:32 | INFO     | cross_validate | Fold 3 | train=8482, val=2120, test=558
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_094332-3eps56x7
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_transformer_fold03
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/3eps56x7
+2026-06-22 09:43:33 | INFO     | cross_validate | Fold 3: Weights & Biases logging enabled
+2026-06-22 09:43:44 | INFO     | cross_validate |   Fold 3 | Epoch   1 | train=1.1% | val=4.57%  ★ | 11s
+2026-06-22 09:43:54 | INFO     | cross_validate |   Fold 3 | Epoch   2 | train=12.4% | val=29.48%  ★ | 10s
+2026-06-22 09:44:05 | INFO     | cross_validate |   Fold 3 | Epoch   3 | train=48.7% | val=67.63%  ★ | 10s
+2026-06-22 09:44:15 | INFO     | cross_validate |   Fold 3 | Epoch   4 | train=77.6% | val=82.23%  ★ | 10s
+2026-06-22 09:44:26 | INFO     | cross_validate |   Fold 3 | Epoch   5 | train=87.5% | val=87.41%  ★ | 10s
+2026-06-22 09:44:36 | INFO     | cross_validate |   Fold 3 | Epoch   6 | train=91.0% | val=90.21%  ★ | 10s
+2026-06-22 09:44:47 | INFO     | cross_validate |   Fold 3 | Epoch   7 | train=93.3% | val=90.25%  ★ | 10s
+2026-06-22 09:44:57 | INFO     | cross_validate |   Fold 3 | Epoch   8 | train=94.1% | val=90.62%  ★ | 11s
+2026-06-22 09:45:08 | INFO     | cross_validate |   Fold 3 | Epoch   9 | train=95.0% | val=92.16%  ★ | 11s
+2026-06-22 09:45:18 | INFO     | cross_validate |   Fold 3 | Epoch  10 | train=95.7% | val=90.86% | 10s
+2026-06-22 09:45:29 | INFO     | cross_validate |   Fold 3 | Epoch  11 | train=95.9% | val=92.72%  ★ | 10s
+2026-06-22 09:45:39 | INFO     | cross_validate |   Fold 3 | Epoch  12 | train=96.5% | val=92.96%  ★ | 10s
+2026-06-22 09:46:10 | INFO     | cross_validate |   Fold 3 | Epoch  15 | train=97.3% | val=93.28%  ★ | 10s
+2026-06-22 09:46:21 | INFO     | cross_validate |   Fold 3 | Epoch  16 | train=97.6% | val=93.33%  ★ | 11s
+2026-06-22 09:46:42 | INFO     | cross_validate |   Fold 3 | Epoch  18 | train=97.8% | val=94.22%  ★ | 11s
+2026-06-22 09:47:03 | INFO     | cross_validate |   Fold 3 | Epoch  20 | train=98.5% | val=93.42% | 10s
+2026-06-22 09:47:55 | INFO     | cross_validate |   Fold 3 | Epoch  25 | train=98.9% | val=94.36%  ★ | 10s
+2026-06-22 09:48:47 | INFO     | cross_validate |   Fold 3 | Epoch  30 | train=99.4% | val=94.03% | 10s
+2026-06-22 09:49:29 | INFO     | cross_validate |   Fold 3 | Epoch  34 | train=99.6% | val=94.45%  ★ | 10s
+2026-06-22 09:50:21 | INFO     | cross_validate |   Fold 3 | Epoch  39 | train=99.8% | val=94.82%  ★ | 10s
+2026-06-22 09:50:32 | INFO     | cross_validate |   Fold 3 | Epoch  40 | train=99.7% | val=94.40% | 10s
+2026-06-22 09:51:45 | INFO     | cross_validate |   Fold 3 | Epoch  47 | train=99.7% | val=94.92%  ★ | 10s
+2026-06-22 09:51:55 | INFO     | cross_validate |   Fold 3 | Epoch  48 | train=99.7% | val=95.01%  ★ | 10s
+2026-06-22 09:52:16 | INFO     | cross_validate |   Fold 3 | Epoch  50 | train=99.9% | val=94.96% | 10s
+2026-06-22 09:54:00 | INFO     | cross_validate |   Fold 3 | Epoch  60 | train=99.9% | val=95.20%  ★ | 11s
+2026-06-22 09:54:21 | INFO     | cross_validate |   Fold 3 | Epoch  62 | train=100.0% | val=95.24%  ★ | 10s
+2026-06-22 09:55:45 | INFO     | cross_validate |   Fold 3 | Epoch  70 | train=100.0% | val=94.96% | 10s
+2026-06-22 09:57:29 | INFO     | cross_validate |   Fold 3 | Epoch  80 | train=99.9% | val=94.78% | 10s
+2026-06-22 09:58:42 | INFO     | cross_validate |   Fold 3 | Epoch  87 | train=99.9% | val=95.38%  ★ | 10s
+2026-06-22 09:59:13 | INFO     | cross_validate |   Fold 3 | Epoch  90 | train=100.0% | val=95.06% | 10s
+2026-06-22 10:00:57 | INFO     | cross_validate |   Fold 3 | Epoch 100 | train=100.0% | val=94.96% | 10s
+2026-06-22 10:02:41 | INFO     | cross_validate |   Fold 3 | Epoch 110 | train=100.0% | val=95.24% | 10s
+2026-06-22 10:03:02 | INFO     | cross_validate |   Fold 3: early stopping at epoch 112
+2026-06-22 10:03:03 | INFO     | cross_validate |   Fold 3 FINAL | best_val=95.38% | test=100.00%
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▇▇▇████████████████████████████████████
+wandb:   Acc/val_top1 ▁▇▇▇████████████████████████████████████
+wandb:   Acc/val_top5 ▁▅▇█████████████████████████████████████
+wandb:             LR █████████▇▇▇▇▇▇▇▇▆▆▆▆▆▆▆▅▅▅▅▄▄▄▄▃▃▂▂▂▁▁▁
+wandb:     Loss/train █▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▃▃▄▄▆▅█▇▄█▆▄▄▃▅▄▄▆▄▃▅▄▃▃▃▃▂▄▁▃▃▃▂▅▆▂▂▄▄▅
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 100
+wandb:   Acc/val_top1 95.24254
+wandb:   Acc/val_top5 96.92164
+wandb:             LR 8e-05
+wandb:     Loss/train 0.99558
+wandb:       Loss/val 1.17046
+wandb:  best_val_top1 95.38246
+wandb:   epoch_time_s 10.45639
+wandb:      test_top1 100
+wandb: 
+wandb: 🚀 View run exp_cv_transformer_fold03 at: https://wandb.ai/lawun330-/msl-recognition/runs/3eps56x7
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_094332-3eps56x7/logs
+2026-06-22 10:03:03 | INFO     | cross_validate | Fold 3 done | val=95.38% | test=100.00%
+2026-06-22 10:03:03 | INFO     | cross_validate | Fold 4 | train=8482, val=2120, test=558
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_100303-8a2o18b0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_transformer_fold04
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/8a2o18b0
+2026-06-22 10:03:05 | INFO     | cross_validate | Fold 4: Weights & Biases logging enabled
+2026-06-22 10:03:15 | INFO     | cross_validate |   Fold 4 | Epoch   1 | train=1.0% | val=4.43%  ★ | 10s
+2026-06-22 10:03:25 | INFO     | cross_validate |   Fold 4 | Epoch   2 | train=12.3% | val=33.44%  ★ | 10s
+2026-06-22 10:03:36 | INFO     | cross_validate |   Fold 4 | Epoch   3 | train=49.1% | val=71.18%  ★ | 11s
+2026-06-22 10:03:46 | INFO     | cross_validate |   Fold 4 | Epoch   4 | train=77.6% | val=84.65%  ★ | 10s
+2026-06-22 10:03:57 | INFO     | cross_validate |   Fold 4 | Epoch   5 | train=88.0% | val=88.95%  ★ | 11s
+2026-06-22 10:04:07 | INFO     | cross_validate |   Fold 4 | Epoch   6 | train=91.9% | val=91.04%  ★ | 11s
+2026-06-22 10:04:18 | INFO     | cross_validate |   Fold 4 | Epoch   7 | train=93.5% | val=91.23%  ★ | 11s
+2026-06-22 10:04:29 | INFO     | cross_validate |   Fold 4 | Epoch   8 | train=94.5% | val=92.07%  ★ | 11s
+2026-06-22 10:04:39 | INFO     | cross_validate |   Fold 4 | Epoch   9 | train=95.1% | val=92.63%  ★ | 10s
+2026-06-22 10:04:49 | INFO     | cross_validate |   Fold 4 | Epoch  10 | train=95.9% | val=92.68%  ★ | 10s
+2026-06-22 10:05:00 | INFO     | cross_validate |   Fold 4 | Epoch  11 | train=96.2% | val=93.66%  ★ | 10s
+2026-06-22 10:05:31 | INFO     | cross_validate |   Fold 4 | Epoch  14 | train=97.3% | val=94.26%  ★ | 10s
+2026-06-22 10:05:52 | INFO     | cross_validate |   Fold 4 | Epoch  16 | train=97.7% | val=94.36%  ★ | 10s
+2026-06-22 10:06:24 | INFO     | cross_validate |   Fold 4 | Epoch  19 | train=97.9% | val=94.40%  ★ | 10s
+2026-06-22 10:06:34 | INFO     | cross_validate |   Fold 4 | Epoch  20 | train=98.3% | val=94.59%  ★ | 10s
+2026-06-22 10:06:45 | INFO     | cross_validate |   Fold 4 | Epoch  21 | train=98.3% | val=94.82%  ★ | 10s
+2026-06-22 10:06:55 | INFO     | cross_validate |   Fold 4 | Epoch  22 | train=98.7% | val=95.01%  ★ | 10s
+2026-06-22 10:08:08 | INFO     | cross_validate |   Fold 4 | Epoch  29 | train=99.4% | val=95.10%  ★ | 10s
+2026-06-22 10:08:18 | INFO     | cross_validate |   Fold 4 | Epoch  30 | train=99.4% | val=95.10% | 10s
+2026-06-22 10:08:29 | INFO     | cross_validate |   Fold 4 | Epoch  31 | train=99.6% | val=95.24%  ★ | 10s
+2026-06-22 10:09:32 | INFO     | cross_validate |   Fold 4 | Epoch  37 | train=99.7% | val=95.57%  ★ | 10s
+2026-06-22 10:10:03 | INFO     | cross_validate |   Fold 4 | Epoch  40 | train=99.5% | val=95.52% | 10s
+2026-06-22 10:11:47 | INFO     | cross_validate |   Fold 4 | Epoch  50 | train=99.7% | val=95.43% | 10s
+2026-06-22 10:11:58 | INFO     | cross_validate |   Fold 4 | Epoch  51 | train=99.7% | val=95.71%  ★ | 10s
+2026-06-22 10:12:40 | INFO     | cross_validate |   Fold 4 | Epoch  55 | train=99.7% | val=95.76%  ★ | 10s
+2026-06-22 10:13:11 | INFO     | cross_validate |   Fold 4 | Epoch  58 | train=99.8% | val=95.85%  ★ | 10s
+2026-06-22 10:13:22 | INFO     | cross_validate |   Fold 4 | Epoch  59 | train=99.9% | val=95.90%  ★ | 10s
+2026-06-22 10:13:32 | INFO     | cross_validate |   Fold 4 | Epoch  60 | train=99.9% | val=95.71% | 10s
+2026-06-22 10:13:43 | INFO     | cross_validate |   Fold 4 | Epoch  61 | train=99.9% | val=95.99%  ★ | 10s
+2026-06-22 10:15:16 | INFO     | cross_validate |   Fold 4 | Epoch  70 | train=99.9% | val=95.71% | 10s
+2026-06-22 10:17:01 | INFO     | cross_validate |   Fold 4 | Epoch  80 | train=99.9% | val=95.48% | 10s
+2026-06-22 10:17:32 | INFO     | cross_validate |   Fold 4 | Epoch  83 | train=100.0% | val=96.04%  ★ | 10s
+2026-06-22 10:17:53 | INFO     | cross_validate |   Fold 4 | Epoch  85 | train=100.0% | val=96.08%  ★ | 10s
+2026-06-22 10:18:45 | INFO     | cross_validate |   Fold 4 | Epoch  90 | train=100.0% | val=96.04% | 10s
+2026-06-22 10:20:09 | INFO     | cross_validate |   Fold 4 | Epoch  98 | train=100.0% | val=96.18%  ★ | 10s
+2026-06-22 10:20:30 | INFO     | cross_validate |   Fold 4 | Epoch 100 | train=99.9% | val=95.99% | 10s
+2026-06-22 10:20:51 | INFO     | cross_validate |   Fold 4 | Epoch 102 | train=100.0% | val=96.27%  ★ | 11s
+2026-06-22 10:22:14 | INFO     | cross_validate |   Fold 4 | Epoch 110 | train=100.0% | val=95.99% | 10s
+2026-06-22 10:23:59 | INFO     | cross_validate |   Fold 4 | Epoch 120 | train=100.0% | val=96.18% | 10s
+2026-06-22 10:25:12 | INFO     | cross_validate |   Fold 4: early stopping at epoch 127
+2026-06-22 10:25:12 | INFO     | cross_validate |   Fold 4 FINAL | best_val=96.27% | test=100.00%
+wandb: updating run metadata
+wandb: uploading history steps 125-126, summary, console lines 40-41
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▆▇█████████████████████████████████████
+wandb:   Acc/val_top1 ▁▃▅▅▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇███▇█████████████████
+wandb:   Acc/val_top5 ▁▄▆▆▆▇█▇▇▇▇▇▇▇▇▇▇▇███▇█▇▇▇▇▇▇██▇████████
+wandb:             LR ███████▇▇▇▇▇▇▆▆▆▆▅▅▅▄▄▄▄▄▄▄▃▃▃▃▂▂▂▂▂▁▁▁▁
+wandb:     Loss/train █▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▆▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▁▂▁▁▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▆▆█▆▇▆▅▄▄▆▆▆▆▆▃▇▄▁▇▆▇█▅▆▃▄▇▆▇▄▄▇▅▂▆▅▁▃▃▇
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 100
+wandb:   Acc/val_top1 96.22201
+wandb:   Acc/val_top5 97.4347
+wandb:             LR 3e-05
+wandb:     Loss/train 0.99423
+wandb:       Loss/val 1.1268
+wandb:  best_val_top1 96.26866
+wandb:   epoch_time_s 10.46219
+wandb:      test_top1 100
+wandb: 
+wandb: 🚀 View run exp_cv_transformer_fold04 at: https://wandb.ai/lawun330-/msl-recognition/runs/8a2o18b0
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_100303-8a2o18b0/logs
+2026-06-22 10:25:13 | INFO     | cross_validate | Fold 4 done | val=96.27% | test=100.00%
+
+=================================================================
+  Cross-Validation Summary  [transformer]
+=================================================================
+  Fold      Val Top-1   Test Top-1
+  ──────────────────────────────────
+  Fold 0      96.46%       99.83%
+  Fold 1      96.10%      100.00%
+  Fold 2      96.46%      100.00%
+  Fold 3      95.38%      100.00%
+  Fold 4      96.27%      100.00%
+  ──────────────────────────────────
+  Mean±Std   96.13±0.40%     99.97±0.07%
+  Best fold : 0  (val 96.46%)
+=================================================================
+

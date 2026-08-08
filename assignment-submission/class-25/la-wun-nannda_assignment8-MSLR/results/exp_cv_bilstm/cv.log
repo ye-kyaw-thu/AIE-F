@@ -1,0 +1,473 @@
+2026-06-21 23:11:30.309556: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:467] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1782083490.519568     406 cuda_dnn.cc:8579] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+E0000 00:00:1782083490.582153     406 cuda_blas.cc:1407] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+W0000 00:00:1782083491.116529     406 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1782083491.116591     406 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1782083491.116598     406 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+W0000 00:00:1782083491.116604     406 computation_placer.cc:177] computation placer already registered. Please check linkage and avoid linking the same target more than once.
+2026-06-21 23:11:44 | INFO     | cross_validate | ============================================================
+2026-06-21 23:11:44 | INFO     | cross_validate | Cross-Validation | model=bilstm | folds=5
+2026-06-21 23:11:44 | INFO     | cross_validate | Folding over augmented training pool (all-class design)
+2026-06-21 23:11:44 | INFO     | cross_validate |   Aug train pool : 10602 samples
+2026-06-21 23:11:44 | INFO     | cross_validate |   Test set       : 558 originals (fixed, all folds)
+2026-06-21 23:11:44 | INFO     | cross_validate | ============================================================
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:424: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+2026-06-21 23:11:45 | INFO     | cross_validate | Fold 0 | train=8481, val=2121, test=558
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /root/.netrc.
+wandb: Currently logged in as: lawun330 (lawun330-) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260621_231150-0jjkf6wh
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_bilstm_fold00
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/0jjkf6wh
+2026-06-21 23:11:55 | INFO     | cross_validate | Fold 0: Weights & Biases logging enabled
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:432: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+2026-06-21 23:12:14 | INFO     | cross_validate |   Fold 0 | Epoch   1 | train=0.2% | val=0.75%  ★ | 20s
+2026-06-21 23:12:32 | INFO     | cross_validate |   Fold 0 | Epoch   2 | train=0.4% | val=0.79%  ★ | 18s
+2026-06-21 23:12:51 | INFO     | cross_validate |   Fold 0 | Epoch   3 | train=1.3% | val=4.10%  ★ | 18s
+2026-06-21 23:13:08 | INFO     | cross_validate |   Fold 0 | Epoch   4 | train=5.2% | val=14.21%  ★ | 18s
+2026-06-21 23:13:26 | INFO     | cross_validate |   Fold 0 | Epoch   5 | train=19.3% | val=38.04%  ★ | 18s
+2026-06-21 23:13:44 | INFO     | cross_validate |   Fold 0 | Epoch   6 | train=40.7% | val=54.28%  ★ | 18s
+2026-06-21 23:14:02 | INFO     | cross_validate |   Fold 0 | Epoch   7 | train=56.8% | val=64.04%  ★ | 18s
+2026-06-21 23:14:20 | INFO     | cross_validate |   Fold 0 | Epoch   8 | train=67.7% | val=70.32%  ★ | 18s
+2026-06-21 23:14:37 | INFO     | cross_validate |   Fold 0 | Epoch   9 | train=74.9% | val=73.35%  ★ | 18s
+2026-06-21 23:14:55 | INFO     | cross_validate |   Fold 0 | Epoch  10 | train=78.9% | val=76.29%  ★ | 18s
+2026-06-21 23:15:13 | INFO     | cross_validate |   Fold 0 | Epoch  11 | train=82.9% | val=78.33%  ★ | 17s
+2026-06-21 23:15:30 | INFO     | cross_validate |   Fold 0 | Epoch  12 | train=85.7% | val=79.33%  ★ | 18s
+2026-06-21 23:15:48 | INFO     | cross_validate |   Fold 0 | Epoch  13 | train=87.7% | val=80.71%  ★ | 18s
+2026-06-21 23:16:06 | INFO     | cross_validate |   Fold 0 | Epoch  14 | train=88.9% | val=81.66%  ★ | 18s
+2026-06-21 23:16:23 | INFO     | cross_validate |   Fold 0 | Epoch  15 | train=90.3% | val=83.28%  ★ | 17s
+2026-06-21 23:17:16 | INFO     | cross_validate |   Fold 0 | Epoch  18 | train=92.9% | val=83.44%  ★ | 18s
+2026-06-21 23:17:33 | INFO     | cross_validate |   Fold 0 | Epoch  19 | train=92.9% | val=83.51%  ★ | 18s
+2026-06-21 23:17:51 | INFO     | cross_validate |   Fold 0 | Epoch  20 | train=93.3% | val=84.21%  ★ | 18s
+2026-06-21 23:18:09 | INFO     | cross_validate |   Fold 0 | Epoch  21 | train=93.8% | val=84.49%  ★ | 17s
+2026-06-21 23:18:27 | INFO     | cross_validate |   Fold 0 | Epoch  22 | train=94.1% | val=84.68%  ★ | 18s
+2026-06-21 23:18:44 | INFO     | cross_validate |   Fold 0 | Epoch  23 | train=94.2% | val=85.40%  ★ | 18s
+2026-06-21 23:19:37 | INFO     | cross_validate |   Fold 0 | Epoch  26 | train=94.8% | val=86.12%  ★ | 17s
+2026-06-21 23:20:47 | INFO     | cross_validate |   Fold 0 | Epoch  30 | train=95.7% | val=86.80%  ★ | 18s
+2026-06-21 23:21:40 | INFO     | cross_validate |   Fold 0 | Epoch  33 | train=95.9% | val=87.27%  ★ | 18s
+2026-06-21 23:23:44 | INFO     | cross_validate |   Fold 0 | Epoch  40 | train=96.8% | val=87.19% | 17s
+2026-06-21 23:24:02 | INFO     | cross_validate |   Fold 0 | Epoch  41 | train=96.8% | val=87.45%  ★ | 18s
+2026-06-21 23:24:55 | INFO     | cross_validate |   Fold 0 | Epoch  44 | train=96.7% | val=87.55%  ★ | 18s
+2026-06-21 23:26:41 | INFO     | cross_validate |   Fold 0 | Epoch  50 | train=97.2% | val=87.87%  ★ | 18s
+2026-06-21 23:28:10 | INFO     | cross_validate |   Fold 0 | Epoch  55 | train=97.3% | val=88.01%  ★ | 18s
+2026-06-21 23:29:04 | INFO     | cross_validate |   Fold 0 | Epoch  58 | train=97.6% | val=88.39%  ★ | 18s
+2026-06-21 23:29:39 | INFO     | cross_validate |   Fold 0 | Epoch  60 | train=97.9% | val=88.06% | 18s
+2026-06-21 23:29:57 | INFO     | cross_validate |   Fold 0 | Epoch  61 | train=97.8% | val=88.57%  ★ | 18s
+2026-06-21 23:30:51 | INFO     | cross_validate |   Fold 0 | Epoch  64 | train=97.8% | val=88.62%  ★ | 18s
+2026-06-21 23:32:37 | INFO     | cross_validate |   Fold 0 | Epoch  70 | train=98.5% | val=88.48% | 18s
+2026-06-21 23:34:06 | INFO     | cross_validate |   Fold 0 | Epoch  75 | train=98.5% | val=89.04%  ★ | 17s
+2026-06-21 23:35:35 | INFO     | cross_validate |   Fold 0 | Epoch  80 | train=98.9% | val=88.90% | 18s
+2026-06-21 23:38:34 | INFO     | cross_validate |   Fold 0 | Epoch  90 | train=99.3% | val=89.32%  ★ | 18s
+2026-06-21 23:41:32 | INFO     | cross_validate |   Fold 0 | Epoch 100 | train=99.7% | val=88.81% | 18s
+2026-06-21 23:44:29 | INFO     | cross_validate |   Fold 0 | Epoch 110 | train=99.9% | val=89.09% | 18s
+2026-06-21 23:45:05 | INFO     | cross_validate |   Fold 0 | Epoch 112 | train=99.9% | val=89.37%  ★ | 18s
+2026-06-21 23:47:26 | INFO     | cross_validate |   Fold 0 | Epoch 120 | train=99.9% | val=89.09% | 17s
+2026-06-21 23:50:22 | INFO     | cross_validate |   Fold 0 | Epoch 130 | train=100.0% | val=89.32% | 18s
+2026-06-21 23:52:26 | INFO     | cross_validate |   Fold 0: early stopping at epoch 137
+2026-06-21 23:52:27 | INFO     | cross_validate |   Fold 0 FINAL | best_val=89.37% | test=99.48%
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▁▅▆▇▇██████████████████████████████████
+wandb:   Acc/val_top1 ▁▁▂▄▆███████████████████████████████████
+wandb:   Acc/val_top5 ▁▂▇▇▇███████████████████████████████████
+wandb:             LR █████████▇▇▇▇▇▇▇▆▆▆▆▅▅▅▅▅▄▄▄▃▃▃▃▃▂▂▁▁▁▁▁
+wandb:     Loss/train █▅▄▃▃▃▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▄▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s █▃▅▅▄▃▅▂▁▃▁▅▇▃▄▄▄▄▄▇▄▃▅▃▆▅▆▅▄▄▆▆▇▄▇▄▂▃▄▄
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 99.98821
+wandb:   Acc/val_top1 89.22575
+wandb:   Acc/val_top5 93.09701
+wandb:             LR 1e-05
+wandb:     Loss/train 1.02865
+wandb:       Loss/val 1.54683
+wandb:  best_val_top1 89.36567
+wandb:   epoch_time_s 17.49533
+wandb:      test_top1 99.47917
+wandb: 
+wandb: 🚀 View run exp_cv_bilstm_fold00 at: https://wandb.ai/lawun330-/msl-recognition/runs/0jjkf6wh
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260621_231150-0jjkf6wh/logs
+2026-06-21 23:52:27 | INFO     | cross_validate | Fold 0 done | val=89.37% | test=99.48%
+/usr/local/lib/python3.12/dist-packages/torch/utils/data/dataloader.py:424: UserWarning: This DataLoader will create 8 worker processes in total. Our suggested max number of worker in current system is 4, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  self.check_worker_number_rationality()
+2026-06-21 23:52:28 | INFO     | cross_validate | Fold 1 | train=8481, val=2121, test=558
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260621_235228-tjl1zh86
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_bilstm_fold01
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/tjl1zh86
+2026-06-21 23:52:29 | INFO     | cross_validate | Fold 1: Weights & Biases logging enabled
+2026-06-21 23:52:47 | INFO     | cross_validate |   Fold 1 | Epoch   1 | train=0.1% | val=0.56%  ★ | 18s
+2026-06-21 23:53:05 | INFO     | cross_validate |   Fold 1 | Epoch   2 | train=0.6% | val=1.21%  ★ | 18s
+2026-06-21 23:53:22 | INFO     | cross_validate |   Fold 1 | Epoch   3 | train=1.7% | val=3.73%  ★ | 18s
+2026-06-21 23:53:40 | INFO     | cross_validate |   Fold 1 | Epoch   4 | train=4.5% | val=10.50%  ★ | 17s
+2026-06-21 23:53:57 | INFO     | cross_validate |   Fold 1 | Epoch   5 | train=11.5% | val=22.34%  ★ | 18s
+2026-06-21 23:54:15 | INFO     | cross_validate |   Fold 1 | Epoch   6 | train=25.1% | val=40.58%  ★ | 17s
+2026-06-21 23:54:32 | INFO     | cross_validate |   Fold 1 | Epoch   7 | train=40.2% | val=51.59%  ★ | 17s
+2026-06-21 23:54:50 | INFO     | cross_validate |   Fold 1 | Epoch   8 | train=54.3% | val=63.25%  ★ | 18s
+2026-06-21 23:55:07 | INFO     | cross_validate |   Fold 1 | Epoch   9 | train=64.1% | val=67.61%  ★ | 17s
+2026-06-21 23:55:25 | INFO     | cross_validate |   Fold 1 | Epoch  10 | train=70.7% | val=74.06%  ★ | 18s
+2026-06-21 23:55:42 | INFO     | cross_validate |   Fold 1 | Epoch  11 | train=76.2% | val=75.10%  ★ | 17s
+2026-06-21 23:56:00 | INFO     | cross_validate |   Fold 1 | Epoch  12 | train=79.7% | val=76.86%  ★ | 18s
+2026-06-21 23:56:17 | INFO     | cross_validate |   Fold 1 | Epoch  13 | train=82.6% | val=79.24%  ★ | 17s
+2026-06-21 23:56:35 | INFO     | cross_validate |   Fold 1 | Epoch  14 | train=85.2% | val=80.17%  ★ | 18s
+2026-06-21 23:56:52 | INFO     | cross_validate |   Fold 1 | Epoch  15 | train=87.5% | val=81.34%  ★ | 18s
+2026-06-21 23:57:28 | INFO     | cross_validate |   Fold 1 | Epoch  17 | train=89.7% | val=81.52%  ★ | 18s
+2026-06-21 23:57:45 | INFO     | cross_validate |   Fold 1 | Epoch  18 | train=90.6% | val=83.42%  ★ | 17s
+2026-06-21 23:58:21 | INFO     | cross_validate |   Fold 1 | Epoch  20 | train=92.2% | val=83.79%  ★ | 17s
+2026-06-21 23:58:38 | INFO     | cross_validate |   Fold 1 | Epoch  21 | train=92.9% | val=84.06%  ★ | 18s
+2026-06-21 23:58:56 | INFO     | cross_validate |   Fold 1 | Epoch  22 | train=93.2% | val=84.39%  ★ | 17s
+2026-06-21 23:59:13 | INFO     | cross_validate |   Fold 1 | Epoch  23 | train=93.5% | val=84.70%  ★ | 18s
+2026-06-22 00:00:05 | INFO     | cross_validate |   Fold 1 | Epoch  26 | train=94.2% | val=84.82%  ★ | 17s
+2026-06-22 00:00:40 | INFO     | cross_validate |   Fold 1 | Epoch  28 | train=94.7% | val=85.49%  ★ | 17s
+2026-06-22 00:01:15 | INFO     | cross_validate |   Fold 1 | Epoch  30 | train=95.2% | val=85.51%  ★ | 18s
+2026-06-22 00:01:32 | INFO     | cross_validate |   Fold 1 | Epoch  31 | train=95.4% | val=86.19%  ★ | 17s
+2026-06-22 00:01:50 | INFO     | cross_validate |   Fold 1 | Epoch  32 | train=95.3% | val=86.52%  ★ | 18s
+2026-06-22 00:02:07 | INFO     | cross_validate |   Fold 1 | Epoch  33 | train=95.6% | val=86.70%  ★ | 18s
+2026-06-22 00:03:53 | INFO     | cross_validate |   Fold 1 | Epoch  39 | train=96.3% | val=87.08%  ★ | 18s
+2026-06-22 00:04:11 | INFO     | cross_validate |   Fold 1 | Epoch  40 | train=96.4% | val=86.68% | 18s
+2026-06-22 00:04:47 | INFO     | cross_validate |   Fold 1 | Epoch  42 | train=96.4% | val=87.63%  ★ | 18s
+2026-06-22 00:07:07 | INFO     | cross_validate |   Fold 1 | Epoch  50 | train=97.0% | val=87.12% | 17s
+2026-06-22 00:08:54 | INFO     | cross_validate |   Fold 1 | Epoch  56 | train=97.2% | val=87.70%  ★ | 18s
+2026-06-22 00:09:47 | INFO     | cross_validate |   Fold 1 | Epoch  59 | train=97.5% | val=87.91%  ★ | 18s
+2026-06-22 00:10:04 | INFO     | cross_validate |   Fold 1 | Epoch  60 | train=97.4% | val=87.73% | 18s
+2026-06-22 00:13:01 | INFO     | cross_validate |   Fold 1 | Epoch  70 | train=97.9% | val=87.66% | 18s
+2026-06-22 00:13:37 | INFO     | cross_validate |   Fold 1 | Epoch  72 | train=98.0% | val=88.01%  ★ | 18s
+2026-06-22 00:14:29 | INFO     | cross_validate |   Fold 1 | Epoch  75 | train=98.0% | val=88.33%  ★ | 18s
+2026-06-22 00:15:58 | INFO     | cross_validate |   Fold 1 | Epoch  80 | train=98.5% | val=88.22% | 18s
+2026-06-22 00:16:34 | INFO     | cross_validate |   Fold 1 | Epoch  82 | train=98.7% | val=88.38%  ★ | 18s
+2026-06-22 00:17:10 | INFO     | cross_validate |   Fold 1 | Epoch  84 | train=98.6% | val=88.80%  ★ | 18s
+2026-06-22 00:18:57 | INFO     | cross_validate |   Fold 1 | Epoch  90 | train=99.1% | val=88.22% | 18s
+2026-06-22 00:21:19 | INFO     | cross_validate |   Fold 1 | Epoch  98 | train=99.2% | val=88.89%  ★ | 18s
+2026-06-22 00:21:54 | INFO     | cross_validate |   Fold 1 | Epoch 100 | train=99.5% | val=89.03%  ★ | 18s
+2026-06-22 00:24:33 | INFO     | cross_validate |   Fold 1 | Epoch 109 | train=99.7% | val=89.08%  ★ | 18s
+2026-06-22 00:24:51 | INFO     | cross_validate |   Fold 1 | Epoch 110 | train=99.7% | val=89.10%  ★ | 18s
+2026-06-22 00:27:47 | INFO     | cross_validate |   Fold 1 | Epoch 120 | train=99.9% | val=88.89% | 18s
+2026-06-22 00:30:08 | INFO     | cross_validate |   Fold 1 | Epoch 128 | train=99.9% | val=89.22%  ★ | 18s
+2026-06-22 00:30:44 | INFO     | cross_validate |   Fold 1 | Epoch 130 | train=99.9% | val=88.82% | 18s
+2026-06-22 00:33:40 | INFO     | cross_validate |   Fold 1 | Epoch 140 | train=100.0% | val=88.77% | 18s
+2026-06-22 00:36:37 | INFO     | cross_validate |   Fold 1 | Epoch 150 | train=100.0% | val=88.82% | 18s
+2026-06-22 00:36:38 | INFO     | cross_validate |   Fold 1 FINAL | best_val=89.22% | test=99.83%
+wandb: updating run metadata
+wandb: uploading history steps 148-149, summary, console lines 50-51
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▂▄▅▆▇▇▇▇███████████████████████████████
+wandb:   Acc/val_top1 ▁▃▅▆▇███████████████████████████████████
+wandb:   Acc/val_top5 ▁▆▇█████████████████████████████████████
+wandb:             LR ███████▇▇▇▇▇▇▆▆▆▆▆▅▅▅▅▄▄▄▃▃▃▃▂▂▂▂▁▁▁▁▁▁▁
+wandb:     Loss/train █▇▄▃▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▄▆▅▃▆▃▁▂▃▂▃▅▇▄▃▅▃█▆▇█▆▃▄▄█▆▆▄▆▃▆▆▆▅▄▅▆▆▄
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 99.96462
+wandb:   Acc/val_top1 88.82152
+wandb:   Acc/val_top5 93.04519
+wandb:             LR 1e-05
+wandb:     Loss/train 1.03317
+wandb:       Loss/val 1.56658
+wandb:  best_val_top1 89.22056
+wandb:   epoch_time_s 17.54514
+wandb:      test_top1 99.82639
+wandb: 
+wandb: 🚀 View run exp_cv_bilstm_fold01 at: https://wandb.ai/lawun330-/msl-recognition/runs/tjl1zh86
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260621_235228-tjl1zh86/logs
+2026-06-22 00:36:39 | INFO     | cross_validate | Fold 1 done | val=89.22% | test=99.83%
+2026-06-22 00:36:39 | INFO     | cross_validate | Fold 2 | train=8482, val=2120, test=558
+wandb: setting up run 0sroih4r
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_003639-0sroih4r
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_bilstm_fold02
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/0sroih4r
+2026-06-22 00:36:40 | INFO     | cross_validate | Fold 2: Weights & Biases logging enabled
+2026-06-22 00:36:58 | INFO     | cross_validate |   Fold 2 | Epoch   1 | train=0.3% | val=0.56%  ★ | 18s
+2026-06-22 00:37:16 | INFO     | cross_validate |   Fold 2 | Epoch   2 | train=0.8% | val=1.91%  ★ | 18s
+2026-06-22 00:37:33 | INFO     | cross_validate |   Fold 2 | Epoch   3 | train=2.6% | val=5.69%  ★ | 17s
+2026-06-22 00:37:51 | INFO     | cross_validate |   Fold 2 | Epoch   4 | train=6.6% | val=15.07%  ★ | 18s
+2026-06-22 00:38:09 | INFO     | cross_validate |   Fold 2 | Epoch   5 | train=17.7% | val=31.25%  ★ | 18s
+2026-06-22 00:38:27 | INFO     | cross_validate |   Fold 2 | Epoch   6 | train=32.8% | val=46.78%  ★ | 18s
+2026-06-22 00:38:44 | INFO     | cross_validate |   Fold 2 | Epoch   7 | train=49.8% | val=59.51%  ★ | 18s
+2026-06-22 00:39:02 | INFO     | cross_validate |   Fold 2 | Epoch   8 | train=62.7% | val=66.28%  ★ | 18s
+2026-06-22 00:39:20 | INFO     | cross_validate |   Fold 2 | Epoch   9 | train=70.5% | val=70.57%  ★ | 18s
+2026-06-22 00:39:38 | INFO     | cross_validate |   Fold 2 | Epoch  10 | train=76.5% | val=73.13%  ★ | 18s
+2026-06-22 00:39:56 | INFO     | cross_validate |   Fold 2 | Epoch  11 | train=81.3% | val=77.05%  ★ | 18s
+2026-06-22 00:40:14 | INFO     | cross_validate |   Fold 2 | Epoch  12 | train=84.3% | val=78.26%  ★ | 18s
+2026-06-22 00:40:32 | INFO     | cross_validate |   Fold 2 | Epoch  13 | train=86.2% | val=79.38%  ★ | 18s
+2026-06-22 00:40:50 | INFO     | cross_validate |   Fold 2 | Epoch  14 | train=88.2% | val=80.27%  ★ | 18s
+2026-06-22 00:41:07 | INFO     | cross_validate |   Fold 2 | Epoch  15 | train=89.7% | val=80.50%  ★ | 18s
+2026-06-22 00:41:25 | INFO     | cross_validate |   Fold 2 | Epoch  16 | train=90.7% | val=81.30%  ★ | 18s
+2026-06-22 00:41:43 | INFO     | cross_validate |   Fold 2 | Epoch  17 | train=91.6% | val=82.04%  ★ | 18s
+2026-06-22 00:42:18 | INFO     | cross_validate |   Fold 2 | Epoch  19 | train=92.7% | val=82.74%  ★ | 18s
+2026-06-22 00:42:36 | INFO     | cross_validate |   Fold 2 | Epoch  20 | train=93.3% | val=83.02%  ★ | 18s
+2026-06-22 00:42:53 | INFO     | cross_validate |   Fold 2 | Epoch  21 | train=93.5% | val=83.16%  ★ | 18s
+2026-06-22 00:43:11 | INFO     | cross_validate |   Fold 2 | Epoch  22 | train=94.4% | val=84.05%  ★ | 18s
+2026-06-22 00:43:46 | INFO     | cross_validate |   Fold 2 | Epoch  24 | train=94.6% | val=84.19%  ★ | 17s
+2026-06-22 00:44:22 | INFO     | cross_validate |   Fold 2 | Epoch  26 | train=94.8% | val=84.65%  ★ | 18s
+2026-06-22 00:44:39 | INFO     | cross_validate |   Fold 2 | Epoch  27 | train=95.0% | val=84.84%  ★ | 18s
+2026-06-22 00:45:15 | INFO     | cross_validate |   Fold 2 | Epoch  29 | train=95.4% | val=84.98%  ★ | 18s
+2026-06-22 00:45:32 | INFO     | cross_validate |   Fold 2 | Epoch  30 | train=95.4% | val=85.35%  ★ | 17s
+2026-06-22 00:45:50 | INFO     | cross_validate |   Fold 2 | Epoch  31 | train=95.7% | val=85.40%  ★ | 18s
+2026-06-22 00:46:43 | INFO     | cross_validate |   Fold 2 | Epoch  34 | train=96.2% | val=85.49%  ★ | 18s
+2026-06-22 00:47:01 | INFO     | cross_validate |   Fold 2 | Epoch  35 | train=96.1% | val=86.19%  ★ | 18s
+2026-06-22 00:47:18 | INFO     | cross_validate |   Fold 2 | Epoch  36 | train=96.1% | val=86.43%  ★ | 17s
+2026-06-22 00:47:36 | INFO     | cross_validate |   Fold 2 | Epoch  37 | train=96.2% | val=86.80%  ★ | 18s
+2026-06-22 00:48:28 | INFO     | cross_validate |   Fold 2 | Epoch  40 | train=96.6% | val=86.57% | 18s
+2026-06-22 00:49:38 | INFO     | cross_validate |   Fold 2 | Epoch  44 | train=96.8% | val=86.89%  ★ | 17s
+2026-06-22 00:50:49 | INFO     | cross_validate |   Fold 2 | Epoch  48 | train=97.0% | val=87.36%  ★ | 18s
+2026-06-22 00:51:07 | INFO     | cross_validate |   Fold 2 | Epoch  49 | train=97.1% | val=87.50%  ★ | 18s
+2026-06-22 00:51:24 | INFO     | cross_validate |   Fold 2 | Epoch  50 | train=97.0% | val=87.03% | 18s
+2026-06-22 00:52:00 | INFO     | cross_validate |   Fold 2 | Epoch  52 | train=97.3% | val=87.55%  ★ | 18s
+2026-06-22 00:52:18 | INFO     | cross_validate |   Fold 2 | Epoch  53 | train=97.1% | val=87.73%  ★ | 18s
+2026-06-22 00:53:46 | INFO     | cross_validate |   Fold 2 | Epoch  58 | train=97.5% | val=87.78%  ★ | 18s
+2026-06-22 00:54:21 | INFO     | cross_validate |   Fold 2 | Epoch  60 | train=97.5% | val=87.22% | 18s
+2026-06-22 00:54:56 | INFO     | cross_validate |   Fold 2 | Epoch  62 | train=97.6% | val=88.15%  ★ | 17s
+2026-06-22 00:57:15 | INFO     | cross_validate |   Fold 2 | Epoch  70 | train=98.1% | val=87.73% | 17s
+2026-06-22 00:57:32 | INFO     | cross_validate |   Fold 2 | Epoch  71 | train=98.1% | val=88.29%  ★ | 17s
+2026-06-22 00:57:50 | INFO     | cross_validate |   Fold 2 | Epoch  72 | train=98.3% | val=88.62%  ★ | 18s
+2026-06-22 01:00:09 | INFO     | cross_validate |   Fold 2 | Epoch  80 | train=98.7% | val=88.81%  ★ | 18s
+2026-06-22 01:01:01 | INFO     | cross_validate |   Fold 2 | Epoch  83 | train=98.9% | val=88.99%  ★ | 17s
+2026-06-22 01:02:47 | INFO     | cross_validate |   Fold 2 | Epoch  89 | train=99.1% | val=89.09%  ★ | 18s
+2026-06-22 01:03:04 | INFO     | cross_validate |   Fold 2 | Epoch  90 | train=99.2% | val=88.71% | 18s
+2026-06-22 01:04:50 | INFO     | cross_validate |   Fold 2 | Epoch  96 | train=99.3% | val=89.32%  ★ | 17s
+2026-06-22 01:06:00 | INFO     | cross_validate |   Fold 2 | Epoch 100 | train=99.6% | val=89.04% | 17s
+2026-06-22 01:06:53 | INFO     | cross_validate |   Fold 2 | Epoch 103 | train=99.6% | val=89.41%  ★ | 18s
+2026-06-22 01:08:56 | INFO     | cross_validate |   Fold 2 | Epoch 110 | train=99.7% | val=89.18% | 18s
+2026-06-22 01:10:06 | INFO     | cross_validate |   Fold 2 | Epoch 114 | train=99.8% | val=89.51%  ★ | 17s
+2026-06-22 01:11:52 | INFO     | cross_validate |   Fold 2 | Epoch 120 | train=99.9% | val=89.69%  ★ | 18s
+2026-06-22 01:13:21 | INFO     | cross_validate |   Fold 2 | Epoch 125 | train=99.9% | val=89.74%  ★ | 18s
+2026-06-22 01:14:49 | INFO     | cross_validate |   Fold 2 | Epoch 130 | train=100.0% | val=89.46% | 17s
+2026-06-22 01:15:41 | INFO     | cross_validate |   Fold 2 | Epoch 133 | train=99.9% | val=89.79%  ★ | 18s
+2026-06-22 01:15:59 | INFO     | cross_validate |   Fold 2 | Epoch 134 | train=100.0% | val=89.83%  ★ | 17s
+2026-06-22 01:16:52 | INFO     | cross_validate |   Fold 2 | Epoch 137 | train=100.0% | val=89.88%  ★ | 18s
+2026-06-22 01:17:45 | INFO     | cross_validate |   Fold 2 | Epoch 140 | train=100.0% | val=89.74% | 18s
+2026-06-22 01:20:40 | INFO     | cross_validate |   Fold 2 | Epoch 150 | train=100.0% | val=89.79% | 18s
+2026-06-22 01:20:41 | INFO     | cross_validate |   Fold 2 FINAL | best_val=89.88% | test=99.65%
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▄▄▅▅▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇█████████████
+wandb:   Acc/val_top1 ▁▃▆▇▇▇▇▇▇▇██████████████████████████████
+wandb:   Acc/val_top5 ▁▅▆▇████████████████████████████████████
+wandb:             LR ████▇▇▇▇▇▇▇▇▇▆▆▆▅▄▄▄▃▃▃▃▃▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁
+wandb:     Loss/train █▇▆▅▄▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▅▃▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▆▄█▇█▆▄▅▅▅█▄▂▄▄▅▃▂▄▂▆▆▇▁▃▄▆▄▇▃▇▆▇▄▄▄▂▅▄▅
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 99.96462
+wandb:   Acc/val_top1 89.78545
+wandb:   Acc/val_top5 94.40299
+wandb:             LR 1e-05
+wandb:     Loss/train 1.02704
+wandb:       Loss/val 1.53525
+wandb:  best_val_top1 89.87873
+wandb:   epoch_time_s 17.53943
+wandb:      test_top1 99.65278
+wandb: 
+wandb: 🚀 View run exp_cv_bilstm_fold02 at: https://wandb.ai/lawun330-/msl-recognition/runs/0sroih4r
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_003639-0sroih4r/logs
+2026-06-22 01:20:42 | INFO     | cross_validate | Fold 2 done | val=89.88% | test=99.65%
+2026-06-22 01:20:42 | INFO     | cross_validate | Fold 3 | train=8482, val=2120, test=558
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_012042-herapjd0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_bilstm_fold03
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/herapjd0
+2026-06-22 01:20:43 | INFO     | cross_validate | Fold 3: Weights & Biases logging enabled
+2026-06-22 01:21:01 | INFO     | cross_validate |   Fold 3 | Epoch   1 | train=0.2% | val=0.84%  ★ | 18s
+2026-06-22 01:21:18 | INFO     | cross_validate |   Fold 3 | Epoch   2 | train=0.5% | val=1.45%  ★ | 18s
+2026-06-22 01:21:36 | INFO     | cross_validate |   Fold 3 | Epoch   3 | train=1.5% | val=2.75%  ★ | 18s
+2026-06-22 01:21:54 | INFO     | cross_validate |   Fold 3 | Epoch   4 | train=4.6% | val=13.01%  ★ | 18s
+2026-06-22 01:22:12 | INFO     | cross_validate |   Fold 3 | Epoch   5 | train=13.1% | val=26.49%  ★ | 18s
+2026-06-22 01:22:29 | INFO     | cross_validate |   Fold 3 | Epoch   6 | train=31.1% | val=45.15%  ★ | 18s
+2026-06-22 01:22:47 | INFO     | cross_validate |   Fold 3 | Epoch   7 | train=48.6% | val=59.33%  ★ | 18s
+2026-06-22 01:23:05 | INFO     | cross_validate |   Fold 3 | Epoch   8 | train=61.9% | val=66.51%  ★ | 18s
+2026-06-22 01:23:23 | INFO     | cross_validate |   Fold 3 | Epoch   9 | train=69.6% | val=70.15%  ★ | 18s
+2026-06-22 01:23:41 | INFO     | cross_validate |   Fold 3 | Epoch  10 | train=75.8% | val=73.83%  ★ | 18s
+2026-06-22 01:23:58 | INFO     | cross_validate |   Fold 3 | Epoch  11 | train=80.0% | val=75.70%  ★ | 18s
+2026-06-22 01:24:16 | INFO     | cross_validate |   Fold 3 | Epoch  12 | train=83.1% | val=77.29%  ★ | 18s
+2026-06-22 01:24:34 | INFO     | cross_validate |   Fold 3 | Epoch  13 | train=85.3% | val=79.85%  ★ | 18s
+2026-06-22 01:24:51 | INFO     | cross_validate |   Fold 3 | Epoch  14 | train=87.4% | val=80.92%  ★ | 18s
+2026-06-22 01:25:09 | INFO     | cross_validate |   Fold 3 | Epoch  15 | train=89.5% | val=81.30%  ★ | 18s
+2026-06-22 01:25:27 | INFO     | cross_validate |   Fold 3 | Epoch  16 | train=90.0% | val=81.72%  ★ | 18s
+2026-06-22 01:25:44 | INFO     | cross_validate |   Fold 3 | Epoch  17 | train=90.7% | val=82.74%  ★ | 17s
+2026-06-22 01:26:02 | INFO     | cross_validate |   Fold 3 | Epoch  18 | train=91.7% | val=84.19%  ★ | 18s
+2026-06-22 01:26:20 | INFO     | cross_validate |   Fold 3 | Epoch  19 | train=92.6% | val=84.47%  ★ | 18s
+2026-06-22 01:26:38 | INFO     | cross_validate |   Fold 3 | Epoch  20 | train=93.1% | val=84.14% | 18s
+2026-06-22 01:27:32 | INFO     | cross_validate |   Fold 3 | Epoch  23 | train=94.3% | val=85.87%  ★ | 18s
+2026-06-22 01:28:08 | INFO     | cross_validate |   Fold 3 | Epoch  25 | train=94.5% | val=86.01%  ★ | 18s
+2026-06-22 01:29:01 | INFO     | cross_validate |   Fold 3 | Epoch  28 | train=95.1% | val=86.29%  ★ | 18s
+2026-06-22 01:29:36 | INFO     | cross_validate |   Fold 3 | Epoch  30 | train=95.5% | val=85.91% | 17s
+2026-06-22 01:29:54 | INFO     | cross_validate |   Fold 3 | Epoch  31 | train=95.7% | val=86.61%  ★ | 18s
+2026-06-22 01:30:29 | INFO     | cross_validate |   Fold 3 | Epoch  33 | train=96.2% | val=86.94%  ★ | 18s
+2026-06-22 01:32:16 | INFO     | cross_validate |   Fold 3 | Epoch  39 | train=96.5% | val=87.22%  ★ | 18s
+2026-06-22 01:32:33 | INFO     | cross_validate |   Fold 3 | Epoch  40 | train=96.7% | val=87.22% | 18s
+2026-06-22 01:33:44 | INFO     | cross_validate |   Fold 3 | Epoch  44 | train=97.1% | val=87.31%  ★ | 18s
+2026-06-22 01:34:19 | INFO     | cross_validate |   Fold 3 | Epoch  46 | train=96.9% | val=87.83%  ★ | 18s
+2026-06-22 01:35:30 | INFO     | cross_validate |   Fold 3 | Epoch  50 | train=97.4% | val=87.41% | 18s
+2026-06-22 01:35:48 | INFO     | cross_validate |   Fold 3 | Epoch  51 | train=97.4% | val=88.15%  ★ | 18s
+2026-06-22 01:36:41 | INFO     | cross_validate |   Fold 3 | Epoch  54 | train=97.5% | val=88.67%  ★ | 18s
+2026-06-22 01:38:28 | INFO     | cross_validate |   Fold 3 | Epoch  60 | train=97.9% | val=88.53% | 18s
+2026-06-22 01:39:57 | INFO     | cross_validate |   Fold 3 | Epoch  65 | train=98.2% | val=89.09%  ★ | 18s
+2026-06-22 01:41:07 | INFO     | cross_validate |   Fold 3 | Epoch  69 | train=98.3% | val=89.37%  ★ | 18s
+2026-06-22 01:41:25 | INFO     | cross_validate |   Fold 3 | Epoch  70 | train=98.4% | val=89.04% | 18s
+2026-06-22 01:43:47 | INFO     | cross_validate |   Fold 3 | Epoch  78 | train=98.6% | val=89.41%  ★ | 18s
+2026-06-22 01:44:05 | INFO     | cross_validate |   Fold 3 | Epoch  79 | train=98.8% | val=89.65%  ★ | 18s
+2026-06-22 01:44:22 | INFO     | cross_validate |   Fold 3 | Epoch  80 | train=98.8% | val=89.51% | 18s
+2026-06-22 01:47:19 | INFO     | cross_validate |   Fold 3 | Epoch  90 | train=99.2% | val=89.55% | 18s
+2026-06-22 01:48:47 | INFO     | cross_validate |   Fold 3 | Epoch  95 | train=99.4% | val=89.79%  ★ | 18s
+2026-06-22 01:50:15 | INFO     | cross_validate |   Fold 3 | Epoch 100 | train=99.6% | val=89.74% | 17s
+2026-06-22 01:53:14 | INFO     | cross_validate |   Fold 3 | Epoch 110 | train=99.8% | val=89.60% | 18s
+2026-06-22 01:54:24 | INFO     | cross_validate |   Fold 3 | Epoch 114 | train=99.8% | val=89.97%  ★ | 18s
+2026-06-22 01:56:09 | INFO     | cross_validate |   Fold 3 | Epoch 120 | train=99.9% | val=89.60% | 18s
+2026-06-22 01:59:04 | INFO     | cross_validate |   Fold 3 | Epoch 130 | train=100.0% | val=89.65% | 17s
+2026-06-22 02:01:42 | INFO     | cross_validate |   Fold 3: early stopping at epoch 139
+2026-06-22 02:01:43 | INFO     | cross_validate |   Fold 3 FINAL | best_val=89.97% | test=99.31%
+wandb: updating run metadata
+wandb: uploading history steps 137-138, summary, console lines 48-49
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▁▆▇▇▇▇█████████████████████████████████
+wandb:   Acc/val_top1 ▁▃▄▄▅▆▇▇▇▇▇▇▇▇██████████████████████████
+wandb:   Acc/val_top5 ▁▅▇▇████████████████████████████████████
+wandb:             LR ███████▇▇▇▇▇▇▆▆▆▆▅▅▅▅▅▄▄▄▃▃▃▃▃▂▂▂▁▁▁▁▁▁▁
+wandb:     Loss/train █▇▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▄▃▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▄▅▄▆▆█▃▂▄▂▅▆▂▃▄▆▆▅▄▄▅▃▂▃▅▄▃▅▃▂▆▇▆▇▁▁▄▄▃▃
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 99.97642
+wandb:   Acc/val_top1 89.5056
+wandb:   Acc/val_top5 93.37687
+wandb:             LR 1e-05
+wandb:     Loss/train 1.0289
+wandb:       Loss/val 1.55126
+wandb:  best_val_top1 89.97201
+wandb:   epoch_time_s 17.56729
+wandb:      test_top1 99.30556
+wandb: 
+wandb: 🚀 View run exp_cv_bilstm_fold03 at: https://wandb.ai/lawun330-/msl-recognition/runs/herapjd0
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_012042-herapjd0/logs
+2026-06-22 02:01:43 | INFO     | cross_validate | Fold 3 done | val=89.97% | test=99.31%
+2026-06-22 02:01:43 | INFO     | cross_validate | Fold 4 | train=8482, val=2120, test=558
+wandb: Tracking run with wandb version 0.25.1
+wandb: Run data is saved locally in /kaggle/working/wandb/run-20260622_020144-anpigz54
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run exp_cv_bilstm_fold04
+wandb: ⭐️ View project at https://wandb.ai/lawun330-/msl-recognition
+wandb: 🚀 View run at https://wandb.ai/lawun330-/msl-recognition/runs/anpigz54
+2026-06-22 02:01:45 | INFO     | cross_validate | Fold 4: Weights & Biases logging enabled
+2026-06-22 02:02:03 | INFO     | cross_validate |   Fold 4 | Epoch   1 | train=0.2% | val=0.42%  ★ | 18s
+2026-06-22 02:02:21 | INFO     | cross_validate |   Fold 4 | Epoch   2 | train=0.5% | val=1.31%  ★ | 18s
+2026-06-22 02:02:39 | INFO     | cross_validate |   Fold 4 | Epoch   3 | train=1.3% | val=3.26%  ★ | 18s
+2026-06-22 02:02:56 | INFO     | cross_validate |   Fold 4 | Epoch   4 | train=5.0% | val=11.75%  ★ | 18s
+2026-06-22 02:03:14 | INFO     | cross_validate |   Fold 4 | Epoch   5 | train=16.7% | val=30.78%  ★ | 18s
+2026-06-22 02:03:32 | INFO     | cross_validate |   Fold 4 | Epoch   6 | train=35.3% | val=50.47%  ★ | 18s
+2026-06-22 02:03:50 | INFO     | cross_validate |   Fold 4 | Epoch   7 | train=51.9% | val=60.31%  ★ | 18s
+2026-06-22 02:04:08 | INFO     | cross_validate |   Fold 4 | Epoch   8 | train=63.4% | val=68.14%  ★ | 18s
+2026-06-22 02:04:26 | INFO     | cross_validate |   Fold 4 | Epoch   9 | train=69.9% | val=71.36%  ★ | 18s
+2026-06-22 02:04:43 | INFO     | cross_validate |   Fold 4 | Epoch  10 | train=76.1% | val=74.02%  ★ | 18s
+2026-06-22 02:05:01 | INFO     | cross_validate |   Fold 4 | Epoch  11 | train=80.8% | val=77.52%  ★ | 18s
+2026-06-22 02:05:36 | INFO     | cross_validate |   Fold 4 | Epoch  13 | train=86.4% | val=79.24%  ★ | 18s
+2026-06-22 02:06:12 | INFO     | cross_validate |   Fold 4 | Epoch  15 | train=89.7% | val=81.11%  ★ | 18s
+2026-06-22 02:06:47 | INFO     | cross_validate |   Fold 4 | Epoch  17 | train=92.0% | val=82.70%  ★ | 18s
+2026-06-22 02:07:40 | INFO     | cross_validate |   Fold 4 | Epoch  20 | train=93.4% | val=83.68%  ★ | 18s
+2026-06-22 02:08:32 | INFO     | cross_validate |   Fold 4 | Epoch  23 | train=94.3% | val=83.82%  ★ | 18s
+2026-06-22 02:08:50 | INFO     | cross_validate |   Fold 4 | Epoch  24 | train=94.3% | val=84.47%  ★ | 18s
+2026-06-22 02:09:25 | INFO     | cross_validate |   Fold 4 | Epoch  26 | train=95.1% | val=84.65%  ★ | 17s
+2026-06-22 02:09:43 | INFO     | cross_validate |   Fold 4 | Epoch  27 | train=95.1% | val=85.17%  ★ | 18s
+2026-06-22 02:10:18 | INFO     | cross_validate |   Fold 4 | Epoch  29 | train=95.3% | val=85.45%  ★ | 18s
+2026-06-22 02:10:35 | INFO     | cross_validate |   Fold 4 | Epoch  30 | train=95.7% | val=84.42% | 17s
+2026-06-22 02:11:28 | INFO     | cross_validate |   Fold 4 | Epoch  33 | train=96.1% | val=85.91%  ★ | 18s
+2026-06-22 02:13:13 | INFO     | cross_validate |   Fold 4 | Epoch  39 | train=96.2% | val=86.47%  ★ | 18s
+2026-06-22 02:13:31 | INFO     | cross_validate |   Fold 4 | Epoch  40 | train=96.5% | val=85.82% | 18s
+2026-06-22 02:14:42 | INFO     | cross_validate |   Fold 4 | Epoch  44 | train=96.8% | val=86.71%  ★ | 18s
+2026-06-22 02:14:59 | INFO     | cross_validate |   Fold 4 | Epoch  45 | train=96.7% | val=86.85%  ★ | 17s
+2026-06-22 02:16:27 | INFO     | cross_validate |   Fold 4 | Epoch  50 | train=97.1% | val=86.99%  ★ | 18s
+2026-06-22 02:16:45 | INFO     | cross_validate |   Fold 4 | Epoch  51 | train=97.2% | val=87.50%  ★ | 18s
+2026-06-22 02:19:24 | INFO     | cross_validate |   Fold 4 | Epoch  60 | train=97.7% | val=87.22% | 18s
+2026-06-22 02:20:00 | INFO     | cross_validate |   Fold 4 | Epoch  62 | train=97.7% | val=87.73%  ★ | 18s
+2026-06-22 02:22:23 | INFO     | cross_validate |   Fold 4 | Epoch  70 | train=98.1% | val=87.64% | 18s
+2026-06-22 02:23:16 | INFO     | cross_validate |   Fold 4 | Epoch  73 | train=98.3% | val=87.83%  ★ | 18s
+2026-06-22 02:25:05 | INFO     | cross_validate |   Fold 4 | Epoch  79 | train=98.7% | val=88.11%  ★ | 18s
+2026-06-22 02:25:22 | INFO     | cross_validate |   Fold 4 | Epoch  80 | train=98.7% | val=87.83% | 18s
+2026-06-22 02:26:34 | INFO     | cross_validate |   Fold 4 | Epoch  84 | train=98.9% | val=88.15%  ★ | 18s
+2026-06-22 02:27:28 | INFO     | cross_validate |   Fold 4 | Epoch  87 | train=99.2% | val=88.53%  ★ | 18s
+2026-06-22 02:28:04 | INFO     | cross_validate |   Fold 4 | Epoch  89 | train=99.1% | val=88.57%  ★ | 18s
+2026-06-22 02:28:23 | INFO     | cross_validate |   Fold 4 | Epoch  90 | train=99.2% | val=88.01% | 18s
+2026-06-22 02:30:46 | INFO     | cross_validate |   Fold 4 | Epoch  98 | train=99.4% | val=88.76%  ★ | 18s
+2026-06-22 02:31:21 | INFO     | cross_validate |   Fold 4 | Epoch 100 | train=99.5% | val=88.25% | 18s
+2026-06-22 02:34:18 | INFO     | cross_validate |   Fold 4 | Epoch 110 | train=99.8% | val=88.67% | 18s
+2026-06-22 02:34:36 | INFO     | cross_validate |   Fold 4 | Epoch 111 | train=99.8% | val=88.81%  ★ | 18s
+2026-06-22 02:34:54 | INFO     | cross_validate |   Fold 4 | Epoch 112 | train=99.8% | val=88.85%  ★ | 18s
+2026-06-22 02:36:41 | INFO     | cross_validate |   Fold 4 | Epoch 118 | train=99.9% | val=88.90%  ★ | 18s
+2026-06-22 02:37:17 | INFO     | cross_validate |   Fold 4 | Epoch 120 | train=99.9% | val=88.71% | 18s
+2026-06-22 02:38:46 | INFO     | cross_validate |   Fold 4 | Epoch 125 | train=100.0% | val=88.99%  ★ | 18s
+2026-06-22 02:40:16 | INFO     | cross_validate |   Fold 4 | Epoch 130 | train=100.0% | val=88.62% | 18s
+2026-06-22 02:43:15 | INFO     | cross_validate |   Fold 4 | Epoch 140 | train=100.0% | val=88.71% | 18s
+2026-06-22 02:46:13 | INFO     | cross_validate |   Fold 4 | Epoch 150 | train=100.0% | val=88.81% | 18s
+2026-06-22 02:46:13 | INFO     | cross_validate |   Fold 4: early stopping at epoch 150
+2026-06-22 02:46:14 | INFO     | cross_validate |   Fold 4 FINAL | best_val=88.99% | test=99.65%
+wandb: updating run metadata
+wandb: 
+wandb: Run history:
+wandb: Acc/train_top1 ▁▄▄▆▆▆▇▇▇▇▇▇▇▇▇█████████████████████████
+wandb:   Acc/val_top1 ▁▁▇▇████████████████████████████████████
+wandb:   Acc/val_top5 ▁▆██████████████████████████████████████
+wandb:             LR ████████▇▇▇▆▆▆▆▆▅▅▅▅▅▅▄▄▄▄▃▃▃▃▂▂▂▂▂▁▁▁▁▁
+wandb:     Loss/train █▆▅▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:       Loss/val █▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   epoch_time_s ▄▅▂▄▂▂▂▅▅▁▆▂▅▃▅▆▆▅▄▇▆█▇█▆▄▃▃▃▃▅▅▄▄██▄▅▆▃
+wandb: 
+wandb: Run summary:
+wandb: Acc/train_top1 99.96462
+wandb:   Acc/val_top1 88.80597
+wandb:   Acc/val_top5 93.70336
+wandb:             LR 1e-05
+wandb:     Loss/train 1.02689
+wandb:       Loss/val 1.56382
+wandb:  best_val_top1 88.99254
+wandb:   epoch_time_s 17.6041
+wandb:      test_top1 99.65278
+wandb: 
+wandb: 🚀 View run exp_cv_bilstm_fold04 at: https://wandb.ai/lawun330-/msl-recognition/runs/anpigz54
+wandb: ⭐️ View project at: https://wandb.ai/lawun330-/msl-recognition
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260622_020144-anpigz54/logs
+2026-06-22 02:46:14 | INFO     | cross_validate | Fold 4 done | val=88.99% | test=99.65%
+
+=================================================================
+  Cross-Validation Summary  [bilstm]
+=================================================================
+  Fold      Val Top-1   Test Top-1
+  ──────────────────────────────────
+  Fold 0      89.37%       99.48%
+  Fold 1      89.22%       99.83%
+  Fold 2      89.88%       99.65%
+  Fold 3      89.97%       99.31%
+  Fold 4      88.99%       99.65%
+  ──────────────────────────────────
+  Mean±Std   89.49±0.38%     99.58±0.18%
+  Best fold : 3  (val 89.97%)
+=================================================================
+

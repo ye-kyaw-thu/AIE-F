@@ -1,0 +1,269 @@
+==================================================
+🚀 Starting assignment5 End-to-End Language Model Pipeline
+==================================================
+
+=== Step 0: Compiling KenLM and installing Python bindings ===
+Using existing kenlm_src directory...
+Building KenLM tool binaries...
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Could NOT find Eigen3 (missing: Eigen3_DIR)
+-- Found Boost: /usr/lib/aarch64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.41.0") found components: program_options system thread unit_test_framework 
+-- Found Threads: TRUE  
+-- Found ZLIB: /usr/lib/aarch64-linux-gnu/libz.so (found version "1.2.11") 
+-- Found BZip2: /usr/lib/aarch64-linux-gnu/libbz2.so (found version "1.0.8") 
+-- Looking for BZ2_bzCompressInit
+-- Looking for BZ2_bzCompressInit - found
+-- Looking for lzma_auto_decoder in /usr/lib/aarch64-linux-gnu/liblzma.so
+-- Looking for lzma_auto_decoder in /usr/lib/aarch64-linux-gnu/liblzma.so - found
+-- Looking for lzma_easy_encoder in /usr/lib/aarch64-linux-gnu/liblzma.so
+-- Looking for lzma_easy_encoder in /usr/lib/aarch64-linux-gnu/liblzma.so - found
+-- Looking for lzma_lzma_preset in /usr/lib/aarch64-linux-gnu/liblzma.so
+-- Looking for lzma_lzma_preset in /usr/lib/aarch64-linux-gnu/liblzma.so - found
+-- Found LibLZMA: /usr/lib/aarch64-linux-gnu/liblzma.so (found version "5.2.5") 
+-- Looking for clock_gettime in rt
+-- Looking for clock_gettime in rt - found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /workspace/assignment5/kenlm_src/build
+[  3%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/bignum.cc.o
+[  3%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/bignum-dtoa.cc.o
+[  3%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/cached-powers.cc.o
+[  5%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/fast-dtoa.cc.o
+[  6%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/fixed-dtoa.cc.o
+[  7%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/strtod.cc.o
+[  8%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/double-to-string.cc.o
+[ 10%] Building CXX object util/CMakeFiles/kenlm_util.dir/double-conversion/string-to-double.cc.o
+[ 11%] Building CXX object util/CMakeFiles/kenlm_util.dir/stream/chain.cc.o
+[ 12%] Building CXX object util/CMakeFiles/kenlm_util.dir/stream/count_records.cc.o
+[ 13%] Building CXX object util/CMakeFiles/kenlm_util.dir/stream/io.cc.o
+[ 15%] Building CXX object util/CMakeFiles/kenlm_util.dir/stream/line_input.cc.o
+[ 16%] Building CXX object util/CMakeFiles/kenlm_util.dir/stream/multi_progress.cc.o
+[ 17%] Building CXX object util/CMakeFiles/kenlm_util.dir/stream/rewindable_stream.cc.o
+[ 18%] Building CXX object util/CMakeFiles/kenlm_util.dir/bit_packing.cc.o
+[ 20%] Building CXX object util/CMakeFiles/kenlm_util.dir/ersatz_progress.cc.o
+[ 21%] Building CXX object util/CMakeFiles/kenlm_util.dir/exception.cc.o
+[ 22%] Building CXX object util/CMakeFiles/kenlm_util.dir/file.cc.o
+[ 23%] Building CXX object util/CMakeFiles/kenlm_util.dir/file_piece.cc.o
+[ 25%] Building CXX object util/CMakeFiles/kenlm_util.dir/float_to_string.cc.o
+[ 26%] Building CXX object util/CMakeFiles/kenlm_util.dir/integer_to_string.cc.o
+[ 27%] Building CXX object util/CMakeFiles/kenlm_util.dir/mmap.cc.o
+[ 28%] Building CXX object util/CMakeFiles/kenlm_util.dir/murmur_hash.cc.o
+[ 30%] Building CXX object util/CMakeFiles/kenlm_util.dir/parallel_read.cc.o
+[ 31%] Building CXX object util/CMakeFiles/kenlm_util.dir/pool.cc.o
+[ 32%] Building CXX object util/CMakeFiles/kenlm_util.dir/read_compressed.cc.o
+[ 33%] Building CXX object util/CMakeFiles/kenlm_util.dir/scoped.cc.o
+[ 35%] Building CXX object util/CMakeFiles/kenlm_util.dir/spaces.cc.o
+[ 36%] Building CXX object util/CMakeFiles/kenlm_util.dir/string_piece.cc.o
+[ 37%] Building CXX object util/CMakeFiles/kenlm_util.dir/usage.cc.o
+[ 38%] Linking CXX static library ../lib/libkenlm_util.a
+[ 38%] Built target kenlm_util
+[ 41%] Building CXX object lm/filter/CMakeFiles/kenlm_filter.dir/arpa_io.cc.o
+[ 41%] Building CXX object lm/filter/CMakeFiles/kenlm_filter.dir/phrase.cc.o
+[ 42%] Building CXX object util/CMakeFiles/probing_hash_table_benchmark.dir/probing_hash_table_benchmark_main.cc.o
+[ 43%] Building CXX object lm/CMakeFiles/kenlm.dir/bhiksha.cc.o
+[ 45%] Building CXX object lm/CMakeFiles/kenlm.dir/binary_format.cc.o
+[ 46%] Building CXX object lm/CMakeFiles/kenlm.dir/config.cc.o
+[ 47%] Building CXX object lm/filter/CMakeFiles/kenlm_filter.dir/vocab.cc.o
+[ 48%] Building CXX object lm/CMakeFiles/kenlm.dir/lm_exception.cc.o
+[ 50%] Building CXX object lm/CMakeFiles/kenlm.dir/model.cc.o
+[ 51%] Building CXX object lm/CMakeFiles/kenlm.dir/quantize.cc.o
+[ 52%] Linking CXX static library ../../lib/libkenlm_filter.a
+[ 52%] Built target kenlm_filter
+[ 53%] Building CXX object lm/CMakeFiles/kenlm.dir/read_arpa.cc.o
+[ 55%] Building CXX object lm/CMakeFiles/kenlm.dir/search_hashed.cc.o
+[ 56%] Building CXX object lm/CMakeFiles/kenlm.dir/search_trie.cc.o
+[ 57%] Building CXX object lm/CMakeFiles/kenlm.dir/sizes.cc.o
+[ 58%] Building CXX object lm/CMakeFiles/kenlm.dir/trie.cc.o
+[ 60%] Building CXX object lm/CMakeFiles/kenlm.dir/trie_sort.cc.o
+[ 61%] Building CXX object lm/CMakeFiles/kenlm.dir/value_build.cc.o
+[ 62%] Linking CXX executable ../bin/probing_hash_table_benchmark
+[ 62%] Built target probing_hash_table_benchmark
+[ 63%] Building CXX object lm/CMakeFiles/kenlm.dir/virtual_interface.cc.o
+[ 65%] Building CXX object lm/CMakeFiles/kenlm.dir/vocab.cc.o
+[ 66%] Building CXX object lm/CMakeFiles/kenlm.dir/common/model_buffer.cc.o
+[ 67%] Building CXX object lm/CMakeFiles/kenlm.dir/common/print.cc.o
+[ 68%] Building CXX object lm/CMakeFiles/kenlm.dir/common/renumber.cc.o
+[ 70%] Building CXX object lm/CMakeFiles/kenlm.dir/common/size_option.cc.o
+[ 71%] Linking CXX static library ../lib/libkenlm.a
+[ 71%] Built target kenlm
+[ 75%] Building CXX object lm/CMakeFiles/query.dir/query_main.cc.o
+[ 75%] Building CXX object lm/CMakeFiles/fragment.dir/fragment_main.cc.o
+[ 75%] Building CXX object lm/CMakeFiles/build_binary.dir/build_binary_main.cc.o
+[ 76%] Building CXX object lm/CMakeFiles/kenlm_benchmark.dir/kenlm_benchmark_main.cc.o
+[ 77%] Linking CXX executable ../bin/fragment
+[ 78%] Linking CXX executable ../bin/build_binary
+[ 78%] Built target fragment
+[ 80%] Building CXX object lm/builder/CMakeFiles/kenlm_builder.dir/adjust_counts.cc.o
+[ 80%] Built target build_binary
+[ 81%] Linking CXX executable ../bin/query
+[ 82%] Building CXX object lm/filter/CMakeFiles/filter.dir/filter_main.cc.o
+[ 82%] Built target query
+[ 83%] Building CXX object lm/filter/CMakeFiles/phrase_table_vocab.dir/phrase_table_vocab_main.cc.o
+[ 85%] Linking CXX executable ../../bin/phrase_table_vocab
+[ 86%] Building CXX object lm/builder/CMakeFiles/kenlm_builder.dir/corpus_count.cc.o
+[ 86%] Built target phrase_table_vocab
+[ 87%] Building CXX object lm/builder/CMakeFiles/kenlm_builder.dir/initial_probabilities.cc.o
+[ 88%] Building CXX object lm/builder/CMakeFiles/kenlm_builder.dir/interpolate.cc.o
+[ 90%] Building CXX object lm/builder/CMakeFiles/kenlm_builder.dir/output.cc.o
+[ 91%] Building CXX object lm/builder/CMakeFiles/kenlm_builder.dir/pipeline.cc.o
+[ 92%] Linking CXX executable ../bin/kenlm_benchmark
+[ 92%] Built target kenlm_benchmark
+[ 93%] Linking CXX executable ../../bin/filter
+[ 93%] Built target filter
+[ 95%] Linking CXX static library ../../lib/libkenlm_builder.a
+[ 95%] Built target kenlm_builder
+[ 97%] Building CXX object lm/builder/CMakeFiles/lmplz.dir/lmplz_main.cc.o
+[ 97%] Building CXX object lm/builder/CMakeFiles/count_ngrams.dir/count_ngrams_main.cc.o
+[ 98%] Linking CXX executable ../../bin/lmplz
+[ 98%] Built target lmplz
+[100%] Linking CXX executable ../../bin/count_ngrams
+[100%] Built target count_ngrams
+KenLM tools successfully built!
+Installing Python bindings...
+Processing /workspace/assignment5/kenlm_src
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: kenlm
+  Building wheel for kenlm (pyproject.toml): started
+  Building wheel for kenlm (pyproject.toml): finished with status 'done'
+  Created wheel for kenlm: filename=kenlm-0.2.0-cp310-cp310-linux_aarch64.whl size=3059011 sha256=79ffa9d5ae0ca5d69e97d2925c0cc7dc58cee93e0d2817571b1375435626d5d8
+  Stored in directory: /tmp/pip-ephem-wheel-cache-a8med6g9/wheels/dc/39/e2/16ed8596d06e34eea871edb7f277360fd8b884553a79763e78
+Successfully built kenlm
+Installing collected packages: kenlm
+Successfully installed kenlm-0.2.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+Python bindings successfully installed!
+KenLM binding import successful from: /usr/local/lib/python3.10/dist-packages/kenlm.cpython-310-aarch64-linux-gnu.so
+
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+=== Step 1: Downloading & Gathering All Datasets ===
+Loading kalixlouiis/burmese-text-corpus from HF...
+Generating train split:   0%|          | 0/3003 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 3003/3003 [00:00<00:00, 47104.98 examples/s]
+Loaded 3,003 sentences from burmese-text-corpus.
+Loading mutiyama/alt from HF...
+Generating train split:   0%|          | 0/18088 [00:00<?, ? examples/s]Generating train split:  22%|██▏       | 4000/18088 [00:00<00:00, 29440.74 examples/s]Generating train split:  88%|████████▊ | 16000/18088 [00:00<00:00, 69000.08 examples/s]Generating train split: 100%|██████████| 18088/18088 [00:00<00:00, 68514.55 examples/s]
+Generating validation split:   0%|          | 0/1000 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 1000/1000 [00:00<00:00, 115964.06 examples/s]
+Generating test split:   0%|          | 0/1019 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 1019/1019 [00:00<00:00, 28615.59 examples/s]
+Loaded 20,099 sentences from ALT Treebank.
+Streaming DatarrX/myX-Mega-Corpus (First 500,000 sentences)...
+Streamed 100,000 sentences...
+Streamed 200,000 sentences...
+Streamed 300,000 sentences...
+Streamed 400,000 sentences...
+Loaded 500,000 sentences from myX-Mega-Corpus.
+Loading local myPOS corpus...
+Loaded 43,196 sentences from myPOS.
+Loading mteb/MyanmarNews (News target domain)...
+Generating train split:   0%|          | 0/2048 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 2048/2048 [00:00<00:00, 38409.14 examples/s]
+Loaded 2,047 sentences from MyanmarNews.
+Loading local conversational corpus (otest)...
+Loaded 1,000 sentences from otest.
+
+=== Saving Raw Split Files ===
+Saving merged raw training set: 566,098 sentences...
+Saving raw general validation set: 100 sentences...
+Saving raw news test candidates: 2047 sentences...
+Saving raw Wikipedia test candidates: 100 sentences...
+Saving raw conversational test candidates: 1000 sentences...
+
+Data gathering and split candidates complete!
+
+=== Step 2: Running Myanmar Syllable Segmentation ===
+Syllable segmenting data/raw/train_general_raw.txt -> data/tokenized/train_general.txt ...
+Syllable segmenting data/raw/test_general_raw.txt -> data/tokenized/test_general_intermediate.txt ...
+Syllable segmenting data/raw/test_news_raw.txt -> data/tokenized/test_news_intermediate.txt ...
+Syllable segmenting data/raw/test_wikipedia_raw.txt -> data/tokenized/test_wikipedia_intermediate.txt ...
+Syllable segmenting data/raw/test_conversational_raw.txt -> data/tokenized/test_conversational_intermediate.txt ...
+Slicing balanced set from data/tokenized/test_general_intermediate.txt -> data/balanced_tests/test_general.txt ...
+Saved balanced set (10 sents, 20 syllables each) to data/balanced_tests/test_general.txt
+Slicing balanced set from data/tokenized/test_news_intermediate.txt -> data/balanced_tests/test_news.txt ...
+Saved balanced set (10 sents, 20 syllables each) to data/balanced_tests/test_news.txt
+Slicing balanced set from data/tokenized/test_wikipedia_intermediate.txt -> data/balanced_tests/test_wikipedia.txt ...
+Saved balanced set (10 sents, 20 syllables each) to data/balanced_tests/test_wikipedia.txt
+Slicing balanced set from data/tokenized/test_conversational_intermediate.txt -> data/balanced_tests/test_conversational.txt ...
+Saved balanced set (10 sents, 20 syllables each) to data/balanced_tests/test_conversational.txt
+Syllable segmentation and test set slicing complete!
+
+=== Step 3: Training Base Language Model ===
+Training 5-gram Language Model with lmplz...
+Executing: /workspace/assignment5/kenlm_src/build/bin/lmplz -o 5 -S 2G -T /tmp --discount_fallback < data/tokenized/train_general.txt > data/models/general.arpa
+Converting ARPA model to binary format...
+Executing: /workspace/assignment5/kenlm_src/build/bin/build_binary data/models/general.arpa data/models/general.binary
+Base Language Model training and binary conversion complete!
+
+=== 1/5 Counting and sorting n-grams ===
+Reading /workspace/assignment5/data/tokenized/train_adapted.txt
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+Unigram tokens 21822885 types 27312
+=== 2/5 Calculating and sorting adjusted counts ===
+Chain sizes: 1:327744 2:209478624 3:392772448 4:628435840 5:916469056
+Statistics:
+1 27312 D1=0.674644 D2=1.06433 D3+=1.38847
+2 706774 D1=0.66757 D2=1.04164 D3+=1.44156
+3 3842186 D1=0.761861 D2=1.10584 D3+=1.3717
+4 8472395 D1=0.837013 D2=1.14834 D3+=1.34893
+5 12397586 D1=0.759277 D2=1.54518 D3+=1.3005
+Memory estimate for binary LM:
+type     MB
+probing 511 assuming -p 1.5
+probing 586 assuming -r models -p 1.5
+trie    226 without quantization
+trie    119 assuming -q 8 -b 8 quantization 
+trie    201 assuming -a 22 array pointer compression
+trie     94 assuming -a 22 -q 8 -b 8 array pointer compression and quantization
+=== 3/5 Calculating and sorting initial probabilities ===
+Chain sizes: 1:327744 2:11308384 3:76843720 4:203337480 5:347132408
+=== 4/5 Calculating and writing order-interpolated probabilities ===
+Chain sizes: 1:327744 2:11308384 3:76843720 4:203337480 5:347132408
+=== 5/5 Writing ARPA model ===
+Name:lmplz	VmPeak:2268848 kB	VmRSS:16668 kB	RSSMax:740140 kB	user:22.4182	sys:39.4746	CPU:61.8933	real:70.0806
+Reading data/models/adapted.arpa
+----5---10---15---20---25---30---35---40---45---50---55---60---65---70---75---80---85---90---95--100
+****************************************************************************************************
+SUCCESS
+=== Step 4: Evaluating Model on Target Domains ===
+
+--- Base Model Perplexity & Entropy Evaluation ---
+Domain: General Validation   | PPL: 79.72      | Entropy (nats): 4.3785 | OOV: 0.50%
+Domain: News Articles        | PPL: 40.51      | Entropy (nats): 3.7016 | OOV: 0.00%
+Domain: Wikipedia / Formal   | PPL: 74.99      | Entropy (nats): 4.3174 | OOV: 0.00%
+Domain: Conversational       | PPL: 10.22      | Entropy (nats): 2.3247 | OOV: 0.00%
+
+Hardest Domain Identified: Wikipedia / Formal (PPL: 74.99)
+
+--- Preparing Adaptation Data for Wikipedia / Formal ---
+Extracting training sentences from local alt_raw.txt...
+Found 19,999 training sentences for Wikipedia / Formal.
+Tokenizing adaptation sentences with sylbreak...
+Creating merged corpus (Base General + 1x Wikipedia / Formal) ...
+
+--- Training Adapted Language Model ---
+
+--- Evaluation of Adapted Model ---
+Domain                  : Wikipedia / Formal
+Base LM Perplexity      : 74.99 (OOV: 0.00%)
+Adapted LM Perplexity   : 74.36 (OOV: 0.00%)
+Absolute PPL Reduction  : 0.64
+Relative PPL Reduction  : 0.85%
+Saved bar chart visualization to: data/models/ppl_comparison.png
+
+Metrics table saved to data/models/metrics.txt
+==================================================
+🎉 Pipeline finished successfully! README.md generated.
+==================================================

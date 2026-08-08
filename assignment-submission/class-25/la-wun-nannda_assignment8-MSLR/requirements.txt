@@ -1,0 +1,44 @@
+# Myanmar Sign Language Recognition
+# Python 3.12.x
+
+# Core deep learning
+## For Nvidia GeForce GTX 1060 which uses CUDA 12.6 wheels
+#torch==2.12.0+cu126
+#torchvision==0.27.0+cu126
+#--index-url https://download.pytorch.org/whl/cu126
+## For Google Collab which uses CUDA 12.8 wheels
+#torch==2.11.0+cu128
+#torchvision==0.26.0+cu128
+#--index-url https://download.pytorch.org/whl/cu128
+
+# MediaPipe keypoint extraction (do not upgrade to >=0.10.30 for current scripts)
+mediapipe==0.10.18
+
+# Computer vision (mediapipe 0.10.18 also pulls opencv-contrib-python==4.11.0.86)
+opencv-python==4.11.0.86
+
+# Scientific computing
+numpy==1.26.4
+scipy==1.17.1
+scikit-learn==1.9.0
+
+# Data handling
+pandas==3.0.3
+PyYAML==6.0.3
+
+# Visualization
+matplotlib==3.11.0
+seaborn==0.13.2
+
+# Progress bars
+tqdm==4.68.2
+
+# Experiment tracking
+tensorboard==2.20.0
+wandb==0.27.2
+
+# Metrics
+torchmetrics==1.9.0
+
+# mediapipe 0.10.18 dependency pins (to avoid resolver drift)
+protobuf==4.25.9

@@ -1,0 +1,1383 @@
+Using SCRIPTS_ROOTDIR: /workspace/tools/mosesdecoder/scripts
+Using multi-thread GIZA
+using gzip 
+(1) preparing corpus @ Tue Jun 16 18:12:38 UTC 2026
+Executing: mkdir -p /workspace/exp/ph-my/model/corpus
+(1.0) selecting factors @ Tue Jun 16 18:12:38 UTC 2026
+(1.1) running mkcls  @ Tue Jun 16 18:12:38 UTC 2026
+/workspace/tools/training-tools/mkcls -c50 -n2 -p/workspace/exp/clean-data/clean-train.ph -V/workspace/exp/ph-my/model/corpus/ph.vcb.classes opt
+Executing: /workspace/tools/training-tools/mkcls -c50 -n2 -p/workspace/exp/clean-data/clean-train.ph -V/workspace/exp/ph-my/model/corpus/ph.vcb.classes opt
+
+***** 2 runs. (algorithm:TA)*****
+;KategProblem:cats: 50   words: 1834
+
+start-costs: MEAN: 857136 (857128-857145)  SIGMA:8.37319   
+  end-costs: MEAN: 832260 (832184-832336)  SIGMA:75.8969   
+   start-pp: MEAN: 197.388 (197.367-197.41)  SIGMA:0.0213685   
+     end-pp: MEAN: 143.101 (142.961-143.242)  SIGMA:0.14042   
+ iterations: MEAN: 45167.5 (45052-45283)  SIGMA:115.5   
+       time: MEAN: 0.571528 (0.564898-0.578159)  SIGMA:0.0066305   
+(1.1) running mkcls  @ Tue Jun 16 18:12:39 UTC 2026
+/workspace/tools/training-tools/mkcls -c50 -n2 -p/workspace/exp/clean-data/clean-train.my -V/workspace/exp/ph-my/model/corpus/my.vcb.classes opt
+Executing: /workspace/tools/training-tools/mkcls -c50 -n2 -p/workspace/exp/clean-data/clean-train.my -V/workspace/exp/ph-my/model/corpus/my.vcb.classes opt
+
+***** 2 runs. (algorithm:TA)*****
+;KategProblem:cats: 50   words: 2280
+
+start-costs: MEAN: 856440 (856432-856448)  SIGMA:8.36834   
+  end-costs: MEAN: 831654 (831630-831678)  SIGMA:23.9088   
+   start-pp: MEAN: 200.281 (200.259-200.302)  SIGMA:0.0216719   
+     end-pp: MEAN: 145.361 (145.316-145.406)  SIGMA:0.044939   
+ iterations: MEAN: 56802 (55769-57835)  SIGMA:1033   
+       time: MEAN: 0.582365 (0.581097-0.583632)  SIGMA:0.0012675   
+(1.2) creating vcb file /workspace/exp/ph-my/model/corpus/ph.vcb @ Tue Jun 16 18:12:40 UTC 2026
+(1.2) creating vcb file /workspace/exp/ph-my/model/corpus/my.vcb @ Tue Jun 16 18:12:40 UTC 2026
+(1.3) numberizing corpus /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt @ Tue Jun 16 18:12:40 UTC 2026
+(1.3) numberizing corpus /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt @ Tue Jun 16 18:12:40 UTC 2026
+(2) running giza @ Tue Jun 16 18:12:41 UTC 2026
+(2.1a) running snt2cooc ph-my @ Tue Jun 16 18:12:41 UTC 2026
+
+Executing: mkdir -p /workspace/exp/ph-my/model/giza.ph-my
+Executing: /workspace/tools/training-tools/snt2cooc /workspace/exp/ph-my/model/giza.ph-my/ph-my.cooc /workspace/exp/ph-my/model/corpus/my.vcb /workspace/exp/ph-my/model/corpus/ph.vcb /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt
+/workspace/tools/training-tools/snt2cooc /workspace/exp/ph-my/model/giza.ph-my/ph-my.cooc /workspace/exp/ph-my/model/corpus/my.vcb /workspace/exp/ph-my/model/corpus/ph.vcb /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+END.
+(2.1b) running giza ph-my @ Tue Jun 16 18:12:41 UTC 2026
+/workspace/tools/training-tools/mgiza  -CoocurrenceFile /workspace/exp/ph-my/model/giza.ph-my/ph-my.cooc -c /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt -m1 5 -m2 0 -m3 3 -m4 3 -model1dumpfrequency 1 -model4smoothfactor 0.4 -ncpus 4 -nodumps 1 -nsmooth 4 -o /workspace/exp/ph-my/model/giza.ph-my/ph-my -onlyaldumps 1 -p0 0.999 -s /workspace/exp/ph-my/model/corpus/my.vcb -t /workspace/exp/ph-my/model/corpus/ph.vcb
+Executing: /workspace/tools/training-tools/mgiza  -CoocurrenceFile /workspace/exp/ph-my/model/giza.ph-my/ph-my.cooc -c /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt -m1 5 -m2 0 -m3 3 -m4 3 -model1dumpfrequency 1 -model4smoothfactor 0.4 -ncpus 4 -nodumps 1 -nsmooth 4 -o /workspace/exp/ph-my/model/giza.ph-my/ph-my -onlyaldumps 1 -p0 0.999 -s /workspace/exp/ph-my/model/corpus/my.vcb -t /workspace/exp/ph-my/model/corpus/ph.vcb
+/workspace/tools/training-tools/mgiza  -CoocurrenceFile /workspace/exp/ph-my/model/giza.ph-my/ph-my.cooc -c /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt -m1 5 -m2 0 -m3 3 -m4 3 -model1dumpfrequency 1 -model4smoothfactor 0.4 -ncpus 4 -nodumps 1 -nsmooth 4 -o /workspace/exp/ph-my/model/giza.ph-my/ph-my -onlyaldumps 1 -p0 0.999 -s /workspace/exp/ph-my/model/corpus/my.vcb -t /workspace/exp/ph-my/model/corpus/ph.vcb
+Starting MGIZA 
+Initializing Global Paras 
+DEBUG: EnterDEBUG: PrefixDEBUG: LogParsing Arguments 
+Parameter 'coocurrencefile' changed from '' to '/workspace/exp/ph-my/model/giza.ph-my/ph-my.cooc'
+Parameter 'c' changed from '' to '/workspace/exp/ph-my/model/corpus/ph-my-int-train.snt'
+Parameter 'm3' changed from '5' to '3'
+Parameter 'm4' changed from '5' to '3'
+Parameter 'model1dumpfrequency' changed from '0' to '1'
+Parameter 'model4smoothfactor' changed from '0.2' to '0.4'
+Parameter 'ncpus' changed from '0' to '4'
+Parameter 'nodumps' changed from '0' to '1'
+Parameter 'nsmooth' changed from '64' to '4'
+Parameter 'o' changed from '126-06-16.181241.USER' to '/workspace/exp/ph-my/model/giza.ph-my/ph-my'
+Parameter 'onlyaldumps' changed from '0' to '1'
+Parameter 'p0' changed from '-1' to '0.999'
+Parameter 's' changed from '' to '/workspace/exp/ph-my/model/corpus/my.vcb'
+Parameter 't' changed from '' to '/workspace/exp/ph-my/model/corpus/ph.vcb'
+general parameters:
+-------------------
+ml = 101  (maximum sentence length)
+
+No. of iterations:
+-------------------
+hmmiterations = 5  (mh)
+model1iterations = 5  (number of iterations for Model 1)
+model2iterations = 0  (number of iterations for Model 2)
+model3iterations = 3  (number of iterations for Model 3)
+model4iterations = 3  (number of iterations for Model 4)
+model5iterations = 0  (number of iterations for Model 5)
+model6iterations = 0  (number of iterations for Model 6)
+
+parameter for various heuristics in GIZA++ for efficient training:
+------------------------------------------------------------------
+countincreasecutoff = 1e-06  (Counts increment cutoff threshold)
+countincreasecutoffal = 1e-05  (Counts increment cutoff threshold for alignments in training of fertility models)
+mincountincrease = 1e-07  (minimal count increase)
+peggedcutoff = 0.03  (relative cutoff probability for alignment-centers in pegging)
+probcutoff = 1e-07  (Probability cutoff threshold for lexicon probabilities)
+probsmooth = 1e-07  (probability smoothing (floor) value )
+
+parameters for describing the type and amount of output:
+-----------------------------------------------------------
+compactalignmentformat = 0  (0: detailled alignment format, 1: compact alignment format )
+countoutputprefix =   (The prefix for output counts)
+dumpcount = 0  (Whether we are going to dump count (in addition to) final output?)
+dumpcountusingwordstring = 0  (In count table, should actual word appears or just the id? default is id)
+hmmdumpfrequency = 0  (dump frequency of HMM)
+l = 126-06-16.181241.USER.log  (log file name)
+log = 0  (0: no logfile; 1: logfile)
+model1dumpfrequency = 1  (dump frequency of Model 1)
+model2dumpfrequency = 0  (dump frequency of Model 2)
+model345dumpfrequency = 0  (dump frequency of Model 3/4/5)
+nbestalignments = 0  (for printing the n best alignments)
+nodumps = 1  (1: do not write any files)
+o = /workspace/exp/ph-my/model/giza.ph-my/ph-my  (output file prefix)
+onlyaldumps = 1  (1: do not write any files)
+outputpath =   (output path)
+transferdumpfrequency = 0  (output: dump of transfer from Model 2 to 3)
+verbose = 0  (0: not verbose; 1: verbose)
+verbosesentence = -10  (number of sentence for which a lot of information should be printed (negative: no output))
+
+parameters describing input files:
+----------------------------------
+c = /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt  (training corpus file name)
+d =   (dictionary file name)
+previousa =   (The a-table of previous step)
+previousd =   (The d-table of previous step)
+previousd4 =   (The d4-table of previous step)
+previousd42 =   (The d4-table (2) of previous step)
+previoushmm =   (The hmm-table of previous step)
+previousn =   (The n-table of previous step)
+previousp0 =   (The P0 previous step)
+previoust =   (The t-table of previous step)
+restart = 0  (Restart training from a level,0: Normal restart, from model 1, 1: Model 1, 2: Model 2 Init (Using Model 1 model input and train model 2), 3: Model 2, (using model 2 input and train model 2), 4 : HMM Init (Using Model 1 model and train HMM), 5: HMM (Using Model 2 model and train HMM) 6 : HMM (Using HMM Model and train HMM), 7: Model 3 Init (Use HMM model and train model 3) 8: Model 3 Init (Use Model 2 model and train model 3) 9: Model 3, 10: Model 4 Init (Use Model 3 model and train Model 4) 11: Model 4 and on, )
+s = /workspace/exp/ph-my/model/corpus/my.vcb  (source vocabulary file name)
+sourcevocabularyclasses =   (source vocabulary classes file name)
+t = /workspace/exp/ph-my/model/corpus/ph.vcb  (target vocabulary file name)
+targetvocabularyclasses =   (target vocabulary classes file name)
+tc =   (test corpus file name)
+
+smoothing parameters:
+---------------------
+emalsmooth = 0.2  (f-b-trn: smoothing factor for HMM alignment model (can be ignored by -emSmoothHMM))
+model23smoothfactor = 0  (smoothing parameter for IBM-2/3 (interpolation with constant))
+model4smoothfactor = 0.4  (smooting parameter for alignment probabilities in Model 4)
+model5smoothfactor = 0.1  (smooting parameter for distortion probabilities in Model 5 (linear interpolation with constant))
+nsmooth = 4  (smoothing for fertility parameters (good value: 64): weight for wordlength-dependent fertility parameters)
+nsmoothgeneral = 0  (smoothing for fertility parameters (default: 0): weight for word-independent fertility parameters)
+
+parameters modifying the models:
+--------------------------------
+compactadtable = 1  (1: only 3-dimensional alignment table for IBM-2 and IBM-3)
+deficientdistortionforemptyword = 0  (0: IBM-3/IBM-4 as described in (Brown et al. 1993); 1: distortion model of empty word is deficient; 2: distoriton model of empty word is deficient (differently); setting this parameter also helps to avoid that during IBM-3 and IBM-4 training too many words are aligned with the empty word)
+depm4 = 76  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+depm5 = 68  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+emalignmentdependencies = 2  (lextrain: dependencies in the HMM alignment model.  &1: sentence length; &2: previous class; &4: previous position;  &8: French position; &16: French class)
+emprobforempty = 0.4  (f-b-trn: probability for empty word)
+
+parameters modifying the EM-algorithm:
+--------------------------------------
+m5p0 = -1  (fixed value for parameter p_0 in IBM-5 (if negative then it is determined in training))
+manlexfactor1 = 0  ()
+manlexfactor2 = 0  ()
+manlexmaxmultiplicity = 20  ()
+maxfertility = 10  (maximal fertility for fertility models)
+ncpus = 4  (Number of threads to be executed, use 0 if you just want all CPUs to be used)
+p0 = 0.999  (fixed value for parameter p_0 in IBM-3/4 (if negative then it is determined in training))
+pegging = 0  (0: no pegging; 1: do pegging)
+
+Parameter 'sourcevocabularyclasses' changed from '' to '/workspace/exp/ph-my/model/corpus/my.vcb.classes'
+Parameter 'targetvocabularyclasses' changed from '' to '/workspace/exp/ph-my/model/corpus/ph.vcb.classes'
+Opening Log File 
+Printing parameters 
+general parameters:
+-------------------
+ml = 101  (maximum sentence length)
+
+No. of iterations:
+-------------------
+hmmiterations = 5  (mh)
+model1iterations = 5  (number of iterations for Model 1)
+model2iterations = 0  (number of iterations for Model 2)
+model3iterations = 3  (number of iterations for Model 3)
+model4iterations = 3  (number of iterations for Model 4)
+model5iterations = 0  (number of iterations for Model 5)
+model6iterations = 0  (number of iterations for Model 6)
+
+parameter for various heuristics in GIZA++ for efficient training:
+------------------------------------------------------------------
+countincreasecutoff = 1e-06  (Counts increment cutoff threshold)
+countincreasecutoffal = 1e-05  (Counts increment cutoff threshold for alignments in training of fertility models)
+mincountincrease = 1e-07  (minimal count increase)
+peggedcutoff = 0.03  (relative cutoff probability for alignment-centers in pegging)
+probcutoff = 1e-07  (Probability cutoff threshold for lexicon probabilities)
+probsmooth = 1e-07  (probability smoothing (floor) value )
+
+parameters for describing the type and amount of output:
+-----------------------------------------------------------
+compactalignmentformat = 0  (0: detailled alignment format, 1: compact alignment format )
+countoutputprefix =   (The prefix for output counts)
+dumpcount = 0  (Whether we are going to dump count (in addition to) final output?)
+dumpcountusingwordstring = 0  (In count table, should actual word appears or just the id? default is id)
+hmmdumpfrequency = 0  (dump frequency of HMM)
+l = 126-06-16.181241.USER.log  (log file name)
+log = 0  (0: no logfile; 1: logfile)
+model1dumpfrequency = 1  (dump frequency of Model 1)
+model2dumpfrequency = 0  (dump frequency of Model 2)
+model345dumpfrequency = 0  (dump frequency of Model 3/4/5)
+nbestalignments = 0  (for printing the n best alignments)
+nodumps = 1  (1: do not write any files)
+o = /workspace/exp/ph-my/model/giza.ph-my/ph-my  (output file prefix)
+onlyaldumps = 1  (1: do not write any files)
+outputpath =   (output path)
+transferdumpfrequency = 0  (output: dump of transfer from Model 2 to 3)
+verbose = 0  (0: not verbose; 1: verbose)
+verbosesentence = -10  (number of sentence for which a lot of information should be printed (negative: no output))
+
+parameters describing input files:
+----------------------------------
+c = /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt  (training corpus file name)
+d =   (dictionary file name)
+previousa =   (The a-table of previous step)
+previousd =   (The d-table of previous step)
+previousd4 =   (The d4-table of previous step)
+previousd42 =   (The d4-table (2) of previous step)
+previoushmm =   (The hmm-table of previous step)
+previousn =   (The n-table of previous step)
+previousp0 =   (The P0 previous step)
+previoust =   (The t-table of previous step)
+restart = 0  (Restart training from a level,0: Normal restart, from model 1, 1: Model 1, 2: Model 2 Init (Using Model 1 model input and train model 2), 3: Model 2, (using model 2 input and train model 2), 4 : HMM Init (Using Model 1 model and train HMM), 5: HMM (Using Model 2 model and train HMM) 6 : HMM (Using HMM Model and train HMM), 7: Model 3 Init (Use HMM model and train model 3) 8: Model 3 Init (Use Model 2 model and train model 3) 9: Model 3, 10: Model 4 Init (Use Model 3 model and train Model 4) 11: Model 4 and on, )
+s = /workspace/exp/ph-my/model/corpus/my.vcb  (source vocabulary file name)
+sourcevocabularyclasses = /workspace/exp/ph-my/model/corpus/my.vcb.classes  (source vocabulary classes file name)
+t = /workspace/exp/ph-my/model/corpus/ph.vcb  (target vocabulary file name)
+targetvocabularyclasses = /workspace/exp/ph-my/model/corpus/ph.vcb.classes  (target vocabulary classes file name)
+tc =   (test corpus file name)
+
+smoothing parameters:
+---------------------
+emalsmooth = 0.2  (f-b-trn: smoothing factor for HMM alignment model (can be ignored by -emSmoothHMM))
+model23smoothfactor = 0  (smoothing parameter for IBM-2/3 (interpolation with constant))
+model4smoothfactor = 0.4  (smooting parameter for alignment probabilities in Model 4)
+model5smoothfactor = 0.1  (smooting parameter for distortion probabilities in Model 5 (linear interpolation with constant))
+nsmooth = 4  (smoothing for fertility parameters (good value: 64): weight for wordlength-dependent fertility parameters)
+nsmoothgeneral = 0  (smoothing for fertility parameters (default: 0): weight for word-independent fertility parameters)
+
+parameters modifying the models:
+--------------------------------
+compactadtable = 1  (1: only 3-dimensional alignment table for IBM-2 and IBM-3)
+deficientdistortionforemptyword = 0  (0: IBM-3/IBM-4 as described in (Brown et al. 1993); 1: distortion model of empty word is deficient; 2: distoriton model of empty word is deficient (differently); setting this parameter also helps to avoid that during IBM-3 and IBM-4 training too many words are aligned with the empty word)
+depm4 = 76  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+depm5 = 68  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+emalignmentdependencies = 2  (lextrain: dependencies in the HMM alignment model.  &1: sentence length; &2: previous class; &4: previous position;  &8: French position; &16: French class)
+emprobforempty = 0.4  (f-b-trn: probability for empty word)
+
+parameters modifying the EM-algorithm:
+--------------------------------------
+m5p0 = -1  (fixed value for parameter p_0 in IBM-5 (if negative then it is determined in training))
+manlexfactor1 = 0  ()
+manlexfactor2 = 0  ()
+manlexmaxmultiplicity = 20  ()
+maxfertility = 10  (maximal fertility for fertility models)
+ncpus = 4  (Number of threads to be executed, use 0 if you just want all CPUs to be used)
+p0 = 0.999  (fixed value for parameter p_0 in IBM-3/4 (if negative then it is determined in training))
+pegging = 0  (0: no pegging; 1: do pegging)
+
+reading vocabulary files 
+Reading vocabulary file from:/workspace/exp/ph-my/model/corpus/my.vcb
+Reading vocabulary file from:/workspace/exp/ph-my/model/corpus/ph.vcb
+Source vocabulary list has 2281 unique tokens 
+Target vocabulary list has 1835 unique tokens 
+Calculating vocabulary frequencies from corpus /workspace/exp/ph-my/model/corpus/ph-my-int-train.snt
+Reading more sentence pairs into memory ... 
+Corpus fits in memory, corpus has: 20000 sentence pairs.
+Compacted Vocabulary, eliminated 1 entries 2280 remains 
+Compacted Vocabulary, eliminated 1 entries 1834 remains 
+ Train total # sentence pairs (weighted): 20000
+Size of source portion of the training corpus: 57336 tokens
+Size of the target portion of the training corpus: 57346 tokens 
+In source portion of the training corpus, only 2280 unique tokens appeared
+In target portion of the training corpus, only 1833 unique tokens appeared
+lambda for PP calculation in IBM-1,IBM-2,HMM:= 57346/(77336-20000)== 1.00017
+Dictionary Loading complete
+Inputfile in /workspace/exp/ph-my/model/giza.ph-my/ph-my.cooc
+There are 74797 74797 entries in table
+cooc file loading completed
+TTable initialization OK
+Model one initalization OK
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 1
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 1
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 1
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 1
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (1) TRAIN CROSS-ENTROPY 13.7158 PERPLEXITY 13454.7
+Model1: (1) VITERBI TRAIN CROSS-ENTROPY 15.7398 PERPLEXITY 54721.1
+Model 1 Iteration: 1 took: 0 seconds
+-----------
+Model1: Iteration 2
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 2
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 2
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 2
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (2) TRAIN CROSS-ENTROPY 4.53232 PERPLEXITY 23.1401
+Model1: (2) VITERBI TRAIN CROSS-ENTROPY 4.88445 PERPLEXITY 29.537
+Model 1 Iteration: 2 took: 0 seconds
+-----------
+Model1: Iteration 3
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 3
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 3
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 3
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (3) TRAIN CROSS-ENTROPY 3.46283 PERPLEXITY 11.0259
+Model1: (3) VITERBI TRAIN CROSS-ENTROPY 3.66104 PERPLEXITY 12.6498
+Model 1 Iteration: 3 took: 0 seconds
+-----------
+Model1: Iteration 4
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 4
+==========================================================
+Model1 Training Started at: ==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 4
+Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 4
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (4) TRAIN CROSS-ENTROPY 3.33677 PERPLEXITY 10.1034
+Model1: (4) VITERBI TRAIN CROSS-ENTROPY 3.51141 PERPLEXITY 11.4036
+Model 1 Iteration: 4 took: 0 seconds
+-----------
+Model1: Iteration 5
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 5
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 5
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Model1: Iteration 5
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (5) TRAIN CROSS-ENTROPY 3.31422 PERPLEXITY 9.94674
+Model1: (5) VITERBI TRAIN CROSS-ENTROPY 3.48116 PERPLEXITY 11.1669
+Model 1 Iteration: 5 took: 0 seconds
+Entire Model1 Training took: 0 seconds
+NOTE: I am doing iterations with the HMM model!
+Read classes: #words: 2280  #classes: 51
+Actual number of read words: 2279 stored words: 2279
+Read classes: #words: 1834  #classes: 51
+Actual number of read words: 1833 stored words: 1833
+
+==========================================================
+Hmm Training Started at: Tue Jun 16 18:12:41 2026
+
+-----------
+Hmm: Iteration 1
+Dump files 0 it 1 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+Hmm: (1) TRAIN CROSS-ENTROPY 3.30878 PERPLEXITY 9.90928
+Hmm: (1) VITERBI TRAIN CROSS-ENTROPY 3.47201 PERPLEXITY 11.0963
+
+Hmm Iteration: 1 took: 0 seconds
+
+-----------
+Hmm: Iteration 2
+Dump files 0 it 2 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+Hmm: (2) TRAIN CROSS-ENTROPY 1.29096 PERPLEXITY 2.44691
+Hmm: (2) VITERBI TRAIN CROSS-ENTROPY 1.30412 PERPLEXITY 2.46934
+
+Hmm Iteration: 2 took: 0 seconds
+
+-----------
+Hmm: Iteration 3
+Dump files 0 it 3 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+Hmm: (3) TRAIN CROSS-ENTROPY 1.11666 PERPLEXITY 2.16845
+Hmm: (3) VITERBI TRAIN CROSS-ENTROPY 1.12201 PERPLEXITY 2.17651
+
+Hmm Iteration: 3 took: 0 seconds
+
+-----------
+Hmm: Iteration 4
+Dump files 0 it 4 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+Hmm: (4) TRAIN CROSS-ENTROPY 1.08147 PERPLEXITY 2.11619
+Hmm: (4) VITERBI TRAIN CROSS-ENTROPY 1.08484 PERPLEXITY 2.12114
+
+Hmm Iteration: 4 took: 0 seconds
+
+-----------
+Hmm: Iteration 5
+Dump files 0 it 5 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+Hmm: (5) TRAIN CROSS-ENTROPY 1.06817 PERPLEXITY 2.09677
+Hmm: (5) VITERBI TRAIN CROSS-ENTROPY 1.07073 PERPLEXITY 2.10049
+
+Hmm Iteration: 5 took: 0 seconds
+
+Entire Hmm Training took: 0 seconds
+==========================================================
+
+==========================================================
+Starting H333444:  Viterbi Training
+ H333444 Training Started at: Tue Jun 16 18:12:41 2026
+
+
+---------------------
+THTo3: Iteration 1
+10000
+20000#centers(pre/hillclimbed/real): 1 1 1  #al: 
+#centers(pre/hillclimbed/real): 13.3045 #alsophisticatedcountcollection: 0 #hcsteps: 0
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 1 1 13.46831  #al:  #alsophisticatedcountcollection: 0 #hcsteps: 0
+#peggingImprovements: 13.2264 #alsophisticatedcountcollection: 00 #hcsteps: 
+0
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.389 #alsophisticatedcountcollection: 0 #hcsteps: 0
+#peggingImprovements: 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+A/D table contains 594 parameters.
+NTable contains 22810 parameter.
+p0_count is 57249.9 and p1 is 48.0575; p0 is 0.999 p1: 0.001
+THTo3: TRAIN CROSS-ENTROPY 0.326936 PERPLEXITY 1.25435
+THTo3: (1) TRAIN VITERBI CROSS-ENTROPY 0.329104 PERPLEXITY 1.25623
+
+THTo3 Viterbi Iteration : 1 took: 0 seconds
+
+---------------------
+Model3: Iteration 2
+10000
+20000#centers(pre/hillclimbed/real): #centers(pre/hillclimbed/real): #centers(pre/hillclimbed/real): 1 1 1 1 1  #al: 1  #al: 113.3006  #alsophisticatedcountcollection: 13.35071  #alsophisticatedcountcollection: 1  #al: 0 #hcsteps: 1.00233
+#peggingImprovements: 0
+13.4886 #alsophisticatedcountcollection: 0 #hcsteps: 1.00214
+#peggingImprovements: 0
+0 #hcsteps: 1.00192
+#peggingImprovements: 0
+
+Thread #centers(pre/hillclimbed/real): 1 1 1  #al: 13.2647 #alsophisticatedcountcollection: 0 #hcsteps: 1.00363
+#peggingImprovements: 0
+1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+A/D table contains 582 parameters.
+NTable contains 22810 parameter.
+p0_count is 57324.1 and p1 is 10.9696; p0 is 0.999 p1: 0.001
+Model3: TRAIN CROSS-ENTROPY 0.747768 PERPLEXITY 1.67919
+Model3: (2) TRAIN VITERBI CROSS-ENTROPY 0.747914 PERPLEXITY 1.67936
+
+Model3 Viterbi Iteration : 2 took: 0 seconds
+
+---------------------
+Model3: Iteration 3
+10000
+20000#centers(pre/hillclimbed/real): #centers(pre/hillclimbed/real): 1 1
+1 #centers(pre/hillclimbed/real): 1 1  #al: 13.319 #alsophisticatedcountcollection: 0 #hcsteps: 1 1.00156
+#peggingImprovements: 1 0
+1  #al: 13.5482 #alsophisticatedcountcollection: 0 #hcsteps: 1.00152
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real):  1 1 1  #al: 1  #al: 13.1499 #alsophisticatedcountcollection: 013.4018 #hcsteps:  #alsophisticatedcountcollection: 1.00232
+#peggingImprovements: 0 #hcsteps: 01.00235
+
+#peggingImprovements: 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+A/D table contains 570 parameters.
+NTable contains 22810 parameter.
+p0_count is 57342.9 and p1 is 1.54451; p0 is 0.999 p1: 0.001
+Model3: TRAIN CROSS-ENTROPY 0.734113 PERPLEXITY 1.66337
+Model3: (3) TRAIN VITERBI CROSS-ENTROPY 0.734151 PERPLEXITY 1.66342
+
+Model3 Viterbi Iteration : 3 took: 0 seconds
+
+---------------------
+T3To4: Iteration 4
+10000
+20000#centers(pre/hillclimbed/real): 
+#centers(pre/hillclimbed/real): #centers(pre/hillclimbed/real): 1 1 1  #al: 1 13.51071 #alsophisticatedcountcollection: 13.97614 #hcsteps:   #centers(pre/hillclimbed/real): 1  #al: 13.3358 #alsophisticatedcountcollection: 4.0282 #hcsteps: 1 1.00141
+#peggingImprovements: 1 01  #al: 
+13.3836 #alsophisticatedcountcollection: 4.03145 #hcsteps: 1.00081
+#peggingImprovements: 0
+1 1  #al: 13.1681 #alsophisticatedcountcollection: 3.96511 #hcsteps: 1.00178
+#peggingImprovements: 0
+1.00099
+#peggingImprovements: 0
+D4 table contains 485373 parameters.
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+A/D table contains 546 parameters.
+NTable contains 22810 parameter.
+p0_count is 57343.7 and p1 is 1.13776; p0 is 0.999 p1: 0.001
+T3To4: TRAIN CROSS-ENTROPY 0.7312 PERPLEXITY 1.66002
+T3To4: (4) TRAIN VITERBI CROSS-ENTROPY 0.731206 PERPLEXITY 1.66003
+
+T3To4 Viterbi Iteration : 4 took: 0 seconds
+
+---------------------
+Model4: Iteration 5
+10000
+20000#centers(pre/hillclimbed/real): 
+1 1 1  #al: 13.4227 #alsophisticatedcountcollection: 4.48005 #hcsteps: 1.0006
+#centers(pre/hillclimbed/real): #peggingImprovements: #centers(pre/hillclimbed/real): 0
+1 1 #centers(pre/hillclimbed/real): 11  1  #al: 11   #al: 1 13.27851  #al:  #alsophisticatedcountcollection: 13.218413.4784 #alsophisticatedcountcollection:  #alsophisticatedcountcollection: 4.67714.39218 #hcsteps: 1.00019
+#peggingImprovements: 0
+ #hcsteps: 1.00021
+#peggingImprovements: 0
+4.5134 #hcsteps: 1
+#peggingImprovements: 0
+D4 table contains 485373 parameters.
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+A/D table contains 537 parameters.
+NTable contains 22810 parameter.
+p0_count is 57344 and p1 is 0.996572; p0 is 0.999 p1: 0.001
+Model4: TRAIN CROSS-ENTROPY 1.26892 PERPLEXITY 2.40982
+Model4: (5) TRAIN VITERBI CROSS-ENTROPY 1.26915 PERPLEXITY 2.4102
+
+Model4 Viterbi Iteration : 5 took: 0 seconds
+
+---------------------
+Model4: Iteration 6
+I will write alignment to /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.part001
+I will write alignment to /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.part000
+I will write alignment to /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.part002
+I will write alignment to /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.part003
+10000
+20000
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.4256 #alsophisticatedcountcollection: 4.1432 #hcsteps: 1.00018
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.134 #alsophisticatedcountcollection: 4.3635 #hcsteps: 1.00019
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.4957 #alsophisticatedcountcollection: 4.81194 #hcsteps: 1.00021
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.352 #alsophisticatedcountcollection: 4.81091 #hcsteps: 1.00043
+#peggingImprovements: 0
+D4 table contains 485373 parameters.
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 607 parameters.
+A/D table contains 533 parameters.
+NTable contains 22810 parameter.
+p0_count is 57344 and p1 is 0.99598; p0 is 0.999 p1: 0.001
+Model4: TRAIN CROSS-ENTROPY 1.26898 PERPLEXITY 2.40991
+Model4: (6) TRAIN VITERBI CROSS-ENTROPY 1.26923 PERPLEXITY 2.41032
+
+Model4 Viterbi Iteration : 6 took: 0 seconds
+H333444 Training Finished at: Tue Jun 16 18:12:41 2026
+
+
+Entire Viterbi H333444 Training took: 0 seconds
+==========================================================
+
+Entire Training took: 0 seconds
+Program Finished at: Tue Jun 16 18:12:41 2026
+
+==========================================================
+Merging A3.final.part* tables
+Executing: /workspace/tools/training-tools/merge_alignment.py  /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.part*>/workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final
+Combined 4 files, totally 20000 sents 
+Executing: rm -f /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.gz
+Executing: gzip /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final
+(2.1a) running snt2cooc my-ph @ Tue Jun 16 18:12:43 UTC 2026
+
+Executing: mkdir -p /workspace/exp/ph-my/model/giza.my-ph
+Executing: /workspace/tools/training-tools/snt2cooc /workspace/exp/ph-my/model/giza.my-ph/my-ph.cooc /workspace/exp/ph-my/model/corpus/ph.vcb /workspace/exp/ph-my/model/corpus/my.vcb /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt
+/workspace/tools/training-tools/snt2cooc /workspace/exp/ph-my/model/giza.my-ph/my-ph.cooc /workspace/exp/ph-my/model/corpus/ph.vcb /workspace/exp/ph-my/model/corpus/my.vcb /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt
+line 1000
+line 2000
+line 3000
+line 4000
+line 5000
+line 6000
+line 7000
+line 8000
+line 9000
+line 10000
+line 11000
+line 12000
+line 13000
+line 14000
+line 15000
+line 16000
+line 17000
+line 18000
+line 19000
+line 20000
+END.
+(2.1b) running giza my-ph @ Tue Jun 16 18:12:43 UTC 2026
+/workspace/tools/training-tools/mgiza  -CoocurrenceFile /workspace/exp/ph-my/model/giza.my-ph/my-ph.cooc -c /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt -m1 5 -m2 0 -m3 3 -m4 3 -model1dumpfrequency 1 -model4smoothfactor 0.4 -ncpus 4 -nodumps 1 -nsmooth 4 -o /workspace/exp/ph-my/model/giza.my-ph/my-ph -onlyaldumps 1 -p0 0.999 -s /workspace/exp/ph-my/model/corpus/ph.vcb -t /workspace/exp/ph-my/model/corpus/my.vcb
+Executing: /workspace/tools/training-tools/mgiza  -CoocurrenceFile /workspace/exp/ph-my/model/giza.my-ph/my-ph.cooc -c /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt -m1 5 -m2 0 -m3 3 -m4 3 -model1dumpfrequency 1 -model4smoothfactor 0.4 -ncpus 4 -nodumps 1 -nsmooth 4 -o /workspace/exp/ph-my/model/giza.my-ph/my-ph -onlyaldumps 1 -p0 0.999 -s /workspace/exp/ph-my/model/corpus/ph.vcb -t /workspace/exp/ph-my/model/corpus/my.vcb
+/workspace/tools/training-tools/mgiza  -CoocurrenceFile /workspace/exp/ph-my/model/giza.my-ph/my-ph.cooc -c /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt -m1 5 -m2 0 -m3 3 -m4 3 -model1dumpfrequency 1 -model4smoothfactor 0.4 -ncpus 4 -nodumps 1 -nsmooth 4 -o /workspace/exp/ph-my/model/giza.my-ph/my-ph -onlyaldumps 1 -p0 0.999 -s /workspace/exp/ph-my/model/corpus/ph.vcb -t /workspace/exp/ph-my/model/corpus/my.vcb
+Starting MGIZA 
+Initializing Global Paras 
+DEBUG: EnterDEBUG: PrefixDEBUG: LogParsing Arguments 
+Parameter 'coocurrencefile' changed from '' to '/workspace/exp/ph-my/model/giza.my-ph/my-ph.cooc'
+Parameter 'c' changed from '' to '/workspace/exp/ph-my/model/corpus/my-ph-int-train.snt'
+Parameter 'm3' changed from '5' to '3'
+Parameter 'm4' changed from '5' to '3'
+Parameter 'model1dumpfrequency' changed from '0' to '1'
+Parameter 'model4smoothfactor' changed from '0.2' to '0.4'
+Parameter 'ncpus' changed from '0' to '4'
+Parameter 'nodumps' changed from '0' to '1'
+Parameter 'nsmooth' changed from '64' to '4'
+Parameter 'o' changed from '126-06-16.181243.USER' to '/workspace/exp/ph-my/model/giza.my-ph/my-ph'
+Parameter 'onlyaldumps' changed from '0' to '1'
+Parameter 'p0' changed from '-1' to '0.999'
+Parameter 's' changed from '' to '/workspace/exp/ph-my/model/corpus/ph.vcb'
+Parameter 't' changed from '' to '/workspace/exp/ph-my/model/corpus/my.vcb'
+general parameters:
+-------------------
+ml = 101  (maximum sentence length)
+
+No. of iterations:
+-------------------
+hmmiterations = 5  (mh)
+model1iterations = 5  (number of iterations for Model 1)
+model2iterations = 0  (number of iterations for Model 2)
+model3iterations = 3  (number of iterations for Model 3)
+model4iterations = 3  (number of iterations for Model 4)
+model5iterations = 0  (number of iterations for Model 5)
+model6iterations = 0  (number of iterations for Model 6)
+
+parameter for various heuristics in GIZA++ for efficient training:
+------------------------------------------------------------------
+countincreasecutoff = 1e-06  (Counts increment cutoff threshold)
+countincreasecutoffal = 1e-05  (Counts increment cutoff threshold for alignments in training of fertility models)
+mincountincrease = 1e-07  (minimal count increase)
+peggedcutoff = 0.03  (relative cutoff probability for alignment-centers in pegging)
+probcutoff = 1e-07  (Probability cutoff threshold for lexicon probabilities)
+probsmooth = 1e-07  (probability smoothing (floor) value )
+
+parameters for describing the type and amount of output:
+-----------------------------------------------------------
+compactalignmentformat = 0  (0: detailled alignment format, 1: compact alignment format )
+countoutputprefix =   (The prefix for output counts)
+dumpcount = 0  (Whether we are going to dump count (in addition to) final output?)
+dumpcountusingwordstring = 0  (In count table, should actual word appears or just the id? default is id)
+hmmdumpfrequency = 0  (dump frequency of HMM)
+l = 126-06-16.181243.USER.log  (log file name)
+log = 0  (0: no logfile; 1: logfile)
+model1dumpfrequency = 1  (dump frequency of Model 1)
+model2dumpfrequency = 0  (dump frequency of Model 2)
+model345dumpfrequency = 0  (dump frequency of Model 3/4/5)
+nbestalignments = 0  (for printing the n best alignments)
+nodumps = 1  (1: do not write any files)
+o = /workspace/exp/ph-my/model/giza.my-ph/my-ph  (output file prefix)
+onlyaldumps = 1  (1: do not write any files)
+outputpath =   (output path)
+transferdumpfrequency = 0  (output: dump of transfer from Model 2 to 3)
+verbose = 0  (0: not verbose; 1: verbose)
+verbosesentence = -10  (number of sentence for which a lot of information should be printed (negative: no output))
+
+parameters describing input files:
+----------------------------------
+c = /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt  (training corpus file name)
+d =   (dictionary file name)
+previousa =   (The a-table of previous step)
+previousd =   (The d-table of previous step)
+previousd4 =   (The d4-table of previous step)
+previousd42 =   (The d4-table (2) of previous step)
+previoushmm =   (The hmm-table of previous step)
+previousn =   (The n-table of previous step)
+previousp0 =   (The P0 previous step)
+previoust =   (The t-table of previous step)
+restart = 0  (Restart training from a level,0: Normal restart, from model 1, 1: Model 1, 2: Model 2 Init (Using Model 1 model input and train model 2), 3: Model 2, (using model 2 input and train model 2), 4 : HMM Init (Using Model 1 model and train HMM), 5: HMM (Using Model 2 model and train HMM) 6 : HMM (Using HMM Model and train HMM), 7: Model 3 Init (Use HMM model and train model 3) 8: Model 3 Init (Use Model 2 model and train model 3) 9: Model 3, 10: Model 4 Init (Use Model 3 model and train Model 4) 11: Model 4 and on, )
+s = /workspace/exp/ph-my/model/corpus/ph.vcb  (source vocabulary file name)
+sourcevocabularyclasses =   (source vocabulary classes file name)
+t = /workspace/exp/ph-my/model/corpus/my.vcb  (target vocabulary file name)
+targetvocabularyclasses =   (target vocabulary classes file name)
+tc =   (test corpus file name)
+
+smoothing parameters:
+---------------------
+emalsmooth = 0.2  (f-b-trn: smoothing factor for HMM alignment model (can be ignored by -emSmoothHMM))
+model23smoothfactor = 0  (smoothing parameter for IBM-2/3 (interpolation with constant))
+model4smoothfactor = 0.4  (smooting parameter for alignment probabilities in Model 4)
+model5smoothfactor = 0.1  (smooting parameter for distortion probabilities in Model 5 (linear interpolation with constant))
+nsmooth = 4  (smoothing for fertility parameters (good value: 64): weight for wordlength-dependent fertility parameters)
+nsmoothgeneral = 0  (smoothing for fertility parameters (default: 0): weight for word-independent fertility parameters)
+
+parameters modifying the models:
+--------------------------------
+compactadtable = 1  (1: only 3-dimensional alignment table for IBM-2 and IBM-3)
+deficientdistortionforemptyword = 0  (0: IBM-3/IBM-4 as described in (Brown et al. 1993); 1: distortion model of empty word is deficient; 2: distoriton model of empty word is deficient (differently); setting this parameter also helps to avoid that during IBM-3 and IBM-4 training too many words are aligned with the empty word)
+depm4 = 76  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+depm5 = 68  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+emalignmentdependencies = 2  (lextrain: dependencies in the HMM alignment model.  &1: sentence length; &2: previous class; &4: previous position;  &8: French position; &16: French class)
+emprobforempty = 0.4  (f-b-trn: probability for empty word)
+
+parameters modifying the EM-algorithm:
+--------------------------------------
+m5p0 = -1  (fixed value for parameter p_0 in IBM-5 (if negative then it is determined in training))
+manlexfactor1 = 0  ()
+manlexfactor2 = 0  ()
+manlexmaxmultiplicity = 20  ()
+maxfertility = 10  (maximal fertility for fertility models)
+ncpus = 4  (Number of threads to be executed, use 0 if you just want all CPUs to be used)
+p0 = 0.999  (fixed value for parameter p_0 in IBM-3/4 (if negative then it is determined in training))
+pegging = 0  (0: no pegging; 1: do pegging)
+
+Parameter 'sourcevocabularyclasses' changed from '' to '/workspace/exp/ph-my/model/corpus/ph.vcb.classes'
+Parameter 'targetvocabularyclasses' changed from '' to '/workspace/exp/ph-my/model/corpus/my.vcb.classes'
+Opening Log File 
+Printing parameters 
+general parameters:
+-------------------
+ml = 101  (maximum sentence length)
+
+No. of iterations:
+-------------------
+hmmiterations = 5  (mh)
+model1iterations = 5  (number of iterations for Model 1)
+model2iterations = 0  (number of iterations for Model 2)
+model3iterations = 3  (number of iterations for Model 3)
+model4iterations = 3  (number of iterations for Model 4)
+model5iterations = 0  (number of iterations for Model 5)
+model6iterations = 0  (number of iterations for Model 6)
+
+parameter for various heuristics in GIZA++ for efficient training:
+------------------------------------------------------------------
+countincreasecutoff = 1e-06  (Counts increment cutoff threshold)
+countincreasecutoffal = 1e-05  (Counts increment cutoff threshold for alignments in training of fertility models)
+mincountincrease = 1e-07  (minimal count increase)
+peggedcutoff = 0.03  (relative cutoff probability for alignment-centers in pegging)
+probcutoff = 1e-07  (Probability cutoff threshold for lexicon probabilities)
+probsmooth = 1e-07  (probability smoothing (floor) value )
+
+parameters for describing the type and amount of output:
+-----------------------------------------------------------
+compactalignmentformat = 0  (0: detailled alignment format, 1: compact alignment format )
+countoutputprefix =   (The prefix for output counts)
+dumpcount = 0  (Whether we are going to dump count (in addition to) final output?)
+dumpcountusingwordstring = 0  (In count table, should actual word appears or just the id? default is id)
+hmmdumpfrequency = 0  (dump frequency of HMM)
+l = 126-06-16.181243.USER.log  (log file name)
+log = 0  (0: no logfile; 1: logfile)
+model1dumpfrequency = 1  (dump frequency of Model 1)
+model2dumpfrequency = 0  (dump frequency of Model 2)
+model345dumpfrequency = 0  (dump frequency of Model 3/4/5)
+nbestalignments = 0  (for printing the n best alignments)
+nodumps = 1  (1: do not write any files)
+o = /workspace/exp/ph-my/model/giza.my-ph/my-ph  (output file prefix)
+onlyaldumps = 1  (1: do not write any files)
+outputpath =   (output path)
+transferdumpfrequency = 0  (output: dump of transfer from Model 2 to 3)
+verbose = 0  (0: not verbose; 1: verbose)
+verbosesentence = -10  (number of sentence for which a lot of information should be printed (negative: no output))
+
+parameters describing input files:
+----------------------------------
+c = /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt  (training corpus file name)
+d =   (dictionary file name)
+previousa =   (The a-table of previous step)
+previousd =   (The d-table of previous step)
+previousd4 =   (The d4-table of previous step)
+previousd42 =   (The d4-table (2) of previous step)
+previoushmm =   (The hmm-table of previous step)
+previousn =   (The n-table of previous step)
+previousp0 =   (The P0 previous step)
+previoust =   (The t-table of previous step)
+restart = 0  (Restart training from a level,0: Normal restart, from model 1, 1: Model 1, 2: Model 2 Init (Using Model 1 model input and train model 2), 3: Model 2, (using model 2 input and train model 2), 4 : HMM Init (Using Model 1 model and train HMM), 5: HMM (Using Model 2 model and train HMM) 6 : HMM (Using HMM Model and train HMM), 7: Model 3 Init (Use HMM model and train model 3) 8: Model 3 Init (Use Model 2 model and train model 3) 9: Model 3, 10: Model 4 Init (Use Model 3 model and train Model 4) 11: Model 4 and on, )
+s = /workspace/exp/ph-my/model/corpus/ph.vcb  (source vocabulary file name)
+sourcevocabularyclasses = /workspace/exp/ph-my/model/corpus/ph.vcb.classes  (source vocabulary classes file name)
+t = /workspace/exp/ph-my/model/corpus/my.vcb  (target vocabulary file name)
+targetvocabularyclasses = /workspace/exp/ph-my/model/corpus/my.vcb.classes  (target vocabulary classes file name)
+tc =   (test corpus file name)
+
+smoothing parameters:
+---------------------
+emalsmooth = 0.2  (f-b-trn: smoothing factor for HMM alignment model (can be ignored by -emSmoothHMM))
+model23smoothfactor = 0  (smoothing parameter for IBM-2/3 (interpolation with constant))
+model4smoothfactor = 0.4  (smooting parameter for alignment probabilities in Model 4)
+model5smoothfactor = 0.1  (smooting parameter for distortion probabilities in Model 5 (linear interpolation with constant))
+nsmooth = 4  (smoothing for fertility parameters (good value: 64): weight for wordlength-dependent fertility parameters)
+nsmoothgeneral = 0  (smoothing for fertility parameters (default: 0): weight for word-independent fertility parameters)
+
+parameters modifying the models:
+--------------------------------
+compactadtable = 1  (1: only 3-dimensional alignment table for IBM-2 and IBM-3)
+deficientdistortionforemptyword = 0  (0: IBM-3/IBM-4 as described in (Brown et al. 1993); 1: distortion model of empty word is deficient; 2: distoriton model of empty word is deficient (differently); setting this parameter also helps to avoid that during IBM-3 and IBM-4 training too many words are aligned with the empty word)
+depm4 = 76  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+depm5 = 68  (d_{=1}: &1:l, &2:m, &4:F, &8:E, d_{>1}&16:l, &32:m, &64:F, &128:E)
+emalignmentdependencies = 2  (lextrain: dependencies in the HMM alignment model.  &1: sentence length; &2: previous class; &4: previous position;  &8: French position; &16: French class)
+emprobforempty = 0.4  (f-b-trn: probability for empty word)
+
+parameters modifying the EM-algorithm:
+--------------------------------------
+m5p0 = -1  (fixed value for parameter p_0 in IBM-5 (if negative then it is determined in training))
+manlexfactor1 = 0  ()
+manlexfactor2 = 0  ()
+manlexmaxmultiplicity = 20  ()
+maxfertility = 10  (maximal fertility for fertility models)
+ncpus = 4  (Number of threads to be executed, use 0 if you just want all CPUs to be used)
+p0 = 0.999  (fixed value for parameter p_0 in IBM-3/4 (if negative then it is determined in training))
+pegging = 0  (0: no pegging; 1: do pegging)
+
+reading vocabulary files 
+Reading vocabulary file from:/workspace/exp/ph-my/model/corpus/ph.vcb
+Reading vocabulary file from:/workspace/exp/ph-my/model/corpus/my.vcb
+Source vocabulary list has 1835 unique tokens 
+Target vocabulary list has 2281 unique tokens 
+Calculating vocabulary frequencies from corpus /workspace/exp/ph-my/model/corpus/my-ph-int-train.snt
+Reading more sentence pairs into memory ... 
+Corpus fits in memory, corpus has: 20000 sentence pairs.
+Compacted Vocabulary, eliminated 1 entries 1834 remains 
+Compacted Vocabulary, eliminated 1 entries 2280 remains 
+ Train total # sentence pairs (weighted): 20000
+Size of source portion of the training corpus: 57346 tokens
+Size of the target portion of the training corpus: 57336 tokens 
+In source portion of the training corpus, only 1834 unique tokens appeared
+In target portion of the training corpus, only 2279 unique tokens appeared
+lambda for PP calculation in IBM-1,IBM-2,HMM:= 57336/(77346-20000)== 0.999826
+Dictionary Loading complete
+Inputfile in /workspace/exp/ph-my/model/giza.my-ph/my-ph.cooc
+There are 75243 75243 entries in table
+cooc file loading completed
+TTable initialization OK
+Model one initalization OK
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 1
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 1
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 1
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 1
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (1) TRAIN CROSS-ENTROPY 14.4739 PERPLEXITY 22755.6
+Model1: (1) VITERBI TRAIN CROSS-ENTROPY 16.4989 PERPLEXITY 92608.3
+Model 1 Iteration: 1 took: 0 seconds
+-----------
+Model1: Iteration 2
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 2
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 2
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 2
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (2) TRAIN CROSS-ENTROPY 4.57306 PERPLEXITY 23.8028
+Model1: (2) VITERBI TRAIN CROSS-ENTROPY 4.90672 PERPLEXITY 29.9965
+Model 1 Iteration: 2 took: 0 seconds
+-----------
+Model1: Iteration 3
+==========================================================
+Model1 Training Started at: ==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 3
+Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 3
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 3
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (3) TRAIN CROSS-ENTROPY 3.49209 PERPLEXITY 11.2518
+Model1: (3) VITERBI TRAIN CROSS-ENTROPY 3.67561 PERPLEXITY 12.7782
+Model 1 Iteration: 3 took: 0 seconds
+-----------
+Model1: Iteration 4
+==========================================================
+Model1 Training Started at: ==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 4
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 4
+Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 4
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (4) TRAIN CROSS-ENTROPY 3.36667 PERPLEXITY 10.315
+Model1: (4) VITERBI TRAIN CROSS-ENTROPY 3.53216 PERPLEXITY 11.5688
+Model 1 Iteration: 4 took: 0 seconds
+-----------
+Model1: Iteration 5
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 5
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 5
+==========================================================
+Model1 Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Model1: Iteration 5
+Main thread done, waiting
+Thread 1done
+Thread 2done
+Thread 3done
+Normalizing T 
+ DONE Normalizing 
+Model1: (5) TRAIN CROSS-ENTROPY 3.34523 PERPLEXITY 10.1628
+Model1: (5) VITERBI TRAIN CROSS-ENTROPY 3.50351 PERPLEXITY 11.3412
+Model 1 Iteration: 5 took: 0 seconds
+Entire Model1 Training took: 0 seconds
+NOTE: I am doing iterations with the HMM model!
+Read classes: #words: 1834  #classes: 51
+Actual number of read words: 1833 stored words: 1833
+Read classes: #words: 2280  #classes: 51
+Actual number of read words: 2279 stored words: 2279
+
+==========================================================
+Hmm Training Started at: Tue Jun 16 18:12:43 2026
+
+-----------
+Hmm: Iteration 1
+Dump files 0 it 1 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+Hmm: (1) TRAIN CROSS-ENTROPY 3.33925 PERPLEXITY 10.1208
+Hmm: (1) VITERBI TRAIN CROSS-ENTROPY 3.49437 PERPLEXITY 11.2696
+
+Hmm Iteration: 1 took: 0 seconds
+
+-----------
+Hmm: Iteration 2
+Dump files 0 it 2 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+Hmm: (2) TRAIN CROSS-ENTROPY 1.3634 PERPLEXITY 2.57292
+Hmm: (2) VITERBI TRAIN CROSS-ENTROPY 1.37703 PERPLEXITY 2.59733
+
+Hmm Iteration: 2 took: 0 seconds
+
+-----------
+Hmm: Iteration 3
+Dump files 0 it 3 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+Hmm: (3) TRAIN CROSS-ENTROPY 1.18313 PERPLEXITY 2.27069
+Hmm: (3) VITERBI TRAIN CROSS-ENTROPY 1.18918 PERPLEXITY 2.28023
+
+Hmm Iteration: 3 took: 1 seconds
+
+-----------
+Hmm: Iteration 4
+Dump files 0 it 4 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+Hmm: (4) TRAIN CROSS-ENTROPY 1.13804 PERPLEXITY 2.20081
+Hmm: (4) VITERBI TRAIN CROSS-ENTROPY 1.14207 PERPLEXITY 2.20697
+
+Hmm Iteration: 4 took: 0 seconds
+
+-----------
+Hmm: Iteration 5
+Dump files 0 it 5 noIterations 5 dumpFreq 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+Hmm: (5) TRAIN CROSS-ENTROPY 1.11774 PERPLEXITY 2.17007
+Hmm: (5) VITERBI TRAIN CROSS-ENTROPY 1.12068 PERPLEXITY 2.17449
+
+Hmm Iteration: 5 took: 0 seconds
+
+Entire Hmm Training took: 1 seconds
+==========================================================
+
+==========================================================
+Starting H333444:  Viterbi Training
+ H333444 Training Started at: Tue Jun 16 18:12:44 2026
+
+
+---------------------
+THTo3: Iteration 1
+10000
+#centers(pre/hillclimbed/real): 20000
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.2598 #alsophisticatedcountcollection: 0 #hcsteps: 0
+#peggingImprovements: 0
+1 1 1  #al: 13.3623 #alsophisticatedcountcollection: 0 #hcsteps: 0
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 #centers(pre/hillclimbed/real): 1  #al: 13.2412 #alsophisticatedcountcollection: 0 #hcsteps: 0
+#peggingImprovements: 0
+1 1 1  #al: 13.5088 #alsophisticatedcountcollection: 0 #hcsteps: 0
+#peggingImprovements: 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+A/D table contains 602 parameters.
+NTable contains 18350 parameter.
+p0_count is 57276.3 and p1 is 29.8383; p0 is 0.999 p1: 0.001
+THTo3: TRAIN CROSS-ENTROPY 0.373315 PERPLEXITY 1.29533
+THTo3: (1) TRAIN VITERBI CROSS-ENTROPY 0.375635 PERPLEXITY 1.29741
+
+THTo3 Viterbi Iteration : 1 took: 0 seconds
+
+---------------------
+Model3: Iteration 2
+10000
+20000#centers(pre/hillclimbed/real): 1 1 1  #al: #centers(pre/hillclimbed/real): 13.4145 #alsophisticatedcountcollection: 
+1 1 1  #al: 13.2599 #alsophisticatedcountcollection: 0 #hcsteps: 1.00317
+#peggingImprovements: 0
+0 #hcsteps: 1.00212
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.4052 #alsophisticatedcountcollection: 0 #hcsteps: 1.0038
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.3137 #alsophisticatedcountcollection: 0 #hcsteps: 1.00325
+#peggingImprovements: 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+A/D table contains 592 parameters.
+NTable contains 18350 parameter.
+p0_count is 57318.3 and p1 is 8.83446; p0 is 0.999 p1: 0.001
+Model3: TRAIN CROSS-ENTROPY 0.795984 PERPLEXITY 1.73626
+Model3: (2) TRAIN VITERBI CROSS-ENTROPY 0.796237 PERPLEXITY 1.73657
+
+Model3 Viterbi Iteration : 2 took: 0 seconds
+
+---------------------
+Model3: Iteration 3
+10000
+20000#centers(pre/hillclimbed/real): 1 1 1  #al: 13.5306 #alsophisticatedcountcollection: 0 #hcsteps: 1.00237
+#peggingImprovements: 0#centers(pre/hillclimbed/real): 
+
+1 1 1  #al: 13.3336 #alsophisticatedcountcollection: 0 #hcsteps: 1.00207
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.321 #alsophisticatedcountcollection: 0 #hcsteps: 1.00167
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.2 #alsophisticatedcountcollection: 0 #hcsteps: 1.00145
+#peggingImprovements: 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+A/D table contains 572 parameters.
+NTable contains 18350 parameter.
+p0_count is 57328 and p1 is 3.9786; p0 is 0.999 p1: 0.001
+Model3: TRAIN CROSS-ENTROPY 0.777573 PERPLEXITY 1.71424
+Model3: (3) TRAIN VITERBI CROSS-ENTROPY 0.777687 PERPLEXITY 1.71438
+
+Model3 Viterbi Iteration : 3 took: 0 seconds
+
+---------------------
+T3To4: Iteration 4
+10000
+20000#centers(pre/hillclimbed/real): 1 #centers(pre/hillclimbed/real): 1 1  #al: #centers(pre/hillclimbed/real): 13.4869 #alsophisticatedcountcollection: 3.98525 #hcsteps: 1 1.0012
+#peggingImprovements: 110 
+ 1 1  #al: 1  #al: 13.3289 #alsophisticatedcountcollection: 4.00762 #hcsteps: 13.1483 #alsophisticatedcountcollection: 1.001
+#peggingImprovements: 3.93118 #hcsteps: 0
+1.00157
+#peggingImprovements: 0
+
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.4338 #alsophisticatedcountcollection: 4.07396 #hcsteps: 1.00122
+#peggingImprovements: 0
+D4 table contains 486997 parameters.
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+A/D table contains 556 parameters.
+NTable contains 18350 parameter.
+p0_count is 57333.4 and p1 is 1.28625; p0 is 0.999 p1: 0.001
+T3To4: TRAIN CROSS-ENTROPY 0.771774 PERPLEXITY 1.70737
+T3To4: (4) TRAIN VITERBI CROSS-ENTROPY 0.77179 PERPLEXITY 1.70739
+
+T3To4 Viterbi Iteration : 4 took: 0 seconds
+
+---------------------
+Model4: Iteration 5
+10000
+20000#centers(pre/hillclimbed/real): #centers(pre/hillclimbed/real): #centers(pre/hillclimbed/real): 11  1 11  #al: 13.3331 #alsophisticatedcountcollection: 4.31283 #hcsteps: 1.00115
+#peggingImprovements: 0
+ 1  #al: 13.2432 #alsophisticatedcountcollection: 4.34436 #hcsteps: 1.00019
+#peggingImprovements: 0
+
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.4606 #alsophisticatedcountcollection: 4.83783 #hcsteps: 1.00064
+#peggingImprovements: 0
+1 1 1  #al: 13.3695 #alsophisticatedcountcollection: 4.61066 #hcsteps: 1.00082
+#peggingImprovements: 0
+D4 table contains 486997 parameters.
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+A/D table contains 552 parameters.
+NTable contains 18350 parameter.
+p0_count is 57332.2 and p1 is 1.89153; p0 is 0.999 p1: 0.001
+Model4: TRAIN CROSS-ENTROPY 1.31263 PERPLEXITY 2.48394
+Model4: (5) TRAIN VITERBI CROSS-ENTROPY 1.31285 PERPLEXITY 2.48432
+
+Model4 Viterbi Iteration : 5 took: 0 seconds
+
+---------------------
+Model4: Iteration 6
+I will write alignment to /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.part001
+I will write alignment to /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.part000
+I will write alignment to /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.part002
+I will write alignment to /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.part003
+10000
+20000
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.2753 #alsophisticatedcountcollection: 4.32995 #hcsteps: 1.00057
+#peggingImprovements: 0
+D4 table contains 486997 parameters.
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.5971 #alsophisticatedcountcollection: 4.21762 #hcsteps: 1.00056
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.118 #alsophisticatedcountcollection: 4.73653 #hcsteps: 1.00063
+#peggingImprovements: 0
+#centers(pre/hillclimbed/real): 1 1 1  #al: 13.3803 #alsophisticatedcountcollection: 4.8577 #hcsteps: 1.00064
+#peggingImprovements: 0
+Thread 1done
+Thread 2done
+Thread 3done
+A/D table contains 594 parameters.
+A/D table contains 549 parameters.
+NTable contains 18350 parameter.
+p0_count is 57332 and p1 is 1.99987; p0 is 0.999 p1: 0.001
+Model4: TRAIN CROSS-ENTROPY 1.31266 PERPLEXITY 2.48399
+Model4: (6) TRAIN VITERBI CROSS-ENTROPY 1.3129 PERPLEXITY 2.4844
+
+Model4 Viterbi Iteration : 6 took: 0 seconds
+H333444 Training Finished at: Tue Jun 16 18:12:44 2026
+
+
+Entire Viterbi H333444 Training took: 0 seconds
+==========================================================
+
+Entire Training took: 1 seconds
+Program Finished at: Tue Jun 16 18:12:44 2026
+
+==========================================================
+Merging A3.final.part* tables
+Executing: /workspace/tools/training-tools/merge_alignment.py  /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.part*>/workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final
+Combined 4 files, totally 20000 sents 
+Executing: rm -f /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.gz
+Executing: gzip /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final
+(3) generate word alignment @ Tue Jun 16 18:12:46 UTC 2026
+Combining forward and inverted alignment from files:
+  /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.{bz2,gz}
+  /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.{bz2,gz}
+Executing: mkdir -p /workspace/exp/ph-my/model/model
+Executing: /workspace/tools/mosesdecoder/scripts/training/giza2bal.pl -d "gzip -cd /workspace/exp/ph-my/model/giza.my-ph/my-ph.A3.final.gz" -i "gzip -cd /workspace/exp/ph-my/model/giza.ph-my/ph-my.A3.final.gz" |/workspace/tools/mosesdecoder/scripts/../bin/symal -alignment="grow" -diagonal="yes" -final="yes" -both="yes" > /workspace/exp/ph-my/model/model/aligned.grow-diag-final-and
+symal: computing grow alignment: diagonal (1) final (1)both-uncovered (1)
+skip=<0> counts=<20000>
+(4) generate lexical translation table 0-0 @ Tue Jun 16 18:12:48 UTC 2026
+(/workspace/exp/clean-data/clean-train.ph,/workspace/exp/clean-data/clean-train.my,/workspace/exp/ph-my/model/model/lex)
+!!!!!!!!!!!!!!!!!!!!
+Saved: /workspace/exp/ph-my/model/model/lex.f2e and /workspace/exp/ph-my/model/model/lex.e2f
+FILE: /workspace/exp/clean-data/clean-train.my
+FILE: /workspace/exp/clean-data/clean-train.ph
+FILE: /workspace/exp/ph-my/model/model/aligned.grow-diag-final-and
+(5) extract phrases @ Tue Jun 16 18:12:48 UTC 2026
+/workspace/tools/mosesdecoder/scripts/generic/extract-parallel.perl 4 split "sort    " /workspace/tools/mosesdecoder/scripts/../bin/extract /workspace/exp/clean-data/clean-train.my /workspace/exp/clean-data/clean-train.ph /workspace/exp/ph-my/model/model/aligned.grow-diag-final-and /workspace/exp/ph-my/model/model/extract 7 orientation --model wbe-msd --GZOutput 
+Executing: /workspace/tools/mosesdecoder/scripts/generic/extract-parallel.perl 4 split "sort    " /workspace/tools/mosesdecoder/scripts/../bin/extract /workspace/exp/clean-data/clean-train.my /workspace/exp/clean-data/clean-train.ph /workspace/exp/ph-my/model/model/aligned.grow-diag-final-and /workspace/exp/ph-my/model/model/extract 7 orientation --model wbe-msd --GZOutput 
+MAX 7 1 0
+Started Tue Jun 16 18:12:48 2026
+using gzip 
+isBSDSplit=0 
+Executing: mkdir -p /workspace/exp/ph-my/model/model/tmp.828; ls -l /workspace/exp/ph-my/model/model/tmp.828 
+total=20000 line-per-split=5001 
+split -d -l 5001 -a 7 /workspace/exp/clean-data/clean-train.my /workspace/exp/ph-my/model/model/tmp.828/target.split -d -l 5001 -a 7 /workspace/exp/clean-data/clean-train.ph /workspace/exp/ph-my/model/model/tmp.828/source.split -d -l 5001 -a 7 /workspace/exp/ph-my/model/model/aligned.grow-diag-final-and /workspace/exp/ph-my/model/model/tmp.828/align.PhraseExtract v1.5, written by Philipp Koehn et al.PhraseExtract v1.5, written by Philipp Koehn et al.
+
+phrase extraction from an aligned parallel corpusphrase extraction from an aligned parallel corpus
+
+PhraseExtract v1.5, written by Philipp Koehn et al.
+phrase extraction from an aligned parallel corpus
+PhraseExtract v1.5, written by Philipp Koehn et al.
+phrase extraction from an aligned parallel corpus
+.
+
+.
+
+merging extract / extract.inv
+gunzip -c /workspace/exp/ph-my/model/model/tmp.828/extract.0000000.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000001.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000002.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000003.gz  | LC_ALL=C sort     -T /workspace/exp/ph-my/model/model/tmp.828 2>> /dev/stderr | gzip -c > /workspace/exp/ph-my/model/model/extract.sorted.gz 2>> /dev/stderr 
+gunzip -c /workspace/exp/ph-my/model/model/tmp.828/extract.0000000.inv.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000001.inv.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000002.inv.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000003.inv.gz  | LC_ALL=C sort     -T /workspace/exp/ph-my/model/model/tmp.828 2>> /dev/stderr | gzip -c > /workspace/exp/ph-my/model/model/extract.inv.sorted.gz 2>> /dev/stderr 
+gunzip -c /workspace/exp/ph-my/model/model/tmp.828/extract.0000000.o.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000001.o.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000002.o.gz /workspace/exp/ph-my/model/model/tmp.828/extract.0000003.o.gz  | LC_ALL=C sort     -T /workspace/exp/ph-my/model/model/tmp.828 2>> /dev/stderr | gzip -c > /workspace/exp/ph-my/model/model/extract.o.sorted.gz 2>> /dev/stderr 
+Finished Tue Jun 16 18:12:48 2026
+(6) score phrases @ Tue Jun 16 18:12:48 UTC 2026
+(6.1)  creating table half /workspace/exp/ph-my/model/model/phrase-table.half.f2e @ Tue Jun 16 18:12:48 UTC 2026
+/workspace/tools/mosesdecoder/scripts/generic/score-parallel.perl 4 "sort    " /workspace/tools/mosesdecoder/scripts/../bin/score /workspace/exp/ph-my/model/model/extract.sorted.gz /workspace/exp/ph-my/model/model/lex.f2e /workspace/exp/ph-my/model/model/phrase-table.half.f2e.gz  0 
+Executing: /workspace/tools/mosesdecoder/scripts/generic/score-parallel.perl 4 "sort    " /workspace/tools/mosesdecoder/scripts/../bin/score /workspace/exp/ph-my/model/model/extract.sorted.gz /workspace/exp/ph-my/model/model/lex.f2e /workspace/exp/ph-my/model/model/phrase-table.half.f2e.gz  0 
+using gzip 
+Started Tue Jun 16 18:12:48 2026
+/workspace/tools/mosesdecoder/scripts/../bin/score /workspace/exp/ph-my/model/model/tmp.877/extract.0.gz /workspace/exp/ph-my/model/model/lex.f2e /workspace/exp/ph-my/model/model/tmp.877/phrase-table.half.0000000.gz  2>> /dev/stderr 
+/workspace/exp/ph-my/model/model/tmp.877/run.0.sh/workspace/exp/ph-my/model/model/tmp.877/run.1.sh/workspace/exp/ph-my/model/model/tmp.877/run.2.sh/workspace/exp/ph-my/model/model/tmp.877/run.3.shScore v2.1 -- scoring methods for extracted rules
+Loading lexical translation table from /workspace/exp/ph-my/model/model/lex.f2e
+.
+mv /workspace/exp/ph-my/model/model/tmp.877/phrase-table.half.0000000.gz /workspace/exp/ph-my/model/model/phrase-table.half.f2e.gzrm -rf /workspace/exp/ph-my/model/model/tmp.877 
+Finished Tue Jun 16 18:12:49 2026
+(6.3)  creating table half /workspace/exp/ph-my/model/model/phrase-table.half.e2f @ Tue Jun 16 18:12:49 UTC 2026
+/workspace/tools/mosesdecoder/scripts/generic/score-parallel.perl 4 "sort    " /workspace/tools/mosesdecoder/scripts/../bin/score /workspace/exp/ph-my/model/model/extract.inv.sorted.gz /workspace/exp/ph-my/model/model/lex.e2f /workspace/exp/ph-my/model/model/phrase-table.half.e2f.gz --Inverse 1 
+Executing: /workspace/tools/mosesdecoder/scripts/generic/score-parallel.perl 4 "sort    " /workspace/tools/mosesdecoder/scripts/../bin/score /workspace/exp/ph-my/model/model/extract.inv.sorted.gz /workspace/exp/ph-my/model/model/lex.e2f /workspace/exp/ph-my/model/model/phrase-table.half.e2f.gz --Inverse 1 
+using gzip 
+Started Tue Jun 16 18:12:49 2026
+/workspace/tools/mosesdecoder/scripts/../bin/score /workspace/exp/ph-my/model/model/tmp.900/extract.0.gz /workspace/exp/ph-my/model/model/lex.e2f /workspace/exp/ph-my/model/model/tmp.900/phrase-table.half.0000000.gz --Inverse  2>> /dev/stderr 
+/workspace/exp/ph-my/model/model/tmp.900/run.0.sh/workspace/exp/ph-my/model/model/tmp.900/run.1.sh/workspace/exp/ph-my/model/model/tmp.900/run.3.sh/workspace/exp/ph-my/model/model/tmp.900/run.2.shScore v2.1 -- scoring methods for extracted rules
+using inverse mode
+Loading lexical translation table from /workspace/exp/ph-my/model/model/lex.e2f
+.
+gunzip -c /workspace/exp/ph-my/model/model/tmp.900/phrase-table.half.*.gz 2>> /dev/stderr| LC_ALL=C sort     -T /workspace/exp/ph-my/model/model/tmp.900  | gzip -c > /workspace/exp/ph-my/model/model/phrase-table.half.e2f.gz  2>> /dev/stderr rm -rf /workspace/exp/ph-my/model/model/tmp.900 
+Finished Tue Jun 16 18:12:49 2026
+(6.6) consolidating the two halves @ Tue Jun 16 18:12:49 UTC 2026
+Executing: /workspace/tools/mosesdecoder/scripts/../bin/consolidate /workspace/exp/ph-my/model/model/phrase-table.half.f2e.gz /workspace/exp/ph-my/model/model/phrase-table.half.e2f.gz /dev/stdout | gzip -c > /workspace/exp/ph-my/model/model/phrase-table.gz
+Consolidate v2.0 written by Philipp Koehn
+consolidating direct and indirect rule tables
+
+Executing: rm -f /workspace/exp/ph-my/model/model/phrase-table.half.*
+(7) learn reordering model @ Tue Jun 16 18:12:49 UTC 2026
+(7.1) [no factors] learn reordering model @ Tue Jun 16 18:12:49 UTC 2026
+(7.2) building tables @ Tue Jun 16 18:12:49 UTC 2026
+Executing: /workspace/tools/mosesdecoder/scripts/../bin/lexical-reordering-score /workspace/exp/ph-my/model/model/extract.o.sorted.gz 0.5 /workspace/exp/ph-my/model/model/reordering-table. --model "wbe msd wbe-msd-bidirectional-fe"
+Lexical Reordering Scorer
+scores lexical reordering models of several types (hierarchical, phrase-based and word-based-extraction
+(8) learn generation model @ Tue Jun 16 18:12:50 UTC 2026
+  no generation model requested, skipping step
+(9) create moses.ini @ Tue Jun 16 18:12:50 UTC 2026

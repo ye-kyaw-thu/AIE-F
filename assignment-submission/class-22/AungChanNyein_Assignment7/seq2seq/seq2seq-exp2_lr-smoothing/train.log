@@ -1,0 +1,1317 @@
+[2026-06-17 10:23:02] [marian] Marian v1.12.0 65bf82f 2023-02-21 09:56:29 -0800
+[2026-06-17 10:23:02] [marian] Running on 537de6fb095c as process 236 with command line:
+[2026-06-17 10:23:02] [marian] marian --config /kaggle/working/nmt/model.seq2seq.exp2.phmy/config.yml
+[2026-06-17 10:23:02] [config] after: 0e
+[2026-06-17 10:23:02] [config] after-batches: 0
+[2026-06-17 10:23:02] [config] after-epochs: 0
+[2026-06-17 10:23:02] [config] all-caps-every: 0
+[2026-06-17 10:23:02] [config] allow-unk: false
+[2026-06-17 10:23:02] [config] authors: false
+[2026-06-17 10:23:02] [config] beam-size: 6
+[2026-06-17 10:23:02] [config] bert-class-symbol: "[CLS]"
+[2026-06-17 10:23:02] [config] bert-mask-symbol: "[MASK]"
+[2026-06-17 10:23:02] [config] bert-masking-fraction: 0.15
+[2026-06-17 10:23:02] [config] bert-sep-symbol: "[SEP]"
+[2026-06-17 10:23:02] [config] bert-train-type-embeddings: true
+[2026-06-17 10:23:02] [config] bert-type-vocab-size: 2
+[2026-06-17 10:23:02] [config] build-info: ""
+[2026-06-17 10:23:02] [config] check-gradient-nan: false
+[2026-06-17 10:23:02] [config] check-nan: false
+[2026-06-17 10:23:02] [config] cite: false
+[2026-06-17 10:23:02] [config] clip-norm: 5
+[2026-06-17 10:23:02] [config] cost-scaling:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] cost-type: ce-sum
+[2026-06-17 10:23:02] [config] cpu-threads: 0
+[2026-06-17 10:23:02] [config] data-threads: 8
+[2026-06-17 10:23:02] [config] data-weighting: ""
+[2026-06-17 10:23:02] [config] data-weighting-type: sentence
+[2026-06-17 10:23:02] [config] dec-cell: lstm
+[2026-06-17 10:23:02] [config] dec-cell-base-depth: 2
+[2026-06-17 10:23:02] [config] dec-cell-high-depth: 2
+[2026-06-17 10:23:02] [config] dec-depth: 2
+[2026-06-17 10:23:02] [config] devices:
+[2026-06-17 10:23:02] [config]   - 0
+[2026-06-17 10:23:02] [config]   - 1
+[2026-06-17 10:23:02] [config] dim-emb: 512
+[2026-06-17 10:23:02] [config] dim-rnn: 1024
+[2026-06-17 10:23:02] [config] dim-vocabs:
+[2026-06-17 10:23:02] [config]   - 0
+[2026-06-17 10:23:02] [config]   - 0
+[2026-06-17 10:23:02] [config] disp-first: 0
+[2026-06-17 10:23:02] [config] disp-freq: 500
+[2026-06-17 10:23:02] [config] disp-label-counts: true
+[2026-06-17 10:23:02] [config] dropout-rnn: 0.3
+[2026-06-17 10:23:02] [config] dropout-src: 0.3
+[2026-06-17 10:23:02] [config] dropout-trg: 0
+[2026-06-17 10:23:02] [config] dump-config: ""
+[2026-06-17 10:23:02] [config] dynamic-gradient-scaling:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] early-stopping: 10
+[2026-06-17 10:23:02] [config] early-stopping-on: first
+[2026-06-17 10:23:02] [config] embedding-fix-src: false
+[2026-06-17 10:23:02] [config] embedding-fix-trg: false
+[2026-06-17 10:23:02] [config] embedding-normalization: false
+[2026-06-17 10:23:02] [config] embedding-vectors:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] enc-cell: lstm
+[2026-06-17 10:23:02] [config] enc-cell-depth: 2
+[2026-06-17 10:23:02] [config] enc-depth: 2
+[2026-06-17 10:23:02] [config] enc-type: alternating
+[2026-06-17 10:23:02] [config] english-title-case-every: 0
+[2026-06-17 10:23:02] [config] exponential-smoothing: 0
+[2026-06-17 10:23:02] [config] factor-weight: 1
+[2026-06-17 10:23:02] [config] factors-combine: sum
+[2026-06-17 10:23:02] [config] factors-dim-emb: 0
+[2026-06-17 10:23:02] [config] gradient-checkpointing: false
+[2026-06-17 10:23:02] [config] gradient-norm-average-window: 100
+[2026-06-17 10:23:02] [config] guided-alignment: none
+[2026-06-17 10:23:02] [config] guided-alignment-cost: ce
+[2026-06-17 10:23:02] [config] guided-alignment-weight: 0.1
+[2026-06-17 10:23:02] [config] ignore-model-config: false
+[2026-06-17 10:23:02] [config] input-types:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] interpolate-env-vars: false
+[2026-06-17 10:23:02] [config] keep-best: true
+[2026-06-17 10:23:02] [config] label-smoothing: 0.1
+[2026-06-17 10:23:02] [config] layer-normalization: true
+[2026-06-17 10:23:02] [config] learn-rate: 0.0003
+[2026-06-17 10:23:02] [config] lemma-dependency: ""
+[2026-06-17 10:23:02] [config] lemma-dim-emb: 0
+[2026-06-17 10:23:02] [config] log: /kaggle/working/nmt/model.seq2seq.exp2.phmy/train.log
+[2026-06-17 10:23:02] [config] log-level: info
+[2026-06-17 10:23:02] [config] log-time-zone: ""
+[2026-06-17 10:23:02] [config] logical-epoch:
+[2026-06-17 10:23:02] [config]   - 1e
+[2026-06-17 10:23:02] [config]   - 0
+[2026-06-17 10:23:02] [config] lr-decay: 0
+[2026-06-17 10:23:02] [config] lr-decay-freq: 50000
+[2026-06-17 10:23:02] [config] lr-decay-inv-sqrt:
+[2026-06-17 10:23:02] [config]   - 16000
+[2026-06-17 10:23:02] [config] lr-decay-repeat-warmup: false
+[2026-06-17 10:23:02] [config] lr-decay-reset-optimizer: false
+[2026-06-17 10:23:02] [config] lr-decay-start:
+[2026-06-17 10:23:02] [config]   - 10
+[2026-06-17 10:23:02] [config]   - 1
+[2026-06-17 10:23:02] [config] lr-decay-strategy: epoch+stalled
+[2026-06-17 10:23:02] [config] lr-report: true
+[2026-06-17 10:23:02] [config] lr-warmup: 0
+[2026-06-17 10:23:02] [config] lr-warmup-at-reload: false
+[2026-06-17 10:23:02] [config] lr-warmup-cycle: false
+[2026-06-17 10:23:02] [config] lr-warmup-start-rate: 0
+[2026-06-17 10:23:02] [config] max-length: 100
+[2026-06-17 10:23:02] [config] max-length-crop: false
+[2026-06-17 10:23:02] [config] max-length-factor: 3
+[2026-06-17 10:23:02] [config] maxi-batch: 100
+[2026-06-17 10:23:02] [config] maxi-batch-sort: trg
+[2026-06-17 10:23:02] [config] mini-batch: 64
+[2026-06-17 10:23:02] [config] mini-batch-fit: false
+[2026-06-17 10:23:02] [config] mini-batch-fit-step: 10
+[2026-06-17 10:23:02] [config] mini-batch-round-up: true
+[2026-06-17 10:23:02] [config] mini-batch-track-lr: false
+[2026-06-17 10:23:02] [config] mini-batch-warmup: 0
+[2026-06-17 10:23:02] [config] mini-batch-words: 0
+[2026-06-17 10:23:02] [config] mini-batch-words-ref: 0
+[2026-06-17 10:23:02] [config] model: /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 10:23:02] [config] multi-loss-type: sum
+[2026-06-17 10:23:02] [config] n-best: false
+[2026-06-17 10:23:02] [config] no-nccl: false
+[2026-06-17 10:23:02] [config] no-reload: false
+[2026-06-17 10:23:02] [config] no-restore-corpus: false
+[2026-06-17 10:23:02] [config] normalize: 0.6
+[2026-06-17 10:23:02] [config] normalize-gradient: false
+[2026-06-17 10:23:02] [config] num-devices: 0
+[2026-06-17 10:23:02] [config] optimizer: adam
+[2026-06-17 10:23:02] [config] optimizer-delay: 1
+[2026-06-17 10:23:02] [config] optimizer-params:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] output-omit-bias: false
+[2026-06-17 10:23:02] [config] overwrite: true
+[2026-06-17 10:23:02] [config] precision:
+[2026-06-17 10:23:02] [config]   - float32
+[2026-06-17 10:23:02] [config]   - float32
+[2026-06-17 10:23:02] [config] pretrained-model: ""
+[2026-06-17 10:23:02] [config] quantize-biases: false
+[2026-06-17 10:23:02] [config] quantize-bits: 0
+[2026-06-17 10:23:02] [config] quantize-log-based: false
+[2026-06-17 10:23:02] [config] quantize-optimization-steps: 0
+[2026-06-17 10:23:02] [config] quiet: false
+[2026-06-17 10:23:02] [config] quiet-translation: true
+[2026-06-17 10:23:02] [config] relative-paths: false
+[2026-06-17 10:23:02] [config] right-left: false
+[2026-06-17 10:23:02] [config] save-freq: 5000
+[2026-06-17 10:23:02] [config] seed: 1111
+[2026-06-17 10:23:02] [config] sharding: global
+[2026-06-17 10:23:02] [config] shuffle: data
+[2026-06-17 10:23:02] [config] shuffle-in-ram: false
+[2026-06-17 10:23:02] [config] sigterm: save-and-exit
+[2026-06-17 10:23:02] [config] skip: true
+[2026-06-17 10:23:02] [config] sqlite: ""
+[2026-06-17 10:23:02] [config] sqlite-drop: false
+[2026-06-17 10:23:02] [config] sync-freq: 200u
+[2026-06-17 10:23:02] [config] sync-sgd: true
+[2026-06-17 10:23:02] [config] tempdir: /tmp
+[2026-06-17 10:23:02] [config] tied-embeddings: true
+[2026-06-17 10:23:02] [config] tied-embeddings-all: false
+[2026-06-17 10:23:02] [config] tied-embeddings-src: false
+[2026-06-17 10:23:02] [config] train-embedder-rank:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] train-sets:
+[2026-06-17 10:23:02] [config]   - /kaggle/working/nmt/g2p-par/train.ph
+[2026-06-17 10:23:02] [config]   - /kaggle/working/nmt/g2p-par/train.my
+[2026-06-17 10:23:02] [config] transformer-aan-activation: swish
+[2026-06-17 10:23:02] [config] transformer-aan-depth: 2
+[2026-06-17 10:23:02] [config] transformer-aan-nogate: false
+[2026-06-17 10:23:02] [config] transformer-decoder-autoreg: self-attention
+[2026-06-17 10:23:02] [config] transformer-decoder-dim-ffn: 0
+[2026-06-17 10:23:02] [config] transformer-decoder-ffn-depth: 0
+[2026-06-17 10:23:02] [config] transformer-depth-scaling: false
+[2026-06-17 10:23:02] [config] transformer-dim-aan: 2048
+[2026-06-17 10:23:02] [config] transformer-dim-ffn: 2048
+[2026-06-17 10:23:02] [config] transformer-dropout: 0
+[2026-06-17 10:23:02] [config] transformer-dropout-attention: 0
+[2026-06-17 10:23:02] [config] transformer-dropout-ffn: 0
+[2026-06-17 10:23:02] [config] transformer-ffn-activation: swish
+[2026-06-17 10:23:02] [config] transformer-ffn-depth: 2
+[2026-06-17 10:23:02] [config] transformer-guided-alignment-layer: last
+[2026-06-17 10:23:02] [config] transformer-heads: 8
+[2026-06-17 10:23:02] [config] transformer-no-projection: false
+[2026-06-17 10:23:02] [config] transformer-pool: false
+[2026-06-17 10:23:02] [config] transformer-postprocess: dan
+[2026-06-17 10:23:02] [config] transformer-postprocess-emb: d
+[2026-06-17 10:23:02] [config] transformer-postprocess-top: ""
+[2026-06-17 10:23:02] [config] transformer-preprocess: ""
+[2026-06-17 10:23:02] [config] transformer-rnn-projection: false
+[2026-06-17 10:23:02] [config] transformer-tied-layers:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] transformer-train-position-embeddings: false
+[2026-06-17 10:23:02] [config] tsv: false
+[2026-06-17 10:23:02] [config] tsv-fields: 0
+[2026-06-17 10:23:02] [config] type: s2s
+[2026-06-17 10:23:02] [config] ulr: false
+[2026-06-17 10:23:02] [config] ulr-dim-emb: 0
+[2026-06-17 10:23:02] [config] ulr-dropout: 0
+[2026-06-17 10:23:02] [config] ulr-keys-vectors: ""
+[2026-06-17 10:23:02] [config] ulr-query-vectors: ""
+[2026-06-17 10:23:02] [config] ulr-softmax-temperature: 1
+[2026-06-17 10:23:02] [config] ulr-trainable-transformation: false
+[2026-06-17 10:23:02] [config] unlikelihood-loss: false
+[2026-06-17 10:23:02] [config] valid-freq: 5000
+[2026-06-17 10:23:02] [config] valid-log: /kaggle/working/nmt/model.seq2seq.exp2.phmy/valid.log
+[2026-06-17 10:23:02] [config] valid-max-length: 1000
+[2026-06-17 10:23:02] [config] valid-metrics:
+[2026-06-17 10:23:02] [config]   - cross-entropy
+[2026-06-17 10:23:02] [config]   - perplexity
+[2026-06-17 10:23:02] [config]   - bleu
+[2026-06-17 10:23:02] [config] valid-mini-batch: 32
+[2026-06-17 10:23:02] [config] valid-reset-all: false
+[2026-06-17 10:23:02] [config] valid-reset-stalled: false
+[2026-06-17 10:23:02] [config] valid-script-args:
+[2026-06-17 10:23:02] [config]   []
+[2026-06-17 10:23:02] [config] valid-script-path: ""
+[2026-06-17 10:23:02] [config] valid-sets:
+[2026-06-17 10:23:02] [config]   - /kaggle/working/nmt/g2p-par/dev.ph
+[2026-06-17 10:23:02] [config]   - /kaggle/working/nmt/g2p-par/dev.my
+[2026-06-17 10:23:02] [config] valid-translation-output: ""
+[2026-06-17 10:23:02] [config] vocabs:
+[2026-06-17 10:23:02] [config]   - /kaggle/working/nmt/g2p-par/vocab/vocab.ph.yml
+[2026-06-17 10:23:02] [config]   - /kaggle/working/nmt/g2p-par/vocab/vocab.my.yml
+[2026-06-17 10:23:02] [config] word-penalty: 0
+[2026-06-17 10:23:02] [config] word-scores: false
+[2026-06-17 10:23:02] [config] workspace: 3000
+[2026-06-17 10:23:02] [config] Model is being created with Marian v1.12.0 65bf82f 2023-02-21 09:56:29 -0800
+[2026-06-17 10:23:02] Using synchronous SGD
+[2026-06-17 10:23:02] [comm] Compiled without MPI support. Running as a single process on 537de6fb095c
+[2026-06-17 10:23:02] Synced seed 1111
+[2026-06-17 10:23:02] [data] Loading vocabulary from JSON/Yaml file /kaggle/working/nmt/g2p-par/vocab/vocab.ph.yml
+[2026-06-17 10:23:02] [data] Setting vocabulary size for input 0 to 1,851
+[2026-06-17 10:23:02] [data] Loading vocabulary from JSON/Yaml file /kaggle/working/nmt/g2p-par/vocab/vocab.my.yml
+[2026-06-17 10:23:02] [data] Setting vocabulary size for input 1 to 2,308
+[2026-06-17 10:23:02] [memory] Extending reserved space to 3072 MB (device gpu0)
+[2026-06-17 10:23:02] [memory] Extending reserved space to 3072 MB (device gpu1)
+[2026-06-17 10:23:02] [comm] Using NCCL 2.8.3 for GPU communication
+[2026-06-17 10:23:02] [comm] Using global sharding
+[2026-06-17 10:23:02] [comm] NCCLCommunicators constructed successfully
+[2026-06-17 10:23:02] [training] Using 2 GPUs
+[2026-06-17 10:23:02] Training started
+[2026-06-17 10:23:02] [data] Shuffling data
+[2026-06-17 10:23:02] [data] Done reading 20,000 sentences
+[2026-06-17 10:23:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:23:03] [training] Batches are processed as 1 process(es) x 2 devices/process
+[2026-06-17 10:23:03] [logits] Applying loss function for 1 factor(s)
+[2026-06-17 10:23:03] [memory] Reserving 343 MB, device gpu1
+[2026-06-17 10:23:03] [memory] Reserving 343 MB, device gpu0
+[2026-06-17 10:23:03] [gpu] 16-bit TensorCores enabled for float32 matrix operations
+[2026-06-17 10:23:03] [memory] Reserving 343 MB, device gpu0
+[2026-06-17 10:23:03] [memory] Reserving 343 MB, device gpu1
+[2026-06-17 10:23:03] Parameter type float32, optimization type float32, casting types false
+[2026-06-17 10:23:03] Allocating memory for Adam-specific shards
+[2026-06-17 10:23:03] [memory] Reserving 343 MB, device gpu1
+[2026-06-17 10:23:03] [memory] Reserving 343 MB, device gpu0
+[2026-06-17 10:23:58] Seen 20,000 samples
+[2026-06-17 10:23:58] Starting data epoch 2 in logical epoch 2
+[2026-06-17 10:23:58] [data] Shuffling data
+[2026-06-17 10:23:58] [data] Done reading 20,000 sentences
+[2026-06-17 10:23:58] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:24:32] Ep. 2 : Up. 500 : Sen. 11,968 : Cost 5.11564302 * 123,990 @ 256 after 123,990 : Time 89.55s : 1384.60 words/s : gNorm 3.2492 : L.r. 3.0000e-04
+[2026-06-17 10:24:54] Seen 20,000 samples
+[2026-06-17 10:24:54] Starting data epoch 3 in logical epoch 3
+[2026-06-17 10:24:54] [data] Shuffling data
+[2026-06-17 10:24:54] [data] Done reading 20,000 sentences
+[2026-06-17 10:24:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:25:49] Seen 20,000 samples
+[2026-06-17 10:25:49] Starting data epoch 4 in logical epoch 4
+[2026-06-17 10:25:49] [data] Shuffling data
+[2026-06-17 10:25:49] [data] Done reading 20,000 sentences
+[2026-06-17 10:25:49] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:26:00] Ep. 4 : Up. 1000 : Sen. 3,904 : Cost 3.34170151 * 123,084 @ 209 after 247,074 : Time 88.54s : 1390.08 words/s : gNorm 1.7476 : L.r. 3.0000e-04
+[2026-06-17 10:26:45] Seen 20,000 samples
+[2026-06-17 10:26:45] Starting data epoch 5 in logical epoch 5
+[2026-06-17 10:26:45] [data] Shuffling data
+[2026-06-17 10:26:45] [data] Done reading 20,000 sentences
+[2026-06-17 10:26:45] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:27:29] Ep. 5 : Up. 1500 : Sen. 15,872 : Cost 2.47433996 * 123,733 @ 192 after 370,807 : Time 88.46s : 1398.82 words/s : gNorm 1.2624 : L.r. 3.0000e-04
+[2026-06-17 10:27:40] Seen 20,000 samples
+[2026-06-17 10:27:40] Starting data epoch 6 in logical epoch 6
+[2026-06-17 10:27:40] [data] Shuffling data
+[2026-06-17 10:27:40] [data] Done reading 20,000 sentences
+[2026-06-17 10:27:40] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:28:35] Seen 20,000 samples
+[2026-06-17 10:28:35] Starting data epoch 7 in logical epoch 7
+[2026-06-17 10:28:35] [data] Shuffling data
+[2026-06-17 10:28:35] [data] Done reading 20,000 sentences
+[2026-06-17 10:28:35] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:28:57] Ep. 7 : Up. 2000 : Sen. 7,808 : Cost 2.37737799 * 123,269 @ 220 after 494,076 : Time 88.50s : 1392.88 words/s : gNorm 1.0683 : L.r. 3.0000e-04
+[2026-06-17 10:29:31] Seen 20,000 samples
+[2026-06-17 10:29:31] Starting data epoch 8 in logical epoch 8
+[2026-06-17 10:29:31] [data] Shuffling data
+[2026-06-17 10:29:31] [data] Done reading 20,000 sentences
+[2026-06-17 10:29:31] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:30:25] Ep. 8 : Up. 2500 : Sen. 19,744 : Cost 2.20308781 * 123,715 @ 192 after 617,791 : Time 88.44s : 1398.84 words/s : gNorm 1.0767 : L.r. 3.0000e-04
+[2026-06-17 10:30:26] Seen 20,000 samples
+[2026-06-17 10:30:26] Starting data epoch 9 in logical epoch 9
+[2026-06-17 10:30:26] [data] Shuffling data
+[2026-06-17 10:30:26] [data] Done reading 20,000 sentences
+[2026-06-17 10:30:26] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:31:22] Seen 20,000 samples
+[2026-06-17 10:31:22] Starting data epoch 10 in logical epoch 10
+[2026-06-17 10:31:22] [data] Shuffling data
+[2026-06-17 10:31:22] [data] Done reading 20,000 sentences
+[2026-06-17 10:31:22] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:31:54] Ep. 10 : Up. 3000 : Sen. 11,712 : Cost 2.10542321 * 123,715 @ 431 after 741,506 : Time 88.83s : 1392.66 words/s : gNorm 1.0362 : L.r. 3.0000e-04
+[2026-06-17 10:32:17] Seen 20,000 samples
+[2026-06-17 10:32:17] Starting data epoch 11 in logical epoch 11
+[2026-06-17 10:32:17] [data] Shuffling data
+[2026-06-17 10:32:17] [data] Done reading 20,000 sentences
+[2026-06-17 10:32:17] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:33:13] Seen 20,000 samples
+[2026-06-17 10:33:13] Starting data epoch 12 in logical epoch 12
+[2026-06-17 10:33:13] [data] Shuffling data
+[2026-06-17 10:33:13] [data] Done reading 20,000 sentences
+[2026-06-17 10:33:13] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:33:23] Ep. 12 : Up. 3500 : Sen. 3,648 : Cost 2.05765867 * 123,094 @ 256 after 864,600 : Time 88.63s : 1388.91 words/s : gNorm 0.9168 : L.r. 3.0000e-04
+[2026-06-17 10:34:08] Seen 20,000 samples
+[2026-06-17 10:34:08] Starting data epoch 13 in logical epoch 13
+[2026-06-17 10:34:08] [data] Shuffling data
+[2026-06-17 10:34:08] [data] Done reading 20,000 sentences
+[2026-06-17 10:34:08] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:34:51] Ep. 13 : Up. 4000 : Sen. 15,616 : Cost 2.03179908 * 124,280 @ 192 after 988,880 : Time 88.49s : 1404.40 words/s : gNorm 0.9411 : L.r. 3.0000e-04
+[2026-06-17 10:35:04] Seen 20,000 samples
+[2026-06-17 10:35:04] Starting data epoch 14 in logical epoch 14
+[2026-06-17 10:35:04] [data] Shuffling data
+[2026-06-17 10:35:04] [data] Done reading 20,000 sentences
+[2026-06-17 10:35:04] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:35:59] Seen 20,000 samples
+[2026-06-17 10:35:59] Starting data epoch 15 in logical epoch 15
+[2026-06-17 10:35:59] [data] Shuffling data
+[2026-06-17 10:35:59] [data] Done reading 20,000 sentences
+[2026-06-17 10:35:59] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:36:20] Ep. 15 : Up. 4500 : Sen. 7,552 : Cost 1.98478830 * 122,987 @ 320 after 1,111,867 : Time 88.50s : 1389.67 words/s : gNorm 0.9158 : L.r. 3.0000e-04
+[2026-06-17 10:36:54] Seen 20,000 samples
+[2026-06-17 10:36:54] Starting data epoch 16 in logical epoch 16
+[2026-06-17 10:36:54] [data] Shuffling data
+[2026-06-17 10:36:54] [data] Done reading 20,000 sentences
+[2026-06-17 10:36:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:37:48] Ep. 16 : Up. 5000 : Sen. 19,488 : Cost 1.95815277 * 123,302 @ 197 after 1,235,169 : Time 88.42s : 1394.57 words/s : gNorm 0.9577 : L.r. 3.0000e-04
+[2026-06-17 10:37:48] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 10:37:50] Saving Adam parameters
+[2026-06-17 10:37:54] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 10:37:57] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-cross-entropy.npz
+[2026-06-17 10:37:59] [valid] Ep. 16 : Up. 5000 : cross-entropy : 2.42534 : new best
+[2026-06-17 10:37:59] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-perplexity.npz
+[2026-06-17 10:38:01] [valid] Ep. 16 : Up. 5000 : perplexity : 1.87954 : new best
+[2026-06-17 10:38:01] [valid] First sentence's tokens as scored:
+[2026-06-17 10:38:01] [valid] DefaultVocab keeps original segments for scoring
+[2026-06-17 10:38:01] [valid]   Hyp: က လေ က ဝ
+[2026-06-17 10:38:01] [valid]   Ref: က လေ က ဝ
+[2026-06-17 10:38:02] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-bleu.npz
+[2026-06-17 10:38:03] [valid] Ep. 16 : Up. 5000 : bleu : 70.8112 : new best
+[2026-06-17 10:38:05] Seen 20,000 samples
+[2026-06-17 10:38:05] Starting data epoch 17 in logical epoch 17
+[2026-06-17 10:38:05] [data] Shuffling data
+[2026-06-17 10:38:05] [data] Done reading 20,000 sentences
+[2026-06-17 10:38:05] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:39:00] Seen 20,000 samples
+[2026-06-17 10:39:00] Starting data epoch 18 in logical epoch 18
+[2026-06-17 10:39:00] [data] Shuffling data
+[2026-06-17 10:39:00] [data] Done reading 20,000 sentences
+[2026-06-17 10:39:00] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:39:32] Ep. 18 : Up. 5500 : Sen. 11,456 : Cost 1.85097313 * 123,443 @ 320 after 1,358,612 : Time 103.75s : 1189.80 words/s : gNorm 0.8943 : L.r. 3.0000e-04
+[2026-06-17 10:39:56] Seen 20,000 samples
+[2026-06-17 10:39:56] Starting data epoch 19 in logical epoch 19
+[2026-06-17 10:39:56] [data] Shuffling data
+[2026-06-17 10:39:56] [data] Done reading 20,000 sentences
+[2026-06-17 10:39:56] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:40:51] Seen 20,000 samples
+[2026-06-17 10:40:51] Starting data epoch 20 in logical epoch 20
+[2026-06-17 10:40:51] [data] Shuffling data
+[2026-06-17 10:40:51] [data] Done reading 20,000 sentences
+[2026-06-17 10:40:51] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:41:01] Ep. 20 : Up. 6000 : Sen. 3,392 : Cost 1.88361371 * 123,971 @ 192 after 1,482,583 : Time 88.85s : 1395.30 words/s : gNorm 0.8681 : L.r. 3.0000e-04
+[2026-06-17 10:41:47] Seen 20,000 samples
+[2026-06-17 10:41:47] Starting data epoch 21 in logical epoch 21
+[2026-06-17 10:41:47] [data] Shuffling data
+[2026-06-17 10:41:47] [data] Done reading 20,000 sentences
+[2026-06-17 10:41:47] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:42:29] Ep. 21 : Up. 6500 : Sen. 15,360 : Cost 1.82891738 * 123,581 @ 192 after 1,606,164 : Time 88.37s : 1398.41 words/s : gNorm 0.9046 : L.r. 3.0000e-04
+[2026-06-17 10:42:42] Seen 20,000 samples
+[2026-06-17 10:42:42] Starting data epoch 22 in logical epoch 22
+[2026-06-17 10:42:42] [data] Shuffling data
+[2026-06-17 10:42:42] [data] Done reading 20,000 sentences
+[2026-06-17 10:42:42] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:43:38] Seen 20,000 samples
+[2026-06-17 10:43:38] Starting data epoch 23 in logical epoch 23
+[2026-06-17 10:43:38] [data] Shuffling data
+[2026-06-17 10:43:38] [data] Done reading 20,000 sentences
+[2026-06-17 10:43:38] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:43:58] Ep. 23 : Up. 7000 : Sen. 7,296 : Cost 1.81165779 * 123,608 @ 320 after 1,729,772 : Time 88.54s : 1396.07 words/s : gNorm 0.9026 : L.r. 3.0000e-04
+[2026-06-17 10:44:33] Seen 20,000 samples
+[2026-06-17 10:44:33] Starting data epoch 24 in logical epoch 24
+[2026-06-17 10:44:33] [data] Shuffling data
+[2026-06-17 10:44:33] [data] Done reading 20,000 sentences
+[2026-06-17 10:44:33] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:45:26] Ep. 24 : Up. 7500 : Sen. 19,264 : Cost 1.78727472 * 123,584 @ 383 after 1,853,356 : Time 88.41s : 1397.85 words/s : gNorm 0.8099 : L.r. 3.0000e-04
+[2026-06-17 10:45:28] Seen 20,000 samples
+[2026-06-17 10:45:28] Starting data epoch 25 in logical epoch 25
+[2026-06-17 10:45:28] [data] Shuffling data
+[2026-06-17 10:45:28] [data] Done reading 20,000 sentences
+[2026-06-17 10:45:28] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:46:24] Seen 20,000 samples
+[2026-06-17 10:46:24] Starting data epoch 26 in logical epoch 26
+[2026-06-17 10:46:24] [data] Shuffling data
+[2026-06-17 10:46:24] [data] Done reading 20,000 sentences
+[2026-06-17 10:46:24] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:46:55] Ep. 26 : Up. 8000 : Sen. 11,200 : Cost 1.76867855 * 123,223 @ 256 after 1,976,579 : Time 88.48s : 1392.67 words/s : gNorm 0.8481 : L.r. 3.0000e-04
+[2026-06-17 10:47:19] Seen 20,000 samples
+[2026-06-17 10:47:19] Starting data epoch 27 in logical epoch 27
+[2026-06-17 10:47:19] [data] Shuffling data
+[2026-06-17 10:47:19] [data] Done reading 20,000 sentences
+[2026-06-17 10:47:19] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:48:15] Seen 20,000 samples
+[2026-06-17 10:48:15] Starting data epoch 28 in logical epoch 28
+[2026-06-17 10:48:15] [data] Shuffling data
+[2026-06-17 10:48:15] [data] Done reading 20,000 sentences
+[2026-06-17 10:48:15] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:48:23] Ep. 28 : Up. 8500 : Sen. 3,136 : Cost 1.75119865 * 123,718 @ 256 after 2,100,297 : Time 88.66s : 1395.49 words/s : gNorm 0.7458 : L.r. 3.0000e-04
+[2026-06-17 10:49:10] Seen 20,000 samples
+[2026-06-17 10:49:10] Starting data epoch 29 in logical epoch 29
+[2026-06-17 10:49:10] [data] Shuffling data
+[2026-06-17 10:49:10] [data] Done reading 20,000 sentences
+[2026-06-17 10:49:10] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:49:52] Ep. 29 : Up. 9000 : Sen. 15,104 : Cost 1.75293040 * 123,534 @ 192 after 2,223,831 : Time 88.52s : 1395.52 words/s : gNorm 0.7546 : L.r. 3.0000e-04
+[2026-06-17 10:50:05] Seen 20,000 samples
+[2026-06-17 10:50:05] Starting data epoch 30 in logical epoch 30
+[2026-06-17 10:50:05] [data] Shuffling data
+[2026-06-17 10:50:06] [data] Done reading 20,000 sentences
+[2026-06-17 10:50:06] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:51:01] Seen 20,000 samples
+[2026-06-17 10:51:01] Starting data epoch 31 in logical epoch 31
+[2026-06-17 10:51:01] [data] Shuffling data
+[2026-06-17 10:51:01] [data] Done reading 20,000 sentences
+[2026-06-17 10:51:01] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:51:21] Ep. 31 : Up. 9500 : Sen. 7,040 : Cost 1.69932258 * 123,628 @ 486 after 2,347,459 : Time 88.59s : 1395.50 words/s : gNorm 0.7252 : L.r. 3.0000e-04
+[2026-06-17 10:51:56] Seen 20,000 samples
+[2026-06-17 10:51:56] Starting data epoch 32 in logical epoch 32
+[2026-06-17 10:51:56] [data] Shuffling data
+[2026-06-17 10:51:56] [data] Done reading 20,000 sentences
+[2026-06-17 10:51:56] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:52:49] Ep. 32 : Up. 10000 : Sen. 19,008 : Cost 1.70755053 * 123,510 @ 320 after 2,470,969 : Time 88.34s : 1398.06 words/s : gNorm 0.7833 : L.r. 3.0000e-04
+[2026-06-17 10:52:49] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 10:52:51] Saving Adam parameters
+[2026-06-17 10:52:55] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 10:52:59] [valid] Ep. 32 : Up. 10000 : cross-entropy : 2.61231 : stalled 1 times (last best: 2.42534)
+[2026-06-17 10:52:59] [valid] Ep. 32 : Up. 10000 : perplexity : 1.97322 : stalled 1 times (last best: 1.87954)
+[2026-06-17 10:53:00] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-bleu.npz
+[2026-06-17 10:53:05] [valid] Ep. 32 : Up. 10000 : bleu : 73.6017 : new best
+[2026-06-17 10:53:07] Seen 20,000 samples
+[2026-06-17 10:53:07] Starting data epoch 33 in logical epoch 33
+[2026-06-17 10:53:07] [data] Shuffling data
+[2026-06-17 10:53:07] [data] Done reading 20,000 sentences
+[2026-06-17 10:53:08] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:54:03] Seen 20,000 samples
+[2026-06-17 10:54:03] Starting data epoch 34 in logical epoch 34
+[2026-06-17 10:54:03] [data] Shuffling data
+[2026-06-17 10:54:03] [data] Done reading 20,000 sentences
+[2026-06-17 10:54:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:54:33] Ep. 34 : Up. 10500 : Sen. 10,944 : Cost 1.70030856 * 123,398 @ 192 after 2,594,367 : Time 104.40s : 1182.01 words/s : gNorm 0.7486 : L.r. 3.0000e-04
+[2026-06-17 10:54:58] Seen 20,000 samples
+[2026-06-17 10:54:58] Starting data epoch 35 in logical epoch 35
+[2026-06-17 10:54:58] [data] Shuffling data
+[2026-06-17 10:54:58] [data] Done reading 20,000 sentences
+[2026-06-17 10:54:58] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:55:54] Seen 20,000 samples
+[2026-06-17 10:55:54] Starting data epoch 36 in logical epoch 36
+[2026-06-17 10:55:54] [data] Shuffling data
+[2026-06-17 10:55:54] [data] Done reading 20,000 sentences
+[2026-06-17 10:55:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:56:02] Ep. 36 : Up. 11000 : Sen. 2,880 : Cost 1.69358504 * 122,953 @ 192 after 2,717,320 : Time 88.47s : 1389.82 words/s : gNorm 0.7823 : L.r. 3.0000e-04
+[2026-06-17 10:56:49] Seen 20,000 samples
+[2026-06-17 10:56:49] Starting data epoch 37 in logical epoch 37
+[2026-06-17 10:56:49] [data] Shuffling data
+[2026-06-17 10:56:49] [data] Done reading 20,000 sentences
+[2026-06-17 10:56:49] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:57:30] Ep. 37 : Up. 11500 : Sen. 14,848 : Cost 1.65998709 * 123,979 @ 256 after 2,841,299 : Time 88.52s : 1400.50 words/s : gNorm 0.7409 : L.r. 3.0000e-04
+[2026-06-17 10:57:45] Seen 20,000 samples
+[2026-06-17 10:57:45] Starting data epoch 38 in logical epoch 38
+[2026-06-17 10:57:45] [data] Shuffling data
+[2026-06-17 10:57:45] [data] Done reading 20,000 sentences
+[2026-06-17 10:57:45] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:58:40] Seen 20,000 samples
+[2026-06-17 10:58:40] Starting data epoch 39 in logical epoch 39
+[2026-06-17 10:58:40] [data] Shuffling data
+[2026-06-17 10:58:40] [data] Done reading 20,000 sentences
+[2026-06-17 10:58:40] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 10:58:59] Ep. 39 : Up. 12000 : Sen. 6,784 : Cost 1.63234925 * 123,791 @ 320 after 2,965,090 : Time 88.62s : 1396.80 words/s : gNorm 0.6760 : L.r. 3.0000e-04
+[2026-06-17 10:59:35] Seen 20,000 samples
+[2026-06-17 10:59:35] Starting data epoch 40 in logical epoch 40
+[2026-06-17 10:59:35] [data] Shuffling data
+[2026-06-17 10:59:35] [data] Done reading 20,000 sentences
+[2026-06-17 10:59:35] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:00:27] Ep. 40 : Up. 12500 : Sen. 18,752 : Cost 1.66159225 * 123,612 @ 256 after 3,088,702 : Time 88.39s : 1398.48 words/s : gNorm 0.7309 : L.r. 3.0000e-04
+[2026-06-17 11:00:31] Seen 20,000 samples
+[2026-06-17 11:00:31] Starting data epoch 41 in logical epoch 41
+[2026-06-17 11:00:31] [data] Shuffling data
+[2026-06-17 11:00:31] [data] Done reading 20,000 sentences
+[2026-06-17 11:00:31] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:01:26] Seen 20,000 samples
+[2026-06-17 11:01:26] Starting data epoch 42 in logical epoch 42
+[2026-06-17 11:01:26] [data] Shuffling data
+[2026-06-17 11:01:26] [data] Done reading 20,000 sentences
+[2026-06-17 11:01:26] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:01:56] Ep. 42 : Up. 13000 : Sen. 10,688 : Cost 1.64608681 * 123,721 @ 192 after 3,212,423 : Time 88.66s : 1395.41 words/s : gNorm 0.7555 : L.r. 3.0000e-04
+[2026-06-17 11:02:22] Seen 20,000 samples
+[2026-06-17 11:02:22] Starting data epoch 43 in logical epoch 43
+[2026-06-17 11:02:22] [data] Shuffling data
+[2026-06-17 11:02:22] [data] Done reading 20,000 sentences
+[2026-06-17 11:02:22] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:03:17] Seen 20,000 samples
+[2026-06-17 11:03:17] Starting data epoch 44 in logical epoch 44
+[2026-06-17 11:03:17] [data] Shuffling data
+[2026-06-17 11:03:17] [data] Done reading 20,000 sentences
+[2026-06-17 11:03:17] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:03:24] Ep. 44 : Up. 13500 : Sen. 2,624 : Cost 1.62990224 * 123,137 @ 192 after 3,335,560 : Time 88.52s : 1391.13 words/s : gNorm 0.6880 : L.r. 3.0000e-04
+[2026-06-17 11:04:13] Seen 20,000 samples
+[2026-06-17 11:04:13] Starting data epoch 45 in logical epoch 45
+[2026-06-17 11:04:13] [data] Shuffling data
+[2026-06-17 11:04:13] [data] Done reading 20,000 sentences
+[2026-06-17 11:04:13] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:04:53] Ep. 45 : Up. 14000 : Sen. 14,592 : Cost 1.64676452 * 123,686 @ 192 after 3,459,246 : Time 88.51s : 1397.50 words/s : gNorm 0.6846 : L.r. 3.0000e-04
+[2026-06-17 11:05:08] Seen 20,000 samples
+[2026-06-17 11:05:08] Starting data epoch 46 in logical epoch 46
+[2026-06-17 11:05:08] [data] Shuffling data
+[2026-06-17 11:05:08] [data] Done reading 20,000 sentences
+[2026-06-17 11:05:08] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:06:03] Seen 20,000 samples
+[2026-06-17 11:06:03] Starting data epoch 47 in logical epoch 47
+[2026-06-17 11:06:03] [data] Shuffling data
+[2026-06-17 11:06:03] [data] Done reading 20,000 sentences
+[2026-06-17 11:06:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:06:21] Ep. 47 : Up. 14500 : Sen. 6,528 : Cost 1.61816597 * 123,318 @ 256 after 3,582,564 : Time 88.53s : 1392.96 words/s : gNorm 0.6950 : L.r. 3.0000e-04
+[2026-06-17 11:06:59] Seen 20,000 samples
+[2026-06-17 11:06:59] Starting data epoch 48 in logical epoch 48
+[2026-06-17 11:06:59] [data] Shuffling data
+[2026-06-17 11:06:59] [data] Done reading 20,000 sentences
+[2026-06-17 11:06:59] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:07:50] Ep. 48 : Up. 15000 : Sen. 18,496 : Cost 1.63325346 * 123,891 @ 384 after 3,706,455 : Time 88.53s : 1399.38 words/s : gNorm 0.6587 : L.r. 3.0000e-04
+[2026-06-17 11:07:50] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 11:07:52] Saving Adam parameters
+[2026-06-17 11:07:56] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 11:07:59] [valid] Ep. 48 : Up. 15000 : cross-entropy : 2.76869 : stalled 2 times (last best: 2.42534)
+[2026-06-17 11:08:00] [valid] Ep. 48 : Up. 15000 : perplexity : 2.05517 : stalled 2 times (last best: 1.87954)
+[2026-06-17 11:08:01] [valid] Ep. 48 : Up. 15000 : bleu : 73.6005 : stalled 1 times (last best: 73.6017)
+[2026-06-17 11:08:05] Seen 20,000 samples
+[2026-06-17 11:08:05] Starting data epoch 49 in logical epoch 49
+[2026-06-17 11:08:05] [data] Shuffling data
+[2026-06-17 11:08:05] [data] Done reading 20,000 sentences
+[2026-06-17 11:08:05] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:09:01] Seen 20,000 samples
+[2026-06-17 11:09:01] Starting data epoch 50 in logical epoch 50
+[2026-06-17 11:09:01] [data] Shuffling data
+[2026-06-17 11:09:01] [data] Done reading 20,000 sentences
+[2026-06-17 11:09:01] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:09:29] Ep. 50 : Up. 15500 : Sen. 10,432 : Cost 1.58900046 * 123,580 @ 256 after 3,830,035 : Time 99.49s : 1242.17 words/s : gNorm 0.6616 : L.r. 3.0000e-04
+[2026-06-17 11:09:56] Seen 20,000 samples
+[2026-06-17 11:09:56] Starting data epoch 51 in logical epoch 51
+[2026-06-17 11:09:56] [data] Shuffling data
+[2026-06-17 11:09:56] [data] Done reading 20,000 sentences
+[2026-06-17 11:09:56] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:10:51] Seen 20,000 samples
+[2026-06-17 11:10:51] Starting data epoch 52 in logical epoch 52
+[2026-06-17 11:10:51] [data] Shuffling data
+[2026-06-17 11:10:51] [data] Done reading 20,000 sentences
+[2026-06-17 11:10:52] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:10:58] Ep. 52 : Up. 16000 : Sen. 2,368 : Cost 1.60869586 * 123,734 @ 256 after 3,953,769 : Time 88.64s : 1395.94 words/s : gNorm 0.6524 : L.r. 3.0000e-04
+[2026-06-17 11:11:47] Seen 20,000 samples
+[2026-06-17 11:11:47] Starting data epoch 53 in logical epoch 53
+[2026-06-17 11:11:47] [data] Shuffling data
+[2026-06-17 11:11:47] [data] Done reading 20,000 sentences
+[2026-06-17 11:11:47] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:12:27] Ep. 53 : Up. 16500 : Sen. 14,336 : Cost 1.60617399 * 123,023 @ 192 after 4,076,792 : Time 88.38s : 1392.01 words/s : gNorm 0.6049 : L.r. 2.9542e-04
+[2026-06-17 11:12:42] Seen 20,000 samples
+[2026-06-17 11:12:42] Starting data epoch 54 in logical epoch 54
+[2026-06-17 11:12:42] [data] Shuffling data
+[2026-06-17 11:12:42] [data] Done reading 20,000 sentences
+[2026-06-17 11:12:42] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:13:38] Seen 20,000 samples
+[2026-06-17 11:13:38] Starting data epoch 55 in logical epoch 55
+[2026-06-17 11:13:38] [data] Shuffling data
+[2026-06-17 11:13:38] [data] Done reading 20,000 sentences
+[2026-06-17 11:13:38] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:13:55] Ep. 55 : Up. 17000 : Sen. 6,272 : Cost 1.61382401 * 123,654 @ 192 after 4,200,446 : Time 88.65s : 1394.91 words/s : gNorm 0.6574 : L.r. 2.9104e-04
+[2026-06-17 11:14:33] Seen 20,000 samples
+[2026-06-17 11:14:33] Starting data epoch 56 in logical epoch 56
+[2026-06-17 11:14:33] [data] Shuffling data
+[2026-06-17 11:14:33] [data] Done reading 20,000 sentences
+[2026-06-17 11:14:33] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:15:24] Ep. 56 : Up. 17500 : Sen. 18,240 : Cost 1.58126152 * 123,776 @ 192 after 4,324,222 : Time 88.43s : 1399.78 words/s : gNorm 0.6634 : L.r. 2.8685e-04
+[2026-06-17 11:15:29] Seen 20,000 samples
+[2026-06-17 11:15:29] Starting data epoch 57 in logical epoch 57
+[2026-06-17 11:15:29] [data] Shuffling data
+[2026-06-17 11:15:29] [data] Done reading 20,000 sentences
+[2026-06-17 11:15:29] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:16:24] Seen 20,000 samples
+[2026-06-17 11:16:24] Starting data epoch 58 in logical epoch 58
+[2026-06-17 11:16:24] [data] Shuffling data
+[2026-06-17 11:16:24] [data] Done reading 20,000 sentences
+[2026-06-17 11:16:24] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:16:52] Ep. 58 : Up. 18000 : Sen. 10,176 : Cost 1.59724581 * 123,241 @ 256 after 4,447,463 : Time 88.56s : 1391.55 words/s : gNorm 0.6128 : L.r. 2.8284e-04
+[2026-06-17 11:17:19] Seen 20,000 samples
+[2026-06-17 11:17:19] Starting data epoch 59 in logical epoch 59
+[2026-06-17 11:17:19] [data] Shuffling data
+[2026-06-17 11:17:19] [data] Done reading 20,000 sentences
+[2026-06-17 11:17:19] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:18:15] Seen 20,000 samples
+[2026-06-17 11:18:15] Starting data epoch 60 in logical epoch 60
+[2026-06-17 11:18:15] [data] Shuffling data
+[2026-06-17 11:18:15] [data] Done reading 20,000 sentences
+[2026-06-17 11:18:15] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:18:21] Ep. 60 : Up. 18500 : Sen. 2,112 : Cost 1.58408189 * 123,807 @ 256 after 4,571,270 : Time 88.62s : 1397.12 words/s : gNorm 0.5805 : L.r. 2.7899e-04
+[2026-06-17 11:19:10] Seen 20,000 samples
+[2026-06-17 11:19:10] Starting data epoch 61 in logical epoch 61
+[2026-06-17 11:19:10] [data] Shuffling data
+[2026-06-17 11:19:10] [data] Done reading 20,000 sentences
+[2026-06-17 11:19:10] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:19:49] Ep. 61 : Up. 19000 : Sen. 14,080 : Cost 1.57626724 * 123,119 @ 320 after 4,694,389 : Time 88.33s : 1393.79 words/s : gNorm 0.5711 : L.r. 2.7530e-04
+[2026-06-17 11:20:06] Seen 20,000 samples
+[2026-06-17 11:20:06] Starting data epoch 62 in logical epoch 62
+[2026-06-17 11:20:06] [data] Shuffling data
+[2026-06-17 11:20:06] [data] Done reading 20,000 sentences
+[2026-06-17 11:20:06] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:21:01] Seen 20,000 samples
+[2026-06-17 11:21:01] Starting data epoch 63 in logical epoch 63
+[2026-06-17 11:21:01] [data] Shuffling data
+[2026-06-17 11:21:01] [data] Done reading 20,000 sentences
+[2026-06-17 11:21:01] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:21:18] Ep. 63 : Up. 19500 : Sen. 6,016 : Cost 1.56923974 * 123,548 @ 192 after 4,817,937 : Time 88.64s : 1393.77 words/s : gNorm 0.5397 : L.r. 2.7175e-04
+[2026-06-17 11:21:56] Seen 20,000 samples
+[2026-06-17 11:21:56] Starting data epoch 64 in logical epoch 64
+[2026-06-17 11:21:56] [data] Shuffling data
+[2026-06-17 11:21:56] [data] Done reading 20,000 sentences
+[2026-06-17 11:21:56] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:22:46] Ep. 64 : Up. 20000 : Sen. 17,984 : Cost 1.57044160 * 123,584 @ 320 after 4,941,521 : Time 88.41s : 1397.80 words/s : gNorm 0.5890 : L.r. 2.6833e-04
+[2026-06-17 11:22:46] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 11:22:48] Saving Adam parameters
+[2026-06-17 11:22:52] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 11:22:56] [valid] Ep. 64 : Up. 20000 : cross-entropy : 2.8386 : stalled 3 times (last best: 2.42534)
+[2026-06-17 11:22:57] [valid] Ep. 64 : Up. 20000 : perplexity : 2.09289 : stalled 3 times (last best: 1.87954)
+[2026-06-17 11:22:57] [valid] Ep. 64 : Up. 20000 : bleu : 72.7435 : stalled 2 times (last best: 73.6017)
+[2026-06-17 11:23:03] Seen 20,000 samples
+[2026-06-17 11:23:03] Starting data epoch 65 in logical epoch 65
+[2026-06-17 11:23:03] [data] Shuffling data
+[2026-06-17 11:23:03] [data] Done reading 20,000 sentences
+[2026-06-17 11:23:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:23:59] Seen 20,000 samples
+[2026-06-17 11:23:59] Starting data epoch 66 in logical epoch 66
+[2026-06-17 11:23:59] [data] Shuffling data
+[2026-06-17 11:23:59] [data] Done reading 20,000 sentences
+[2026-06-17 11:23:59] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:24:26] Ep. 66 : Up. 20500 : Sen. 9,920 : Cost 1.53936827 * 123,456 @ 192 after 5,064,977 : Time 99.79s : 1237.17 words/s : gNorm 0.5631 : L.r. 2.6504e-04
+[2026-06-17 11:24:54] Seen 20,000 samples
+[2026-06-17 11:24:54] Starting data epoch 67 in logical epoch 67
+[2026-06-17 11:24:54] [data] Shuffling data
+[2026-06-17 11:24:54] [data] Done reading 20,000 sentences
+[2026-06-17 11:24:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:25:49] Seen 20,000 samples
+[2026-06-17 11:25:49] Starting data epoch 68 in logical epoch 68
+[2026-06-17 11:25:49] [data] Shuffling data
+[2026-06-17 11:25:49] [data] Done reading 20,000 sentences
+[2026-06-17 11:25:49] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:25:55] Ep. 68 : Up. 21000 : Sen. 1,856 : Cost 1.56473339 * 123,875 @ 192 after 5,188,852 : Time 88.61s : 1397.96 words/s : gNorm 0.5694 : L.r. 2.6186e-04
+[2026-06-17 11:26:45] Seen 20,000 samples
+[2026-06-17 11:26:45] Starting data epoch 69 in logical epoch 69
+[2026-06-17 11:26:45] [data] Shuffling data
+[2026-06-17 11:26:45] [data] Done reading 20,000 sentences
+[2026-06-17 11:26:45] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:27:23] Ep. 69 : Up. 21500 : Sen. 13,824 : Cost 1.53610241 * 123,293 @ 192 after 5,312,145 : Time 88.39s : 1394.91 words/s : gNorm 0.5833 : L.r. 2.5880e-04
+[2026-06-17 11:27:40] Seen 20,000 samples
+[2026-06-17 11:27:40] Starting data epoch 70 in logical epoch 70
+[2026-06-17 11:27:40] [data] Shuffling data
+[2026-06-17 11:27:40] [data] Done reading 20,000 sentences
+[2026-06-17 11:27:40] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:28:36] Seen 20,000 samples
+[2026-06-17 11:28:36] Starting data epoch 71 in logical epoch 71
+[2026-06-17 11:28:36] [data] Shuffling data
+[2026-06-17 11:28:36] [data] Done reading 20,000 sentences
+[2026-06-17 11:28:36] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:28:52] Ep. 71 : Up. 22000 : Sen. 5,760 : Cost 1.52462220 * 123,671 @ 192 after 5,435,816 : Time 88.59s : 1395.92 words/s : gNorm 0.5165 : L.r. 2.5584e-04
+[2026-06-17 11:29:31] Seen 20,000 samples
+[2026-06-17 11:29:31] Starting data epoch 72 in logical epoch 72
+[2026-06-17 11:29:31] [data] Shuffling data
+[2026-06-17 11:29:31] [data] Done reading 20,000 sentences
+[2026-06-17 11:29:31] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:30:20] Ep. 72 : Up. 22500 : Sen. 17,728 : Cost 1.53976858 * 123,574 @ 192 after 5,559,390 : Time 88.49s : 1396.53 words/s : gNorm 0.6205 : L.r. 2.5298e-04
+[2026-06-17 11:30:26] Seen 20,000 samples
+[2026-06-17 11:30:26] Starting data epoch 73 in logical epoch 73
+[2026-06-17 11:30:26] [data] Shuffling data
+[2026-06-17 11:30:26] [data] Done reading 20,000 sentences
+[2026-06-17 11:30:26] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:31:22] Seen 20,000 samples
+[2026-06-17 11:31:22] Starting data epoch 74 in logical epoch 74
+[2026-06-17 11:31:22] [data] Shuffling data
+[2026-06-17 11:31:22] [data] Done reading 20,000 sentences
+[2026-06-17 11:31:22] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:31:49] Ep. 74 : Up. 23000 : Sen. 9,664 : Cost 1.54862761 * 123,019 @ 256 after 5,682,409 : Time 88.57s : 1388.89 words/s : gNorm 0.5650 : L.r. 2.5022e-04
+[2026-06-17 11:32:17] Seen 20,000 samples
+[2026-06-17 11:32:17] Starting data epoch 75 in logical epoch 75
+[2026-06-17 11:32:17] [data] Shuffling data
+[2026-06-17 11:32:17] [data] Done reading 20,000 sentences
+[2026-06-17 11:32:17] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:33:13] Seen 20,000 samples
+[2026-06-17 11:33:13] Starting data epoch 76 in logical epoch 76
+[2026-06-17 11:33:13] [data] Shuffling data
+[2026-06-17 11:33:13] [data] Done reading 20,000 sentences
+[2026-06-17 11:33:13] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:33:17] Ep. 76 : Up. 23500 : Sen. 1,600 : Cost 1.53828144 * 123,954 @ 320 after 5,806,363 : Time 88.58s : 1399.32 words/s : gNorm 0.5670 : L.r. 2.4754e-04
+[2026-06-17 11:34:08] Seen 20,000 samples
+[2026-06-17 11:34:08] Starting data epoch 77 in logical epoch 77
+[2026-06-17 11:34:08] [data] Shuffling data
+[2026-06-17 11:34:08] [data] Done reading 20,000 sentences
+[2026-06-17 11:34:08] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:34:46] Ep. 77 : Up. 24000 : Sen. 13,568 : Cost 1.53795898 * 123,455 @ 192 after 5,929,818 : Time 88.48s : 1395.27 words/s : gNorm 0.5379 : L.r. 2.4495e-04
+[2026-06-17 11:35:03] Seen 20,000 samples
+[2026-06-17 11:35:03] Starting data epoch 78 in logical epoch 78
+[2026-06-17 11:35:03] [data] Shuffling data
+[2026-06-17 11:35:03] [data] Done reading 20,000 sentences
+[2026-06-17 11:35:04] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:35:59] Seen 20,000 samples
+[2026-06-17 11:35:59] Starting data epoch 79 in logical epoch 79
+[2026-06-17 11:35:59] [data] Shuffling data
+[2026-06-17 11:35:59] [data] Done reading 20,000 sentences
+[2026-06-17 11:35:59] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:36:14] Ep. 79 : Up. 24500 : Sen. 5,504 : Cost 1.52706504 * 123,591 @ 192 after 6,053,409 : Time 88.54s : 1395.91 words/s : gNorm 0.5560 : L.r. 2.4244e-04
+[2026-06-17 11:36:54] Seen 20,000 samples
+[2026-06-17 11:36:54] Starting data epoch 80 in logical epoch 80
+[2026-06-17 11:36:54] [data] Shuffling data
+[2026-06-17 11:36:54] [data] Done reading 20,000 sentences
+[2026-06-17 11:36:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:37:43] Ep. 80 : Up. 25000 : Sen. 17,472 : Cost 1.50752735 * 123,547 @ 320 after 6,176,956 : Time 88.40s : 1397.58 words/s : gNorm 0.5284 : L.r. 2.4000e-04
+[2026-06-17 11:37:43] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 11:37:44] Saving Adam parameters
+[2026-06-17 11:37:48] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 11:37:52] [valid] Ep. 80 : Up. 25000 : cross-entropy : 2.75893 : stalled 4 times (last best: 2.42534)
+[2026-06-17 11:37:53] [valid] Ep. 80 : Up. 25000 : perplexity : 2.04995 : stalled 4 times (last best: 1.87954)
+[2026-06-17 11:37:54] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-bleu.npz
+[2026-06-17 11:37:55] [valid] Ep. 80 : Up. 25000 : bleu : 74.6236 : new best
+[2026-06-17 11:38:03] Seen 20,000 samples
+[2026-06-17 11:38:03] Starting data epoch 81 in logical epoch 81
+[2026-06-17 11:38:03] [data] Shuffling data
+[2026-06-17 11:38:03] [data] Done reading 20,000 sentences
+[2026-06-17 11:38:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:38:58] Seen 20,000 samples
+[2026-06-17 11:38:58] Starting data epoch 82 in logical epoch 82
+[2026-06-17 11:38:58] [data] Shuffling data
+[2026-06-17 11:38:58] [data] Done reading 20,000 sentences
+[2026-06-17 11:38:58] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:39:24] Ep. 82 : Up. 25500 : Sen. 9,408 : Cost 1.52524328 * 123,669 @ 192 after 6,300,625 : Time 101.42s : 1219.40 words/s : gNorm 0.5337 : L.r. 2.3764e-04
+[2026-06-17 11:39:53] Seen 20,000 samples
+[2026-06-17 11:39:53] Starting data epoch 83 in logical epoch 83
+[2026-06-17 11:39:53] [data] Shuffling data
+[2026-06-17 11:39:53] [data] Done reading 20,000 sentences
+[2026-06-17 11:39:53] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:40:49] Seen 20,000 samples
+[2026-06-17 11:40:49] Starting data epoch 84 in logical epoch 84
+[2026-06-17 11:40:49] [data] Shuffling data
+[2026-06-17 11:40:49] [data] Done reading 20,000 sentences
+[2026-06-17 11:40:49] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:40:53] Ep. 84 : Up. 26000 : Sen. 1,344 : Cost 1.48108840 * 123,745 @ 192 after 6,424,370 : Time 88.65s : 1395.93 words/s : gNorm 0.5268 : L.r. 2.3534e-04
+[2026-06-17 11:41:44] Seen 20,000 samples
+[2026-06-17 11:41:44] Starting data epoch 85 in logical epoch 85
+[2026-06-17 11:41:44] [data] Shuffling data
+[2026-06-17 11:41:44] [data] Done reading 20,000 sentences
+[2026-06-17 11:41:44] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:42:21] Ep. 85 : Up. 26500 : Sen. 13,312 : Cost 1.53184271 * 123,438 @ 192 after 6,547,808 : Time 88.35s : 1397.12 words/s : gNorm 0.5128 : L.r. 2.3311e-04
+[2026-06-17 11:42:40] Seen 20,000 samples
+[2026-06-17 11:42:40] Starting data epoch 86 in logical epoch 86
+[2026-06-17 11:42:40] [data] Shuffling data
+[2026-06-17 11:42:40] [data] Done reading 20,000 sentences
+[2026-06-17 11:42:40] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:43:35] Seen 20,000 samples
+[2026-06-17 11:43:35] Starting data epoch 87 in logical epoch 87
+[2026-06-17 11:43:35] [data] Shuffling data
+[2026-06-17 11:43:35] [data] Done reading 20,000 sentences
+[2026-06-17 11:43:35] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:43:50] Ep. 87 : Up. 27000 : Sen. 5,248 : Cost 1.54555190 * 123,212 @ 320 after 6,671,020 : Time 88.62s : 1390.28 words/s : gNorm 0.5212 : L.r. 2.3094e-04
+[2026-06-17 11:44:30] Seen 20,000 samples
+[2026-06-17 11:44:30] Starting data epoch 88 in logical epoch 88
+[2026-06-17 11:44:30] [data] Shuffling data
+[2026-06-17 11:44:30] [data] Done reading 20,000 sentences
+[2026-06-17 11:44:31] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:45:18] Ep. 88 : Up. 27500 : Sen. 17,216 : Cost 1.51370096 * 123,654 @ 488 after 6,794,674 : Time 88.49s : 1397.41 words/s : gNorm 0.5050 : L.r. 2.2883e-04
+[2026-06-17 11:45:26] Seen 20,000 samples
+[2026-06-17 11:45:26] Starting data epoch 89 in logical epoch 89
+[2026-06-17 11:45:26] [data] Shuffling data
+[2026-06-17 11:45:26] [data] Done reading 20,000 sentences
+[2026-06-17 11:45:26] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:46:21] Seen 20,000 samples
+[2026-06-17 11:46:21] Starting data epoch 90 in logical epoch 90
+[2026-06-17 11:46:21] [data] Shuffling data
+[2026-06-17 11:46:21] [data] Done reading 20,000 sentences
+[2026-06-17 11:46:21] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:46:47] Ep. 90 : Up. 28000 : Sen. 9,152 : Cost 1.49435663 * 124,067 @ 384 after 6,918,741 : Time 88.68s : 1399.08 words/s : gNorm 0.4783 : L.r. 2.2678e-04
+[2026-06-17 11:47:17] Seen 20,000 samples
+[2026-06-17 11:47:17] Starting data epoch 91 in logical epoch 91
+[2026-06-17 11:47:17] [data] Shuffling data
+[2026-06-17 11:47:17] [data] Done reading 20,000 sentences
+[2026-06-17 11:47:17] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:48:12] Seen 20,000 samples
+[2026-06-17 11:48:12] Starting data epoch 92 in logical epoch 92
+[2026-06-17 11:48:12] [data] Shuffling data
+[2026-06-17 11:48:12] [data] Done reading 20,000 sentences
+[2026-06-17 11:48:12] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:48:15] Ep. 92 : Up. 28500 : Sen. 1,088 : Cost 1.49865794 * 122,728 @ 320 after 7,041,469 : Time 88.63s : 1384.78 words/s : gNorm 0.4939 : L.r. 2.2478e-04
+[2026-06-17 11:49:08] Seen 20,000 samples
+[2026-06-17 11:49:08] Starting data epoch 93 in logical epoch 93
+[2026-06-17 11:49:08] [data] Shuffling data
+[2026-06-17 11:49:08] [data] Done reading 20,000 sentences
+[2026-06-17 11:49:08] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:49:44] Ep. 93 : Up. 29000 : Sen. 13,056 : Cost 1.54025865 * 123,871 @ 256 after 7,165,340 : Time 88.65s : 1397.35 words/s : gNorm 0.5535 : L.r. 2.2283e-04
+[2026-06-17 11:50:03] Seen 20,000 samples
+[2026-06-17 11:50:03] Starting data epoch 94 in logical epoch 94
+[2026-06-17 11:50:03] [data] Shuffling data
+[2026-06-17 11:50:03] [data] Done reading 20,000 sentences
+[2026-06-17 11:50:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:50:59] Seen 20,000 samples
+[2026-06-17 11:50:59] Starting data epoch 95 in logical epoch 95
+[2026-06-17 11:50:59] [data] Shuffling data
+[2026-06-17 11:50:59] [data] Done reading 20,000 sentences
+[2026-06-17 11:50:59] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:51:13] Ep. 95 : Up. 29500 : Sen. 4,992 : Cost 1.51158404 * 123,758 @ 320 after 7,289,098 : Time 88.61s : 1396.59 words/s : gNorm 0.4613 : L.r. 2.2094e-04
+[2026-06-17 11:51:54] Seen 20,000 samples
+[2026-06-17 11:51:54] Starting data epoch 96 in logical epoch 96
+[2026-06-17 11:51:54] [data] Shuffling data
+[2026-06-17 11:51:54] [data] Done reading 20,000 sentences
+[2026-06-17 11:51:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:52:41] Ep. 96 : Up. 30000 : Sen. 16,960 : Cost 1.50179648 * 123,625 @ 192 after 7,412,723 : Time 88.50s : 1396.90 words/s : gNorm 0.5183 : L.r. 2.1909e-04
+[2026-06-17 11:52:41] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 11:52:43] Saving Adam parameters
+[2026-06-17 11:52:47] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 11:52:51] [valid] Ep. 96 : Up. 30000 : cross-entropy : 2.74842 : stalled 5 times (last best: 2.42534)
+[2026-06-17 11:52:52] [valid] Ep. 96 : Up. 30000 : perplexity : 2.04436 : stalled 5 times (last best: 1.87954)
+[2026-06-17 11:52:52] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-bleu.npz
+[2026-06-17 11:52:54] [valid] Ep. 96 : Up. 30000 : bleu : 75.2876 : new best
+[2026-06-17 11:53:02] Seen 20,000 samples
+[2026-06-17 11:53:02] Starting data epoch 97 in logical epoch 97
+[2026-06-17 11:53:02] [data] Shuffling data
+[2026-06-17 11:53:02] [data] Done reading 20,000 sentences
+[2026-06-17 11:53:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:53:58] Seen 20,000 samples
+[2026-06-17 11:53:58] Starting data epoch 98 in logical epoch 98
+[2026-06-17 11:53:58] [data] Shuffling data
+[2026-06-17 11:53:58] [data] Done reading 20,000 sentences
+[2026-06-17 11:53:58] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:54:23] Ep. 98 : Up. 30500 : Sen. 8,896 : Cost 1.51049840 * 123,477 @ 320 after 7,536,200 : Time 101.45s : 1217.07 words/s : gNorm 0.4896 : L.r. 2.1729e-04
+[2026-06-17 11:54:53] Seen 20,000 samples
+[2026-06-17 11:54:53] Starting data epoch 99 in logical epoch 99
+[2026-06-17 11:54:53] [data] Shuffling data
+[2026-06-17 11:54:53] [data] Done reading 20,000 sentences
+[2026-06-17 11:54:53] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:55:49] Seen 20,000 samples
+[2026-06-17 11:55:49] Starting data epoch 100 in logical epoch 100
+[2026-06-17 11:55:49] [data] Shuffling data
+[2026-06-17 11:55:49] [data] Done reading 20,000 sentences
+[2026-06-17 11:55:49] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:55:51] Ep. 100 : Up. 31000 : Sen. 832 : Cost 1.52639997 * 123,136 @ 192 after 7,659,336 : Time 88.52s : 1391.05 words/s : gNorm 0.5020 : L.r. 2.1553e-04
+[2026-06-17 11:56:44] Seen 20,000 samples
+[2026-06-17 11:56:44] Starting data epoch 101 in logical epoch 101
+[2026-06-17 11:56:44] [data] Shuffling data
+[2026-06-17 11:56:44] [data] Done reading 20,000 sentences
+[2026-06-17 11:56:44] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:57:20] Ep. 101 : Up. 31500 : Sen. 12,800 : Cost 1.49300432 * 123,854 @ 256 after 7,783,190 : Time 88.51s : 1399.31 words/s : gNorm 0.5295 : L.r. 2.1381e-04
+[2026-06-17 11:57:40] Seen 20,000 samples
+[2026-06-17 11:57:40] Starting data epoch 102 in logical epoch 102
+[2026-06-17 11:57:40] [data] Shuffling data
+[2026-06-17 11:57:40] [data] Done reading 20,000 sentences
+[2026-06-17 11:57:40] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:58:35] Seen 20,000 samples
+[2026-06-17 11:58:35] Starting data epoch 103 in logical epoch 103
+[2026-06-17 11:58:35] [data] Shuffling data
+[2026-06-17 11:58:35] [data] Done reading 20,000 sentences
+[2026-06-17 11:58:35] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 11:58:48] Ep. 103 : Up. 32000 : Sen. 4,736 : Cost 1.49508429 * 123,539 @ 320 after 7,906,729 : Time 88.64s : 1393.78 words/s : gNorm 0.4643 : L.r. 2.1213e-04
+[2026-06-17 11:59:30] Seen 20,000 samples
+[2026-06-17 11:59:30] Starting data epoch 104 in logical epoch 104
+[2026-06-17 11:59:30] [data] Shuffling data
+[2026-06-17 11:59:30] [data] Done reading 20,000 sentences
+[2026-06-17 11:59:31] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:00:17] Ep. 104 : Up. 32500 : Sen. 16,704 : Cost 1.47888684 * 123,481 @ 256 after 8,030,210 : Time 88.46s : 1395.83 words/s : gNorm 0.4622 : L.r. 2.1049e-04
+[2026-06-17 12:00:26] Seen 20,000 samples
+[2026-06-17 12:00:26] Starting data epoch 105 in logical epoch 105
+[2026-06-17 12:00:26] [data] Shuffling data
+[2026-06-17 12:00:26] [data] Done reading 20,000 sentences
+[2026-06-17 12:00:26] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:01:21] Seen 20,000 samples
+[2026-06-17 12:01:21] Starting data epoch 106 in logical epoch 106
+[2026-06-17 12:01:21] [data] Shuffling data
+[2026-06-17 12:01:21] [data] Done reading 20,000 sentences
+[2026-06-17 12:01:22] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:01:45] Ep. 106 : Up. 33000 : Sen. 8,640 : Cost 1.48551297 * 123,291 @ 192 after 8,153,501 : Time 88.62s : 1391.16 words/s : gNorm 0.4190 : L.r. 2.0889e-04
+[2026-06-17 12:02:17] Seen 20,000 samples
+[2026-06-17 12:02:17] Starting data epoch 107 in logical epoch 107
+[2026-06-17 12:02:17] [data] Shuffling data
+[2026-06-17 12:02:17] [data] Done reading 20,000 sentences
+[2026-06-17 12:02:17] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:03:12] Seen 20,000 samples
+[2026-06-17 12:03:12] Starting data epoch 108 in logical epoch 108
+[2026-06-17 12:03:12] [data] Shuffling data
+[2026-06-17 12:03:12] [data] Done reading 20,000 sentences
+[2026-06-17 12:03:12] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:03:14] Ep. 108 : Up. 33500 : Sen. 576 : Cost 1.49876440 * 123,596 @ 192 after 8,277,097 : Time 88.61s : 1394.90 words/s : gNorm 0.4503 : L.r. 2.0733e-04
+[2026-06-17 12:04:08] Seen 20,000 samples
+[2026-06-17 12:04:08] Starting data epoch 109 in logical epoch 109
+[2026-06-17 12:04:08] [data] Shuffling data
+[2026-06-17 12:04:08] [data] Done reading 20,000 sentences
+[2026-06-17 12:04:08] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:04:42] Ep. 109 : Up. 34000 : Sen. 12,544 : Cost 1.49745739 * 123,797 @ 192 after 8,400,894 : Time 88.49s : 1398.96 words/s : gNorm 0.5079 : L.r. 2.0580e-04
+[2026-06-17 12:05:03] Seen 20,000 samples
+[2026-06-17 12:05:03] Starting data epoch 110 in logical epoch 110
+[2026-06-17 12:05:03] [data] Shuffling data
+[2026-06-17 12:05:03] [data] Done reading 20,000 sentences
+[2026-06-17 12:05:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:05:59] Seen 20,000 samples
+[2026-06-17 12:05:59] Starting data epoch 111 in logical epoch 111
+[2026-06-17 12:05:59] [data] Shuffling data
+[2026-06-17 12:05:59] [data] Done reading 20,000 sentences
+[2026-06-17 12:05:59] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:06:11] Ep. 111 : Up. 34500 : Sen. 4,480 : Cost 1.49989104 * 123,178 @ 256 after 8,524,072 : Time 88.57s : 1390.71 words/s : gNorm 0.4969 : L.r. 2.0430e-04
+[2026-06-17 12:06:54] Seen 20,000 samples
+[2026-06-17 12:06:54] Starting data epoch 112 in logical epoch 112
+[2026-06-17 12:06:54] [data] Shuffling data
+[2026-06-17 12:06:54] [data] Done reading 20,000 sentences
+[2026-06-17 12:06:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:07:39] Ep. 112 : Up. 35000 : Sen. 16,448 : Cost 1.48587596 * 123,678 @ 384 after 8,647,750 : Time 88.40s : 1399.14 words/s : gNorm 0.4675 : L.r. 2.0284e-04
+[2026-06-17 12:07:40] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 12:07:41] Saving Adam parameters
+[2026-06-17 12:07:45] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 12:07:49] [valid] Ep. 112 : Up. 35000 : cross-entropy : 2.73594 : stalled 6 times (last best: 2.42534)
+[2026-06-17 12:07:50] [valid] Ep. 112 : Up. 35000 : perplexity : 2.03773 : stalled 6 times (last best: 1.87954)
+[2026-06-17 12:07:51] [valid] Ep. 112 : Up. 35000 : bleu : 74.8586 : stalled 1 times (last best: 75.2876)
+[2026-06-17 12:08:01] Seen 20,000 samples
+[2026-06-17 12:08:01] Starting data epoch 113 in logical epoch 113
+[2026-06-17 12:08:01] [data] Shuffling data
+[2026-06-17 12:08:01] [data] Done reading 20,000 sentences
+[2026-06-17 12:08:01] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:08:56] Seen 20,000 samples
+[2026-06-17 12:08:56] Starting data epoch 114 in logical epoch 114
+[2026-06-17 12:08:56] [data] Shuffling data
+[2026-06-17 12:08:56] [data] Done reading 20,000 sentences
+[2026-06-17 12:08:56] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:09:19] Ep. 114 : Up. 35500 : Sen. 8,384 : Cost 1.46445405 * 123,906 @ 256 after 8,771,656 : Time 99.94s : 1239.84 words/s : gNorm 0.4647 : L.r. 2.0140e-04
+[2026-06-17 12:09:52] Seen 20,000 samples
+[2026-06-17 12:09:52] Starting data epoch 115 in logical epoch 115
+[2026-06-17 12:09:52] [data] Shuffling data
+[2026-06-17 12:09:52] [data] Done reading 20,000 sentences
+[2026-06-17 12:09:52] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:10:47] Seen 20,000 samples
+[2026-06-17 12:10:47] Starting data epoch 116 in logical epoch 116
+[2026-06-17 12:10:47] [data] Shuffling data
+[2026-06-17 12:10:47] [data] Done reading 20,000 sentences
+[2026-06-17 12:10:47] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:10:48] Ep. 116 : Up. 36000 : Sen. 320 : Cost 1.47664738 * 123,072 @ 256 after 8,894,728 : Time 88.79s : 1386.05 words/s : gNorm 0.4402 : L.r. 2.0000e-04
+[2026-06-17 12:11:43] Seen 20,000 samples
+[2026-06-17 12:11:43] Starting data epoch 117 in logical epoch 117
+[2026-06-17 12:11:43] [data] Shuffling data
+[2026-06-17 12:11:43] [data] Done reading 20,000 sentences
+[2026-06-17 12:11:43] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:12:17] Ep. 117 : Up. 36500 : Sen. 12,288 : Cost 1.46620309 * 123,496 @ 256 after 9,018,224 : Time 88.68s : 1392.62 words/s : gNorm 0.4564 : L.r. 1.9863e-04
+[2026-06-17 12:12:38] Seen 20,000 samples
+[2026-06-17 12:12:38] Starting data epoch 118 in logical epoch 118
+[2026-06-17 12:12:38] [data] Shuffling data
+[2026-06-17 12:12:38] [data] Done reading 20,000 sentences
+[2026-06-17 12:12:38] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:13:34] Seen 20,000 samples
+[2026-06-17 12:13:34] Starting data epoch 119 in logical epoch 119
+[2026-06-17 12:13:34] [data] Shuffling data
+[2026-06-17 12:13:34] [data] Done reading 20,000 sentences
+[2026-06-17 12:13:34] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:13:46] Ep. 119 : Up. 37000 : Sen. 4,224 : Cost 1.48041856 * 123,629 @ 192 after 9,141,853 : Time 88.64s : 1394.74 words/s : gNorm 0.4767 : L.r. 1.9728e-04
+[2026-06-17 12:14:29] Seen 20,000 samples
+[2026-06-17 12:14:29] Starting data epoch 120 in logical epoch 120
+[2026-06-17 12:14:29] [data] Shuffling data
+[2026-06-17 12:14:29] [data] Done reading 20,000 sentences
+[2026-06-17 12:14:29] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:15:14] Ep. 120 : Up. 37500 : Sen. 16,192 : Cost 1.49135387 * 123,912 @ 423 after 9,265,765 : Time 88.59s : 1398.78 words/s : gNorm 0.4614 : L.r. 1.9596e-04
+[2026-06-17 12:15:25] Seen 20,000 samples
+[2026-06-17 12:15:25] Starting data epoch 121 in logical epoch 121
+[2026-06-17 12:15:25] [data] Shuffling data
+[2026-06-17 12:15:25] [data] Done reading 20,000 sentences
+[2026-06-17 12:15:25] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:16:20] Seen 20,000 samples
+[2026-06-17 12:16:20] Starting data epoch 122 in logical epoch 122
+[2026-06-17 12:16:20] [data] Shuffling data
+[2026-06-17 12:16:20] [data] Done reading 20,000 sentences
+[2026-06-17 12:16:20] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:16:43] Ep. 122 : Up. 38000 : Sen. 8,128 : Cost 1.48393273 * 123,274 @ 256 after 9,389,039 : Time 88.66s : 1390.37 words/s : gNorm 0.4305 : L.r. 1.9467e-04
+[2026-06-17 12:17:16] Seen 20,000 samples
+[2026-06-17 12:17:16] Starting data epoch 123 in logical epoch 123
+[2026-06-17 12:17:16] [data] Shuffling data
+[2026-06-17 12:17:16] [data] Done reading 20,000 sentences
+[2026-06-17 12:17:16] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:18:11] Seen 20,000 samples
+[2026-06-17 12:18:11] Starting data epoch 124 in logical epoch 124
+[2026-06-17 12:18:11] [data] Shuffling data
+[2026-06-17 12:18:11] [data] Done reading 20,000 sentences
+[2026-06-17 12:18:11] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:18:11] Ep. 124 : Up. 38500 : Sen. 64 : Cost 1.46969771 * 123,545 @ 256 after 9,512,584 : Time 88.68s : 1393.23 words/s : gNorm 0.4859 : L.r. 1.9340e-04
+[2026-06-17 12:19:07] Seen 20,000 samples
+[2026-06-17 12:19:07] Starting data epoch 125 in logical epoch 125
+[2026-06-17 12:19:07] [data] Shuffling data
+[2026-06-17 12:19:07] [data] Done reading 20,000 sentences
+[2026-06-17 12:19:07] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:19:40] Ep. 125 : Up. 39000 : Sen. 12,032 : Cost 1.47286105 * 123,654 @ 192 after 9,636,238 : Time 88.49s : 1397.36 words/s : gNorm 0.4529 : L.r. 1.9215e-04
+[2026-06-17 12:20:02] Seen 20,000 samples
+[2026-06-17 12:20:02] Starting data epoch 126 in logical epoch 126
+[2026-06-17 12:20:02] [data] Shuffling data
+[2026-06-17 12:20:02] [data] Done reading 20,000 sentences
+[2026-06-17 12:20:02] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:20:58] Seen 20,000 samples
+[2026-06-17 12:20:58] Starting data epoch 127 in logical epoch 127
+[2026-06-17 12:20:58] [data] Shuffling data
+[2026-06-17 12:20:58] [data] Done reading 20,000 sentences
+[2026-06-17 12:20:58] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:21:09] Ep. 127 : Up. 39500 : Sen. 3,968 : Cost 1.48671126 * 123,850 @ 192 after 9,760,088 : Time 88.75s : 1395.45 words/s : gNorm 0.4541 : L.r. 1.9093e-04
+[2026-06-17 12:21:53] Seen 20,000 samples
+[2026-06-17 12:21:53] Starting data epoch 128 in logical epoch 128
+[2026-06-17 12:21:53] [data] Shuffling data
+[2026-06-17 12:21:53] [data] Done reading 20,000 sentences
+[2026-06-17 12:21:53] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:22:37] Ep. 128 : Up. 40000 : Sen. 15,936 : Cost 1.47970223 * 123,373 @ 192 after 9,883,461 : Time 88.44s : 1395.07 words/s : gNorm 0.4687 : L.r. 1.8974e-04
+[2026-06-17 12:22:37] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 12:22:39] Saving Adam parameters
+[2026-06-17 12:22:43] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 12:22:47] [valid] Ep. 128 : Up. 40000 : cross-entropy : 2.74206 : stalled 7 times (last best: 2.42534)
+[2026-06-17 12:22:47] [valid] Ep. 128 : Up. 40000 : perplexity : 2.04097 : stalled 7 times (last best: 1.87954)
+[2026-06-17 12:22:48] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-bleu.npz
+[2026-06-17 12:22:50] [valid] Ep. 128 : Up. 40000 : bleu : 76.1707 : new best
+[2026-06-17 12:23:01] Seen 20,000 samples
+[2026-06-17 12:23:01] Starting data epoch 129 in logical epoch 129
+[2026-06-17 12:23:01] [data] Shuffling data
+[2026-06-17 12:23:01] [data] Done reading 20,000 sentences
+[2026-06-17 12:23:01] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:23:57] Seen 20,000 samples
+[2026-06-17 12:23:57] Starting data epoch 130 in logical epoch 130
+[2026-06-17 12:23:57] [data] Shuffling data
+[2026-06-17 12:23:57] [data] Done reading 20,000 sentences
+[2026-06-17 12:23:57] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:24:18] Ep. 130 : Up. 40500 : Sen. 7,872 : Cost 1.46984231 * 123,053 @ 192 after 10,006,514 : Time 101.31s : 1214.64 words/s : gNorm 0.4676 : L.r. 1.8856e-04
+[2026-06-17 12:24:52] Seen 20,000 samples
+[2026-06-17 12:24:52] Starting data epoch 131 in logical epoch 131
+[2026-06-17 12:24:52] [data] Shuffling data
+[2026-06-17 12:24:52] [data] Done reading 20,000 sentences
+[2026-06-17 12:24:52] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:25:47] Ep. 131 : Up. 41000 : Sen. 19,808 : Cost 1.45644987 * 123,632 @ 192 after 10,130,146 : Time 88.53s : 1396.53 words/s : gNorm 0.4763 : L.r. 1.8741e-04
+[2026-06-17 12:25:48] Seen 20,000 samples
+[2026-06-17 12:25:48] Starting data epoch 132 in logical epoch 132
+[2026-06-17 12:25:48] [data] Shuffling data
+[2026-06-17 12:25:48] [data] Done reading 20,000 sentences
+[2026-06-17 12:25:48] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:26:43] Seen 20,000 samples
+[2026-06-17 12:26:43] Starting data epoch 133 in logical epoch 133
+[2026-06-17 12:26:43] [data] Shuffling data
+[2026-06-17 12:26:43] [data] Done reading 20,000 sentences
+[2026-06-17 12:26:43] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:27:16] Ep. 133 : Up. 41500 : Sen. 11,776 : Cost 1.49013543 * 123,767 @ 384 after 10,253,913 : Time 88.70s : 1395.34 words/s : gNorm 0.4505 : L.r. 1.8628e-04
+[2026-06-17 12:27:38] Seen 20,000 samples
+[2026-06-17 12:27:38] Starting data epoch 134 in logical epoch 134
+[2026-06-17 12:27:38] [data] Shuffling data
+[2026-06-17 12:27:38] [data] Done reading 20,000 sentences
+[2026-06-17 12:27:39] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:28:34] Seen 20,000 samples
+[2026-06-17 12:28:34] Starting data epoch 135 in logical epoch 135
+[2026-06-17 12:28:34] [data] Shuffling data
+[2026-06-17 12:28:34] [data] Done reading 20,000 sentences
+[2026-06-17 12:28:34] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:28:44] Ep. 135 : Up. 42000 : Sen. 3,712 : Cost 1.50404227 * 123,482 @ 320 after 10,377,395 : Time 88.73s : 1391.67 words/s : gNorm 0.4352 : L.r. 1.8516e-04
+[2026-06-17 12:29:29] Seen 20,000 samples
+[2026-06-17 12:29:29] Starting data epoch 136 in logical epoch 136
+[2026-06-17 12:29:29] [data] Shuffling data
+[2026-06-17 12:29:29] [data] Done reading 20,000 sentences
+[2026-06-17 12:29:30] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:30:13] Ep. 136 : Up. 42500 : Sen. 15,680 : Cost 1.46815300 * 123,562 @ 192 after 10,500,957 : Time 88.51s : 1396.07 words/s : gNorm 0.4751 : L.r. 1.8407e-04
+[2026-06-17 12:30:25] Seen 20,000 samples
+[2026-06-17 12:30:25] Starting data epoch 137 in logical epoch 137
+[2026-06-17 12:30:25] [data] Shuffling data
+[2026-06-17 12:30:25] [data] Done reading 20,000 sentences
+[2026-06-17 12:30:25] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:31:20] Seen 20,000 samples
+[2026-06-17 12:31:20] Starting data epoch 138 in logical epoch 138
+[2026-06-17 12:31:20] [data] Shuffling data
+[2026-06-17 12:31:20] [data] Done reading 20,000 sentences
+[2026-06-17 12:31:21] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:31:42] Ep. 138 : Up. 43000 : Sen. 7,616 : Cost 1.49014699 * 123,546 @ 192 after 10,624,503 : Time 88.69s : 1393.01 words/s : gNorm 0.4469 : L.r. 1.8300e-04
+[2026-06-17 12:32:16] Seen 20,000 samples
+[2026-06-17 12:32:16] Starting data epoch 139 in logical epoch 139
+[2026-06-17 12:32:16] [data] Shuffling data
+[2026-06-17 12:32:16] [data] Done reading 20,000 sentences
+[2026-06-17 12:32:16] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:33:10] Ep. 139 : Up. 43500 : Sen. 19,584 : Cost 1.47738552 * 123,608 @ 192 after 10,748,111 : Time 88.59s : 1395.32 words/s : gNorm 0.4891 : L.r. 1.8194e-04
+[2026-06-17 12:33:11] Seen 20,000 samples
+[2026-06-17 12:33:11] Starting data epoch 140 in logical epoch 140
+[2026-06-17 12:33:11] [data] Shuffling data
+[2026-06-17 12:33:11] [data] Done reading 20,000 sentences
+[2026-06-17 12:33:12] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:34:07] Seen 20,000 samples
+[2026-06-17 12:34:07] Starting data epoch 141 in logical epoch 141
+[2026-06-17 12:34:07] [data] Shuffling data
+[2026-06-17 12:34:07] [data] Done reading 20,000 sentences
+[2026-06-17 12:34:07] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:34:39] Ep. 141 : Up. 44000 : Sen. 11,520 : Cost 1.43997669 * 123,795 @ 192 after 10,871,906 : Time 88.85s : 1393.24 words/s : gNorm 0.4274 : L.r. 1.8091e-04
+[2026-06-17 12:35:02] Seen 20,000 samples
+[2026-06-17 12:35:02] Starting data epoch 142 in logical epoch 142
+[2026-06-17 12:35:02] [data] Shuffling data
+[2026-06-17 12:35:02] [data] Done reading 20,000 sentences
+[2026-06-17 12:35:03] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:35:58] Seen 20,000 samples
+[2026-06-17 12:35:58] Starting data epoch 143 in logical epoch 143
+[2026-06-17 12:35:58] [data] Shuffling data
+[2026-06-17 12:35:58] [data] Done reading 20,000 sentences
+[2026-06-17 12:35:58] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:36:08] Ep. 143 : Up. 44500 : Sen. 3,456 : Cost 1.46070397 * 124,036 @ 320 after 10,995,942 : Time 88.77s : 1397.27 words/s : gNorm 0.4205 : L.r. 1.7989e-04
+[2026-06-17 12:36:54] Seen 20,000 samples
+[2026-06-17 12:36:54] Starting data epoch 144 in logical epoch 144
+[2026-06-17 12:36:54] [data] Shuffling data
+[2026-06-17 12:36:54] [data] Done reading 20,000 sentences
+[2026-06-17 12:36:54] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:37:36] Ep. 144 : Up. 45000 : Sen. 15,424 : Cost 1.49659753 * 123,079 @ 351 after 11,119,021 : Time 88.59s : 1389.37 words/s : gNorm 0.4576 : L.r. 1.7889e-04
+[2026-06-17 12:37:36] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 12:37:38] Saving Adam parameters
+[2026-06-17 12:37:42] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 12:37:46] [valid] Ep. 144 : Up. 45000 : cross-entropy : 2.70145 : stalled 8 times (last best: 2.42534)
+[2026-06-17 12:37:47] [valid] Ep. 144 : Up. 45000 : perplexity : 2.01952 : stalled 8 times (last best: 1.87954)
+[2026-06-17 12:37:47] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.best-bleu.npz
+[2026-06-17 12:37:52] [valid] Ep. 144 : Up. 45000 : bleu : 76.6201 : new best
+[2026-06-17 12:38:05] Seen 20,000 samples
+[2026-06-17 12:38:05] Starting data epoch 145 in logical epoch 145
+[2026-06-17 12:38:05] [data] Shuffling data
+[2026-06-17 12:38:05] [data] Done reading 20,000 sentences
+[2026-06-17 12:38:05] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:39:00] Seen 20,000 samples
+[2026-06-17 12:39:00] Starting data epoch 146 in logical epoch 146
+[2026-06-17 12:39:00] [data] Shuffling data
+[2026-06-17 12:39:00] [data] Done reading 20,000 sentences
+[2026-06-17 12:39:00] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:39:21] Ep. 146 : Up. 45500 : Sen. 7,360 : Cost 1.44281280 * 123,698 @ 320 after 11,242,719 : Time 104.32s : 1185.78 words/s : gNorm 0.4288 : L.r. 1.7790e-04
+[2026-06-17 12:39:56] Seen 20,000 samples
+[2026-06-17 12:39:56] Starting data epoch 147 in logical epoch 147
+[2026-06-17 12:39:56] [data] Shuffling data
+[2026-06-17 12:39:56] [data] Done reading 20,000 sentences
+[2026-06-17 12:39:56] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:40:49] Ep. 147 : Up. 46000 : Sen. 19,328 : Cost 1.50732708 * 123,156 @ 372 after 11,365,875 : Time 88.68s : 1388.77 words/s : gNorm 0.4989 : L.r. 1.7693e-04
+[2026-06-17 12:40:51] Seen 20,000 samples
+[2026-06-17 12:40:51] Starting data epoch 148 in logical epoch 148
+[2026-06-17 12:40:51] [data] Shuffling data
+[2026-06-17 12:40:51] [data] Done reading 20,000 sentences
+[2026-06-17 12:40:51] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:41:47] Seen 20,000 samples
+[2026-06-17 12:41:47] Starting data epoch 149 in logical epoch 149
+[2026-06-17 12:41:47] [data] Shuffling data
+[2026-06-17 12:41:47] [data] Done reading 20,000 sentences
+[2026-06-17 12:41:47] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:42:18] Ep. 149 : Up. 46500 : Sen. 11,264 : Cost 1.48117042 * 123,519 @ 192 after 11,489,394 : Time 88.80s : 1391.00 words/s : gNorm 0.4727 : L.r. 1.7598e-04
+[2026-06-17 12:42:42] Seen 20,000 samples
+[2026-06-17 12:42:42] Starting data epoch 150 in logical epoch 150
+[2026-06-17 12:42:42] [data] Shuffling data
+[2026-06-17 12:42:42] [data] Done reading 20,000 sentences
+[2026-06-17 12:42:42] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:43:38] Seen 20,000 samples
+[2026-06-17 12:43:38] Starting data epoch 151 in logical epoch 151
+[2026-06-17 12:43:38] [data] Shuffling data
+[2026-06-17 12:43:38] [data] Done reading 20,000 sentences
+[2026-06-17 12:43:38] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:43:47] Ep. 151 : Up. 47000 : Sen. 3,200 : Cost 1.45998287 * 123,315 @ 256 after 11,612,709 : Time 88.70s : 1390.17 words/s : gNorm 0.4209 : L.r. 1.7504e-04
+[2026-06-17 12:44:33] Seen 20,000 samples
+[2026-06-17 12:44:33] Starting data epoch 152 in logical epoch 152
+[2026-06-17 12:44:33] [data] Shuffling data
+[2026-06-17 12:44:33] [data] Done reading 20,000 sentences
+[2026-06-17 12:44:33] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:45:15] Ep. 152 : Up. 47500 : Sen. 15,168 : Cost 1.48312318 * 123,509 @ 320 after 11,736,218 : Time 88.51s : 1395.45 words/s : gNorm 0.4466 : L.r. 1.7411e-04
+[2026-06-17 12:45:29] Seen 20,000 samples
+[2026-06-17 12:45:29] Starting data epoch 153 in logical epoch 153
+[2026-06-17 12:45:29] [data] Shuffling data
+[2026-06-17 12:45:29] [data] Done reading 20,000 sentences
+[2026-06-17 12:45:29] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:46:24] Seen 20,000 samples
+[2026-06-17 12:46:24] Starting data epoch 154 in logical epoch 154
+[2026-06-17 12:46:24] [data] Shuffling data
+[2026-06-17 12:46:24] [data] Done reading 20,000 sentences
+[2026-06-17 12:46:24] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:46:44] Ep. 154 : Up. 48000 : Sen. 7,104 : Cost 1.48129022 * 123,501 @ 192 after 11,859,719 : Time 88.73s : 1391.82 words/s : gNorm 0.4358 : L.r. 1.7321e-04
+[2026-06-17 12:47:20] Seen 20,000 samples
+[2026-06-17 12:47:20] Starting data epoch 155 in logical epoch 155
+[2026-06-17 12:47:20] [data] Shuffling data
+[2026-06-17 12:47:20] [data] Done reading 20,000 sentences
+[2026-06-17 12:47:20] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:48:13] Ep. 155 : Up. 48500 : Sen. 19,072 : Cost 1.46140623 * 123,569 @ 192 after 11,983,288 : Time 88.56s : 1395.39 words/s : gNorm 0.4705 : L.r. 1.7231e-04
+[2026-06-17 12:48:15] Seen 20,000 samples
+[2026-06-17 12:48:15] Starting data epoch 156 in logical epoch 156
+[2026-06-17 12:48:15] [data] Shuffling data
+[2026-06-17 12:48:15] [data] Done reading 20,000 sentences
+[2026-06-17 12:48:15] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:49:11] Seen 20,000 samples
+[2026-06-17 12:49:11] Starting data epoch 157 in logical epoch 157
+[2026-06-17 12:49:11] [data] Shuffling data
+[2026-06-17 12:49:11] [data] Done reading 20,000 sentences
+[2026-06-17 12:49:11] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:49:41] Ep. 157 : Up. 49000 : Sen. 11,008 : Cost 1.48225236 * 123,594 @ 320 after 12,106,882 : Time 88.72s : 1393.01 words/s : gNorm 0.4432 : L.r. 1.7143e-04
+[2026-06-17 12:50:06] Seen 20,000 samples
+[2026-06-17 12:50:06] Starting data epoch 158 in logical epoch 158
+[2026-06-17 12:50:06] [data] Shuffling data
+[2026-06-17 12:50:06] [data] Done reading 20,000 sentences
+[2026-06-17 12:50:06] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:51:02] Seen 20,000 samples
+[2026-06-17 12:51:02] Starting data epoch 159 in logical epoch 159
+[2026-06-17 12:51:02] [data] Shuffling data
+[2026-06-17 12:51:02] [data] Done reading 20,000 sentences
+[2026-06-17 12:51:02] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:51:10] Ep. 159 : Up. 49500 : Sen. 2,944 : Cost 1.46076000 * 122,951 @ 192 after 12,229,833 : Time 88.64s : 1387.08 words/s : gNorm 0.4384 : L.r. 1.7056e-04
+[2026-06-17 12:51:57] Seen 20,000 samples
+[2026-06-17 12:51:57] Starting data epoch 160 in logical epoch 160
+[2026-06-17 12:51:57] [data] Shuffling data
+[2026-06-17 12:51:57] [data] Done reading 20,000 sentences
+[2026-06-17 12:51:57] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:52:39] Ep. 160 : Up. 50000 : Sen. 14,912 : Cost 1.45037699 * 124,293 @ 192 after 12,354,126 : Time 88.58s : 1403.20 words/s : gNorm 0.4578 : L.r. 1.6971e-04
+[2026-06-17 12:52:39] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 12:52:40] Saving Adam parameters
+[2026-06-17 12:52:44] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 12:52:49] [valid] Ep. 160 : Up. 50000 : cross-entropy : 2.67195 : stalled 9 times (last best: 2.42534)
+[2026-06-17 12:52:49] [valid] Ep. 160 : Up. 50000 : perplexity : 2.00408 : stalled 9 times (last best: 1.87954)
+[2026-06-17 12:52:50] [valid] Ep. 160 : Up. 50000 : bleu : 76.5361 : stalled 1 times (last best: 76.6201)
+[2026-06-17 12:53:04] Seen 20,000 samples
+[2026-06-17 12:53:04] Starting data epoch 161 in logical epoch 161
+[2026-06-17 12:53:04] [data] Shuffling data
+[2026-06-17 12:53:04] [data] Done reading 20,000 sentences
+[2026-06-17 12:53:04] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:54:00] Seen 20,000 samples
+[2026-06-17 12:54:00] Starting data epoch 162 in logical epoch 162
+[2026-06-17 12:54:00] [data] Shuffling data
+[2026-06-17 12:54:00] [data] Done reading 20,000 sentences
+[2026-06-17 12:54:00] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:54:19] Ep. 162 : Up. 50500 : Sen. 6,848 : Cost 1.45237339 * 123,399 @ 320 after 12,477,525 : Time 100.02s : 1233.75 words/s : gNorm 0.4048 : L.r. 1.6886e-04
+[2026-06-17 12:54:55] Seen 20,000 samples
+[2026-06-17 12:54:55] Starting data epoch 163 in logical epoch 163
+[2026-06-17 12:54:55] [data] Shuffling data
+[2026-06-17 12:54:55] [data] Done reading 20,000 sentences
+[2026-06-17 12:54:55] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:55:47] Ep. 163 : Up. 51000 : Sen. 18,816 : Cost 1.47960496 * 123,480 @ 256 after 12,601,005 : Time 88.52s : 1395.01 words/s : gNorm 0.4560 : L.r. 1.6803e-04
+[2026-06-17 12:55:51] Seen 20,000 samples
+[2026-06-17 12:55:51] Starting data epoch 164 in logical epoch 164
+[2026-06-17 12:55:51] [data] Shuffling data
+[2026-06-17 12:55:51] [data] Done reading 20,000 sentences
+[2026-06-17 12:55:51] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:56:46] Seen 20,000 samples
+[2026-06-17 12:56:46] Starting data epoch 165 in logical epoch 165
+[2026-06-17 12:56:46] [data] Shuffling data
+[2026-06-17 12:56:46] [data] Done reading 20,000 sentences
+[2026-06-17 12:56:46] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:57:16] Ep. 165 : Up. 51500 : Sen. 10,752 : Cost 1.46363056 * 124,136 @ 256 after 12,725,141 : Time 88.75s : 1398.67 words/s : gNorm 0.4510 : L.r. 1.6722e-04
+[2026-06-17 12:57:41] Seen 20,000 samples
+[2026-06-17 12:57:41] Starting data epoch 166 in logical epoch 166
+[2026-06-17 12:57:41] [data] Shuffling data
+[2026-06-17 12:57:41] [data] Done reading 20,000 sentences
+[2026-06-17 12:57:42] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:58:37] Seen 20,000 samples
+[2026-06-17 12:58:37] Starting data epoch 167 in logical epoch 167
+[2026-06-17 12:58:37] [data] Shuffling data
+[2026-06-17 12:58:37] [data] Done reading 20,000 sentences
+[2026-06-17 12:58:37] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 12:58:44] Ep. 167 : Up. 52000 : Sen. 2,688 : Cost 1.49226820 * 122,587 @ 192 after 12,847,728 : Time 88.54s : 1384.56 words/s : gNorm 0.4915 : L.r. 1.6641e-04
+[2026-06-17 12:59:32] Seen 20,000 samples
+[2026-06-17 12:59:32] Starting data epoch 168 in logical epoch 168
+[2026-06-17 12:59:32] [data] Shuffling data
+[2026-06-17 12:59:32] [data] Done reading 20,000 sentences
+[2026-06-17 12:59:32] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:00:13] Ep. 168 : Up. 52500 : Sen. 14,656 : Cost 1.44263315 * 124,270 @ 256 after 12,971,998 : Time 88.55s : 1403.36 words/s : gNorm 0.4079 : L.r. 1.6562e-04
+[2026-06-17 13:00:28] Seen 20,000 samples
+[2026-06-17 13:00:28] Starting data epoch 169 in logical epoch 169
+[2026-06-17 13:00:28] [data] Shuffling data
+[2026-06-17 13:00:28] [data] Done reading 20,000 sentences
+[2026-06-17 13:00:28] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:01:23] Seen 20,000 samples
+[2026-06-17 13:01:23] Starting data epoch 170 in logical epoch 170
+[2026-06-17 13:01:23] [data] Shuffling data
+[2026-06-17 13:01:23] [data] Done reading 20,000 sentences
+[2026-06-17 13:01:23] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:01:42] Ep. 170 : Up. 53000 : Sen. 6,592 : Cost 1.47459674 * 123,148 @ 192 after 13,095,146 : Time 88.68s : 1388.70 words/s : gNorm 0.4328 : L.r. 1.6483e-04
+[2026-06-17 13:02:19] Seen 20,000 samples
+[2026-06-17 13:02:19] Starting data epoch 171 in logical epoch 171
+[2026-06-17 13:02:19] [data] Shuffling data
+[2026-06-17 13:02:19] [data] Done reading 20,000 sentences
+[2026-06-17 13:02:19] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:03:10] Ep. 171 : Up. 53500 : Sen. 18,560 : Cost 1.47970033 * 123,738 @ 371 after 13,218,884 : Time 88.72s : 1394.64 words/s : gNorm 0.4321 : L.r. 1.6406e-04
+[2026-06-17 13:03:14] Seen 20,000 samples
+[2026-06-17 13:03:14] Starting data epoch 172 in logical epoch 172
+[2026-06-17 13:03:14] [data] Shuffling data
+[2026-06-17 13:03:15] [data] Done reading 20,000 sentences
+[2026-06-17 13:03:15] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:04:10] Seen 20,000 samples
+[2026-06-17 13:04:10] Starting data epoch 173 in logical epoch 173
+[2026-06-17 13:04:10] [data] Shuffling data
+[2026-06-17 13:04:10] [data] Done reading 20,000 sentences
+[2026-06-17 13:04:10] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:04:39] Ep. 173 : Up. 54000 : Sen. 10,496 : Cost 1.46636677 * 123,794 @ 256 after 13,342,678 : Time 88.70s : 1395.65 words/s : gNorm 0.4385 : L.r. 1.6330e-04
+[2026-06-17 13:05:05] Seen 20,000 samples
+[2026-06-17 13:05:05] Starting data epoch 174 in logical epoch 174
+[2026-06-17 13:05:05] [data] Shuffling data
+[2026-06-17 13:05:05] [data] Done reading 20,000 sentences
+[2026-06-17 13:05:05] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:06:01] Seen 20,000 samples
+[2026-06-17 13:06:01] Starting data epoch 175 in logical epoch 175
+[2026-06-17 13:06:01] [data] Shuffling data
+[2026-06-17 13:06:01] [data] Done reading 20,000 sentences
+[2026-06-17 13:06:01] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:06:08] Ep. 175 : Up. 54500 : Sen. 2,432 : Cost 1.48785722 * 123,257 @ 290 after 13,465,935 : Time 88.77s : 1388.43 words/s : gNorm 0.4619 : L.r. 1.6255e-04
+[2026-06-17 13:06:57] Seen 20,000 samples
+[2026-06-17 13:06:57] Starting data epoch 176 in logical epoch 176
+[2026-06-17 13:06:57] [data] Shuffling data
+[2026-06-17 13:06:57] [data] Done reading 20,000 sentences
+[2026-06-17 13:06:57] [data] Done shuffling 20,000 sentences to temp files
+[2026-06-17 13:07:36] Ep. 176 : Up. 55000 : Sen. 14,400 : Cost 1.44356418 * 123,410 @ 192 after 13,589,345 : Time 88.59s : 1393.03 words/s : gNorm 0.4145 : L.r. 1.6181e-04
+[2026-06-17 13:07:37] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 13:07:38] Saving Adam parameters
+[2026-06-17 13:07:42] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz
+[2026-06-17 13:07:46] [valid] Ep. 176 : Up. 55000 : cross-entropy : 2.7075 : stalled 10 times (last best: 2.42534)
+[2026-06-17 13:07:47] [valid] Ep. 176 : Up. 55000 : perplexity : 2.02271 : stalled 10 times (last best: 1.87954)
+[2026-06-17 13:07:48] [valid] Ep. 176 : Up. 55000 : bleu : 75.5332 : stalled 2 times (last best: 76.6201)
+[2026-06-17 13:07:48] Training finished
+[2026-06-17 13:07:48] Saving model weights and runtime parameters to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz
+[2026-06-17 13:07:52] Saving Adam parameters
+[2026-06-17 13:07:56] [training] Saving training checkpoint to /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz and /kaggle/working/nmt/model.seq2seq.exp2.phmy/model.npz.optimizer.npz

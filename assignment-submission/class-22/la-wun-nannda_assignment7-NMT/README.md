@@ -91,7 +91,7 @@ HF_TOKEN =huggingface-read-access-key
   docker build -f docker/Dockerfile -t basic-nmt .
   docker run -p 7860:7860 --env-file .env basic-nmt
   ```
-- Cloud Demo: [Hugging Face Space](https://huggingface.co/spaces/lawun330/basic-neural-machine-translation)
+- Cloud Demo: [Hugging Face Space](https://huggingface.co/spaces/lawun330/basic-neural-machine-translation-hf-space)
 
 ## References
 

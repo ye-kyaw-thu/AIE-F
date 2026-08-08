@@ -1,0 +1,14 @@
+{
+  "loss": 6.290126413588464,
+  "top1_accuracy": 0.005385996409335727,
+  "top5_accuracy": 0.019748653500897665,
+  "precision_macro": 9.97406742469579e-06,
+  "recall_macro": 0.001851851851851852,
+  "f1_macro": 1.984126984126984e-05,
+  "precision_weighted": 2.9008957321377343e-05,
+  "recall_weighted": 0.005385996409335727,
+  "f1_weighted": 5.770710438573993e-05,
+  "num_samples": 557,
+  "split": "test",
+  "num_classes": 541
+}

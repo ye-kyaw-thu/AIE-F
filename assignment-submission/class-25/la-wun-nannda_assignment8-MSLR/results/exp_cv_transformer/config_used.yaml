@@ -1,0 +1,120 @@
+augmentation:
+  aug_factor: 20
+  enabled: true
+  frame_dropout:
+    max_drop_ratio: 0.1
+    prob: 0.4
+  gaussian_noise:
+    prob: 0.7
+    std: 0.008
+  horizontal_flip:
+    prob: 0.5
+  joint_mask:
+    max_mask_ratio: 0.1
+    prob: 0.3
+  save_format: npy
+  scale_jitter:
+    max_scale: 1.15
+    min_scale: 0.85
+    prob: 0.4
+  spatial_rotate:
+    max_angle: 12
+    prob: 0.5
+  speed_perturbation:
+    max_factor: 1.35
+    min_factor: 0.75
+    prob: 0.6
+  temporal_shift:
+    max_shift: 5
+    prob: 0.3
+  time_warp:
+    knot: 4
+    prob: 0.6
+    sigma: 0.15
+data:
+  annotation_file: data/annotations.txt
+  augmented_dir: data/augmented
+  coord_dim: 3
+  feature_dim: 225
+  hand_landmarks: 21
+  keypoint_dir: data/keypoints
+  label_map_file: data/label_map.json
+  max_seq_len: 200
+  min_seq_len: 5
+  n_folds: 5
+  num_nodes: 75
+  pose_landmarks: 33
+  seed: 42
+  split_file: data/splits.json
+  test_ratio: 0.15
+  val_ratio: 0.15
+  video_dir: data/videos
+evaluation:
+  metrics:
+  - accuracy_top1
+  - accuracy_top5
+  - precision_macro
+  - recall_macro
+  - f1_macro
+  - confusion_matrix
+  output_dir: results
+  plot_confusion_matrix: true
+  save_predictions: true
+logging:
+  log_dir: results/logs
+  log_interval: 10
+  use_tensorboard: true
+  wandb:
+    enabled: true
+    entity: null
+    notes: ''
+    project: msl-recognition
+    tags:
+    - msl
+    - emergency
+model:
+  bilstm:
+    attention_type: additive
+    bidirectional: true
+    dropout: 0.4
+    hidden_dim: 256
+    input_dim: 225
+    num_layers: 3
+    use_attention: true
+  stgcn:
+    dropout: 0.3
+    edge_importance_weighting: true
+    graph_cfg:
+      layout: msl_holistic
+      strategy: spatial
+    in_channels: 3
+    num_nodes: 75
+    temporal_kernel_size: 9
+  transformer:
+    d_model: 256
+    dim_feedforward: 1024
+    dropout: 0.1
+    input_dim: 225
+    max_seq_len: 210
+    nhead: 8
+    num_encoder_layers: 4
+    use_cls_token: true
+training:
+  batch_size: 32
+  cosine_T_max: 150
+  cosine_eta_min: 5.0e-06
+  focal_gamma: 2.0
+  grad_clip: 1.0
+  label_smoothing: 0.1
+  learning_rate: 0.0005
+  loss: cross_entropy
+  num_epochs: 150
+  num_workers: 8
+  patience: 25
+  pin_memory: true
+  save_top_k: 3
+  scheduler: cosine
+  seed: 42
+  use_amp: true
+  warmup_epochs: 10
+  weight_decay: 0.0001

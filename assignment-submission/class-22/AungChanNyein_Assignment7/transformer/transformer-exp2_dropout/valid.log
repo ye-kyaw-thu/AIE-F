@@ -1,0 +1,37 @@
+[2026-06-18 10:01:05] [valid] Ep. 385 : Up. 5000 : cross-entropy : 2.51421 : new best
+[2026-06-18 10:01:05] [valid] Ep. 385 : Up. 5000 : perplexity : 1.9235 : new best
+[2026-06-18 10:01:05] [valid] First sentence's tokens as scored:
+[2026-06-18 10:01:05] [valid] DefaultVocab keeps original segments for scoring
+[2026-06-18 10:01:05] [valid]   Hyp: က လေ က ဝ
+[2026-06-18 10:01:05] [valid]   Ref: က လေ က ဝ
+[2026-06-18 10:01:06] [valid] Ep. 385 : Up. 5000 : bleu : 75.6397 : new best
+[2026-06-18 10:11:54] [valid] Ep. 770 : Up. 10000 : cross-entropy : 2.77811 : stalled 1 times (last best: 2.51421)
+[2026-06-18 10:11:55] [valid] Ep. 770 : Up. 10000 : perplexity : 2.06021 : stalled 1 times (last best: 1.9235)
+[2026-06-18 10:11:55] [valid] Ep. 770 : Up. 10000 : bleu : 75.5717 : stalled 1 times (last best: 75.6397)
+[2026-06-18 10:22:43] [valid] Ep. 1154 : Up. 15000 : cross-entropy : 2.96436 : stalled 2 times (last best: 2.51421)
+[2026-06-18 10:22:44] [valid] Ep. 1154 : Up. 15000 : perplexity : 2.1625 : stalled 2 times (last best: 1.9235)
+[2026-06-18 10:22:44] [valid] Ep. 1154 : Up. 15000 : bleu : 74.5659 : stalled 2 times (last best: 75.6397)
+[2026-06-18 10:33:33] [valid] Ep. 1539 : Up. 20000 : cross-entropy : 3.02962 : stalled 3 times (last best: 2.51421)
+[2026-06-18 10:33:33] [valid] Ep. 1539 : Up. 20000 : perplexity : 2.19953 : stalled 3 times (last best: 1.9235)
+[2026-06-18 10:33:34] [valid] Ep. 1539 : Up. 20000 : bleu : 75.7388 : new best
+[2026-06-18 10:44:23] [valid] Ep. 1924 : Up. 25000 : cross-entropy : 3.23168 : stalled 4 times (last best: 2.51421)
+[2026-06-18 10:44:23] [valid] Ep. 1924 : Up. 25000 : perplexity : 2.31826 : stalled 4 times (last best: 1.9235)
+[2026-06-18 10:44:24] [valid] Ep. 1924 : Up. 25000 : bleu : 73.3795 : stalled 1 times (last best: 75.7388)
+[2026-06-18 10:55:12] [valid] Ep. 2308 : Up. 30000 : cross-entropy : 3.23583 : stalled 5 times (last best: 2.51421)
+[2026-06-18 10:55:12] [valid] Ep. 2308 : Up. 30000 : perplexity : 2.32076 : stalled 5 times (last best: 1.9235)
+[2026-06-18 10:55:13] [valid] Ep. 2308 : Up. 30000 : bleu : 74.6004 : stalled 2 times (last best: 75.7388)
+[2026-06-18 11:06:01] [valid] Ep. 2693 : Up. 35000 : cross-entropy : 3.29519 : stalled 6 times (last best: 2.51421)
+[2026-06-18 11:06:02] [valid] Ep. 2693 : Up. 35000 : perplexity : 2.35689 : stalled 6 times (last best: 1.9235)
+[2026-06-18 11:06:03] [valid] Ep. 2693 : Up. 35000 : bleu : 75.76 : new best
+[2026-06-18 11:16:50] [valid] Ep. 3077 : Up. 40000 : cross-entropy : 3.34138 : stalled 7 times (last best: 2.51421)
+[2026-06-18 11:16:51] [valid] Ep. 3077 : Up. 40000 : perplexity : 2.38538 : stalled 7 times (last best: 1.9235)
+[2026-06-18 11:16:51] [valid] Ep. 3077 : Up. 40000 : bleu : 75.6906 : stalled 1 times (last best: 75.76)
+[2026-06-18 11:27:39] [valid] Ep. 3462 : Up. 45000 : cross-entropy : 3.36711 : stalled 8 times (last best: 2.51421)
+[2026-06-18 11:27:39] [valid] Ep. 3462 : Up. 45000 : perplexity : 2.4014 : stalled 8 times (last best: 1.9235)
+[2026-06-18 11:27:40] [valid] Ep. 3462 : Up. 45000 : bleu : 75.1188 : stalled 2 times (last best: 75.76)
+[2026-06-18 11:38:28] [valid] Ep. 3847 : Up. 50000 : cross-entropy : 3.39687 : stalled 9 times (last best: 2.51421)
+[2026-06-18 11:38:28] [valid] Ep. 3847 : Up. 50000 : perplexity : 2.42007 : stalled 9 times (last best: 1.9235)
+[2026-06-18 11:38:29] [valid] Ep. 3847 : Up. 50000 : bleu : 75.053 : stalled 3 times (last best: 75.76)
+[2026-06-18 11:49:17] [valid] Ep. 4231 : Up. 55000 : cross-entropy : 3.46046 : stalled 10 times (last best: 2.51421)
+[2026-06-18 11:49:18] [valid] Ep. 4231 : Up. 55000 : perplexity : 2.46044 : stalled 10 times (last best: 1.9235)
+[2026-06-18 11:49:18] [valid] Ep. 4231 : Up. 55000 : bleu : 75.3264 : stalled 4 times (last best: 75.76)

@@ -1,0 +1,79 @@
+2026-06-16 20:01:11 | INFO     | prepare_data | ============================================================
+2026-06-16 20:01:11 | INFO     | prepare_data | MSL Data Preparation
+2026-06-16 20:01:11 | INFO     | prepare_data | ============================================================
+2026-06-16 20:01:11 | INFO     | prepare_data | Parsing annotation file: data/annotations.txt
+2026-06-16 20:01:11 | INFO     | prepare_data | Total annotation records: 558
+2026-06-16 20:01:11 | INFO     | prepare_data | Vocabulary built: 541 unique classes
+2026-06-16 20:01:11 | INFO     | prepare_data | Label map saved → data/label_map.json
+2026-06-16 20:01:11 | INFO     | prepare_data | Matching videos from: data/videos
+
+============================================================
+Dataset Statistics [full]
+============================================================
+  Total samples    : 558
+  Classes (present): 541 / 541 total
+  Samples/class    : min=1, max=3, mean=1.03
+  Size distribution:
+    1 sample(s) per class :  525 classes  (97.0%)
+    2 sample(s) per class :   15 classes  (2.8%)
+    3 sample(s) per class :    1 classes  (0.2%)
+
+  Sample listing (first 20 classes):
+    စိတ် မလှုပ်ရှားနဲ့ စိတ်ငြိမ်ငြိမ်ထား       3
+    ရေ ကြီး                                    2
+    ရေ လွှမ်းမိုး                              2
+    အန္တရာယ် လွတ် နေရာ                         2
+    မီးသတ်ကို ဖုန်းဆက် အသိ ပေး                 2
+    လူ တစ်ယောက် ကိုယ်ခန္ဓာ မီး စွဲလောင် ရေ အ   2
+    ကူညီ ကျေးဇူးပြု၍                           2
+    အသက်ရှူ ခက်                                2
+    မီးလောင် အနံ့ရ                             2
+    လုပ် မြန်မြန်                              2
+    ဘာ အကြောင်းကြောင့်                         2
+    ငါ့ ညီ ရှာ ကျေးဇူးပြု၍                     2
+    ပြေး မလုပ်နဲ့ ရပ်                          2
+    ငလျှင်လှုပ် ထပ်ခါထပ်ခါ လာမယ် အချိန် မရွေ   2
+    လေဖြတ်                                     2
+    ဓာတ်မှန် နေရာ ဘယ်မှာ                       2
+    မီး                                        1
+    မီး ငြှိမ်း                                1
+    မီးချိတ်                                   1
+    မီးကပ်                                     1
+============================================================
+
+2026-06-16 20:01:11 | INFO     | prepare_data | NOTE: MSL4Emergency has ~1 video per sign class. The pipeline handles this via: (1) random (non-stratified) train/val/test split on raw videos, (2) heavy keypoint-space augmentation on training split only (20×), (3) val/test evaluated on original un-augmented keypoints. This is the standard approach for low-resource sign language research.
+2026-06-16 20:01:11 | INFO     | prepare_data | Creating random train/val/test splits (1-sample-per-class safe) …
+WARNING:root:Most classes have only 1 sample(s) — stratified splitting is not possible. Falling back to RANDOM (non-stratified) split. This is expected for the MSL4Emergency dataset where each sign has exactly one video. Augmentation will be applied to training keypoints only.
+2026-06-16 20:01:11 | INFO     | prepare_data | Creating 5-fold CV splits (standard KFold) …
+2026-06-16 20:01:11 | INFO     | prepare_data | Verifying keypoint files …
+2026-06-16 20:01:11 | INFO     | prepare_data | Keypoint verification: 0/558 found, 558 missing
+2026-06-16 20:01:11 | WARNING  | prepare_data | Run extract_keypoints.py before training!
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-1.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-2.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-3.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-4.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-5.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-6.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-7.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/Idx20-8.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-9.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   Missing keypoints for: data/videos/1-50/idx20-10.mp4
+2026-06-16 20:01:11 | WARNING  | prepare_data |   ... and 548 more
+
+============================================================
+  Data preparation complete!
+============================================================
+  Annotation records : 558
+  Unique classes     : 541
+  Train samples      : 390  (→ augmented ×20 in next step)
+  Val   samples      : 84   (original keypoints only)
+  Test  samples      : 84   (original keypoints only)
+  K-Fold splits      : 5 folds  →  data/kfold_splits.json
+  Label map          : data/label_map.json
+  Splits file        : data/splits.json
+
+  ⚠  Note: ~1 video/class → random (non-stratified) split used.
+     Val/test may not cover all 541 classes — this is expected.
+     Evaluation metrics will reflect classes seen in each split.
+============================================================
+

@@ -1,0 +1,12 @@
+Binary write mode is NOT selected
+Scorer type: BLEU
+name: case value: true
+Loading reference from /workspace/exp/clean-data/dev.my
+...................Data::m_score_type BLEU
+Data::Scorer type from Scorer: BLEU
+loading nbest from run1.best100.out.gz
+Loaded N-best lists : [Wall 0.481677 CPU 0.476899] seconds.
+Binary write mode is NOT selected
+saving the array into run1.features.dat
+saving the array into run1.scores.dat
+Stopping... : [Wall 20.4765 CPU 4.6621] seconds.

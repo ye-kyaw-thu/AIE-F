@@ -1,0 +1,45 @@
+type: transformer
+train-sets:
+  - /kaggle/working/nmt/g2p-par/train.ph
+  - /kaggle/working/nmt/g2p-par/train.my
+valid-sets:
+  - /kaggle/working/nmt/g2p-par/dev.ph
+  - /kaggle/working/nmt/g2p-par/dev.my
+vocabs:
+  - /kaggle/working/nmt/g2p-par/vocab/vocab.shared.yml
+  - /kaggle/working/nmt/g2p-par/vocab/vocab.shared.yml
+model: /kaggle/working/nmt/model.transformer.exp3.phmy/model.npz
+max-length: 100
+mini-batch-fit: true
+workspace: 3000
+transformer-heads: 8
+transformer-dropout: 0.1
+transformer-dim-ffn: 2048
+transformer-ffn-activation: swish
+transformer-postprocess: dan
+enc-depth: 2
+dec-depth: 2
+tied-embeddings-all: true
+learn-rate: 0.0003
+lr-decay-inv-sqrt: 16000
+lr-warmup: 4000
+label-smoothing: 0.1
+clip-norm: 5
+valid-freq: 5000
+save-freq: 5000
+disp-freq: 500
+valid-metrics:
+  - cross-entropy
+  - perplexity
+  - bleu
+early-stopping: 10
+beam-size: 6
+normalize: 0.6
+log: /kaggle/working/nmt/model.transformer.exp3.phmy/train.log
+valid-log: /kaggle/working/nmt/model.transformer.exp3.phmy/valid.log
+overwrite: true
+keep-best: true
+seed: 1111
+devices: [0, 1]
+sync-sgd: true
+quiet-translation: true

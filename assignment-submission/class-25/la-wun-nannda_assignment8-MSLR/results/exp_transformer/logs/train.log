@@ -1,0 +1,114 @@
+2026-06-17 03:40:20 | INFO     | train | Experiment: exp_transformer  Model: transformer
+2026-06-17 03:40:20 | INFO     | train | Classes: 541
+2026-06-17 03:40:21 | INFO     | train | Using all-class manifest: train=10602, val=558, test=558
+2026-06-17 03:40:21 | INFO     | train | Model: transformer  Params: 3,358,175
+2026-06-17 03:40:26 | INFO     | train | Weights & Biases logging enabled
+2026-06-17 03:40:26 | INFO     | train | Starting training…
+2026-06-17 03:43:43 | INFO     | train | Epoch   1/150 | train loss=6.3443 top1=0.11% | val loss=6.3204 top1=0.00% top5=0.69% | lr=5.45e-05 | 197s
+2026-06-17 03:43:43 | INFO     | train |   ★ New best val top-1: 0.00%
+2026-06-17 03:47:36 | INFO     | train | Epoch   2/150 | train loss=6.1632 top1=0.71% | val loss=5.8551 top1=1.91% top5=7.91% | lr=1.04e-04 | 233s
+2026-06-17 03:47:36 | INFO     | train |   ★ New best val top-1: 1.91%
+2026-06-17 03:55:28 | INFO     | train | Epoch   3/150 | train loss=5.5283 top1=5.65% | val loss=5.0842 top1=15.35% top5=44.99% | lr=1.53e-04 | 472s
+2026-06-17 03:55:28 | INFO     | train |   ★ New best val top-1: 15.35%
+2026-06-17 04:03:47 | INFO     | train | Epoch   4/150 | train loss=4.7084 top1=23.92% | val loss=4.1292 top1=48.41% top5=80.33% | lr=2.03e-04 | 499s
+2026-06-17 04:03:47 | INFO     | train |   ★ New best val top-1: 48.41%
+2026-06-17 04:10:46 | INFO     | train | Epoch   5/150 | train loss=3.6895 top1=55.66% | val loss=2.9776 top1=77.63% top5=92.49% | lr=2.53e-04 | 419s
+2026-06-17 04:10:47 | INFO     | train |   ★ New best val top-1: 77.63%
+2026-06-17 04:18:08 | INFO     | train | Epoch   6/150 | train loss=2.5480 top1=80.37% | val loss=1.9628 top1=87.45% top5=93.92% | lr=3.02e-04 | 441s
+2026-06-17 04:18:08 | INFO     | train |   ★ New best val top-1: 87.45%
+2026-06-17 04:24:56 | INFO     | train | Epoch   7/150 | train loss=1.7309 top1=89.98% | val loss=1.5101 top1=91.15% top5=95.66% | lr=3.52e-04 | 408s
+2026-06-17 04:24:56 | INFO     | train |   ★ New best val top-1: 91.15%
+2026-06-17 04:31:56 | INFO     | train | Epoch   8/150 | train loss=1.4303 top1=93.13% | val loss=1.4094 top1=92.71% top5=95.83% | lr=4.01e-04 | 420s
+2026-06-17 04:31:56 | INFO     | train |   ★ New best val top-1: 92.71%
+2026-06-17 04:39:56 | INFO     | train | Epoch   9/150 | train loss=1.3386 top1=94.27% | val loss=1.3868 top1=92.88% top5=96.35% | lr=4.51e-04 | 480s
+2026-06-17 04:39:56 | INFO     | train |   ★ New best val top-1: 92.88%
+2026-06-17 04:48:07 | INFO     | train | Epoch  10/150 | train loss=1.2913 top1=94.88% | val loss=1.3970 top1=92.88% top5=95.83% | lr=5.00e-04 | 491s
+2026-06-17 04:56:47 | INFO     | train | Epoch  11/150 | train loss=1.2653 top1=95.25% | val loss=1.3523 top1=93.40% top5=96.53% | lr=5.00e-04 | 520s
+2026-06-17 04:56:48 | INFO     | train |   ★ New best val top-1: 93.40%
+2026-06-17 05:09:45 | INFO     | train | Epoch  12/150 | train loss=1.2307 top1=96.26% | val loss=1.3410 top1=93.75% top5=96.53% | lr=5.00e-04 | 777s
+2026-06-17 05:09:45 | INFO     | train |   ★ New best val top-1: 93.75%
+2026-06-17 05:24:33 | INFO     | train | Epoch  13/150 | train loss=1.2024 top1=96.49% | val loss=1.3198 top1=93.75% top5=96.70% | lr=5.00e-04 | 888s
+2026-06-17 05:35:09 | INFO     | train | Epoch  14/150 | train loss=1.1796 top1=97.07% | val loss=1.3079 top1=94.27% top5=96.35% | lr=4.99e-04 | 636s
+2026-06-17 05:35:09 | INFO     | train |   ★ New best val top-1: 94.27%
+2026-06-17 05:43:46 | INFO     | train | Epoch  15/150 | train loss=1.1590 top1=97.43% | val loss=1.3059 top1=94.62% top5=96.88% | lr=4.99e-04 | 517s
+2026-06-17 05:43:46 | INFO     | train |   ★ New best val top-1: 94.62%
+2026-06-17 05:50:24 | INFO     | train | Epoch  16/150 | train loss=1.1446 top1=97.64% | val loss=1.2781 top1=94.79% top5=97.22% | lr=4.98e-04 | 398s
+2026-06-17 05:50:24 | INFO     | train |   ★ New best val top-1: 94.79%
+2026-06-17 05:53:48 | INFO     | train | Epoch  17/150 | train loss=1.1260 top1=98.06% | val loss=1.2790 top1=94.79% top5=97.05% | lr=4.97e-04 | 204s
+2026-06-17 05:57:13 | INFO     | train | Epoch  18/150 | train loss=1.1120 top1=98.33% | val loss=1.2690 top1=95.31% top5=97.22% | lr=4.97e-04 | 205s
+2026-06-17 05:57:14 | INFO     | train |   ★ New best val top-1: 95.31%
+2026-06-17 06:00:39 | INFO     | train | Epoch  19/150 | train loss=1.1021 top1=98.59% | val loss=1.2563 top1=95.31% top5=97.22% | lr=4.96e-04 | 205s
+2026-06-17 06:04:04 | INFO     | train | Epoch  20/150 | train loss=1.0912 top1=98.82% | val loss=1.2552 top1=95.31% top5=97.05% | lr=4.95e-04 | 205s
+2026-06-17 06:07:29 | INFO     | train | Epoch  21/150 | train loss=1.0828 top1=98.93% | val loss=1.2361 top1=95.66% top5=97.40% | lr=4.93e-04 | 205s
+2026-06-17 06:07:29 | INFO     | train |   ★ New best val top-1: 95.66%
+2026-06-17 06:10:54 | INFO     | train | Epoch  22/150 | train loss=1.0728 top1=99.13% | val loss=1.2469 top1=95.31% top5=97.74% | lr=4.92e-04 | 205s
+2026-06-17 06:14:23 | INFO     | train | Epoch  23/150 | train loss=1.0679 top1=99.24% | val loss=1.2228 top1=96.18% top5=97.57% | lr=4.91e-04 | 209s
+2026-06-17 06:14:23 | INFO     | train |   ★ New best val top-1: 96.18%
+2026-06-17 06:17:52 | INFO     | train | Epoch  24/150 | train loss=1.0595 top1=99.41% | val loss=1.2169 top1=95.83% top5=97.05% | lr=4.89e-04 | 210s
+2026-06-17 06:21:23 | INFO     | train | Epoch  25/150 | train loss=1.0574 top1=99.42% | val loss=1.2116 top1=96.53% top5=97.40% | lr=4.88e-04 | 210s
+2026-06-17 06:21:23 | INFO     | train |   ★ New best val top-1: 96.53%
+2026-06-17 06:24:53 | INFO     | train | Epoch  26/150 | train loss=1.0521 top1=99.45% | val loss=1.2020 top1=95.83% top5=97.40% | lr=4.86e-04 | 210s
+2026-06-17 06:30:30 | INFO     | train | Epoch  27/150 | train loss=1.0429 top1=99.61% | val loss=1.2192 top1=95.66% top5=97.40% | lr=4.84e-04 | 337s
+2026-06-17 06:42:07 | INFO     | train | Epoch  28/150 | train loss=1.0410 top1=99.60% | val loss=1.2126 top1=95.66% top5=97.57% | lr=4.83e-04 | 697s
+2026-06-17 06:56:58 | INFO     | train | Epoch  29/150 | train loss=1.0537 top1=99.41% | val loss=1.2251 top1=96.18% top5=97.57% | lr=4.81e-04 | 891s
+2026-06-17 07:11:50 | INFO     | train | Epoch  30/150 | train loss=1.0435 top1=99.61% | val loss=1.2016 top1=96.18% top5=97.40% | lr=4.79e-04 | 891s
+2026-06-17 07:26:41 | INFO     | train | Epoch  31/150 | train loss=1.0395 top1=99.58% | val loss=1.2068 top1=95.49% top5=97.40% | lr=4.76e-04 | 891s
+2026-06-17 07:41:32 | INFO     | train | Epoch  32/150 | train loss=1.0340 top1=99.70% | val loss=1.2021 top1=96.70% top5=97.57% | lr=4.74e-04 | 891s
+2026-06-17 07:41:32 | INFO     | train |   ★ New best val top-1: 96.70%
+2026-06-17 07:56:23 | INFO     | train | Epoch  33/150 | train loss=1.0251 top1=99.89% | val loss=1.1825 top1=96.88% top5=97.40% | lr=4.72e-04 | 891s
+2026-06-17 07:56:24 | INFO     | train |   ★ New best val top-1: 96.88%
+2026-06-17 08:11:15 | INFO     | train | Epoch  34/150 | train loss=1.0328 top1=99.61% | val loss=1.1965 top1=96.35% top5=97.22% | lr=4.69e-04 | 891s
+2026-06-17 08:26:06 | INFO     | train | Epoch  35/150 | train loss=1.0347 top1=99.64% | val loss=1.2007 top1=96.53% top5=97.22% | lr=4.67e-04 | 891s
+2026-06-17 08:40:57 | INFO     | train | Epoch  36/150 | train loss=1.0314 top1=99.64% | val loss=1.1841 top1=96.53% top5=97.92% | lr=4.64e-04 | 891s
+2026-06-17 08:55:47 | INFO     | train | Epoch  37/150 | train loss=1.0230 top1=99.82% | val loss=1.1884 top1=96.88% top5=97.57% | lr=4.61e-04 | 890s
+2026-06-17 09:10:39 | INFO     | train | Epoch  38/150 | train loss=1.0202 top1=99.87% | val loss=1.1722 top1=96.88% top5=97.57% | lr=4.59e-04 | 892s
+2026-06-17 09:25:29 | INFO     | train | Epoch  39/150 | train loss=1.0164 top1=99.89% | val loss=1.1956 top1=96.01% top5=97.40% | lr=4.56e-04 | 891s
+2026-06-17 09:40:21 | INFO     | train | Epoch  40/150 | train loss=1.0135 top1=99.86% | val loss=1.1643 top1=96.70% top5=97.74% | lr=4.53e-04 | 891s
+2026-06-17 09:55:11 | INFO     | train | Epoch  41/150 | train loss=1.0185 top1=99.78% | val loss=1.1943 top1=95.83% top5=97.40% | lr=4.50e-04 | 891s
+2026-06-17 10:10:03 | INFO     | train | Epoch  42/150 | train loss=1.0219 top1=99.74% | val loss=1.2039 top1=96.18% top5=97.40% | lr=4.46e-04 | 891s
+2026-06-17 10:24:54 | INFO     | train | Epoch  43/150 | train loss=1.0340 top1=99.50% | val loss=1.2177 top1=95.83% top5=96.88% | lr=4.43e-04 | 891s
+2026-06-17 10:39:45 | INFO     | train | Epoch  44/150 | train loss=1.0243 top1=99.72% | val loss=1.1912 top1=96.35% top5=97.22% | lr=4.40e-04 | 892s
+2026-06-17 10:54:37 | INFO     | train | Epoch  45/150 | train loss=1.0136 top1=99.89% | val loss=1.1796 top1=96.53% top5=97.40% | lr=4.36e-04 | 892s
+2026-06-17 11:09:29 | INFO     | train | Epoch  46/150 | train loss=1.0079 top1=99.94% | val loss=1.1665 top1=96.70% top5=97.57% | lr=4.33e-04 | 891s
+2026-06-17 11:24:22 | INFO     | train | Epoch  47/150 | train loss=1.0037 top1=99.93% | val loss=1.1666 top1=96.70% top5=97.40% | lr=4.29e-04 | 893s
+2026-06-17 11:39:14 | INFO     | train | Epoch  48/150 | train loss=1.0014 top1=99.98% | val loss=1.1683 top1=96.70% top5=97.57% | lr=4.26e-04 | 893s
+2026-06-17 11:54:22 | INFO     | train | Epoch  49/150 | train loss=1.0011 top1=99.97% | val loss=1.1641 top1=96.53% top5=97.40% | lr=4.22e-04 | 908s
+2026-06-17 12:10:56 | INFO     | train | Epoch  50/150 | train loss=1.0079 top1=99.82% | val loss=1.2055 top1=95.49% top5=97.40% | lr=4.18e-04 | 994s
+2026-06-17 12:26:46 | INFO     | train | Epoch  51/150 | train loss=1.0280 top1=99.58% | val loss=1.1982 top1=96.18% top5=97.22% | lr=4.14e-04 | 949s
+2026-06-17 12:44:51 | INFO     | train | Epoch  52/150 | train loss=1.0200 top1=99.74% | val loss=1.1789 top1=96.88% top5=97.74% | lr=4.10e-04 | 1085s
+2026-06-17 13:01:59 | INFO     | train | Epoch  53/150 | train loss=1.0126 top1=99.75% | val loss=1.1777 top1=96.18% top5=97.40% | lr=4.06e-04 | 1029s
+2026-06-17 13:18:45 | INFO     | train | Epoch  54/150 | train loss=1.0056 top1=99.88% | val loss=1.1639 top1=96.70% top5=97.57% | lr=4.02e-04 | 1006s
+2026-06-17 13:34:41 | INFO     | train | Epoch  55/150 | train loss=1.0004 top1=99.95% | val loss=1.1582 top1=96.88% top5=97.57% | lr=3.98e-04 | 956s
+2026-06-17 13:51:42 | INFO     | train | Epoch  56/150 | train loss=0.9986 top1=99.94% | val loss=1.1445 top1=96.88% top5=97.57% | lr=3.94e-04 | 1021s
+2026-06-17 14:08:26 | INFO     | train | Epoch  57/150 | train loss=0.9957 top1=99.98% | val loss=1.1473 top1=97.05% top5=97.92% | lr=3.89e-04 | 1004s
+2026-06-17 14:08:26 | INFO     | train |   ★ New best val top-1: 97.05%
+2026-06-17 14:25:33 | INFO     | train | Epoch  58/150 | train loss=0.9939 top1=99.98% | val loss=1.1425 top1=97.40% top5=97.92% | lr=3.85e-04 | 1027s
+2026-06-17 14:25:34 | INFO     | train |   ★ New best val top-1: 97.40%
+2026-06-17 14:43:54 | INFO     | train | Epoch  59/150 | train loss=0.9950 top1=99.97% | val loss=1.1564 top1=96.53% top5=98.09% | lr=3.81e-04 | 1100s
+2026-06-17 15:04:44 | INFO     | train | Epoch  60/150 | train loss=1.0003 top1=99.91% | val loss=1.1662 top1=96.35% top5=97.74% | lr=3.76e-04 | 1250s
+2026-06-17 15:16:00 | INFO     | train | Epoch  61/150 | train loss=1.0033 top1=99.90% | val loss=1.1530 top1=97.05% top5=97.74% | lr=3.72e-04 | 677s
+2026-06-17 15:30:58 | INFO     | train | Epoch  62/150 | train loss=1.0017 top1=99.85% | val loss=1.1582 top1=96.53% top5=97.74% | lr=3.67e-04 | 898s
+2026-06-17 15:40:43 | INFO     | train | Epoch  63/150 | train loss=0.9994 top1=99.92% | val loss=1.1569 top1=96.70% top5=97.74% | lr=3.63e-04 | 584s
+2026-06-17 15:53:01 | INFO     | train | Epoch  64/150 | train loss=0.9997 top1=99.92% | val loss=1.1651 top1=96.70% top5=97.40% | lr=3.58e-04 | 738s
+2026-06-17 16:03:59 | INFO     | train | Epoch  65/150 | train loss=1.0096 top1=99.75% | val loss=1.1808 top1=96.70% top5=97.40% | lr=3.53e-04 | 657s
+2026-06-17 16:10:04 | INFO     | train | Epoch  66/150 | train loss=1.0014 top1=99.88% | val loss=1.1735 top1=96.35% top5=97.22% | lr=3.48e-04 | 365s
+2026-06-17 16:14:31 | INFO     | train | Epoch  67/150 | train loss=0.9981 top1=99.90% | val loss=1.1754 top1=96.53% top5=97.40% | lr=3.44e-04 | 267s
+2026-06-17 16:21:00 | INFO     | train | Epoch  68/150 | train loss=0.9961 top1=99.92% | val loss=1.1560 top1=96.70% top5=97.40% | lr=3.39e-04 | 389s
+2026-06-17 16:26:02 | INFO     | train | Epoch  69/150 | train loss=0.9914 top1=99.99% | val loss=1.1487 top1=97.05% top5=97.57% | lr=3.34e-04 | 303s
+2026-06-17 16:30:14 | INFO     | train | Epoch  70/150 | train loss=0.9925 top1=99.95% | val loss=1.1564 top1=96.70% top5=97.74% | lr=3.29e-04 | 252s
+2026-06-17 16:34:22 | INFO     | train | Epoch  71/150 | train loss=0.9959 top1=99.92% | val loss=1.1675 top1=96.53% top5=97.74% | lr=3.24e-04 | 248s
+2026-06-17 16:39:14 | INFO     | train | Epoch  72/150 | train loss=0.9942 top1=99.95% | val loss=1.1604 top1=96.88% top5=97.40% | lr=3.19e-04 | 292s
+2026-06-17 16:44:36 | INFO     | train | Epoch  73/150 | train loss=0.9928 top1=99.94% | val loss=1.1499 top1=96.88% top5=97.40% | lr=3.14e-04 | 322s
+2026-06-17 16:48:47 | INFO     | train | Epoch  74/150 | train loss=0.9921 top1=99.94% | val loss=1.1596 top1=97.05% top5=97.40% | lr=3.09e-04 | 251s
+2026-06-17 16:52:58 | INFO     | train | Epoch  75/150 | train loss=0.9930 top1=99.90% | val loss=1.1406 top1=96.70% top5=97.92% | lr=3.04e-04 | 251s
+2026-06-17 17:03:09 | INFO     | train | Epoch  76/150 | train loss=0.9883 top1=100.00% | val loss=1.1435 top1=96.70% top5=97.74% | lr=2.99e-04 | 611s
+2026-06-17 17:09:43 | INFO     | train | Epoch  77/150 | train loss=0.9873 top1=100.00% | val loss=1.1397 top1=96.88% top5=98.09% | lr=2.94e-04 | 394s
+2026-06-17 17:24:33 | INFO     | train | Epoch  78/150 | train loss=0.9873 top1=100.00% | val loss=1.1408 top1=97.05% top5=97.74% | lr=2.89e-04 | 890s
+2026-06-17 17:31:43 | INFO     | train | Epoch  79/150 | train loss=0.9868 top1=100.00% | val loss=1.1399 top1=97.05% top5=97.74% | lr=2.84e-04 | 430s
+2026-06-17 17:36:18 | INFO     | train | Epoch  80/150 | train loss=0.9867 top1=100.00% | val loss=1.1419 top1=97.05% top5=97.92% | lr=2.78e-04 | 275s
+2026-06-17 17:40:53 | INFO     | train | Epoch  81/150 | train loss=0.9867 top1=99.99% | val loss=1.1381 top1=97.05% top5=97.74% | lr=2.73e-04 | 274s
+2026-06-17 17:45:17 | INFO     | train | Epoch  82/150 | train loss=1.0016 top1=99.81% | val loss=1.1631 top1=96.88% top5=97.74% | lr=2.68e-04 | 264s
+2026-06-17 17:54:03 | INFO     | train | Epoch  83/150 | train loss=0.9942 top1=99.90% | val loss=1.1527 top1=97.05% top5=97.40% | lr=2.63e-04 | 526s
+2026-06-17 17:54:03 | INFO     | train | Early stopping at epoch 83 (patience=25)
+2026-06-17 17:54:11 | INFO     | train | Training complete. Best val top-1: 97.40%
+2026-06-17 17:54:11 | INFO     | train | Best checkpoint: results/exp_transformer/checkpoints/best.pth

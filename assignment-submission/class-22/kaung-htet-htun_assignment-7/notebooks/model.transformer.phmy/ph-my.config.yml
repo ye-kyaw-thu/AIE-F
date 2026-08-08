@@ -1,0 +1,230 @@
+# Marian configuration file generated at 2026-07-03 08:03:11 PM +0630 with version v1.12.0 65bf82ff 2023-02-21 09:56:29 -0800
+# General options
+authors: false
+cite: false
+build-info: ""
+workspace: 512
+log: model.transformer.phmy/train.log
+log-level: info
+log-time-zone: ""
+quiet: false
+quiet-translation: true
+seed: 1111
+check-nan: false
+interpolate-env-vars: false
+relative-paths: false
+sigterm: save-and-exit
+# Model options
+model: model.transformer.phmy/model.npz
+pretrained-model: ""
+ignore-model-config: false
+type: transformer
+dim-vocabs:
+  - 1851
+  - 2308
+dim-emb: 256
+factors-dim-emb: 0
+factors-combine: sum
+lemma-dependency: ""
+lemma-dim-emb: 0
+dim-rnn: 1024
+enc-type: bidirectional
+enc-cell: gru
+enc-cell-depth: 1
+enc-depth: 2
+dec-cell: gru
+dec-cell-base-depth: 2
+dec-cell-high-depth: 1
+dec-depth: 2
+skip: false
+layer-normalization: false
+right-left: false
+input-types:
+  []
+best-deep: false
+tied-embeddings: true
+tied-embeddings-src: false
+tied-embeddings-all: false
+output-omit-bias: false
+transformer-heads: 4
+transformer-no-projection: false
+transformer-rnn-projection: false
+transformer-pool: false
+transformer-dim-ffn: 1024
+transformer-decoder-dim-ffn: 0
+transformer-ffn-depth: 2
+transformer-decoder-ffn-depth: 0
+transformer-ffn-activation: swish
+transformer-dim-aan: 2048
+transformer-aan-depth: 2
+transformer-aan-activation: swish
+transformer-aan-nogate: false
+transformer-decoder-autoreg: self-attention
+transformer-tied-layers:
+  []
+transformer-guided-alignment-layer: last
+transformer-preprocess: ""
+transformer-postprocess-emb: d
+transformer-postprocess: dan
+transformer-postprocess-top: ""
+transformer-train-position-embeddings: false
+transformer-depth-scaling: false
+bert-mask-symbol: "[MASK]"
+bert-sep-symbol: "[SEP]"
+bert-class-symbol: "[CLS]"
+bert-masking-fraction: 0.15
+bert-train-type-embeddings: true
+bert-type-vocab-size: 2
+dropout-rnn: 0
+dropout-src: 0
+dropout-trg: 0
+transformer-dropout: 0.3
+transformer-dropout-attention: 0
+transformer-dropout-ffn: 0
+# Training options
+cost-type: ce-sum
+multi-loss-type: sum
+unlikelihood-loss: false
+overwrite: false
+no-reload: false
+train-sets:
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/train.ph
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/train.my
+vocabs:
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/vocab/vocab.ph.yml
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/vocab/vocab.my.yml
+sentencepiece-alphas:
+  []
+sentencepiece-options: ""
+sentencepiece-max-lines: 2000000
+after-epochs: 0
+after-batches: 0
+after: 0e
+disp-freq: 500
+disp-first: 0
+disp-label-counts: true
+save-freq: 10000
+logical-epoch:
+  - 1e
+  - 0
+max-length: 200
+max-length-crop: false
+tsv: false
+tsv-fields: 0
+shuffle: data
+no-shuffle: false
+no-restore-corpus: false
+tempdir: /tmp
+sqlite: ""
+sqlite-drop: false
+devices:
+  - 0
+num-devices: 0
+no-nccl: false
+sharding: global
+sync-freq: 200u
+cpu-threads: 0
+mini-batch: 64
+mini-batch-words: 0
+mini-batch-fit: true
+mini-batch-fit-step: 10
+gradient-checkpointing: false
+maxi-batch: 100
+maxi-batch-sort: trg
+shuffle-in-ram: false
+data-threads: 8
+all-caps-every: 0
+english-title-case-every: 0
+mini-batch-words-ref: 0
+mini-batch-warmup: 0
+mini-batch-track-lr: false
+mini-batch-round-up: true
+optimizer: adam
+optimizer-params:
+  []
+optimizer-delay: 1
+sync-sgd: true
+learn-rate: 0.0003
+lr-report: true
+lr-decay: 0
+lr-decay-strategy: epoch+stalled
+lr-decay-start:
+  - 10
+  - 1
+lr-decay-freq: 50000
+lr-decay-reset-optimizer: false
+lr-decay-repeat-warmup: false
+lr-decay-inv-sqrt:
+  - 16000
+lr-warmup: 0
+lr-warmup-start-rate: 0
+lr-warmup-cycle: false
+lr-warmup-at-reload: false
+label-smoothing: 0.1
+factor-weight: 1
+clip-norm: 5
+exponential-smoothing: 0.0001
+guided-alignment: none
+guided-alignment-cost: ce
+guided-alignment-weight: 0.1
+data-weighting: ""
+data-weighting-type: sentence
+embedding-vectors:
+  []
+embedding-normalization: false
+embedding-fix-src: false
+embedding-fix-trg: false
+fp16: false
+precision:
+  - float32
+  - float32
+cost-scaling:
+  []
+gradient-norm-average-window: 100
+dynamic-gradient-scaling:
+  []
+check-gradient-nan: false
+normalize-gradient: false
+train-embedder-rank:
+  []
+quantize-bits: 0
+quantize-optimization-steps: 0
+quantize-log-based: false
+quantize-biases: false
+ulr: false
+ulr-query-vectors: ""
+ulr-keys-vectors: ""
+ulr-trainable-transformation: false
+ulr-dim-emb: 0
+ulr-dropout: 0
+ulr-softmax-temperature: 1
+task:
+  []
+# Validation set options
+valid-sets:
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/dev.ph
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/dev.my
+valid-freq: 10000
+valid-metrics:
+  - cross-entropy
+  - perplexity
+  - bleu
+valid-reset-stalled: false
+valid-reset-all: false
+early-stopping: 10
+early-stopping-on: first
+beam-size: 4
+normalize: 0.6
+max-length-factor: 3
+word-penalty: 0
+allow-unk: false
+n-best: false
+word-scores: false
+valid-mini-batch: 64
+valid-max-length: 1000
+valid-script-path: ""
+valid-script-args:
+  []
+valid-translation-output: model.transformer.phmy/valid.ph-my.output
+keep-best: false
+valid-log: model.transformer.phmy/valid.log

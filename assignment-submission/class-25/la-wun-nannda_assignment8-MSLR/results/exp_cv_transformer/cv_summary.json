@@ -1,0 +1,71 @@
+{
+  "model": "transformer",
+  "n_folds": 5,
+  "fold_val_scores": [
+    96.46,
+    96.1,
+    96.46,
+    95.38,
+    96.27
+  ],
+  "fold_test_scores": [
+    99.83,
+    100.0,
+    100.0,
+    100.0,
+    100.0
+  ],
+  "mean_val_top1": 96.13,
+  "std_val_top1": 0.4,
+  "mean_test_top1": 99.97,
+  "std_test_top1": 0.07,
+  "best_fold": 0,
+  "best_top1": 96.46,
+  "fold_scores": [
+    96.46,
+    96.1,
+    96.46,
+    95.38,
+    96.27
+  ],
+  "mean_top1": 96.13,
+  "std_top1": 0.4,
+  "best_checkpoint": "results/exp_cv_transformer/fold_00/best.pth",
+  "fold_details": [
+    {
+      "fold": 0,
+      "best_val_top1": 0.9645522388059702,
+      "test_top1": 0.9982638888888888,
+      "best_epoch": 62,
+      "checkpoint": "results/exp_cv_transformer/fold_00/best.pth"
+    },
+    {
+      "fold": 1,
+      "best_val_top1": 0.9610281923714759,
+      "test_top1": 1.0,
+      "best_epoch": 86,
+      "checkpoint": "results/exp_cv_transformer/fold_01/best.pth"
+    },
+    {
+      "fold": 2,
+      "best_val_top1": 0.9645522388059702,
+      "test_top1": 1.0,
+      "best_epoch": 78,
+      "checkpoint": "results/exp_cv_transformer/fold_02/best.pth"
+    },
+    {
+      "fold": 3,
+      "best_val_top1": 0.9538246268656716,
+      "test_top1": 1.0,
+      "best_epoch": 87,
+      "checkpoint": "results/exp_cv_transformer/fold_03/best.pth"
+    },
+    {
+      "fold": 4,
+      "best_val_top1": 0.9626865671641791,
+      "test_top1": 1.0,
+      "best_epoch": 102,
+      "checkpoint": "results/exp_cv_transformer/fold_04/best.pth"
+    }
+  ]
+}

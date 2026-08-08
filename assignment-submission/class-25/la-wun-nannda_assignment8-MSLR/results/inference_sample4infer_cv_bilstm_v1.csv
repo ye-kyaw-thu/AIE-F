@@ -1,0 +1,6 @@
+﻿video,pred_1,conf_1,pred_2,conf_2,pred_3,conf_3,pred_4,conf_4,pred_5,conf_5
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/Idx20-501.mp4,ဒဏ်ရာရ ပလာစတာ တစ်ခု ရ လိုချင်,0.9253,ဒဏ်ရာရ ပလာစတာ ငါးခု ရ လိုချင်,0.0007,အသီး အရွက် ညစ်ပတ် စား မလုပ်နဲ့ အသီး အရွက် ကောင်း စား ရ,0.0006,စား ပြီး သောက်,0.0006,ငလျှင် နောက်ထပ် လာမယ်,0.0006
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-101.mp4,ဖုန်းခေါ် 1 9 9,0.9476,ဆေးခန်း လမ်း နေရာ ဘာ,0.0007,ဒုက္ခ ဂရုစိုက်,0.0005,စောင် ပတ်,0.0003,ဖုန်း တာဝါတိုင်,0.0003
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-201.mp4,ကိုက် မြွေ အဆိပ် ရှိ ဆိုး,0.9478,လူ တစ်ယောက် ထိခိုက်,0.0007,ကိုက် မြွေ အရောင် အကွက် ဘာလဲ သိလား,0.0006,ငါ အသက်ရှု ခက်,0.0005,ငါ သွားစိုက် ကြိုက်,0.0004
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-301.mp4,ဖန် ပုလင်း ကွဲ ရှ သွေး တအားထွက်,0.8826,အသက်ရှု ပိတ် အချိန် စ ဘာလဲ,0.001,ဆရာဝန် ခေါ် မြန်မြန်,0.0008,ဟိုမှာ ကား ကားတိုက်,0.0007,တော မီး လောင်ရင် ပျံ့နှံ့ အန္တရာယ် ကြီး,0.0007
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-401.mp4,ငါ တစ်ကိုယ်လုံး ကိုက်ခဲ,0.9333,ပြေး မြန်မြန်,0.0007,သူ ခြေတောက် နာ,0.0006,ကားမောင်း မလုပ်နဲ့ ရပ်,0.0005,အသက်ရှူ ခက်,0.0004

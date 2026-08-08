@@ -1,0 +1,14 @@
+{
+  "total": 558,
+  "processed": 558,
+  "failed": 0,
+  "skipped": 0,
+  "seq_len_min": 50,
+  "seq_len_max": 387,
+  "seq_len_mean": 130.56810035842295,
+  "seq_len_std": 55.11924044288601,
+  "seq_len_p50": 119.0,
+  "seq_len_p95": 241.14999999999998,
+  "lh_mean_presence": 0.6177208780096964,
+  "rh_mean_presence": 0.7129535191739758
+}

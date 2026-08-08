@@ -1,0 +1,43 @@
+2026-06-20 09:20:40 | INFO     | evaluate | Loaded checkpoint: results/exp_stgcn/checkpoints/best.pth  Model: stgcn
+2026-06-20 09:20:40 | INFO     | evaluate | Evaluating 558 samples from 'test' split
+2026-06-20 09:20:40 | INFO     | evaluate | Model loaded. Evaluating 558 samples…
+
+───────────────────────────────────────────────────────
+  Evaluation Results [TEST]
+───────────────────────────────────────────────────────
+  Samples       : 558
+  Classes       : 541
+  Top-1 Accuracy: 100.00%
+  Top-5 Accuracy: 100.00%
+  Precision (M) : 100.00%
+  Recall    (M) : 100.00%
+  F1        (M) : 100.00%
+───────────────────────────────────────────────────────
+
+Top-10 classes by F1:
+  မီး                                  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီး ငြှိမ်း                          F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီးချိတ်                             F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီးကပ်                               F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ရေပုံး                               F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  အိတ် ထဲ သဲ                           F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  အနီ ဘူး ဖြန်း                        F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ကန် ထဲ ရေ သိမ်း                      F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီးလောင် တစ်ခါတည်း ဓာတ်ဆီ စက္ကူ စွန  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ဓာတ်ဆီ 9 2 9 5 အောက်တိန်း အမျိုးမျိ  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+
+Bottom-10 classes by F1:
+  အချိန် ကြာ မဟုတ် မိနစ် ၃၀            F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ငါ ချော်လဲ                           F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ငါ လမ်းလျှောက် ခြေထောက် ချော်လဲ ခေါ  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ခင်ဗျား ခြေထောက် အဲ့ဒီ့ ဓာတ်မှန်ရို  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ခင်ဗျား ခြေထောက် အဲ့ဒီ့ ဓာတ်မှန်ရို  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ငါ့ အမေ လှေကား ချော်ကျ               F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ခေါင်း စောင့် အနီ သွေးတွေ ဖြာကျနေ    F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  သူ သတိလစ် နေတာလား                    F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  သတိလစ် မဟုတ်ဘူး သတိ ရတယ်             F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ဆရာဝန် လာ အချိန် ဘယ်လောက်လဲ          F1=1.000  Prec=1.000  Rec=1.000  Support=1
+Confusion matrix saved → results/exp_stgcn/evaluation/confusion_matrix_test.png
+Predictions saved → results/exp_stgcn/evaluation/predictions_test.csv  (558/558 correct)
+
+All evaluation outputs saved to: results/exp_stgcn/evaluation

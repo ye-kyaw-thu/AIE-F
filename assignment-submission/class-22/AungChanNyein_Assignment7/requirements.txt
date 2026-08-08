@@ -1,0 +1,28 @@
+# Assignment 7 — NMT G2P with Marian
+# System requirements: install separately, not via pip
+
+# === Marian NMT ===
+# Compiled from source (not available as Kaggle/Ubuntu apt package).
+# See Notebook/compilemarian.ipynb for the full build process.
+# git clone https://github.com/marian-nmt/marian.git
+# cmake .. -DCMAKE_BUILD_TYPE=Release -DUSE_SENTENCEPIECE=off -DCOMPILE_SERVER=off
+# make -j4
+
+# === System packages (Ubuntu/Debian) ===
+# apt-get install cmake build-essential libgoogle-perftools-dev ccache git
+# apt-get install libxml-parser-perl   # required by multi-bleu.perl
+
+# === Python packages ===
+matplotlib
+numpy
+pandas
+jupyter
+kagglehub
+
+# === Evaluation ===
+# multi-bleu.perl (from Moses SMT toolkit)
+# wget https://raw.githubusercontent.com/moses-smt/mosesdecoder/master/scripts/generic/multi-bleu.perl
+
+# === Hardware ===
+# 2x Tesla T4 GPU (Kaggle) recommended; CUDA-enabled GPU required for
+# reasonable training time. CPU-only training is possible but very slow.

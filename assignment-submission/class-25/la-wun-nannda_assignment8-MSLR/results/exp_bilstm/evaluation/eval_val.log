@@ -1,0 +1,43 @@
+2026-06-20 09:19:49 | INFO     | evaluate | Loaded checkpoint: results/exp_bilstm/checkpoints/best.pth  Model: bilstm
+2026-06-20 09:19:49 | INFO     | evaluate | Evaluating 558 samples from 'val' split
+2026-06-20 09:19:49 | INFO     | evaluate | Model loaded. Evaluating 558 samples…
+
+───────────────────────────────────────────────────────
+  Evaluation Results [VAL]
+───────────────────────────────────────────────────────
+  Samples       : 558
+  Classes       : 541
+  Top-1 Accuracy: 94.09%
+  Top-5 Accuracy: 96.06%
+  Precision (M) : 91.37%
+  Recall    (M) : 94.09%
+  F1        (M) : 92.20%
+───────────────────────────────────────────────────────
+
+Top-10 classes by F1:
+  မီး ငြှိမ်း                          F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီးချိတ်                             F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီးကပ်                               F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ရေပုံး                               F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  အိတ် ထဲ သဲ                           F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  အနီ ဘူး ဖြန်း                        F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ကန် ထဲ ရေ သိမ်း                      F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီးလောင် တစ်ခါတည်း ဓာတ်ဆီ စက္ကူ စွန  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  ဓာတ်ဆီ 9 2 9 5 အောက်တိန်း အမျိုးမျိ  F1=1.000  Prec=1.000  Rec=1.000  Support=1
+  မီး လျှပ်စစ်                         F1=1.000  Prec=1.000  Rec=1.000  Support=1
+
+Bottom-10 classes by F1:
+  မီးလောင် လက်ထိ လောင်သွား             F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  နှလုံး ကျွမ်းကျင် ဆရာဝန် တွေ့ ကြိုက  F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  ၁ တနင်္လာ ၅ သောကြာ ညနေ ၄ ခွဲ အမြဲတမ  F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  ဆေးခန်း က ညနေ အချိန် ၅ ဖွင့်         F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  ဆရာဝန် တွေ့ အမြဲအမြဲ ဘယ်သူလဲ         F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  ဆရာဝန် ဖုန်း နံပါတ် လိုချင်လို့      F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  သူ ငါ့ မိန်းကလေး အဒေါ်               F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  မင်း နေ မကောင်း ခံစား မကောင်း ကြာ ဘ  F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  စားချင် စိတ် မရှိဘူး                 F1=0.000  Prec=0.000  Rec=0.000  Support=1
+  လက် လှုပ် မရ နာ အရမ်း                F1=0.000  Prec=0.000  Rec=0.000  Support=1
+Confusion matrix saved → results/exp_bilstm/evaluation/confusion_matrix_val.png
+Predictions saved → results/exp_bilstm/evaluation/predictions_val.csv  (525/558 correct)
+
+All evaluation outputs saved to: results/exp_bilstm/evaluation

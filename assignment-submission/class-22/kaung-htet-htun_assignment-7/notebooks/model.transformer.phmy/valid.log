@@ -1,0 +1,51 @@
+[2026-07-03 16:08:52] [valid] Ep. 80 : Up. 5000 : cross-entropy : 1.83935 : new best
+[2026-07-03 16:08:53] [valid] Ep. 80 : Up. 5000 : perplexity : 1.61375 : new best
+[2026-07-03 16:08:53] [valid] First sentence's tokens as scored:
+[2026-07-03 16:08:53] [valid] DefaultVocab keeps original segments for scoring
+[2026-07-03 16:08:53] [valid]   Hyp: ဥတ် တ ရ ဖ လ ဂု နီ
+[2026-07-03 16:08:53] [valid]   Ref: ဥတ် တ ရ ဖ လ ဂု နီ
+[2026-07-03 16:08:55] [valid] Ep. 80 : Up. 5000 : bleu : 76.1047 : new best
+[2026-07-03 16:28:31] [valid] Ep. 159 : Up. 10000 : cross-entropy : 2.11296 : stalled 1 times (last best: 1.83935)
+[2026-07-03 16:28:31] [valid] Ep. 159 : Up. 10000 : perplexity : 1.73282 : stalled 1 times (last best: 1.61375)
+[2026-07-03 16:28:34] [valid] Ep. 159 : Up. 10000 : bleu : 75.2163 : stalled 1 times (last best: 76.1047)
+[2026-07-03 16:48:12] [valid] Ep. 239 : Up. 15000 : cross-entropy : 2.28532 : stalled 2 times (last best: 1.83935)
+[2026-07-03 16:48:13] [valid] Ep. 239 : Up. 15000 : perplexity : 1.81229 : stalled 2 times (last best: 1.61375)
+[2026-07-03 16:48:16] [valid] Ep. 239 : Up. 15000 : bleu : 74.8871 : stalled 2 times (last best: 76.1047)
+[2026-07-03 17:07:52] [valid] Ep. 318 : Up. 20000 : cross-entropy : 2.4014 : stalled 3 times (last best: 1.83935)
+[2026-07-03 17:07:53] [valid] Ep. 318 : Up. 20000 : perplexity : 1.86786 : stalled 3 times (last best: 1.61375)
+[2026-07-03 17:07:55] [valid] Ep. 318 : Up. 20000 : bleu : 75.2556 : stalled 3 times (last best: 76.1047)
+[2026-07-03 17:27:34] [valid] Ep. 397 : Up. 25000 : cross-entropy : 2.49637 : stalled 4 times (last best: 1.83935)
+[2026-07-03 17:27:35] [valid] Ep. 397 : Up. 25000 : perplexity : 1.91459 : stalled 4 times (last best: 1.61375)
+[2026-07-03 17:27:37] [valid] Ep. 397 : Up. 25000 : bleu : 75.3565 : stalled 4 times (last best: 76.1047)
+[2026-07-03 17:47:16] [valid] Ep. 477 : Up. 30000 : cross-entropy : 2.57104 : stalled 5 times (last best: 1.83935)
+[2026-07-03 17:47:17] [valid] Ep. 477 : Up. 30000 : perplexity : 1.95215 : stalled 5 times (last best: 1.61375)
+[2026-07-03 17:47:19] [valid] Ep. 477 : Up. 30000 : bleu : 75.4994 : stalled 5 times (last best: 76.1047)
+[2026-07-03 18:07:00] [valid] Ep. 556 : Up. 35000 : cross-entropy : 2.65497 : stalled 6 times (last best: 1.83935)
+[2026-07-03 18:07:00] [valid] Ep. 556 : Up. 35000 : perplexity : 1.99525 : stalled 6 times (last best: 1.61375)
+[2026-07-03 18:07:03] [valid] Ep. 556 : Up. 35000 : bleu : 75.401 : stalled 6 times (last best: 76.1047)
+[2026-07-03 18:26:38] [valid] Ep. 635 : Up. 40000 : cross-entropy : 2.72167 : stalled 7 times (last best: 1.83935)
+[2026-07-03 18:26:39] [valid] Ep. 635 : Up. 40000 : perplexity : 2.03017 : stalled 7 times (last best: 1.61375)
+[2026-07-03 18:26:41] [valid] Ep. 635 : Up. 40000 : bleu : 75.5984 : stalled 7 times (last best: 76.1047)
+[2026-07-03 18:59:37] [valid] Ep. 715 : Up. 45000 : cross-entropy : 2.79254 : stalled 7 times (last best: 1.83935)
+[2026-07-03 18:59:37] [valid] Ep. 715 : Up. 45000 : perplexity : 2.06796 : stalled 7 times (last best: 1.61375)
+[2026-07-03 18:59:37] [valid] First sentence's tokens as scored:
+[2026-07-03 18:59:37] [valid] DefaultVocab keeps original segments for scoring
+[2026-07-03 18:59:37] [valid]   Hyp: ဥတ် တ ရ ဖ လ ဂု နီ
+[2026-07-03 18:59:37] [valid]   Ref: ဥတ် တ ရ ဖ လ ဂု နီ
+[2026-07-03 18:59:40] [valid] Ep. 715 : Up. 45000 : bleu : 75.5329 : stalled 7 times (last best: 76.1047)
+[2026-07-03 19:20:07] [valid] Ep. 794 : Up. 50000 : cross-entropy : 2.83179 : stalled 8 times (last best: 1.83935)
+[2026-07-03 19:20:08] [valid] Ep. 794 : Up. 50000 : perplexity : 2.08918 : stalled 8 times (last best: 1.61375)
+[2026-07-03 19:20:10] [valid] Ep. 794 : Up. 50000 : bleu : 75.7721 : stalled 8 times (last best: 76.1047)
+[2026-07-03 19:41:00] [valid] Ep. 874 : Up. 55000 : cross-entropy : 2.86251 : stalled 9 times (last best: 1.83935)
+[2026-07-03 19:41:01] [valid] Ep. 874 : Up. 55000 : perplexity : 2.10595 : stalled 9 times (last best: 1.61375)
+[2026-07-03 19:41:03] [valid] Ep. 874 : Up. 55000 : bleu : 75.527 : stalled 9 times (last best: 76.1047)
+[2026-07-03 20:13:58] [valid] Ep. 914 : Up. 60000 : cross-entropy : 2.88912 : stalled 9 times (last best: 1.83935)
+[2026-07-03 20:13:58] [valid] Ep. 914 : Up. 60000 : perplexity : 2.12058 : stalled 9 times (last best: 1.61375)
+[2026-07-03 20:13:58] [valid] First sentence's tokens as scored:
+[2026-07-03 20:13:58] [valid] DefaultVocab keeps original segments for scoring
+[2026-07-03 20:13:58] [valid]   Hyp: ဥတ် တ ရ ဖ လ ဂု နီ
+[2026-07-03 20:13:58] [valid]   Ref: ဥတ် တ ရ ဖ လ ဂု နီ
+[2026-07-03 20:14:00] [valid] Ep. 914 : Up. 60000 : bleu : 75.6025 : stalled 9 times (last best: 76.1047)
+[2026-07-03 20:35:08] [valid] Ep. 994 : Up. 70000 : cross-entropy : 2.92858 : stalled 10 times (last best: 1.83935)
+[2026-07-03 20:35:09] [valid] Ep. 994 : Up. 70000 : perplexity : 2.14246 : stalled 10 times (last best: 1.61375)
+[2026-07-03 20:35:11] [valid] Ep. 994 : Up. 70000 : bleu : 76.0422 : stalled 10 times (last best: 76.1047)

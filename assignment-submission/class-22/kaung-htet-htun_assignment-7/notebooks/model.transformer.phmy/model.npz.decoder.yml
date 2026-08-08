@@ -1,0 +1,12 @@
+relative-paths: false
+models:
+  - model.transformer.phmy/model.npz
+vocabs:
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/vocab/vocab.ph.yml
+  - /home/phantom/Documents/assignment_7_testing/kaung-htet-htun_assignment-7/g2p-par/vocab/vocab.my.yml
+beam-size: 4
+normalize: 0.6
+word-penalty: 0
+mini-batch: 64
+maxi-batch: 100
+maxi-batch-sort: src

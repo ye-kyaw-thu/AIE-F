@@ -84,6 +84,10 @@ Results:
 └── run-baseline.pl     # originally Sayar's # modified paths
 ```
 
+## Testing
+
+- Cloud Demo: [Hugging Face Space](https://huggingface.co/spaces/lawun330/basic-SMT-hf-space)
+
 ## References
 
 - [Moses SMT Framework](https://www.statmt.org/moses-release/RELEASE-4.0/binaries/)

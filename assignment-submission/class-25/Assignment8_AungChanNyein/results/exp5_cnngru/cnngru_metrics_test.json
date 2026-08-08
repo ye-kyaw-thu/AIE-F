@@ -1,0 +1,14 @@
+{
+  "loss": 1.0398242655519523,
+  "top1_accuracy": 1.0,
+  "top5_accuracy": 1.0,
+  "precision_macro": 1.0,
+  "recall_macro": 1.0,
+  "f1_macro": 1.0,
+  "precision_weighted": 1.0,
+  "recall_weighted": 1.0,
+  "f1_weighted": 1.0,
+  "num_samples": 557,
+  "split": "test",
+  "num_classes": 541
+}

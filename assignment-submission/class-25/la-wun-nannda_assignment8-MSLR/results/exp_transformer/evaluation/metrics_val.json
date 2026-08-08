@@ -1,0 +1,13 @@
+{
+  "split": "val",
+  "num_samples": 558,
+  "num_classes": 541,
+  "top1_accuracy": 0.9731182795698925,
+  "top5_accuracy": 0.978494623655914,
+  "precision_macro": 0.9584103512014788,
+  "recall_macro": 0.9722735674676525,
+  "f1_macro": 0.9630314232902033,
+  "precision_weighted": 0.9596774193548387,
+  "recall_weighted": 0.9731182795698925,
+  "f1_weighted": 0.96415770609319
+}

@@ -1,0 +1,6 @@
+﻿video,pred_1,conf_1,pred_2,conf_2,pred_3,conf_3,pred_4,conf_4,pred_5,conf_5
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/Idx20-501.mp4,ဒဏ်ရာရ ပလာစတာ တစ်ခု ရ လိုချင်,0.9593,ချောင်းဆိုး ပျောက် ဆေး ပေး လိုချင်,0.0017,တော မီး လောင်ရင် ပျံ့နှံ့ အန္တရာယ် ကြီး,0.0016,ရေကြီး လျှပ်တပြက်,0.0009,ဒဏ်ရာရ ပလာစတာ ငါးခု ရ လိုချင်,0.0009
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-101.mp4,ဖုန်းခေါ် 1 9 9,0.6579,ဒုက္ခ ဂရုစိုက်,0.0145,လေ,0.0105,သစ်ကိုင်း,0.0085,မင်း အစား မတည့် ရှိလား,0.0063
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-201.mp4,ကိုက် မြွေ အဆိပ် ရှိ ဆိုး,0.9323,ငါ ရောဂါ သွေးတိုး ရှိ,0.0034,ငါ ဖုန်း အလုခံရ,0.0021,မီးလောင် သွား စပ်စု မလုပ်နဲ့,0.0014,သွေး ထွက် အများကြီး,0.0012
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-301.mp4,ဖန် ပုလင်း ကွဲ ရှ သွေး တအားထွက်,0.6673,ငါ့ ကလေး ပရုတ်ဆီ အဲဒါကို စားပစ် လိုက်တယ်,0.0199,ငါ့ မောင်လေး ဝိုင်း ရိုက်ကြ,0.0094,ဒဏ်ရာ သွေး ထွက် ဖိထား,0.0066,ရေ ဆည်,0.0051
+/home/lawun330/Desktop/myanmar-sign-language-recognition/data/sample4infer/idx20-401.mp4,ငါ တစ်ကိုယ်လုံး ကိုက်ခဲ,0.9327,ခု ငလျှင်လှုပ်,0.0052,သစ်ပင်,0.0018,ငါ ပိုက်ဆံအိတ် ခါးကြားထိုး ခိုး ယူ သွားပြီ,0.0013,ငါ သွားနူတ် ကြိုက်,0.0011

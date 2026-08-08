@@ -1,0 +1,19 @@
+Instructions for building and installing Moses are online:
+   http://www.statmt.org/moses/?n=Development.GetStarted
+If you have g++ and Boost installed, and you want the default compilation with most of things you need, then run:
+   ./bjam -j4
+
+Questions should be directed to the mailing list (don't forget to register before sending emails):
+   http://mailman.mit.edu/mailman/listinfo/moses-support
+   https://github.com/moses-smt/mosesdecoder/compare/master...hieu2
+
+Some of the code is not originally part of Moses, but is periodically copied
+into the source tree from elsewhere:
+
+ * "bjam-files" is taken from Boost.
+ * "util" and "lm" are taken from KenLM: https://github.com/kpu/kenlm
+
+=====================================================
+Running on Ubuntu 22.04 (March 2025)
+sudo apt install libcmph-dev libxmlrpc-c++8-dev
+./bjam -j11 --with-cmph=/usr --with-xmlrpc-c=/usr -a

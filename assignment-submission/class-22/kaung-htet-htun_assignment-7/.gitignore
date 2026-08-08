@@ -1,0 +1,10 @@
+model.*/
+*.hyp.txt
+*.npz
+*.bin
+*.ckpt
+*.pt
+*.pth
+
+# Marian models
+model.seq2seq.phmy/
