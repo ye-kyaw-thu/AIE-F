@@ -1,0 +1,787 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+infer_onnx.py  –  Real-time MSL recognition on Windows using ONNX Runtime
+
+Bugs fixed in this version
+───────────────────────────
+  [INFER-A] process_frame skipped frames without pose detection.
+      Training always includes every frame (zeros for undetected joints).
+      Fix: process_frame always returns the keypoint array, never None.
+
+  [INFER-B] normalize_sequence used 2-D scale and left z unscaled.
+      Fix: exact mirror of extract_keypoints.normalize_sequence() —
+      full 3-D midpoint and 3-D Euclidean shoulder width, all axes.
+
+  [INFER-C] *** ROOT CAUSE OF WEBCAM FAILURE ***
+      Webcam classified every classify_every=15 frames = 0.5 seconds.
+      Signs take 1–4 seconds; feeding 15 frames to a model trained on
+      full-length signs produces garbage predictions.
+
+      infer.py uses a TIME-BASED buffer: accumulate buffer_sec=2.5 sec
+      of frames (~75 at 30 fps), then classify and clear.  This gives
+      the model a realistic-duration sign sequence matching training.
+
+      Fix: replaced the frame-count trigger with a time-based trigger
+      using --buffer_sec (default 2.5), identical to infer.py.
+
+  [INFER-D] np.int64 / int dict key mismatch.
+      Fix: always cast to int() before idx2label lookup.
+
+  [INFER-E] ONNXModel.predict returned a scalar instead of 1-D array.
+      Fix: return output[0] — shape (num_classes,).
+
+  [INFER-F] model_complexity=1 everywhere; training used complexity=2.
+      Fix: complexity=2 for video (matching training), 1 for webcam
+      (speed tradeoff, same as infer.py).
+
+  [INFER-G] extractor.pose.model_complexity AttributeError on Windows.
+      MediaPipe's Pose object does not expose model_complexity publicly.
+      Fix: stored as self.model_complexity on KeypointExtractor.
+
+New features
+────────────
+  • Video saving — two output files per inference:
+      {name}_clean.mp4  —  label/confidence overlay only
+      {name}_debug.mp4  —  label overlay + MediaPipe skeleton lines
+    Works for both --video and --webcam modes.
+    Saved to --output_dir (default: predictions_output/).
+
+  • Webcam log — every classification event writes top-k results to the
+    log file with timestamp and separator, matching the video log format.
+"""
+
+import argparse
+import importlib
+import json
+import sys
+from datetime import datetime
+from pathlib import Path
+
+import cv2
+import numpy as np
+import onnxruntime as ort
+
+try:
+    from PIL import Image, ImageDraw, ImageFont
+    HAS_PIL = True
+except ImportError:
+    HAS_PIL = False
+
+# ── Constants (must match extract_keypoints.py exactly) ───────────────────────
+POSE_N          = 33
+HAND_N          = 21
+TOTAL_JOINTS    = POSE_N + HAND_N * 2   # 75
+COORDS          = 3
+FEAT_DIM        = TOTAL_JOINTS * COORDS  # 225
+
+POSE_LEFT_SHOULDER  = 11
+POSE_RIGHT_SHOULDER = 12
+LEFT_HAND_START     = POSE_N            # 33
+RIGHT_HAND_START    = POSE_N + HAND_N   # 54
+
+
+# ─── MediaPipe import ─────────────────────────────────────────────────────────
+
+def _import_mp():
+    for prefix in ["mediapipe.solutions", "mediapipe.python.solutions"]:
+        try:
+            pose  = importlib.import_module(f"{prefix}.pose")
+            hands = importlib.import_module(f"{prefix}.hands")
+            draw  = importlib.import_module(f"{prefix}.drawing_utils")
+            return pose, hands, draw
+        except (ImportError, ModuleNotFoundError):
+            continue
+    try:
+        import mediapipe as _mp
+        return _mp.solutions.pose, _mp.solutions.hands, _mp.solutions.drawing_utils
+    except AttributeError:
+        pass
+    raise ImportError(
+        "Cannot import MediaPipe solutions.\n"
+        "Try: pip uninstall mediapipe -y && pip install mediapipe==0.10.18"
+    )
+
+mp_pose, mp_hands, mp_drawing = _import_mp()
+
+
+# ─── Myanmar text rendering ──────────────────────────────────────────────────
+
+class TextRenderer:
+    _FONT_CANDIDATES = [
+        "C:\\Windows\\Fonts\\Padauk.ttf",
+        "C:\\Windows\\Fonts\\NotoSansMyanmar-Regular.ttf",
+        "C:\\Windows\\Fonts\\NotoSansMyanmar.ttf",
+        "C:\\Windows\\Fonts\\myanmar3.ttf",
+        "/usr/share/fonts/truetype/padauk/Padauk-Regular.ttf",
+        "/usr/share/fonts/truetype/noto/NotoSansMyanmar-Regular.ttf",
+        "fonts\\Padauk.ttf",
+        "fonts/NotoSansMyanmar-Regular.ttf",
+    ]
+
+    def __init__(self, font_size: int = 32):
+        self.font = self._load_font(font_size)
+        self.can_render_myanmar = (self.font is not None)
+        if not self.can_render_myanmar:
+            print()
+            print("  ╔═══════════════════════════════════════════════════════════╗")
+            print("  ║  INFO: No Myanmar shaping font found.                    ║")
+            print("  ║  Displaying readable Class IDs instead of Myanmar text.  ║")
+            print("  ╚═══════════════════════════════════════════════════════════╝")
+            print()
+
+    def _load_font(self, size):
+        if not HAS_PIL:
+            return None
+        for path in self._FONT_CANDIDATES:
+            if Path(path).exists():
+                try:
+                    return ImageFont.truetype(path, size)
+                except Exception:
+                    continue
+        return None
+
+    def put_text(self, frame, text, position=(20, 20), color=(0, 255, 0)):
+        if self.font and HAS_PIL:
+            pil = Image.fromarray(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
+            d   = ImageDraw.Draw(pil)
+            r, g, b = color[2], color[1], color[0]
+            for dx in [-1, 0, 1]:
+                for dy in [-1, 0, 1]:
+                    if dx or dy:
+                        d.text((position[0]+dx, position[1]+dy), text,
+                               font=self.font, fill=(0, 0, 0))
+            d.text(position, text, font=self.font, fill=(r, g, b))
+            return cv2.cvtColor(np.array(pil), cv2.COLOR_RGB2BGR)
+        cv2.putText(frame, text, position, cv2.FONT_HERSHEY_SIMPLEX,
+                    0.75, color, 2, cv2.LINE_AA)
+        return frame
+
+
+# ─── Keypoint extraction ──────────────────────────────────────────────────────
+
+class KeypointExtractor:
+    """
+    Extracts (TOTAL_JOINTS, 3) keypoint arrays from BGR frames.
+
+    Fix [INFER-G]: model_complexity is stored as self.model_complexity
+    because mediapipe's Pose object does not expose it as a public attribute
+    on all Windows builds (AttributeError otherwise).
+
+    Fix [INFER-A]: process_frame always returns an array, never None.
+    Matches extract_keypoints.py which includes every frame, using zeros
+    for any joint that MediaPipe failed to detect.
+
+    Hand convention (matches extract_keypoints.py):
+      MediaPipe reports handedness from the camera perspective (mirrored).
+      label='Right' → signer's LEFT  hand → slot LEFT_HAND_START  (33).
+      label='Left'  → signer's RIGHT hand → slot RIGHT_HAND_START (54).
+    """
+
+    def __init__(self, model_complexity: int = 2):
+        # Fix [INFER-G]: store complexity ourselves — mediapipe's Pose object
+        # does NOT expose a public .model_complexity on all Windows builds.
+        self.model_complexity = model_complexity
+
+        self.pose  = mp_pose.Pose(
+            static_image_mode=False,
+            model_complexity=model_complexity,
+            smooth_landmarks=True,
+            enable_segmentation=False,
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5,
+        )
+        self.hands = mp_hands.Hands(
+            static_image_mode=False,
+            max_num_hands=2,
+            model_complexity=min(model_complexity, 1),  # Hands caps at 1
+            min_detection_confidence=0.5,
+            min_tracking_confidence=0.5,
+        )
+        self._last_pose  = None
+        self._last_hands = None
+
+    def process_frame(self, frame: np.ndarray) -> np.ndarray:
+        """
+        Returns (TOTAL_JOINTS, 3) float32 for every frame.
+        Zeros for any undetected joint/hand — never returns None.
+        """
+        rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        rgb.flags.writeable = False
+        p_res = self.pose.process(rgb)
+        h_res = self.hands.process(rgb)
+        self._last_pose  = p_res
+        self._last_hands = h_res
+
+        kp = np.zeros((TOTAL_JOINTS, COORDS), dtype=np.float32)
+
+        if p_res.pose_landmarks:
+            for i, lm in enumerate(p_res.pose_landmarks.landmark):
+                kp[i] = [lm.x, lm.y, lm.z]
+
+        if h_res.multi_hand_landmarks and h_res.multi_handedness:
+            for lm_list, handedness in zip(
+                h_res.multi_hand_landmarks, h_res.multi_handedness
+            ):
+                label  = handedness.classification[0].label
+                offset = LEFT_HAND_START if label == 'Right' else RIGHT_HAND_START
+                for i, lm in enumerate(lm_list.landmark):
+                    kp[offset + i] = [lm.x, lm.y, lm.z]
+
+        return kp  # always an array, never None
+
+    def draw_landmarks(self, frame: np.ndarray) -> np.ndarray:
+        """Draw MediaPipe skeleton onto frame IN-PLACE and return it."""
+        if self._last_pose and self._last_pose.pose_landmarks:
+            mp_drawing.draw_landmarks(
+                frame, self._last_pose.pose_landmarks, mp_pose.POSE_CONNECTIONS
+            )
+        if self._last_hands and self._last_hands.multi_hand_landmarks:
+            for lm in self._last_hands.multi_hand_landmarks:
+                mp_drawing.draw_landmarks(frame, lm, mp_hands.HAND_CONNECTIONS)
+        return frame
+
+    def close(self):
+        self.pose.close()
+        self.hands.close()
+
+
+# ─── Normalization ────────────────────────────────────────────────────────────
+
+def normalize_sequence(seq: np.ndarray) -> np.ndarray:
+    """
+    Fix [INFER-B]: exact mirror of extract_keypoints.normalize_sequence().
+    Full 3-D shoulder-midpoint subtraction and 3-D shoulder-width scaling,
+    applied to all three coordinate axes.
+    """
+    l_sh = seq[:, POSE_LEFT_SHOULDER,  :]   # (T, 3)
+    r_sh = seq[:, POSE_RIGHT_SHOULDER, :]   # (T, 3)
+    mid  = (l_sh + r_sh) / 2.0
+    dist = np.linalg.norm(r_sh - l_sh, axis=1, keepdims=True)
+    dist = np.where(dist < 1e-6, 1.0, dist)
+    return ((seq - mid[:, None, :]) / dist[:, None, :]).astype(np.float32)
+
+
+# ─── Preprocessor ─────────────────────────────────────────────────────────────
+
+class Preprocessor:
+    """
+    Stack raw (75, 3) keypoint frames → normalize → crop/pad → model input.
+
+    Processing order matches infer.py exactly:
+      1. Stack   → (T, 75, 3)
+      2. Normalize (3-D shoulder-centred, full 3-D scale)
+      3. Centre-crop  if T > max_seq_len
+      4. Zero-pad     if T < max_seq_len
+      5. Build mask   (True = padded position)
+      6. Reshape for model type
+    """
+
+    def __init__(self, max_seq_len: int = 200):
+        self.max_seq_len = max_seq_len
+
+    def __call__(self, kp_list: list, model_type: str) -> dict:
+        if not kp_list:
+            return {}
+
+        seq = np.stack(kp_list, axis=0).astype(np.float32)  # (T, 75, 3)
+        seq = normalize_sequence(seq)
+        T   = seq.shape[0]
+
+        if T > self.max_seq_len:
+            start = (T - self.max_seq_len) // 2
+            seq   = seq[start: start + self.max_seq_len]
+            T     = self.max_seq_len
+
+        real_len = T
+
+        if T < self.max_seq_len:
+            pad = np.zeros((self.max_seq_len - T, TOTAL_JOINTS, COORDS), dtype=np.float32)
+            seq = np.concatenate([seq, pad], axis=0)
+
+        mask = np.zeros(self.max_seq_len, dtype=np.bool_)
+        mask[real_len:] = True
+
+        if model_type == "stgcn":
+            kp_out = np.expand_dims(seq.transpose(2, 0, 1), axis=0).astype(np.float32)
+            return {"keypoints": kp_out}
+        else:
+            kp_out = np.expand_dims(
+                seq.reshape(self.max_seq_len, FEAT_DIM), axis=0
+            ).astype(np.float32)
+            return {"keypoints": kp_out, "mask": mask[np.newaxis]}
+
+
+# ─── ONNX model wrapper ───────────────────────────────────────────────────────
+
+class ONNXModel:
+    def __init__(self, onnx_path: str, meta_path: str = None):
+        available = ort.get_available_providers()
+        preferred = ["CUDAExecutionProvider", "DmlExecutionProvider", "CPUExecutionProvider"]
+        providers = [p for p in preferred if p in available]
+
+        self.session = ort.InferenceSession(onnx_path, providers=providers)
+        print(f"[INFO] ONNX loaded: {Path(onnx_path).name}"
+              f"  (provider: {self.session.get_providers()[0]})")
+
+        self.meta = {}
+        if meta_path and Path(meta_path).exists():
+            try:
+                with open(meta_path, encoding="utf-8") as f:
+                    self.meta = json.load(f)
+            except Exception as e:
+                print(f"[WARNING] Could not read metadata: {e}")
+        else:
+            print(f"[INFO] Metadata not found at '{meta_path}', using defaults.")
+
+        self.model_type  = self.meta.get("model_type",  "transformer")
+        self.max_seq_len = self.meta.get("max_seq_len", 200)
+        self.num_classes = self.meta.get("num_classes", 558)
+
+    def predict(self, inputs: dict) -> np.ndarray:
+        """Fix [INFER-E]: return (num_classes,) not scalar."""
+        return self.session.run(None, inputs)[0][0]
+
+    @staticmethod
+    def softmax(logits: np.ndarray) -> np.ndarray:
+        e = np.exp(logits - logits.max())
+        return e / e.sum()
+
+
+# ─── Label map ────────────────────────────────────────────────────────────────
+
+def load_idx2label(path: str) -> dict:
+    with open(path, encoding="utf-8") as f:
+        data = json.load(f)
+    return {int(k): v for k, v in data.get("idx2label", {}).items()}
+
+
+def _get_label(idx2label: dict, class_id) -> str:
+    """Fix [INFER-D]: always cast to int() before dict lookup."""
+    return idx2label.get(int(class_id), f"[class {int(class_id)}]")
+
+
+# ─── Helpers ──────────────────────────────────────────────────────────────────
+
+def _overlay_text(renderer, frame, text, color):
+    """Put prediction text at top-left of frame."""
+    return renderer.put_text(frame, text, position=(10, 10), color=color)
+
+
+def _pred_color(confidence: float) -> tuple:
+    """Green ≥80%, yellow ≥50%, red otherwise."""
+    if confidence >= 0.80: return (0, 200,   0)
+    if confidence >= 0.50: return (0, 200, 200)
+    return (0, 0, 255)
+
+
+def _build_overlay_text(top_idx, probs, idx2label, renderer, top_k):
+    """Single-line text for the video overlay (top-1 label + confidence)."""
+    best = top_idx[0]
+    conf = probs[int(best)]
+    lbl  = _get_label(idx2label, best) if idx2label else f"Class {int(best)}"
+    if renderer.can_render_myanmar:
+        return f"{lbl}  ({conf*100:.1f}%)", conf
+    return f"Class {int(best)}  ({conf*100:.1f}%)", conf
+
+
+def _build_console_block(top_idx, probs, idx2label, model_type, source_name, top_k):
+    """Multi-line console output block, same format as run_video."""
+    sep   = "─" * 60
+    lines = [f"Source : {source_name}", f"Model  : {model_type.upper()}", sep]
+    for rank, idx in enumerate(top_idx, 1):
+        lbl = _get_label(idx2label, idx) if idx2label else f"[class {int(idx)}]"
+        lines.append(f"  Top-{rank}: {lbl}  ({probs[int(idx)]*100:.2f}%)")
+    lines.append(sep)
+    return "\n".join(lines)
+
+
+def _build_log_block(top_idx, probs, idx2label, source_name, top_k):
+    """Log block with timestamp and top-k results."""
+    ts    = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    sep   = "=" * 60
+    lines = [sep, f"[{ts}]  {source_name}"]
+    for rank, idx in enumerate(top_idx, 1):
+        lbl = _get_label(idx2label, idx) if idx2label else "?"
+        lbl = lbl.encode("utf-8", errors="replace").decode("utf-8")
+        lines.append(f"  Top-{rank:>2}: Class {int(idx):>4d} | "
+                     f"{lbl:<45s} | {probs[int(idx)]*100:6.2f}%")
+    lines.append("")
+    return "\n".join(lines) + "\n"
+
+
+def _append_log(path, text):
+    try:
+        with open(path, "a", encoding="utf-8-sig") as f:
+            f.write(text)
+    except Exception as e:
+        print(f"[WARNING] Could not write log: {e}")
+
+
+def _make_video_writer(output_path: Path, fps: float, width: int, height: int):
+    """Create a cv2.VideoWriter with MP4V codec."""
+    fourcc = cv2.VideoWriter_fourcc(*"mp4v")
+    return cv2.VideoWriter(str(output_path), fourcc, fps, (width, height))
+
+
+# ─── Video processing ─────────────────────────────────────────────────────────
+
+def run_video(model, prep, extractor, renderer, video_path,
+              top_k=5, log_file=None, idx2label=None,
+              output_dir=None, debug=False):
+    """
+    Process a single video file.  Saves two output videos:
+      {stem}_clean.mp4  —  label overlay only
+      {stem}_debug.mp4  —  label overlay + MediaPipe skeleton lines
+
+    Matches infer.py / process_video() exactly:
+      every frame included (zeros for undetected joints),
+      normalize after stacking, centre-crop or zero-pad.
+    """
+    cap = cv2.VideoCapture(video_path)
+    if not cap.isOpened():
+        print(f"[ERROR] Cannot open video: {video_path}")
+        return
+
+    total_frames = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    fps_src      = cap.get(cv2.CAP_PROP_FPS) or 30.0
+    w            = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    h            = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    stem         = Path(video_path).stem
+
+    print(f"[INFO] {Path(video_path).name} — {total_frames} frames @ {fps_src:.1f} fps")
+    print(f"[INFO] MediaPipe pose complexity: {extractor.model_complexity}"
+          f"  (must match training; training default=2)")
+
+    # --- Pass 1: extract all keypoints + collect frames for output video ---
+    kp_list    = []
+    raw_frames = []   # store for writing output videos after prediction
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+        kp_list.append(extractor.process_frame(frame))  # always appends
+        raw_frames.append(frame.copy())
+    cap.release()
+
+    if not kp_list:
+        print("[WARNING] No frames could be read from the video.")
+        return
+
+    T_raw = len(kp_list)
+    T_use = min(T_raw, model.max_seq_len)
+    print(f"[INFO] {T_raw} frames extracted → using {T_use} "
+          f"({'centre-cropped' if T_raw > model.max_seq_len else 'zero-padded to'}"
+          f" {model.max_seq_len})")
+
+    # --- Inference ---
+    inputs  = prep(kp_list, model.model_type)
+    logits  = model.predict(inputs)
+    probs   = ONNXModel.softmax(logits)
+    top_idx = np.argsort(probs)[::-1][:top_k]
+
+    # --- Console output ---
+    print("\n" + _build_console_block(top_idx, probs, idx2label,
+                                      model.model_type, Path(video_path).name, top_k))
+
+    # --- Log file ---
+    if log_file:
+        _append_log(log_file,
+                    _build_log_block(top_idx, probs, idx2label,
+                                     Path(video_path).name, top_k))
+
+    # --- Save output videos ---
+    if output_dir:
+        out_dir = Path(output_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+
+        overlay_text, conf = _build_overlay_text(top_idx, probs, idx2label, renderer, top_k)
+        color              = _pred_color(conf)
+
+        clean_path = out_dir / f"{stem}_clean.mp4"
+        debug_path = out_dir / f"{stem}_debug.mp4"
+        vw_clean   = _make_video_writer(clean_path, fps_src, w, h)
+        vw_debug   = _make_video_writer(debug_path, fps_src, w, h)
+
+        for i, raw in enumerate(raw_frames):
+            # Clean: label overlay only
+            clean_frame = renderer.put_text(raw.copy(), overlay_text,
+                                            position=(10, 10), color=color)
+            vw_clean.write(clean_frame)
+
+            # Debug: re-run MediaPipe on this frame to get landmarks,
+            # then draw skeleton + label
+            debug_frame = raw.copy()
+            extractor.process_frame(debug_frame)       # updates _last_pose/_last_hands
+            extractor.draw_landmarks(debug_frame)       # draws skeleton in-place
+            debug_frame = renderer.put_text(debug_frame, overlay_text,
+                                            position=(10, 10), color=color)
+            vw_debug.write(debug_frame)
+
+        vw_clean.release()
+        vw_debug.release()
+        print(f"[INFO] Saved  clean  → {clean_path}")
+        print(f"[INFO] Saved  debug  → {debug_path}")
+
+
+# ─── Webcam processing ────────────────────────────────────────────────────────
+
+def run_webcam(model, prep, extractor, renderer, idx2label,
+               cam_idx=0, top_k=5, log_file=None,
+               buffer_sec=2.5, output_dir=None):
+    """
+    Live webcam sign recognition.
+
+    Fix [INFER-C] — root cause of webcam failure:
+      The old code classified every classify_every=15 frames ≈ 0.5 sec.
+      Signs take 1–4 seconds; 15 frames is far too short and produces
+      garbage predictions regardless of model quality.
+
+      Now uses a TIME-BASED buffer matching infer.py exactly:
+        buf_frames = int(fps * buffer_sec)   (default 2.5 sec ≈ 75 frames)
+        Classify and clear when the buffer reaches buf_frames.
+        Progress bar fills towards buf_frames, giving clear visual feedback.
+
+    Saves two output videos (if --output_dir given):
+      webcam_{timestamp}_clean.mp4  — label overlay only
+      webcam_{timestamp}_debug.mp4  — label overlay + skeleton
+
+    Every classification event is logged to --log_file with top-k results.
+
+    Keys:  Q = quit  |  C = clear buffer manually
+    """
+    cap = cv2.VideoCapture(cam_idx)
+    if not cap.isOpened():
+        print(f"[ERROR] Cannot open webcam {cam_idx}")
+        return
+
+    fps        = cap.get(cv2.CAP_PROP_FPS) or 30.0
+    w          = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    h          = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    # Fix [INFER-C]: time-based buffer, matching infer.py
+    buf_frames = max(20, int(fps * buffer_sec))
+
+    print(f"[INFO] Webcam  {w}×{h} @ {fps:.1f} fps")
+    print(f"[INFO] Buffer  {buf_frames} frames ({buffer_sec:.1f} sec) — sign within this window")
+    print(f"[INFO] MediaPipe pose complexity: {extractor.model_complexity}")
+    print(f"[INFO] Q = quit | C = clear buffer manually")
+
+    # ── Optional video writers ──
+    ts_str     = datetime.now().strftime("%Y%m%d_%H%M%S")
+    vw_clean   = vw_debug = None
+    if output_dir:
+        out_dir = Path(output_dir)
+        out_dir.mkdir(parents=True, exist_ok=True)
+        clean_path = out_dir / f"webcam_{ts_str}_clean.mp4"
+        debug_path = out_dir / f"webcam_{ts_str}_debug.mp4"
+        vw_clean   = _make_video_writer(clean_path, fps, w, h)
+        vw_debug   = _make_video_writer(debug_path, fps, w, h)
+        print(f"[INFO] Recording clean → {clean_path}")
+        print(f"[INFO] Recording debug → {debug_path}")
+
+    kp_buffer  = []
+    last_text  = "Perform a sign — buffer filling..."
+    last_color = (200, 200, 200)
+    classify_count = 0
+
+    while True:
+        ret, frame = cap.read()
+        if not ret:
+            break
+
+        # Extract keypoints — always append (Fix [INFER-A])
+        kp = extractor.process_frame(frame)
+        kp_buffer.append(kp)
+
+        # Fix [INFER-C]: classify when buffer reaches buf_frames, then clear
+        if len(kp_buffer) >= buf_frames:
+            inputs  = prep(list(kp_buffer), model.model_type)
+            logits  = model.predict(inputs)
+            probs   = ONNXModel.softmax(logits)
+            top_idx = np.argsort(probs)[::-1][:top_k]
+
+            overlay_text, conf = _build_overlay_text(
+                top_idx, probs, idx2label, renderer, top_k
+            )
+            last_text  = overlay_text
+            last_color = _pred_color(conf)
+            classify_count += 1
+
+            # Console output
+            print(f"\n[Prediction #{classify_count}]")
+            print(_build_console_block(top_idx, probs, idx2label,
+                                       model.model_type, f"webcam frame", top_k))
+
+            # Log file — top_k results
+            if log_file:
+                _append_log(log_file,
+                            _build_log_block(top_idx, probs, idx2label,
+                                             f"webcam #{classify_count}", top_k))
+
+            kp_buffer.clear()   # start fresh for next sign
+
+        # ── Build display frames ──
+        # Progress bar towards buf_frames (not max_seq_len)
+        fill   = int(len(kp_buffer) / buf_frames * w)
+        pct    = len(kp_buffer) / buf_frames * 100
+
+        # Clean frame: label + progress bar only
+        clean_frame = renderer.put_text(frame.copy(), last_text,
+                                        position=(10, 10), color=last_color)
+        cv2.rectangle(clean_frame, (0, h - 12), (fill, h), (0, 180, 255), -1)
+        cv2.putText(clean_frame, f"buf {len(kp_buffer)}/{buf_frames}  ({pct:.0f}%)",
+                    (10, h - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (220, 220, 220), 1)
+
+        # Debug frame: skeleton + label + progress bar
+        debug_frame = frame.copy()
+        extractor.draw_landmarks(debug_frame)
+        debug_frame = renderer.put_text(debug_frame, last_text,
+                                        position=(10, 10), color=last_color)
+        cv2.rectangle(debug_frame, (0, h - 12), (fill, h), (0, 180, 255), -1)
+        cv2.putText(debug_frame, f"buf {len(kp_buffer)}/{buf_frames}  ({pct:.0f}%)",
+                    (10, h - 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (220, 220, 220), 1)
+
+        # Write to video files
+        if vw_clean: vw_clean.write(clean_frame)
+        if vw_debug: vw_debug.write(debug_frame)
+
+        # Show the debug view on screen (most useful for real-time feedback)
+        cv2.imshow("MSL Recognition  [Q=quit  C=clear]", debug_frame)
+
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord("q"):
+            break
+        elif key == ord("c"):
+            kp_buffer.clear()
+            last_text  = "Buffer cleared — perform a sign"
+            last_color = (200, 200, 200)
+            print("[INFO] Buffer manually cleared.")
+
+    cap.release()
+    if vw_clean: vw_clean.release()
+    if vw_debug: vw_debug.release()
+    cv2.destroyAllWindows()
+
+    if output_dir:
+        print(f"[INFO] Saved  clean  → {clean_path}")
+        print(f"[INFO] Saved  debug  → {debug_path}")
+    print(f"[INFO] Total classifications: {classify_count}")
+
+
+# ─── CLI ──────────────────────────────────────────────────────────────────────
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="MSL Sign Language Inference — ONNX Runtime",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # Single video, save both clean and debug outputs
+  python infer_onnx.py --onnx_model onnx_models/bilstm_msl.onnx \\
+      --video sample.mp4 --top_k 5 --output_dir predictions_output
+
+  # Webcam, 3-second buffer, save recordings + log
+  python infer_onnx.py --onnx_model onnx_models/transformer_msl.onnx \\
+      --webcam 0 --buffer_sec 3.0 --top_k 5 \\
+      --output_dir predictions_output --log_file webcam_log.txt
+""")
+
+    parser.add_argument("--onnx_model",   required=True,
+                        help="Path to .onnx model file (NOT the .json metadata)")
+    parser.add_argument("--metadata",     default=None,
+                        help="Path to .json metadata (default: same stem as .onnx)")
+    parser.add_argument("--label_map",    default=None,
+                        help="Path to label_map.json (default: next to .onnx)")
+    parser.add_argument("--output_dir",   default="predictions_output",
+                        help="Directory for saved videos (default: predictions_output/)")
+    parser.add_argument("--log_file",     default=None,
+                        help="Append top-k results to this text file")
+    parser.add_argument("--top_k",        type=int, default=5,
+                        help="Number of top predictions to show/log (default: 5)")
+    parser.add_argument("--font_size",    type=int, default=32,
+                        help="Myanmar font size for overlay (default: 32)")
+    parser.add_argument("--model_complexity", type=int, default=None,
+                        help="MediaPipe pose complexity: 0/1/2. "
+                             "Default: 2 for video (matches training), 1 for webcam.")
+
+    grp = parser.add_mutually_exclusive_group(required=True)
+    grp.add_argument("--video",  help="Path to a video file")
+    grp.add_argument("--webcam", type=int, metavar="CAM_IDX",
+                     help="Webcam device index (0 = default camera)")
+
+    parser.add_argument("--buffer_sec", type=float, default=2.5,
+                        help="[Webcam] Seconds of frames to accumulate before "
+                             "each classification (default: 2.5, same as infer.py)")
+    parser.add_argument("--debug",       action="store_true",
+                        help="Print extra diagnostic information")
+    args = parser.parse_args()
+
+    # ── Validate ONNX path ────────────────────────────────────────────────────
+    model_p = Path(args.onnx_model)
+    if model_p.suffix.lower() == ".json":
+        sys.exit(
+            f"[ERROR] --onnx_model must be a .onnx file, not a .json file.\n"
+            f"        You passed : {model_p}\n"
+            f"        Did you mean: {model_p.with_suffix('.onnx')}"
+        )
+    if not model_p.exists():
+        sys.exit(f"[ERROR] ONNX model not found: {model_p}")
+
+    meta_p = args.metadata or str(model_p.with_suffix(".json"))
+    lmap_p = args.label_map or str(model_p.parent / "label_map.json")
+
+    if not Path(lmap_p).exists():
+        sys.exit(f"[ERROR] label_map.json not found: {lmap_p}\n"
+                 f"        Copy it from your Linux server alongside the .onnx file.")
+
+    # ── Load resources ────────────────────────────────────────────────────────
+    idx2label = load_idx2label(lmap_p)
+    print(f"[INFO] Loaded {len(idx2label)} labels from label map.")
+
+    model    = ONNXModel(str(model_p), meta_p)
+    prep     = Preprocessor(max_seq_len=model.max_seq_len)
+    renderer = TextRenderer(font_size=args.font_size)
+
+    if args.log_file:
+        print(f"[INFO] Logging top-{args.top_k} results to: {args.log_file}")
+    if args.output_dir:
+        print(f"[INFO] Saving output videos to: {args.output_dir}/")
+
+    # Fix [INFER-F]: complexity=2 for video (matches training), 1 for webcam (speed)
+    if args.model_complexity is not None:
+        video_complexity  = args.model_complexity
+        webcam_complexity = args.model_complexity
+    else:
+        video_complexity  = 2
+        webcam_complexity = 1
+
+    try:
+        if args.video:
+            extractor = KeypointExtractor(model_complexity=video_complexity)
+            try:
+                run_video(model, prep, extractor, renderer, args.video,
+                          top_k      = args.top_k,
+                          log_file   = args.log_file,
+                          idx2label  = idx2label,
+                          output_dir = args.output_dir,
+                          debug      = args.debug)
+            finally:
+                extractor.close()
+        else:
+            extractor = KeypointExtractor(model_complexity=webcam_complexity)
+            try:
+                run_webcam(model, prep, extractor, renderer, idx2label,
+                           cam_idx    = args.webcam,
+                           top_k      = args.top_k,
+                           log_file   = args.log_file,
+                           buffer_sec = args.buffer_sec,
+                           output_dir = args.output_dir)
+            finally:
+                extractor.close()
+    finally:
+        print("[INFO] Done.")
+
+
+if __name__ == "__main__":
+    main()
+

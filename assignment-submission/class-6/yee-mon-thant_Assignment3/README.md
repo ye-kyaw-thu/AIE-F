@@ -27,7 +27,7 @@ The task is to build a Myanmar syllable handwriting recognition system from scra
 ## Repository Structure
 
 ```
-myanmar-handwriting-recognition/
+yee-mon-thant_Assignment3/
 ├── myanmar_crnn.ipynb     # CRNN model 
 ├── convert2image.py       # Stroke TXT → PNG converter (provided by course)
 ├── syl.txt                # 4,413 Myanmar syllables (provided by course)

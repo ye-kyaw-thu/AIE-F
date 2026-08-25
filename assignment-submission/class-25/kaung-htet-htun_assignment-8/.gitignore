@@ -1,0 +1,25 @@
+#training results
+results/
+
+
+# cache
+__pycache__/
+.ipynb_checkpoints/
+
+# logs
+# *.log
+logs/
+wandb/*.log
+
+# large files
+data/videos/
+data/augmented/
+
+# results
+results/exp_bilstm
+results/exp_stgcn
+results/exp_transformer
+results/logs
+
+# models
+*.pth

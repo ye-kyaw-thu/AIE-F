@@ -14,12 +14,12 @@ Course repository: https://github.com/ye-kyaw-thu/AIE-F
 ## Project Structure
 
 ```
-myanmar-lm-domain-adaptation/
+yee-mon-thant_Assignment5/
 ├── data/
-│   ├── raw/          # downloaded datasets (not in git, see .gitignore)
-│   ├── clean/         # cleaned text + fine-tuning splits
-│   ├── tokenized/      # text split into syllables
-│   └── testsets/       # fixed 200-token test sets, one per domain
+│   ├── raw/          # excluded from git (large downloads) - regenerate with download_data.py
+│   ├── clean/         # excluded from git (large files) - regenerate with clean_data.py
+│   ├── tokenized/      # excluded from git (large files) - regenerate with tokenize_data.py
+│   └── testsets/       # fixed 200-token test sets, one per domain (included)
 ├── scripts/
 │   ├── download_data.py         # downloads datasets from Hugging Face
 │   ├── clean_data.py            # removes HTML, emoji, punctuation, etc.
@@ -30,11 +30,15 @@ myanmar-lm-domain-adaptation/
 │   ├── fine_tune.py             # continues training a model on new text
 │   └── evaluate_ppl.py          # runs PPL tests on all domains, makes chart
 └── results/
-    ├── lstm_general.pt               # base model (trained on Wikipedia + myPOS)
-    ├── lstm_news_finetuned.pt        # fine-tuned on News only
-    ├── lstm_all_domains_finetuned.pt # fine-tuned on all 3 domains together
-    └── ppl_by_domain.png              # results chart
+    ├── lstm_general.pt                    # base model (trained on Wikipedia + myPOS)
+    ├── lstm_general.pt.vocab              # vocabulary for the base model
+    ├── lstm_news_finetuned.pt             # fine-tuned on News only
+    ├── lstm_news_finetuned.pt.vocab       # vocabulary for the News fine-tuned model
+    ├── lstm_all_domains_finetuned.pt      # fine-tuned on all 3 domains together
+    ├── lstm_all_domains_finetuned.pt.vocab # vocabulary for the all-domains model
+    └── ppl_by_domain.png                   # results chart
 ```
+
 ## Steps
 
 ### 1. Collected the data
